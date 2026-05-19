@@ -868,126 +868,176 @@ bottom:95px;
 
 }
 
-/* =========================================
-IOS MOBILE CHAPTER CAROUSEL FIX
-LGU PORTAL 14
-PRESERVED SYSTEM
-========================================= */
+/* =========================
+   MOBILE CHAPTERS FIX
+   LGU PORTAL 14 PRESERVED
+========================= */
 
-@media (max-width:768px){
+@media (max-width: 768px) {
 
-.chapters-wrapper{
-position:relative;
-width:100%;
-overflow:hidden;
-padding:0 10px;
-}
+    .chapters-section {
+        padding: 90px 20px;
+        overflow: hidden;
+    }
 
-.chapters-track{
-display:flex;
-justify-content:flex-start;
-align-items:center;
+    .chapters-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-gap:18px;
+    .chapters-track {
+        gap: 18px;
+        padding: 20px 32vw;
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
 
-overflow-x:auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 
-scroll-snap-type:x mandatory;
-scroll-behavior:smooth;
+    .chapters-track::-webkit-scrollbar {
+        display: none;
+    }
 
-padding:20px calc(50vw - 37%) 30px;
+    .chapter-card {
+        min-width: 78vw;
+        width: 78vw;
+        max-width: 78vw;
 
-scrollbar-width:none;
-}
+        height: 520px;
 
-.chapters-track::-webkit-scrollbar{
-display:none;
-}
+        scroll-snap-align: center;
 
-.chapter-card{
-flex:0 0 74%;
-max-width:74%;
+        padding: 28px;
 
-margin:auto;
+        border-radius: 38px;
 
-height:420px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
 
-scroll-snap-align:center;
+        overflow: hidden;
 
-position:relative;
+        position: relative;
+    }
 
-overflow:hidden;
+    .chapter-card h2 {
+        font-size: clamp(2rem, 7vw, 3rem);
+        line-height: 1.02;
 
-border-radius:36px;
-}
+        word-break: break-word;
+        overflow-wrap: break-word;
 
-.chapter-image{
-width:100%;
-height:100%;
+        max-width: 100%;
+    }
 
-object-fit:cover;
+    .chapter-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
 
-opacity:0.38;
-}
+    .chapter-number {
+        font-size: 0.9rem;
+        letter-spacing: 8px;
+    }
 
-.chapter-overlay{
-position:absolute;
-inset:0;
+    .nav-arrow {
+        width: 72px;
+        height: 72px;
 
-background:
-linear-gradient(
-to top,
-rgba(0,0,0,0.92) 12%,
-rgba(0,0,0,0.55) 55%,
-rgba(0,0,0,0.15) 100%
-);
+        font-size: 1.8rem;
 
-z-index:1;
-}
+        flex-shrink: 0;
 
-.chapter-content{
-position:absolute;
+        z-index: 50;
+    }
 
-left:24px;
-right:24px;
-bottom:28px;
+    #scrollLeft {
+        position: absolute;
+        left: -8px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 
-z-index:5;
-}
+    #scrollRight {
+        position: absolute;
+        right: -8px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 
-.chapter-roman{
-font-size:0.78rem;
-letter-spacing:5px;
-margin-bottom:12px;
-}
+    .hero {
+        padding-top: 160px;
+    }
 
-.chapter-title{
-font-size:2.2rem;
-line-height:1.05;
-font-weight:800;
-max-width:none;
-}
+    .hero-content {
+        padding: 0 20px;
+    }
 
-.nav-arrow{
-position:absolute;
+    .hero h1 {
+        font-size: clamp(3rem, 12vw, 5rem);
+        line-height: 0.95;
+    }
 
-top:50%;
-transform:translateY(-50%);
+    .navbar {
+        width: calc(100% - 20px);
 
-z-index:10;
+        left: 10px;
+        right: 10px;
 
-width:58px;
-height:58px;
+        padding: 18px;
 
-border-radius:50%;
-}
+        border-radius: 34px;
 
-#scrollLeft{
-left:8px;
-}
+        gap: 18px;
+    }
 
-#scrollRight{
-right:8px;
-}
+    .nav-left {
+        gap: 14px;
+    }
+
+    .nav-left h1 {
+        font-size: 1.9rem;
+    }
+
+    .nav-left p {
+        font-size: 0.95rem;
+    }
+
+    .logo {
+        width: 64px;
+        height: 64px;
+    }
+
+    .nav-center {
+        gap: 20px;
+    }
+
+    .nav-center a {
+        font-size: 1rem;
+    }
+
+    .ai-button {
+        min-width: 110px;
+        height: 82px;
+
+        border-radius: 28px;
+
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .floating-ai {
+        width: 88px;
+        height: 88px;
+
+        font-size: 1.7rem;
+    }
 
 }
