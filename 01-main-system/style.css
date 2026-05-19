@@ -1,6 +1,11 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+              YEYO 💎
+      LGU PORTAL • MUNICIPAL OS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 /* =========================================
    LGU PORTAL MAIN CSS
-   PRESERVED + UPDATED STABLE VERSION
+   PRESERVED + UPDATED PREMIUM VERSION
 ========================================= */
 
 *{
@@ -13,10 +18,12 @@ box-sizing:border-box;
 :root{
 
 --bg:#020617;
+--card:#0f172a;
+
 --glass:rgba(255,255,255,0.08);
 --glass-border:rgba(255,255,255,0.08);
 
---text:white;
+--text:#ffffff;
 --muted:rgba(255,255,255,0.72);
 
 --blue:#2563eb;
@@ -36,6 +43,7 @@ overflow-x:hidden;
 
 body{
 font-family:'Inter',sans-serif;
+
 background:var(--bg);
 color:var(--text);
 
@@ -48,7 +56,7 @@ text-rendering:optimizeLegibility;
 }
 
 /* =========================================
-   SAFE AREA
+   SAFE AREA SUPPORT
 ========================================= */
 
 @supports(padding:max(0px)){
@@ -69,8 +77,8 @@ padding-top:max(14px,env(safe-area-inset-top));
 ========================================= */
 
 img{
-max-width:100%;
 display:block;
+max-width:100%;
 
 user-select:none;
 -webkit-user-drag:none;
@@ -116,8 +124,11 @@ z-index:-5;
 
 .orb{
 position:fixed;
+
 border-radius:50%;
+
 filter:blur(80px);
+
 opacity:0.18;
 
 pointer-events:none;
@@ -130,6 +141,7 @@ animation:floatOrb 14s ease-in-out infinite;
 .orb1{
 width:220px;
 height:220px;
+
 background:var(--blue);
 
 top:-40px;
@@ -139,6 +151,7 @@ left:-40px;
 .orb2{
 width:220px;
 height:220px;
+
 background:var(--purple);
 
 right:-40px;
@@ -148,6 +161,7 @@ bottom:-40px;
 .orb3{
 width:180px;
 height:180px;
+
 background:var(--cyan);
 
 top:40%;
@@ -167,7 +181,7 @@ transform:translate3d(0,-12px,0);
 }
 
 /* =========================================
-   GLASS
+   GLASS SYSTEM
 ========================================= */
 
 .glass{
@@ -181,52 +195,6 @@ border:1px solid var(--glass-border);
 box-shadow:
 0 10px 30px rgba(0,0,0,0.22),
 inset 0 1px 0 rgba(255,255,255,0.05);
-}
-
-/* =========================================
-   LOADING
-========================================= */
-
-.loading-screen{
-position:fixed;
-inset:0;
-
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-gap:20px;
-
-background:var(--bg);
-
-z-index:9999;
-
-transition:0.5s;
-}
-
-.loading-screen.hide{
-opacity:0;
-pointer-events:none;
-}
-
-.loader{
-width:65px;
-height:65px;
-
-border-radius:50%;
-
-border:4px solid rgba(255,255,255,0.08);
-border-top:4px solid white;
-
-animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-
-to{
-transform:rotate(360deg);
-}
-
 }
 
 /* =========================================
@@ -245,7 +213,7 @@ margin:10px auto;
 
 padding:14px 18px;
 
-border-radius:28px;
+border-radius:30px;
 
 display:flex;
 justify-content:space-between;
@@ -253,15 +221,15 @@ align-items:center;
 gap:14px;
 
 background:
-rgba(15,23,42,0.52);
+rgba(15,23,42,0.56);
 
-backdrop-filter:blur(22px);
--webkit-backdrop-filter:blur(22px);
+backdrop-filter:blur(24px);
+-webkit-backdrop-filter:blur(24px);
 
 border:1px solid rgba(255,255,255,0.08);
 
 box-shadow:
-0 10px 40px rgba(0,0,0,0.26);
+0 10px 40px rgba(0,0,0,0.28);
 
 overflow:hidden;
 }
@@ -323,6 +291,15 @@ transition:opacity .25s ease;
 opacity:1;
 }
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+              YEYO 💎
+      LGU PORTAL • MUNICIPAL OS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* =========================================
+   NAVIGATION LINKS
+========================================= */
+
 .nav-center a::after{
 content:'';
 
@@ -370,7 +347,7 @@ transform:translateY(-2px);
 }
 
 /* =========================================
-   HERO
+   HERO SECTION
 ========================================= */
 
 .hero{
@@ -586,10 +563,24 @@ letter-spacing:-0.05em;
 }
 
 /* =========================================
-   CHAPTER WRAPPER
+   SINGLE CARD CHAPTER SYSTEM
 ========================================= */
 
 .chapters-wrapper{
+position:relative;
+
+width:min(1400px,95%);
+
+margin:auto;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+overflow:hidden;
+}
+
+.chapters-track{
 position:relative;
 
 width:100%;
@@ -599,76 +590,27 @@ align-items:center;
 justify-content:center;
 
 overflow:hidden;
-
-isolation:isolate;
-}
-
-.chapters-track{
-display:flex;
-align-items:stretch;
-
-gap:20px;
-
-width:100%;
-
-overflow-x:auto;
-overflow-y:hidden;
-
-padding:
-20px
-max(7vw,24px)
-30px;
-
-scrollbar-width:none;
-
-scroll-snap-type:x mandatory;
-
-scroll-padding-left:50%;
-scroll-padding-right:50%;
-
-scroll-behavior:smooth;
-
-overscroll-behavior-x:contain;
-
--webkit-overflow-scrolling:touch;
-
-touch-action:pan-x;
-}
-
-.chapters-track::-webkit-scrollbar{
-display:none;
 }
 
 /* =========================================
-   CHAPTER CARDS
+   CHAPTER CARD
 ========================================= */
 
 .chapter-card{
 position:relative;
 
-min-width:min(82vw,520px);
-width:min(82vw,520px);
+width:min(900px,100%);
+height:480px;
 
-height:400px;
-
-border-radius:34px;
+border-radius:38px;
 
 overflow:hidden;
-
-flex-shrink:0;
-
-text-decoration:none;
-
-color:white;
-
-scroll-snap-align:center;
-scroll-snap-stop:always;
 
 display:flex;
 align-items:flex-end;
 justify-content:flex-end;
 
-background:#0f172a;
+background:var(--card);
 
 border:
 1px solid rgba(255,255,255,0.08);
@@ -678,10 +620,8 @@ box-shadow:
 0 0 0 1px rgba(255,255,255,0.04) inset;
 
 transition:
-transform .3s ease,
-opacity .3s ease;
-
-transform-origin:center center;
+transform .35s ease,
+opacity .35s ease;
 
 backface-visibility:hidden;
 -webkit-backface-visibility:hidden;
@@ -698,6 +638,15 @@ transform:
 translateY(-4px)
 scale(1.01);
 }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+              YEYO 💎
+      LGU PORTAL • MUNICIPAL OS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* =========================================
+   CHAPTER IMAGE
+========================================= */
 
 .chapter-image{
 position:absolute;
@@ -754,15 +703,15 @@ bottom:0;
 
 z-index:5;
 
-padding:28px;
+padding:34px;
 
 display:flex;
 flex-direction:column;
-gap:8px;
+gap:10px;
 }
 
 .chapter-roman{
-font-size:0.82rem;
+font-size:0.84rem;
 font-weight:700;
 
 letter-spacing:2px;
@@ -771,15 +720,15 @@ opacity:0.82;
 }
 
 .chapter-title{
-font-size:clamp(2rem,4vw,3rem);
+font-size:clamp(2.4rem,5vw,4rem);
 
 font-weight:800;
 
-line-height:0.96;
+line-height:0.94;
 
-letter-spacing:-0.05em;
+letter-spacing:-0.06em;
 
-max-width:100%;
+max-width:90%;
 
 overflow-wrap:anywhere;
 word-break:break-word;
@@ -792,7 +741,7 @@ text-shadow:
 }
 
 /* =========================================
-   NAVIGATION ARROWS
+   PERFECTLY BALANCED ARROWS
 ========================================= */
 
 .nav-arrow{
@@ -804,8 +753,8 @@ transform:translateY(-50%);
 
 z-index:50;
 
-width:54px;
-height:54px;
+width:62px;
+height:62px;
 
 border:none;
 
@@ -816,13 +765,16 @@ align-items:center;
 justify-content:center;
 
 background:
-rgba(15,23,42,0.62);
+rgba(15,23,42,0.68);
 
 backdrop-filter:blur(24px);
 -webkit-backdrop-filter:blur(24px);
 
 border:
 1px solid rgba(255,255,255,0.08);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.28);
 
 color:white;
 
@@ -832,7 +784,8 @@ cursor:pointer;
 
 transition:
 transform .22s ease,
-background .22s ease;
+background .22s ease,
+opacity .22s ease;
 
 user-select:none;
 -webkit-user-select:none;
@@ -841,18 +794,18 @@ user-select:none;
 .nav-arrow:hover{
 transform:
 translateY(-50%)
-scale(1.04);
+scale(1.06);
 
 background:
-rgba(15,23,42,0.78);
+rgba(15,23,42,0.86);
 }
 
 .nav-arrow.prev{
-left:10px;
+left:18px;
 }
 
 .nav-arrow.next{
-right:10px;
+right:18px;
 }
 
 /* =========================================
@@ -863,7 +816,7 @@ right:10px;
 width:min(1400px,95%);
 
 margin:
-70px auto 0;
+80px auto 0;
 }
 
 .about-card{
@@ -931,16 +884,6 @@ box-shadow:
 0 20px 40px rgba(0,0,0,0.25);
 }
 
-.contacts-card h2{
-font-size:clamp(2rem,5vw,3rem);
-
-font-weight:900;
-
-letter-spacing:-0.05em;
-
-margin-bottom:26px;
-}
-
 .contacts-grid{
 display:grid;
 
@@ -977,129 +920,18 @@ background:
 rgba(255,255,255,0.08);
 }
 
-.contact-icon{
-width:52px;
-height:52px;
-
-border-radius:18px;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-background:
-rgba(255,255,255,0.08);
-
-font-size:1.1rem;
-
-flex-shrink:0;
-}
-
-.contact-text h3{
-font-size:1rem;
-font-weight:700;
-}
-
-.contact-text span{
-font-size:0.84rem;
-opacity:0.72;
-}
-
 /* =========================================
-   AI PANEL
-========================================= */
-
-.floating-ai{
-position:fixed;
-
-right:24px;
-bottom:24px;
-
-width:66px;
-height:66px;
-
-border:none;
-
-border-radius:50%;
-
-background:
-rgba(15,23,42,0.72);
-
-backdrop-filter:blur(18px);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-box-shadow:
-0 20px 40px rgba(0,0,0,0.28);
-
-color:white;
-
-font-size:1.2rem;
-
-cursor:pointer;
-
-z-index:998;
-}
-
-.ai-panel{
-position:fixed;
-
-right:20px;
-bottom:105px;
-
-width:min(380px,95vw);
-height:min(80vh,700px);
-
-border-radius:34px;
-
-overflow:hidden;
-
-display:flex;
-flex-direction:column;
-
-background:
-rgba(15,23,42,0.74);
-
-backdrop-filter:blur(28px);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-box-shadow:
-0 30px 80px rgba(0,0,0,0.48);
-
-z-index:999;
-
-opacity:0;
-pointer-events:none;
-
-transform:translateY(20px);
-
-transition:
-opacity .3s ease,
-transform .3s ease;
-}
-
-.ai-panel.active{
-opacity:1;
-pointer-events:auto;
-
-transform:translateY(0);
-}
-
-/* =========================================
-   RESPONSIVE
+   RESPONSIVE SYSTEM
 ========================================= */
 
 @media screen and (max-width:1024px){
 
-.hero-content h1{
-font-size:3.5rem;
+.chapter-card{
+height:440px;
 }
 
 .chapter-title{
-font-size:2.5rem;
+font-size:3rem;
 }
 
 }
@@ -1135,39 +967,30 @@ bottom:28px;
 font-size:2.7rem;
 }
 
-.hero-content p{
-font-size:0.95rem;
-line-height:1.6;
-}
-
-.chapters-track{
-padding-left:9vw;
-padding-right:9vw;
-}
-
 .chapter-card{
-width:84vw;
-min-width:84vw;
-
-height:360px;
+height:390px;
+border-radius:30px;
 }
 
 .chapter-content{
-padding:24px;
+padding:26px;
 }
 
 .chapter-title{
-font-size:2.25rem;
+font-size:2.5rem;
 }
 
 .nav-arrow{
-width:48px;
-height:48px;
+width:52px;
+height:52px;
 }
 
-.ai-panel{
-width:94%;
-right:3%;
+.nav-arrow.prev{
+left:12px;
+}
+
+.nav-arrow.next{
+right:12px;
 }
 
 }
@@ -1189,7 +1012,7 @@ bottom:22px;
 }
 
 .hero-content h1{
-font-size:2.15rem;
+font-size:2.1rem;
 }
 
 .hero-content p{
@@ -1197,11 +1020,7 @@ font-size:0.88rem;
 }
 
 .chapter-card{
-width:86vw;
-min-width:86vw;
-
-height:330px;
-
+height:340px;
 border-radius:28px;
 }
 
@@ -1210,22 +1029,15 @@ padding:20px;
 }
 
 .chapter-title{
-font-size:1.8rem;
+font-size:1.9rem;
 
-line-height:1.04;
+line-height:1.02;
 
 letter-spacing:-0.04em;
 }
 
 .chapter-roman{
 font-size:0.72rem;
-}
-
-.chapters-track{
-gap:14px;
-
-padding-left:7vw;
-padding-right:7vw;
 }
 
 .nav-arrow{
@@ -1235,23 +1047,17 @@ height:44px;
 font-size:.82rem;
 }
 
+.nav-arrow.prev{
+left:8px;
+}
+
+.nav-arrow.next{
+right:8px;
+}
+
 .about-card,
 .contacts-card{
 padding:24px;
-border-radius:28px;
-}
-
-.floating-ai{
-right:16px;
-bottom:16px;
-}
-
-.ai-panel{
-width:calc(100% - 16px);
-
-right:8px;
-bottom:86px;
-
 border-radius:28px;
 }
 
@@ -1260,7 +1066,7 @@ border-radius:28px;
 @media screen and (max-width:360px){
 
 .chapter-title{
-font-size:1.55rem;
+font-size:1.65rem;
 }
 
 .chapter-card{
@@ -1268,7 +1074,7 @@ height:310px;
 }
 
 .hero-content h1{
-font-size:1.9rem;
+font-size:1.85rem;
 }
 
 }
@@ -1281,8 +1087,7 @@ font-size:1.9rem;
 .chapter-card,
 .chapter-image,
 .nav-arrow,
-.glass,
-.ai-panel{
+.glass{
 transform:translateZ(0);
 
 will-change:transform;
@@ -1327,6 +1132,7 @@ border-radius:999px;
 background:rgba(255,255,255,0.22);
 }
 
-/* =========================================
-   END OF FILE
-========================================= */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+              YEYO 💎
+          END OF SYSTEM FILE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
