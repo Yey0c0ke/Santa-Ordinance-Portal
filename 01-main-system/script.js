@@ -1,6 +1,6 @@
 // ======================================================
 //                 YEYO 💎
-//     LGU PORTAL 15 • IOS SYSTEM ENGINE
+//     LGU PORTAL 16 • IOS SYSTEM ENGINE
 // ======================================================
 
 // ======================================================
@@ -199,6 +199,8 @@ let activeIndex = 0;
 
 let revealObserver;
 
+let scrollTimeout;
+
 // ======================================================
 // INIT
 // ======================================================
@@ -266,13 +268,6 @@ onerror="this.src='./phts/coverphoto.png'"
 
 <div class="chapter-overlay"></div>
 
-<img
-src="./phts/balayili.png"
-class="chapter-building"
-loading="lazy"
-decoding="async"
->
-
 <div class="chapter-content">
 
 <div class="chapter-roman">
@@ -310,7 +305,7 @@ document.querySelector(".chapter-card");
 
 if(!firstCard){
 
-carouselCardWidth = 320;
+carouselCardWidth = 340;
 
 return;
 }
@@ -319,7 +314,7 @@ const style =
 window.getComputedStyle(chaptersTrack);
 
 const gap =
-parseFloat(style.columnGap || style.gap || 24);
+parseFloat(style.gap || 24);
 
 carouselCardWidth =
 firstCard.offsetWidth + gap;
@@ -360,9 +355,7 @@ passive:true
 }
 );
 
-// ======================================================
-// DRAG SYSTEM
-// ======================================================
+// DRAG
 
 chaptersTrack.addEventListener(
 "mousedown",
@@ -441,7 +434,7 @@ event.type.includes("mouse")
 : event.touches[0].clientX;
 
 const walk =
-(startX - currentX) * 1.08;
+(startX - currentX) * 1.05;
 
 chaptersTrack.scrollLeft =
 scrollLeftStart + walk;
@@ -476,6 +469,15 @@ updateActiveCard();
 
 });
 
+clearTimeout(scrollTimeout);
+
+scrollTimeout =
+setTimeout(()=>{
+
+snapToNearestCard();
+
+},120);
+
 }
 
 // ======================================================
@@ -484,16 +486,70 @@ updateActiveCard();
 
 function snapToNearestCard(){
 
-updateCarouselMetrics();
+const cards =
+document.querySelectorAll(".chapter-card");
 
-const index =
-Math.round(
+if(!cards.length) return;
+
+const trackCenter =
 chaptersTrack.scrollLeft
-/
-carouselCardWidth
++
+(chaptersTrack.offsetWidth / 2);
+
+let closestIndex = 0;
+
+let closestDistance = Infinity;
+
+cards.forEach((card,index)=>{
+
+const cardCenter =
+card.offsetLeft
++
+(card.offsetWidth / 2);
+
+const distance =
+Math.abs(trackCenter - cardCenter);
+
+if(distance < closestDistance){
+
+closestDistance = distance;
+
+closestIndex = index;
+
+}
+
+});
+
+activeIndex = closestIndex;
+
+centerCard(cards[activeIndex]);
+
+}
+
+// ======================================================
+// CENTER CARD
+// ======================================================
+
+function centerCard(card){
+
+if(!card) return;
+
+const targetScroll =
+card.offsetLeft
+-
+(
+(chaptersTrack.offsetWidth / 2)
+-
+(card.offsetWidth / 2)
 );
 
-goToCard(index);
+chaptersTrack.scrollTo({
+
+left:targetScroll,
+
+behavior:"smooth"
+
+});
 
 }
 
@@ -517,29 +573,7 @@ cards.length - 1
 )
 );
 
-const target =
-cards[activeIndex];
-
-const trackRect =
-chaptersTrack.getBoundingClientRect();
-
-const cardRect =
-target.getBoundingClientRect();
-
-const offset =
-(cardRect.left - trackRect.left)
--
-((trackRect.width / 2)
--
-(cardRect.width / 2));
-
-chaptersTrack.scrollBy({
-
-left:offset,
-
-behavior:"smooth"
-
-});
+centerCard(cards[activeIndex]);
 
 updateActiveCard();
 
@@ -556,43 +590,18 @@ document.querySelectorAll(".chapter-card");
 
 if(!cards.length) return;
 
-const trackCenter =
-chaptersTrack.getBoundingClientRect().left
-+
-(chaptersTrack.offsetWidth / 2);
-
-let closestCard = null;
-
-let closestDistance = Infinity;
-
-cards.forEach((card,index)=>{
-
-const rect =
-card.getBoundingClientRect();
-
-const cardCenter =
-rect.left + (rect.width / 2);
-
-const distance =
-Math.abs(trackCenter - cardCenter);
+cards.forEach((card)=>{
 
 card.classList.remove("active");
 
-if(distance < closestDistance){
-
-closestDistance = distance;
-
-closestCard = card;
-
-activeIndex = index;
-
-}
-
 });
 
-if(closestCard){
+const activeCard =
+cards[activeIndex];
 
-closestCard.classList.add("active");
+if(activeCard){
+
+activeCard.classList.add("active");
 
 }
 
@@ -738,443 +747,6 @@ passive:true
 }
 
 // ======================================================
-// AI SYSTEM
-// ======================================================
-
-function initializeAI(){
-
-if(!aiPanel) return;
-
-// OPEN
-
-const openAI = ()=>{
-
-aiPanel.classList.add("active");
-
-document.body.style.overflow = "hidden";
-
-setTimeout(()=>{
-
-aiInput?.focus();
-
-},120);
-
-};
-
-// CLOSE
-
-const closeAI = ()=>{
-
-aiPanel.classList.remove("active");
-
-document.body.style.overflow = "";
-
-};
-
-// BUTTONS
-
-aiButton?.addEventListener(
-"click",
-openAI
-);
-
-floatingAi?.addEventListener(
-"click",
-openAI
-);
-
-closeAi?.addEventListener(
-"click",
-closeAI
-);
-
-// OUTSIDE CLICK
-
-document.addEventListener(
-"click",
-(event)=>{
-
-const clickedInside =
-aiPanel.contains(event.target)
-||
-floatingAi.contains(event.target)
-||
-aiButton.contains(event.target);
-
-if(
-!clickedInside
-&&
-aiPanel.classList.contains("active")
-){
-
-closeAI();
-
-}
-
-}
-);
-
-// ESCAPE
-
-window.addEventListener(
-"keydown",
-(event)=>{
-
-if(
-event.key === "Escape"
-&&
-aiPanel.classList.contains("active")
-){
-
-closeAI();
-
-}
-
-}
-);
-
-// SEND
-
-sendAi?.addEventListener(
-"click",
-sendMessage
-);
-
-// ENTER
-
-aiInput?.addEventListener(
-"keydown",
-(event)=>{
-
-if(event.key === "Enter"){
-
-sendMessage();
-
-}
-
-}
-);
-
-}
-
-// ======================================================
-// SUGGESTIONS
-// ======================================================
-
-function initializeSuggestions(){
-
-document
-.querySelectorAll(".suggestion-chip")
-.forEach((chip)=>{
-
-chip.addEventListener(
-"click",
-()=>{
-
-aiInput.value =
-chip.textContent.trim();
-
-sendMessage();
-
-}
-);
-
-});
-
-}
-
-// ======================================================
-// SEND MESSAGE
-// ======================================================
-
-function sendMessage(){
-
-const text =
-aiInput.value.trim();
-
-if(!text) return;
-
-addMessage(text,"user");
-
-aiInput.value = "";
-
-setTimeout(()=>{
-
-generateResponse(text);
-
-},360);
-
-}
-
-// ======================================================
-// ADD MESSAGE
-// ======================================================
-
-function addMessage(text,type){
-
-const div =
-document.createElement("div");
-
-div.className =
-`ai-message ${
-type === "user"
-? "ai-user"
-: ""
-}`;
-
-// SAFE RENDER
-
-div.innerHTML =
-sanitizeHTML(text);
-
-aiMessages.appendChild(div);
-
-requestAnimationFrame(()=>{
-
-aiMessages.scrollTop =
-aiMessages.scrollHeight;
-
-});
-
-}
-
-// ======================================================
-// SANITIZE
-// ======================================================
-
-function sanitizeHTML(input){
-
-const temp =
-document.createElement("div");
-
-temp.textContent = input;
-
-return temp.innerHTML
-.replace(/\n/g,"<br>");
-
-}
-
-// ======================================================
-// LEGAL AI ENGINE
-// ======================================================
-
-function generateResponse(input){
-
-const lower =
-input.toLowerCase();
-
-let response =
-`
-<b>LGU PORTAL 15</b>
-<br><br>
-
-Legal ordinance information unavailable.
-`;
-
-const responses = [
-
-{
-keywords:[
-"tax",
-"taxation",
-"fees",
-"revenue"
-],
-
-response:`
-<b>Chapter III — Revenue and Taxation</b>
-<br><br>
-
-Municipal taxation provisions regulate local revenue systems, lawful fee collection, fiscal enforcement, and ordinance-based taxation authority.
-`
-},
-
-{
-keywords:[
-"permit",
-"business",
-"license"
-],
-
-response:`
-<b>Chapter VII — Business Regulations</b>
-<br><br>
-
-This chapter governs municipal permits, business licensing, compliance requirements, and regulated commercial operations.
-`
-},
-
-{
-keywords:[
-"traffic",
-"parking",
-"vehicle",
-"transportation"
-],
-
-response:`
-<b>Chapter VIII — Traffic and Transportation</b>
-<br><br>
-
-Traffic ordinances regulate vehicle movement, parking enforcement, transportation systems, and municipal road safety.
-`
-},
-
-{
-keywords:[
-"definitions",
-"general",
-"construction"
-],
-
-response:`
-<b>Chapter I — General Provisions</b>
-<br><br>
-
-Article C contains foundational legal definitions, ordinance interpretation principles, and statutory construction rules.
-`
-},
-
-{
-keywords:[
-"sanitation",
-"health",
-"waste"
-],
-
-response:`
-<b>Chapter V — Health and Sanitation</b>
-<br><br>
-
-This chapter governs sanitation systems, public cleanliness standards, health compliance measures, and waste regulation.
-`
-},
-
-{
-keywords:[
-"safety",
-"emergency",
-"public safety"
-],
-
-response:`
-<b>Chapter IV — Public Safety</b>
-<br><br>
-
-Public safety provisions regulate emergency response systems, municipal protection measures, and community safety enforcement.
-`
-}
-
-];
-
-responses.forEach((item)=>{
-
-const matched =
-item.keywords.some(
-(keyword)=>
-lower.includes(keyword)
-);
-
-if(matched){
-
-response =
-item.response;
-
-}
-
-});
-
-addMessage(response,"ai");
-
-}
-
-// ======================================================
-// REVEAL ANIMATIONS
-// ======================================================
-
-function initializeRevealAnimations(){
-
-revealObserver =
-new IntersectionObserver(
-
-(entries)=>{
-
-entries.forEach((entry)=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("show");
-
-}else{
-
-entry.target.classList.remove("show");
-
-}
-
-});
-
-},
-
-{
-threshold:0.12
-}
-
-);
-
-reinitializeRevealObserver();
-
-}
-
-// ======================================================
-// REINITIALIZE OBSERVER
-// ======================================================
-
-function reinitializeRevealObserver(){
-
-if(!revealObserver) return;
-
-document
-.querySelectorAll(
-".about-card, .contacts-card, .chapter-card"
-)
-.forEach((element)=>{
-
-revealObserver.observe(element);
-
-});
-
-}
-
-// ======================================================
-// RESIZE HANDLER
-// ======================================================
-
-function initializeResizeHandler(){
-
-window.addEventListener(
-"resize",
-debounce(()=>{
-
-updateCarouselMetrics();
-
-snapActiveCard();
-
-},160)
-);
-
-}
-
-// ======================================================
-// SNAP ACTIVE
-// ======================================================
-
-function snapActiveCard(){
-
-goToCard(activeIndex);
-
-}
-
-// ======================================================
 // AUTO CENTER FIRST CARD
 // ======================================================
 
@@ -1188,167 +760,10 @@ updateCarouselMetrics();
 
 goToCard(0);
 
-},180);
+},220);
 
 }
 );
-
-// ======================================================
-// TOUCH MOMENTUM FIX
-// ======================================================
-
-chaptersTrack?.addEventListener(
-"touchend",
-()=>{
-
-setTimeout(()=>{
-
-snapToNearestCard();
-
-},120);
-
-},
-{
-passive:true
-}
-);
-
-// ======================================================
-// KEYBOARD NAVIGATION
-// ======================================================
-
-window.addEventListener(
-"keydown",
-(event)=>{
-
-const aiOpened =
-aiPanel.classList.contains("active");
-
-if(aiOpened) return;
-
-if(event.key === "ArrowRight"){
-
-goToCard(activeIndex + 1);
-
-}
-
-if(event.key === "ArrowLeft"){
-
-goToCard(activeIndex - 1);
-
-}
-
-}
-);
-
-// ======================================================
-// IOS SCROLL SHADOW
-// ======================================================
-
-window.addEventListener(
-"scroll",
-()=>{
-
-const scrollTop =
-window.scrollY;
-
-document.body.style.setProperty(
-"--scroll-opacity",
-Math.min(scrollTop / 400,1)
-);
-
-},
-{
-passive:true
-}
-);
-
-// ======================================================
-// PERFORMANCE
-// ======================================================
-
-function preloadCriticalImages(){
-
-const images = [
-
-"./phts/balayili.png",
-"./phts/coverphoto.png",
-"./phts/logo.png"
-
-];
-
-images.forEach((src)=>{
-
-const image =
-new Image();
-
-image.src = src;
-
-});
-
-}
-
-preloadCriticalImages();
-
-// ======================================================
-// PREVENT DOUBLE TAP ZOOM IOS
-// ======================================================
-
-let lastTouchEnd = 0;
-
-document.addEventListener(
-"touchend",
-(event)=>{
-
-const now = Date.now();
-
-if(now - lastTouchEnd <= 300){
-
-event.preventDefault();
-
-}
-
-lastTouchEnd = now;
-
-},
-{
-passive:false
-}
-);
-
-// ======================================================
-// SMOOTH SECTION LINKS
-// ======================================================
-
-document
-.querySelectorAll('a[href^="#"]')
-.forEach((anchor)=>{
-
-anchor.addEventListener(
-"click",
-(event)=>{
-
-const targetId =
-anchor.getAttribute("href");
-
-const target =
-document.querySelector(targetId);
-
-if(!target) return;
-
-event.preventDefault();
-
-target.scrollIntoView({
-
-behavior:"smooth",
-block:"start"
-
-});
-
-}
-);
-
-});
 
 // ======================================================
 // SYSTEM LOG
@@ -1357,16 +772,11 @@ block:"start"
 console.log(`
 
 ========================================
-LGU PORTAL 15 💎
-PRESERVED FOUNDATION ACTIVE
-IOS SYSTEM ACTIVE
-STABILIZED CAROUSEL ACTIVE
-LEGALOS ENGINE ACTIVE
-RESPONSIVE ENGINE ACTIVE
+LGU PORTAL 16 💎
+IOS QUALITY ACTIVE
+STABLE CAROUSEL ACTIVE
+CENTER SNAP ACTIVE
+COVERPHOTO SYSTEM ACTIVE
 ========================================
 
 `);
-
-// ======================================================
-// END SYSTEM
-// ======================================================
