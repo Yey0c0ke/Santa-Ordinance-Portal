@@ -576,31 +576,13 @@ transform 0.3s ease,
 opacity 0.3s ease;
 }
 
-.chapter-card::after{
-content:'';
-
-position:absolute;
-inset:0;
-
-background:
-linear-gradient(
-180deg,
-rgba(255,255,255,.06),
-transparent 28%
-);
-
-pointer-events:none;
-
-z-index:6;
-}
-
 .chapter-card:hover{
 transform:
-translateY(-8px)
-scale(1.015);
+translateY(-4px)
+scale(1.01);
 
 box-shadow:
-0 30px 60px rgba(0,0,0,0.42);
+0 20px 40px rgba(0,0,0,0.34);
 }
 
 .chapter-image{
@@ -613,11 +595,15 @@ height:100%;
 object-fit:cover !important;
 object-position:center !important;
 
-opacity:0.42 !important;
+opacity:0.18 !important;
 
-transform:scale(1.02);
+transform:scale(1);
 
 z-index:1;
+
+filter:
+brightness(.55)
+contrast(1.05);
 }
 
 .chapter-overlay{
@@ -646,15 +632,15 @@ height:100%;
 object-fit:contain;
 object-position:center;
 
-padding:40px;
+padding:55px;
 
-opacity:0.14;
+opacity:0.08;
 
 z-index:3;
 
 pointer-events:none;
 
-transform:scale(0.82);
+transform:scale(0.72);
 
 filter:
 drop-shadow(0 20px 40px rgba(0,0,0,0.34));
@@ -748,7 +734,7 @@ opacity:1;
 
 transform:
 translateY(-50%)
-scale(1.06);
+scale(1.04);
 }
 
 .nav-arrow.prev{
@@ -1125,8 +1111,8 @@ height:360px;
 }
 
 .chapter-building{
-padding:28px;
-transform:scale(0.80);
+padding:36px;
+transform:scale(0.70);
 }
 
 .chapter-title{
@@ -1171,8 +1157,8 @@ border-radius:28px;
 }
 
 .chapter-building{
-padding:18px;
-transform:scale(0.78);
+padding:22px;
+transform:scale(0.66);
 }
 
 .chapter-title{
