@@ -867,3 +867,75 @@ bottom:95px;
 }
 
 }
+
+/* =========================================
+MOBILE RESPONSIVE FIXES
+LGU PORTAL 14
+========================================= */
+
+@media (max-width: 768px) {
+
+    .chapters-track {
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        min-width: 280px;
+        height: 360px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .chapter-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.45;
+    }
+
+    .chapter-overlay {
+        background:
+            linear-gradient(
+                to top,
+                rgba(0,0,0,0.92) 15%,
+                rgba(0,0,0,0.55) 55%,
+                rgba(0,0,0,0.15) 100%
+            );
+    }
+
+    .chapter-content {
+        position: absolute;
+        bottom: 24px;
+        left: 24px;
+        right: 24px;
+        z-index: 5;
+    }
+
+    .chapter-number {
+        font-size: 0.8rem;
+        letter-spacing: 4px;
+        margin-bottom: 10px;
+    }
+
+    .chapter-title {
+        font-size: 2rem;
+        line-height: 1.1;
+        font-weight: 800;
+    }
+
+    .nav-arrow {
+        width: 58px;
+        height: 58px;
+        font-size: 1.4rem;
+    }
+
+    .hero-search {
+        margin-top: 20px;
+    }
+
+    .hero-search input {
+        font-size: 1rem;
+    }
+
+}
