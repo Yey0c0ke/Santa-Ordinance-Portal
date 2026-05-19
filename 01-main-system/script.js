@@ -1,6 +1,6 @@
 // ======================================================
 //                 YEYO 💎
-//     LGU PORTAL 16 • IOS SYSTEM ENGINE
+//      LGU PORTAL 16 • FINAL IOS ENGINE
 // ======================================================
 
 // ======================================================
@@ -153,10 +153,10 @@ document.getElementById("loadingScreen");
 const currentYear =
 document.getElementById("currentYear");
 
-const scrollLeft =
+const scrollLeftButton =
 document.getElementById("scrollLeft");
 
-const scrollRight =
+const scrollRightButton =
 document.getElementById("scrollRight");
 
 const navbar =
@@ -187,22 +187,22 @@ document.getElementById("aiMessages");
 // GLOBALS
 // ======================================================
 
-let carouselCardWidth = 0;
-
 let isDragging = false;
 
 let startX = 0;
 
-let scrollLeftStart = 0;
+let scrollStart = 0;
 
 let activeIndex = 0;
 
 let revealObserver;
 
-let scrollTimeout;
+let carouselTimeout;
+
+let cardWidth = 0;
 
 // ======================================================
-// INIT
+// INITIALIZE
 // ======================================================
 
 document.addEventListener(
@@ -210,8 +210,6 @@ document.addEventListener(
 ()=>{
 
 renderChapters(chaptersData);
-
-initializeSearch();
 
 initializeLoading();
 
@@ -221,6 +219,8 @@ initializeNavbar();
 
 initializeCarousel();
 
+initializeSearch();
+
 initializeAI();
 
 initializeSuggestions();
@@ -228,6 +228,8 @@ initializeSuggestions();
 initializeRevealAnimations();
 
 initializeResizeHandler();
+
+preloadCriticalImages();
 
 }
 );
@@ -246,15 +248,13 @@ const card =
 document.createElement("a");
 
 card.className =
-"chapter-card glass semantic-card";
+"chapter-card glass";
 
 card.href =
 chapter.file;
 
-card.setAttribute(
-"data-index",
-index
-);
+card.dataset.index =
+index;
 
 card.innerHTML = `
 
@@ -263,7 +263,6 @@ src="${chapter.image}"
 class="chapter-image"
 loading="lazy"
 decoding="async"
-onerror="this.src='./phts/coverphoto.png'"
 >
 
 <div class="chapter-overlay"></div>
@@ -286,7 +285,9 @@ chaptersTrack.appendChild(card);
 
 });
 
-updateCarouselMetrics();
+calculateCardWidth();
+
+setInitialCarouselPosition();
 
 updateActiveCard();
 
@@ -295,19 +296,20 @@ reinitializeRevealObserver();
 }
 
 // ======================================================
-// UPDATE METRICS
+// CARD WIDTH
 // ======================================================
 
-function updateCarouselMetrics(){
+function calculateCardWidth(){
 
 const firstCard =
 document.querySelector(".chapter-card");
 
 if(!firstCard){
 
-carouselCardWidth = 340;
+cardWidth = 340;
 
 return;
+
 }
 
 const style =
@@ -316,20 +318,44 @@ window.getComputedStyle(chaptersTrack);
 const gap =
 parseFloat(style.gap || 24);
 
-carouselCardWidth =
+cardWidth =
 firstCard.offsetWidth + gap;
 
 }
 
 // ======================================================
-// IOS CAROUSEL
+// INITIAL POSITION
+// ======================================================
+
+function setInitialCarouselPosition(){
+
+requestAnimationFrame(()=>{
+
+requestAnimationFrame(()=>{
+
+chaptersTrack.scrollLeft = 0;
+
+activeIndex = 0;
+
+updateActiveCard();
+
+});
+
+});
+
+}
+
+// ======================================================
+// CAROUSEL
 // ======================================================
 
 function initializeCarousel(){
 
 if(!chaptersTrack) return;
 
-scrollRight.addEventListener(
+// ARROWS
+
+scrollRightButton?.addEventListener(
 "click",
 ()=>{
 
@@ -338,7 +364,7 @@ goToCard(activeIndex + 1);
 }
 );
 
-scrollLeft.addEventListener(
+scrollLeftButton?.addEventListener(
 "click",
 ()=>{
 
@@ -347,6 +373,8 @@ goToCard(activeIndex - 1);
 }
 );
 
+// SCROLL
+
 chaptersTrack.addEventListener(
 "scroll",
 handleCarouselScroll,
@@ -354,6 +382,8 @@ handleCarouselScroll,
 passive:true
 }
 );
+
+// DRAG
 
 chaptersTrack.addEventListener(
 "mousedown",
@@ -397,7 +427,7 @@ endDrag
 }
 
 // ======================================================
-// DRAG START
+// START DRAG
 // ======================================================
 
 function startDrag(event){
@@ -411,7 +441,7 @@ event.type.includes("mouse")
 ? event.pageX
 : event.touches[0].clientX;
 
-scrollLeftStart =
+scrollStart =
 chaptersTrack.scrollLeft;
 
 }
@@ -431,16 +461,16 @@ event.type.includes("mouse")
 ? event.pageX
 : event.touches[0].clientX;
 
-const walk =
-(startX - currentX) * 1.05;
+const movement =
+(startX - currentX) * 1.04;
 
 chaptersTrack.scrollLeft =
-scrollLeftStart + walk;
+scrollStart + movement;
 
 }
 
 // ======================================================
-// DRAG END
+// END DRAG
 // ======================================================
 
 function endDrag(){
@@ -456,20 +486,20 @@ snapToNearestCard();
 }
 
 // ======================================================
-// SCROLL
+// HANDLE SCROLL
 // ======================================================
 
 function handleCarouselScroll(){
 
 window.requestAnimationFrame(()=>{
 
-updateActiveCard();
+detectActiveCard();
 
 });
 
-clearTimeout(scrollTimeout);
+clearTimeout(carouselTimeout);
 
-scrollTimeout =
+carouselTimeout =
 setTimeout(()=>{
 
 snapToNearestCard();
@@ -479,10 +509,10 @@ snapToNearestCard();
 }
 
 // ======================================================
-// SNAP
+// DETECT ACTIVE CARD
 // ======================================================
 
-function snapToNearestCard(){
+function detectActiveCard(){
 
 const cards =
 document.querySelectorAll(".chapter-card");
@@ -520,6 +550,21 @@ closestIndex = index;
 
 activeIndex = closestIndex;
 
+updateActiveCard();
+
+}
+
+// ======================================================
+// SNAP
+// ======================================================
+
+function snapToNearestCard(){
+
+const cards =
+document.querySelectorAll(".chapter-card");
+
+if(!cards.length) return;
+
 centerCard(cards[activeIndex]);
 
 }
@@ -532,7 +577,8 @@ function centerCard(card){
 
 if(!card) return;
 
-const targetScroll =
+const targetPosition =
+
 card.offsetLeft
 -
 (
@@ -543,7 +589,7 @@ card.offsetLeft
 
 chaptersTrack.scrollTo({
 
-left:targetScroll,
+left:targetPosition,
 
 behavior:"smooth"
 
@@ -578,7 +624,7 @@ updateActiveCard();
 }
 
 // ======================================================
-// ACTIVE CARD
+// UPDATE ACTIVE
 // ======================================================
 
 function updateActiveCard(){
@@ -586,22 +632,17 @@ function updateActiveCard(){
 const cards =
 document.querySelectorAll(".chapter-card");
 
-if(!cards.length) return;
-
-cards.forEach((card)=>{
+cards.forEach((card,index)=>{
 
 card.classList.remove("active");
 
-});
+if(index === activeIndex){
 
-const activeCard =
-cards[activeIndex];
-
-if(activeCard){
-
-activeCard.classList.add("active");
+card.classList.add("active");
 
 }
+
+});
 
 }
 
@@ -692,7 +733,7 @@ window.addEventListener(
 
 setTimeout(()=>{
 
-loadingScreen.classList.add("hide");
+loadingScreen?.classList.add("hide");
 
 },700);
 
@@ -728,11 +769,11 @@ window.addEventListener(
 
 if(window.scrollY > 40){
 
-navbar.classList.add("scrolled");
+navbar?.classList.add("scrolled");
 
 }else{
 
-navbar.classList.remove("scrolled");
+navbar?.classList.remove("scrolled");
 
 }
 
@@ -745,7 +786,7 @@ passive:true
 }
 
 // ======================================================
-// AI SYSTEM
+// AI PANEL
 // ======================================================
 
 function initializeAI(){
@@ -793,7 +834,7 @@ document.addEventListener(
 "click",
 (event)=>{
 
-const clickedInside =
+const insidePanel =
 aiPanel.contains(event.target)
 ||
 floatingAi.contains(event.target)
@@ -801,7 +842,7 @@ floatingAi.contains(event.target)
 aiButton.contains(event.target);
 
 if(
-!clickedInside
+!insidePanel
 &&
 aiPanel.classList.contains("active")
 ){
@@ -851,7 +892,7 @@ sendMessage();
 }
 
 // ======================================================
-// SIMPLE AI MESSAGE
+// AI MESSAGE
 // ======================================================
 
 function sendMessage(){
@@ -878,19 +919,19 @@ addMessage(
 
 function addMessage(text,type){
 
-const div =
+const message =
 document.createElement("div");
 
-div.className =
+message.className =
 `ai-message ${
 type === "user"
 ? "ai-user"
 : ""
 }`;
 
-div.innerHTML = text;
+message.innerHTML = text;
 
-aiMessages.appendChild(div);
+aiMessages.appendChild(message);
 
 requestAnimationFrame(()=>{
 
@@ -965,7 +1006,7 @@ if(!revealObserver) return;
 
 document
 .querySelectorAll(
-".contacts-card, .chapter-card"
+".chapter-card, .contacts-card"
 )
 .forEach((element)=>{
 
@@ -985,9 +1026,9 @@ window.addEventListener(
 "resize",
 debounce(()=>{
 
-updateCarouselMetrics();
+calculateCardWidth();
 
-goToCard(activeIndex);
+snapToNearestCard();
 
 },160)
 );
@@ -995,26 +1036,7 @@ goToCard(activeIndex);
 }
 
 // ======================================================
-// AUTO CENTER
-// ======================================================
-
-window.addEventListener(
-"load",
-()=>{
-
-setTimeout(()=>{
-
-updateCarouselMetrics();
-
-goToCard(0);
-
-},220);
-
-}
-);
-
-// ======================================================
-// PERFORMANCE
+// PRELOAD
 // ======================================================
 
 function preloadCriticalImages(){
@@ -1037,8 +1059,6 @@ image.src = src;
 });
 
 }
-
-preloadCriticalImages();
 
 // ======================================================
 // SMOOTH LINKS
@@ -1075,6 +1095,40 @@ block:"start"
 });
 
 // ======================================================
+// PAGE TRANSITION
+// ======================================================
+
+document.addEventListener(
+"click",
+(event)=>{
+
+const link =
+event.target.closest("a");
+
+if(
+!link ||
+link.target === "_blank" ||
+link.href.includes("#")
+) return;
+
+event.preventDefault();
+
+document.body.style.transition =
+"opacity .28s ease";
+
+document.body.style.opacity = "0";
+
+setTimeout(()=>{
+
+window.location.href =
+link.href;
+
+},240);
+
+}
+);
+
+// ======================================================
 // SYSTEM LOG
 // ======================================================
 
@@ -1082,10 +1136,11 @@ console.log(`
 
 ========================================
 LGU PORTAL 16 💎
-IOS QUALITY ACTIVE
-STABLE CAROUSEL ACTIVE
+FINAL IOS ENGINE ACTIVE
+PREMIUM CAROUSEL ACTIVE
 CENTER SNAP ACTIVE
-COVERPHOTO SYSTEM ACTIVE
+MOBILE IOS ACTIVE
+AI PANEL ACTIVE
 ========================================
 
 `);
