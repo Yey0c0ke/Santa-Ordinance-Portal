@@ -1,6 +1,6 @@
 // ======================================================
 // LGU PORTAL 15 💎
-// PRESERVED + STABILIZED MAIN SYSTEM
+// PRESERVED + UPDATED MAIN SYSTEM
 // ======================================================
 
 const chaptersData = [
@@ -8,7 +8,7 @@ const chaptersData = [
 {
 number:"I",
 title:"General Provisions",
-image:"./phts/coverphoto.png",
+image:"./phts/balayili.png",
 file:"./chapters/chapter1/index.html",
 keywords:[
 "general",
@@ -22,7 +22,7 @@ keywords:[
 {
 number:"II",
 title:"Administrative Matters",
-image:"./phts/coverphoto.png",
+image:"./phts/balayili.png",
 file:"./chapters/chapter2/index.html",
 keywords:[
 "administrative",
@@ -33,7 +33,7 @@ keywords:[
 {
 number:"III",
 title:"Revenue and Taxation",
-image:"./phts/coverphoto.png",
+image:"./phts/balayili.png",
 file:"./chapters/chapter3/index.html",
 keywords:[
 "tax",
@@ -45,7 +45,7 @@ keywords:[
 {
 number:"IV",
 title:"Public Safety",
-image:"./phts/coverphoto.png",
+image:"./phts/balayili.png",
 file:"./chapters/chapter4/index.html",
 keywords:[
 "safety",
@@ -56,7 +56,7 @@ keywords:[
 {
 number:"V",
 title:"Health and Sanitation",
-image:"./phts/coverphoto.png",
+image:"./phts/balayili.png",
 file:"./chapters/chapter5/index.html",
 keywords:[
 "health",
@@ -67,7 +67,7 @@ keywords:[
 {
 number:"VI",
 title:"Environmental Management",
-image:"./phts/coverphoto.png",
+image:"./phts/balayili.png",
 file:"./chapters/chapter6/index.html",
 keywords:[
 "environment",
@@ -78,7 +78,7 @@ keywords:[
 {
 number:"VII",
 title:"Business Regulations",
-image:"./phts/coverphoto.png",
+image:"./phts/balayili.png",
 file:"./chapters/chapter7/index.html",
 keywords:[
 "business",
@@ -89,7 +89,7 @@ keywords:[
 {
 number:"VIII",
 title:"Traffic and Transportation",
-image:"./phts/coverphoto.png",
+image:"./phts/balayili.png",
 file:"./chapters/chapter8/index.html",
 keywords:[
 "traffic",
@@ -101,7 +101,7 @@ keywords:[
 {
 number:"IX",
 title:"Public Utilities",
-image:"./phts/coverphoto.png",
+image:"./phts/balayili.png",
 file:"./chapters/chapter9/index.html",
 keywords:[
 "utilities",
@@ -112,7 +112,7 @@ keywords:[
 {
 number:"X",
 title:"Penal Provisions",
-image:"./phts/coverphoto.png",
+image:"./phts/balayili.png",
 file:"./chapters/chapter10/index.html",
 keywords:[
 "penalty",
@@ -123,7 +123,7 @@ keywords:[
 {
 number:"XI",
 title:"Final Provisions",
-image:"./phts/coverphoto.png",
+image:"./phts/balayili.png",
 file:"./chapters/chapter11/index.html",
 keywords:[
 "final",
@@ -202,6 +202,8 @@ initializeNavbar();
 initializeAI();
 
 initializeSuggestions();
+
+initializeRevealAnimations();
 
 }
 );
@@ -616,9 +618,9 @@ lower.includes("tax")
 ){
 
 response = `
-<b>Chapter I — Definitions</b><br><br>
+<b>Chapter III — Revenue and Taxation</b><br><br>
 
-Tax refers to an enforced monetary contribution imposed by law to support governmental operations and public services.
+Municipal taxation provisions regulate local revenue generation, fees, and lawful fiscal collection systems.
 `;
 
 }
@@ -628,9 +630,9 @@ lower.includes("permit")
 ){
 
 response = `
-<b>Chapter I — License or Permit</b><br><br>
+<b>Chapter VII — Business Regulations</b><br><br>
 
-A permit is a legal authorization granted by competent authority allowing regulated activity or occupation.
+Permits are municipal authorizations required before regulated commercial or operational activity.
 `;
 
 }
@@ -642,7 +644,7 @@ lower.includes("business")
 response = `
 <b>Chapter VII — Business Regulations</b><br><br>
 
-This chapter governs business permits, licensing, and municipal commercial regulation.
+This chapter governs licensing, permits, municipal compliance, and business regulation systems.
 `;
 
 }
@@ -654,7 +656,7 @@ lower.includes("traffic")
 response = `
 <b>Chapter VIII — Traffic and Transportation</b><br><br>
 
-This chapter governs municipal traffic management and transportation regulation.
+Traffic management includes parking control, vehicle regulation, and municipal transportation enforcement.
 `;
 
 }
@@ -671,13 +673,63 @@ Article C contains foundational legal definitions used throughout the Code of Ge
 
 }
 
+if(
+lower.includes("sanitation")
+){
+
+response = `
+<b>Chapter V — Health and Sanitation</b><br><br>
+
+This chapter governs sanitation systems, public cleanliness, and municipal health compliance.
+`;
+
+}
+
 addMessage(response,"ai");
 
 }
+
+// ======================================================
+// REVEAL ANIMATION
+// ======================================================
+
+function initializeRevealAnimations(){
+
+const observer =
+new IntersectionObserver((entries)=>{
+
+entries.forEach((entry)=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{
+threshold:0.12
+});
+
+document
+.querySelectorAll(
+".about-card, .contacts-card, .chapter-card"
+)
+.forEach((el)=>{
+
+observer.observe(el);
+
+});
+
+}
+
+// ======================================================
 
 console.log(`
 ========================================
 LGU PORTAL 15 💎
 PRESERVED SYSTEM ACTIVE
+UPDATED BUILD ACTIVE
 ========================================
 `);

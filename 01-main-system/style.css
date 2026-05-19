@@ -1317,3 +1317,457 @@ font-size:0.72rem;
 }
 
 }
+
+/* =========================================================
+   LGU PORTAL 15 💎
+   PRESERVED + UPDATED MAIN CSS
+   ADD THIS BELOW YOUR CURRENT CSS
+========================================================= */
+
+/* =========================================================
+   CONTACTS NAVBAR
+========================================================= */
+
+.nav-center a{
+position:relative;
+}
+
+.nav-center a::after{
+content:'';
+
+position:absolute;
+
+left:0;
+bottom:-6px;
+
+width:0;
+height:2px;
+
+background:white;
+
+border-radius:999px;
+
+transition:width .25s ease;
+}
+
+.nav-center a:hover::after{
+width:100%;
+}
+
+/* =========================================================
+   CENTERED MUNICIPAL HALL IMAGE
+========================================================= */
+
+.chapter-image{
+position:absolute;
+inset:0;
+
+width:100%;
+height:100%;
+
+object-fit:contain !important;
+object-position:center center !important;
+
+padding:40px;
+
+opacity:0.16 !important;
+
+transform:
+scale(0.88)
+translateZ(0);
+
+filter:
+drop-shadow(0 20px 40px rgba(0,0,0,0.35));
+
+pointer-events:none;
+}
+
+/* =========================================================
+   CLEANER CHAPTER OVERLAY
+========================================================= */
+
+.chapter-overlay{
+background:
+linear-gradient(
+to top,
+rgba(2,6,23,0.97),
+rgba(2,6,23,0.42),
+rgba(2,6,23,0.12)
+) !important;
+}
+
+/* =========================================================
+   IMPROVED CHAPTER CONTENT POSITIONING
+========================================================= */
+
+.chapter-content{
+justify-content:flex-end;
+
+padding:28px;
+
+z-index:5;
+}
+
+.chapter-title{
+max-width:92%;
+
+font-size:3rem;
+
+line-height:0.95;
+
+letter-spacing:-0.05em;
+
+text-shadow:
+0 8px 30px rgba(0,0,0,0.4);
+}
+
+.chapter-roman{
+margin-bottom:6px;
+
+opacity:0.72;
+}
+
+/* =========================================================
+   CLEANER CHAPTER CARD
+========================================================= */
+
+.chapter-card{
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,0.06),
+rgba(255,255,255,0.02)
+);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+overflow:hidden;
+}
+
+/* =========================================================
+   MOBILE CHAPTER CENTERING FIX
+========================================================= */
+
+@media screen and (max-width:768px){
+
+.chapter-card{
+display:flex;
+align-items:flex-end;
+justify-content:flex-start;
+}
+
+.chapter-image{
+padding:28px;
+
+opacity:0.14 !important;
+
+transform:
+scale(0.82)
+translateY(-4px);
+}
+
+.chapter-title{
+font-size:2.35rem;
+max-width:100%;
+}
+
+}
+
+/* =========================================================
+   SMALL PHONE FIX
+========================================================= */
+
+@media screen and (max-width:430px){
+
+.chapter-card{
+height:320px;
+}
+
+.chapter-image{
+padding:20px;
+
+opacity:0.13 !important;
+
+transform:
+scale(0.78)
+translateY(-8px);
+}
+
+.chapter-content{
+padding:20px;
+}
+
+.chapter-title{
+font-size:1.95rem;
+
+line-height:1;
+
+max-width:100%;
+}
+
+}
+
+/* =========================================================
+   IMPROVED ARROWS
+========================================================= */
+
+.nav-arrow{
+width:52px !important;
+height:52px !important;
+
+background:
+rgba(15,23,42,0.58) !important;
+
+backdrop-filter:blur(24px);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.25);
+
+opacity:0.92;
+
+transition:
+transform .22s ease,
+opacity .22s ease,
+background .22s ease;
+}
+
+.nav-arrow:hover{
+opacity:1;
+
+transform:
+translateY(-50%)
+scale(1.06);
+}
+
+.nav-arrow.prev{
+left:8px;
+}
+
+.nav-arrow.next{
+right:8px;
+}
+
+/* =========================================================
+   PHONE ARROWS
+========================================================= */
+
+@media screen and (max-width:430px){
+
+.nav-arrow{
+width:44px !important;
+height:44px !important;
+
+font-size:.82rem;
+
+background:
+rgba(15,23,42,0.52) !important;
+}
+
+.nav-arrow.prev{
+left:2px;
+}
+
+.nav-arrow.next{
+right:2px;
+}
+
+}
+
+/* =========================================================
+   CONTACTS SECTION
+========================================================= */
+
+.contacts-section{
+width:95%;
+
+margin:
+50px auto 0;
+}
+
+.contacts-card{
+padding:36px;
+
+border-radius:34px;
+}
+
+.contacts-card h2{
+font-size:
+clamp(2rem,5vw,3rem);
+
+font-weight:900;
+
+letter-spacing:-0.05em;
+
+margin-bottom:26px;
+}
+
+.contacts-grid{
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:18px;
+}
+
+.contact-item{
+display:flex;
+align-items:center;
+gap:14px;
+
+padding:20px;
+
+border-radius:24px;
+
+background:
+rgba(255,255,255,0.05);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+transition:
+transform .25s ease,
+background .25s ease;
+}
+
+.contact-item:hover{
+transform:translateY(-3px);
+
+background:
+rgba(255,255,255,0.08);
+}
+
+.contact-item span{
+font-size:1.4rem;
+}
+
+.contact-item p{
+font-size:0.92rem;
+
+line-height:1.6;
+
+opacity:0.82;
+}
+
+/* =========================================================
+   MOBILE CONTACTS
+========================================================= */
+
+@media screen and (max-width:430px){
+
+.contacts-card{
+padding:24px;
+
+border-radius:28px;
+}
+
+.contacts-card h2{
+font-size:1.8rem;
+}
+
+.contact-item{
+padding:16px;
+
+border-radius:20px;
+}
+
+.contact-item p{
+font-size:0.84rem;
+}
+
+}
+
+/* =========================================================
+   REVEAL ANIMATIONS
+========================================================= */
+
+.about-card,
+.contacts-card,
+.chapter-card{
+opacity:0;
+
+transform:
+translateY(30px);
+
+transition:
+opacity .6s ease,
+transform .6s ease;
+}
+
+.about-card.show,
+.contacts-card.show,
+.chapter-card.show{
+opacity:1;
+
+transform:
+translateY(0);
+}
+
+/* =========================================================
+   CLEANER AI PANEL DEPTH
+========================================================= */
+
+.ai-panel{
+background:
+rgba(15,23,42,0.72);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+box-shadow:
+0 30px 60px rgba(0,0,0,0.4);
+}
+
+/* =========================================================
+   HERO DEPTH ENHANCEMENT
+========================================================= */
+
+.hero-overlay{
+background:
+linear-gradient(
+to top,
+rgba(2,6,23,0.96),
+rgba(2,6,23,0.36),
+rgba(2,6,23,0.08)
+);
+}
+
+/* =========================================================
+   SMOOTHER SCROLLING
+========================================================= */
+
+html{
+scroll-padding-top:100px;
+}
+
+body{
+overflow-x:hidden;
+}
+
+/* =========================================================
+   FINAL MOBILE OPTIMIZATION
+========================================================= */
+
+@media screen and (max-width:430px){
+
+.hero-content{
+bottom:20px;
+}
+
+.hero-stat{
+min-width:92px;
+}
+
+.hero-search{
+margin-top:4px;
+}
+
+.footer{
+margin-bottom:20px;
+}
+
+}
