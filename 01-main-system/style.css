@@ -1,13 +1,3 @@
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-              YEYO 💎
-      LGU PORTAL • MUNICIPAL OS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-/* =========================================
-   LGU PORTAL MAIN CSS
-   PRESERVED + UPDATED PREMIUM VERSION
-========================================= */
-
 *{
 margin:0;
 padding:0;
@@ -15,49 +5,20 @@ box-sizing:border-box;
 -webkit-tap-highlight-color:transparent;
 }
 
-:root{
-
---bg:#020617;
---card:#0f172a;
-
---glass:rgba(255,255,255,0.08);
---glass-border:rgba(255,255,255,0.08);
-
---text:#ffffff;
---muted:rgba(255,255,255,0.72);
-
---blue:#2563eb;
---purple:#7c3aed;
---cyan:#0ea5e9;
-
---shadow:
-0 20px 40px rgba(0,0,0,0.35);
-
-}
-
 html{
 scroll-behavior:smooth;
 scroll-padding-top:100px;
-overflow-x:hidden;
 }
 
 body{
 font-family:'Inter',sans-serif;
-
-background:var(--bg);
-color:var(--text);
-
-overflow-x:hidden !important;
-
+background:#020617;
+color:white;
+overflow-x:hidden;
 min-height:100vh;
-
 -webkit-font-smoothing:antialiased;
 text-rendering:optimizeLegibility;
 }
-
-/* =========================================
-   SAFE AREA SUPPORT
-========================================= */
 
 @supports(padding:max(0px)){
 
@@ -66,45 +27,36 @@ padding-left:env(safe-area-inset-left);
 padding-right:env(safe-area-inset-right);
 }
 
-.navbar{
-padding-top:max(14px,env(safe-area-inset-top));
 }
-
-}
-
-/* =========================================
-   GLOBAL MEDIA
-========================================= */
 
 img{
-display:block;
-max-width:100%;
-
 user-select:none;
 -webkit-user-drag:none;
+max-width:100%;
+display:block;
+}
 
-image-rendering:auto;
+input,
+textarea,
+select{
+font-size:16px;
 }
 
 button,
 .chapter-card,
-.nav-arrow,
-.ai-button{
+.ai-button,
+.nav-arrow{
 touch-action:manipulation;
 }
-
-/* =========================================
-   BACKGROUND SYSTEM
-========================================= */
 
 .bg-gradient{
 position:fixed;
 inset:0;
 
 background:
-radial-gradient(circle at top left,var(--blue),transparent 28%),
-radial-gradient(circle at bottom right,var(--purple),transparent 28%),
-var(--bg);
+radial-gradient(circle at top left,#2563eb,transparent 28%),
+radial-gradient(circle at bottom right,#7c3aed,transparent 28%),
+#020617;
 
 z-index:-6;
 }
@@ -124,26 +76,18 @@ z-index:-5;
 
 .orb{
 position:fixed;
-
 border-radius:50%;
-
 filter:blur(80px);
-
-opacity:0.18;
-
-pointer-events:none;
-
+opacity:0.22;
 z-index:-4;
-
+pointer-events:none;
 animation:floatOrb 14s ease-in-out infinite;
 }
 
 .orb1{
 width:220px;
 height:220px;
-
-background:var(--blue);
-
+background:#2563eb;
 top:-40px;
 left:-40px;
 }
@@ -151,19 +95,15 @@ left:-40px;
 .orb2{
 width:220px;
 height:220px;
-
-background:var(--purple);
-
-right:-40px;
-bottom:-40px;
+background:#7c3aed;
+right:0;
+bottom:0;
 }
 
 .orb3{
 width:180px;
 height:180px;
-
-background:var(--cyan);
-
+background:#0ea5e9;
 top:40%;
 right:20%;
 }
@@ -180,56 +120,93 @@ transform:translate3d(0,-12px,0);
 
 }
 
-/* =========================================
-   GLASS SYSTEM
-========================================= */
-
 .glass{
-background:var(--glass);
+background:rgba(255,255,255,0.08);
 
-backdrop-filter:blur(18px);
--webkit-backdrop-filter:blur(18px);
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
 
-border:1px solid var(--glass-border);
+border:1px solid rgba(255,255,255,0.10);
 
 box-shadow:
 0 10px 30px rgba(0,0,0,0.22),
 inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
-/* =========================================
-   NAVBAR
-========================================= */
+.loading-screen{
+position:fixed;
+inset:0;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:20px;
+
+background:#020617;
+
+z-index:9999;
+
+transition:0.5s;
+}
+
+.loading-screen.hide{
+opacity:0;
+pointer-events:none;
+}
+
+.loader{
+width:65px;
+height:65px;
+
+border-radius:50%;
+
+border:4px solid rgba(255,255,255,0.08);
+border-top:4px solid white;
+
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+
+to{
+transform:rotate(360deg);
+}
+
+}
+
+/* NAVBAR */
 
 .navbar{
 position:sticky;
 top:10px;
-
 z-index:999;
 
-width:min(1400px,calc(100% - 18px));
+width:calc(100% - 18px);
+max-width:1400px;
 
 margin:10px auto;
 
 padding:14px 18px;
 
-border-radius:30px;
+border-radius:28px;
 
 display:flex;
 justify-content:space-between;
 align-items:center;
+
 gap:14px;
 
 background:
-rgba(15,23,42,0.56);
+rgba(15,23,42,0.46);
 
-backdrop-filter:blur(24px);
--webkit-backdrop-filter:blur(24px);
+backdrop-filter:blur(22px);
+-webkit-backdrop-filter:blur(22px);
 
 border:1px solid rgba(255,255,255,0.08);
 
 box-shadow:
-0 10px 40px rgba(0,0,0,0.28);
+0 10px 40px rgba(0,0,0,0.26);
 
 overflow:hidden;
 }
@@ -243,7 +220,6 @@ transform:translateY(-2px);
 display:flex;
 align-items:center;
 gap:14px;
-
 min-width:0;
 }
 
@@ -268,7 +244,6 @@ letter-spacing:-0.05em;
 
 .nav-center{
 display:flex;
-align-items:center;
 gap:26px;
 }
 
@@ -276,29 +251,19 @@ gap:26px;
 position:relative;
 
 text-decoration:none;
-
 color:white;
 
 font-size:0.88rem;
 font-weight:500;
 
-opacity:0.76;
+opacity:0.75;
 
-transition:opacity .25s ease;
+transition:opacity 0.3s ease;
 }
 
 .nav-center a:hover{
 opacity:1;
 }
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-              YEYO 💎
-      LGU PORTAL • MUNICIPAL OS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-/* =========================================
-   NAVIGATION LINKS
-========================================= */
 
 .nav-center a::after{
 content:'';
@@ -330,40 +295,25 @@ padding:12px 16px;
 border-radius:20px;
 
 background:white;
+
 color:#111827;
 
-font-size:0.84rem;
 font-weight:700;
 
+font-size:0.84rem;
+
 cursor:pointer;
-
-transition:
-transform .22s ease,
-opacity .22s ease;
 }
 
-.ai-button:hover{
-transform:translateY(-2px);
-}
-
-/* =========================================
-   HERO SECTION
-========================================= */
+/* HERO */
 
 .hero{
 position:relative;
-
-width:min(1500px,95%);
-
+width:95%;
 min-height:84vh;
-
 margin:auto;
-
 border-radius:42px;
-
 overflow:hidden;
-
-isolation:isolate;
 }
 
 .hero-image{
@@ -375,17 +325,14 @@ height:100%;
 
 object-fit:cover;
 
+transform:scale(1.01);
+
 z-index:1;
 
 filter:
 brightness(.72)
 contrast(1.05)
 saturate(1.02);
-
-backface-visibility:hidden;
--webkit-backface-visibility:hidden;
-
-transform:translateZ(0);
 }
 
 .hero-overlay{
@@ -396,7 +343,7 @@ background:
 linear-gradient(
 to top,
 rgba(2,6,23,0.96),
-rgba(2,6,23,0.38),
+rgba(2,6,23,0.36),
 rgba(2,6,23,0.08)
 );
 
@@ -405,9 +352,7 @@ z-index:2;
 
 .hero-content{
 position:absolute;
-
 left:50px;
-right:50px;
 bottom:50px;
 
 z-index:3;
@@ -415,17 +360,41 @@ z-index:3;
 max-width:760px;
 }
 
+.hero-badge{
+display:inline-flex;
+align-items:center;
+
+padding:12px 18px;
+
+border-radius:999px;
+
+margin-bottom:22px;
+
+background:
+rgba(255,255,255,0.08);
+
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+font-size:0.78rem;
+font-weight:700;
+
+letter-spacing:0.08em;
+
+text-transform:uppercase;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.22);
+}
+
 .hero-content h1{
-font-size:clamp(2.5rem,7vw,4.8rem);
-
+font-size:4.5rem;
 line-height:0.92;
-
 font-weight:900;
 
 letter-spacing:-0.06em;
-
-overflow-wrap:anywhere;
-word-break:break-word;
 
 text-shadow:
 0 10px 40px rgba(0,0,0,0.45);
@@ -434,43 +403,26 @@ text-shadow:
 .hero-content p{
 margin-top:18px;
 
-font-size:1.02rem;
+font-size:1.05rem;
 
 line-height:1.7;
 
 color:rgba(255,255,255,0.82);
-
-max-width:640px;
 }
-
-/* =========================================
-   HERO STATS
-========================================= */
 
 .hero-stats{
 display:flex;
-flex-wrap:wrap;
 gap:14px;
 
 margin-top:26px;
 margin-bottom:28px;
+
+flex-wrap:wrap;
 }
 
 .hero-stat{
 padding:18px 22px;
-
 border-radius:24px;
-
-background:
-rgba(255,255,255,0.08);
-
-backdrop-filter:blur(18px);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.24);
 }
 
 .hero-stat h3{
@@ -488,24 +440,12 @@ font-size:0.82rem;
 opacity:0.76;
 }
 
-/* =========================================
-   HERO SEARCH
-========================================= */
-
 .hero-search{
 padding:10px;
 
 border-radius:24px;
 
 max-width:580px;
-
-background:
-rgba(255,255,255,0.08);
-
-backdrop-filter:blur(18px);
-
-border:
-1px solid rgba(255,255,255,0.08);
 }
 
 .hero-search input{
@@ -523,21 +463,15 @@ color:white;
 font-size:0.92rem;
 }
 
-.hero-search input::placeholder{
-color:rgba(255,255,255,0.5);
-}
-
-/* =========================================
-   CHAPTER SECTION
-========================================= */
+/* CHAPTERS */
 
 .chapters-section{
-margin-top:60px;
+margin-top:55px;
 }
 
 .section-header{
-width:min(1400px,95%);
-margin:auto auto 24px;
+width:95%;
+margin:auto auto 20px;
 }
 
 .section-mini{
@@ -562,16 +496,10 @@ font-weight:900;
 letter-spacing:-0.05em;
 }
 
-/* =========================================
-   SINGLE CARD CHAPTER SYSTEM
-========================================= */
-
 .chapters-wrapper{
+width:100%;
+
 position:relative;
-
-width:min(1400px,95%);
-
-margin:auto;
 
 display:flex;
 align-items:center;
@@ -581,72 +509,81 @@ overflow:hidden;
 }
 
 .chapters-track{
-position:relative;
+display:flex;
+gap:20px;
+
+overflow-x:auto;
+overflow-y:hidden;
+
+scrollbar-width:none;
+
+padding:20px 18vw 26px;
+
+scroll-snap-type:x mandatory;
+
+scroll-behavior:smooth;
+
+-webkit-overflow-scrolling:touch;
+
+touch-action:pan-x;
 
 width:100%;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-overflow:hidden;
 }
 
-/* =========================================
-   CHAPTER CARD
-========================================= */
+.chapters-track::-webkit-scrollbar{
+display:none;
+}
 
 .chapter-card{
 position:relative;
 
-width:min(900px,100%);
-height:480px;
+min-width:78vw;
+width:78vw;
+max-width:520px;
 
-border-radius:38px;
+height:400px;
+
+border-radius:34px;
 
 overflow:hidden;
 
+flex-shrink:0;
+
+text-decoration:none;
+
+color:white;
+
+scroll-snap-align:center;
+
 display:flex;
 align-items:flex-end;
-justify-content:flex-end;
 
-background:var(--card);
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,0.06),
+rgba(255,255,255,0.02)
+);
 
 border:
 1px solid rgba(255,255,255,0.08);
 
 box-shadow:
-0 20px 40px rgba(0,0,0,0.35),
-0 0 0 1px rgba(255,255,255,0.04) inset;
+0 20px 40px rgba(0,0,0,0.35);
 
 transition:
-transform .35s ease,
-opacity .35s ease;
-
-backface-visibility:hidden;
--webkit-backface-visibility:hidden;
-
-will-change:transform;
-
-contain:layout paint;
-
-isolation:isolate;
+transform 0.3s ease,
+opacity 0.3s ease;
 }
 
 .chapter-card:hover{
 transform:
 translateY(-4px)
 scale(1.01);
+
+box-shadow:
+0 20px 40px rgba(0,0,0,0.34);
 }
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-              YEYO 💎
-      LGU PORTAL • MUNICIPAL OS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-/* =========================================
-   CHAPTER IMAGE
-========================================= */
 
 .chapter-image{
 position:absolute;
@@ -656,42 +593,57 @@ width:100%;
 height:100%;
 
 object-fit:cover !important;
-object-position:center center !important;
+object-position:center !important;
+
+opacity:0.18 !important;
+
+transform:scale(1);
 
 z-index:1;
 
-opacity:1 !important;
-
-filter:none !important;
-
-mix-blend-mode:normal !important;
-
-backface-visibility:hidden;
--webkit-backface-visibility:hidden;
-
-transition:
-transform .45s ease,
-filter .45s ease;
-}
-
-.chapter-card:hover .chapter-image{
-transform:scale(1.04);
-filter:brightness(.92);
+filter:
+brightness(.55)
+contrast(1.05);
 }
 
 .chapter-overlay{
 position:absolute;
 inset:0;
 
-z-index:2;
-
 background:
 linear-gradient(
 to top,
-rgba(2,6,23,0.94),
-rgba(2,6,23,0.40),
-rgba(2,6,23,0.06)
+rgba(2,6,23,0.97),
+rgba(2,6,23,0.42),
+rgba(2,6,23,0.12)
 );
+
+z-index:2;
+}
+
+.chapter-building{
+position:absolute;
+
+inset:0;
+
+width:100%;
+height:100%;
+
+object-fit:contain;
+object-position:center;
+
+padding:55px;
+
+opacity:0.08;
+
+z-index:3;
+
+pointer-events:none;
+
+transform:scale(0.72);
+
+filter:
+drop-shadow(0 20px 40px rgba(0,0,0,0.34));
 }
 
 .chapter-content{
@@ -701,71 +653,65 @@ left:0;
 right:0;
 bottom:0;
 
-z-index:5;
+padding:28px;
 
-padding:34px;
+z-index:5;
 
 display:flex;
 flex-direction:column;
-gap:10px;
+gap:8px;
 }
 
 .chapter-roman{
-font-size:0.84rem;
+font-size:0.82rem;
 font-weight:700;
 
 letter-spacing:2px;
 
-opacity:0.82;
+opacity:0.72;
 }
 
 .chapter-title{
-font-size:clamp(2.4rem,5vw,4rem);
-
+font-size:3rem;
 font-weight:800;
 
-line-height:0.94;
+line-height:0.95;
 
-letter-spacing:-0.06em;
-
-max-width:90%;
-
-overflow-wrap:anywhere;
-word-break:break-word;
-hyphens:auto;
-
-text-rendering:optimizeLegibility;
+letter-spacing:-0.05em;
 
 text-shadow:
 0 8px 30px rgba(0,0,0,0.4);
 }
 
-/* =========================================
-   PERFECTLY BALANCED ARROWS
-========================================= */
+/* NAVIGATION ARROWS */
 
 .nav-arrow{
 position:absolute;
-
 top:50%;
 
 transform:translateY(-50%);
 
 z-index:50;
 
-width:62px;
-height:62px;
+width:52px;
+height:52px;
 
 border:none;
 
 border-radius:50%;
+
+color:white;
+
+font-size:1rem;
+
+cursor:pointer;
 
 display:flex;
 align-items:center;
 justify-content:center;
 
 background:
-rgba(15,23,42,0.68);
+rgba(15,23,42,0.58);
 
 backdrop-filter:blur(24px);
 -webkit-backdrop-filter:blur(24px);
@@ -774,114 +720,83 @@ border:
 1px solid rgba(255,255,255,0.08);
 
 box-shadow:
-0 10px 30px rgba(0,0,0,0.28);
+0 10px 30px rgba(0,0,0,0.25);
 
-color:white;
-
-font-size:1rem;
-
-cursor:pointer;
+opacity:0.92;
 
 transition:
 transform .22s ease,
-background .22s ease,
 opacity .22s ease;
-
-user-select:none;
--webkit-user-select:none;
 }
 
 .nav-arrow:hover{
+opacity:1;
+
 transform:
 translateY(-50%)
-scale(1.06);
-
-background:
-rgba(15,23,42,0.86);
+scale(1.04);
 }
 
 .nav-arrow.prev{
-left:18px;
+left:8px;
 }
 
 .nav-arrow.next{
-right:18px;
+right:8px;
 }
 
-/* =========================================
-   ABOUT SECTION
-========================================= */
+/* ABOUT */
 
 .about-section{
-width:min(1400px,95%);
-
-margin:
-80px auto 0;
+width:95%;
+margin:50px auto 0;
 }
 
 .about-card{
-padding:38px;
-
-border-radius:34px;
-
-background:
-rgba(255,255,255,0.06);
-
-backdrop-filter:blur(18px);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-box-shadow:
-0 20px 40px rgba(0,0,0,0.25);
+padding:35px;
+border-radius:32px;
 }
 
 .about-card h2{
-font-size:clamp(2rem,5vw,3rem);
-
-font-weight:900;
-
-letter-spacing:-0.05em;
+font-size:2rem;
+font-weight:800;
 
 margin-bottom:14px;
 }
 
 .about-card p{
-font-size:1rem;
+line-height:1.8;
 
-line-height:1.9;
+font-size:1rem;
 
 opacity:0.82;
 
 max-width:760px;
 }
 
-/* =========================================
-   CONTACTS SECTION
-========================================= */
+/* CONTACTS */
 
 .contacts-section{
-width:min(1400px,95%);
+width:95%;
 
-margin:
-50px auto 80px;
+margin:50px auto 0;
 }
 
 .contacts-card{
 padding:36px;
 
 border-radius:34px;
+}
 
-background:
-rgba(255,255,255,0.06);
+.contacts-card h2{
+font-size:
+clamp(2rem,5vw,3rem);
 
-backdrop-filter:blur(18px);
+font-weight:900;
 
-border:
-1px solid rgba(255,255,255,0.08);
+letter-spacing:-0.05em;
 
-box-shadow:
-0 20px 40px rgba(0,0,0,0.25);
+margin-bottom:26px;
 }
 
 .contacts-grid{
@@ -907,49 +822,269 @@ rgba(255,255,255,0.05);
 
 border:
 1px solid rgba(255,255,255,0.06);
-
-transition:
-transform .22s ease,
-background .22s ease;
 }
 
-.contact-item:hover{
-transform:translateY(-3px);
+/* AI PANEL */
+
+.floating-ai{
+position:fixed;
+
+right:25px;
+bottom:25px;
+
+width:66px;
+height:66px;
+
+border-radius:50%;
+
+border:none;
+
+color:white;
+
+font-size:1.2rem;
+
+cursor:pointer;
+
+z-index:998;
+
+background:
+rgba(15,23,42,0.72);
+
+backdrop-filter:blur(18px);
+
+border:
+1px solid rgba(255,255,255,0.08);
+}
+
+.ai-panel{
+position:fixed;
+
+right:20px;
+bottom:105px;
+
+width:360px;
+height:min(80vh,700px);
+
+border-radius:34px;
+
+display:flex;
+flex-direction:column;
+
+overflow:hidden;
+
+z-index:999;
+
+opacity:0;
+
+pointer-events:none;
+
+transform:translateY(20px);
+
+transition:
+opacity 0.3s ease,
+transform 0.3s ease;
+
+background:
+rgba(15,23,42,0.72);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+box-shadow:
+0 30px 60px rgba(0,0,0,0.4);
+}
+
+.ai-panel.active{
+opacity:1;
+pointer-events:auto;
+transform:translateY(0);
+}
+
+.ai-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:18px;
+
+border-bottom:
+1px solid rgba(255,255,255,0.08);
+}
+
+.ai-suggestions{
+display:flex;
+flex-wrap:wrap;
+
+gap:10px;
+
+padding:14px 18px;
+}
+
+.suggestion-chip{
+padding:10px 16px;
+
+border-radius:999px;
 
 background:
 rgba(255,255,255,0.08);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+font-size:0.78rem;
+font-weight:600;
+
+color:white;
+
+backdrop-filter:blur(16px);
+
+transition:
+all .22s ease;
 }
 
-/* =========================================
-   RESPONSIVE SYSTEM
-========================================= */
+.suggestion-chip:hover{
+background:
+rgba(255,255,255,0.14);
 
-@media screen and (max-width:1024px){
-
-.chapter-card{
-height:440px;
+transform:
+translateY(-2px);
 }
 
-.chapter-title{
-font-size:3rem;
+#closeAi{
+width:38px;
+height:38px;
+
+border:none;
+
+border-radius:50%;
+
+background:
+rgba(255,255,255,0.08);
+
+color:white;
+
+font-size:1rem;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+cursor:pointer;
+
+backdrop-filter:blur(16px);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+transition:
+all .22s ease;
 }
 
+#closeAi:hover{
+background:
+rgba(255,255,255,0.14);
+
+transform:scale(1.05);
 }
+
+.ai-messages{
+flex:1;
+
+padding:18px;
+
+overflow-y:auto;
+
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.ai-message{
+padding:14px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.08);
+
+font-size:0.82rem;
+
+line-height:1.6;
+}
+
+.ai-user{
+background:
+rgba(37,99,235,0.24);
+
+align-self:flex-end;
+}
+
+.ai-input-area{
+display:flex;
+gap:10px;
+
+padding:18px;
+
+border-top:
+1px solid rgba(255,255,255,0.08);
+}
+
+.ai-input-area input{
+flex:1;
+
+padding:14px 16px;
+
+border:none;
+outline:none;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.08);
+
+color:white;
+}
+
+.ai-input-area button{
+border:none;
+
+padding:14px 18px;
+
+border-radius:18px;
+
+background:white;
+
+color:#111827;
+
+font-weight:700;
+
+cursor:pointer;
+}
+
+/* FOOTER */
+
+.footer{
+width:95%;
+
+margin:45px auto 25px;
+
+padding:22px;
+
+border-radius:24px;
+
+text-align:center;
+
+font-size:0.82rem;
+
+opacity:0.8;
+}
+
+/* MOBILE */
 
 @media screen and (max-width:768px){
 
 .nav-center{
 display:none;
-}
-
-.navbar{
-padding:12px 14px;
-border-radius:24px;
-}
-
-.logo{
-width:46px;
-height:46px;
 }
 
 .hero{
@@ -968,29 +1103,25 @@ font-size:2.7rem;
 }
 
 .chapter-card{
-height:390px;
-border-radius:30px;
+min-width:82vw;
+width:82vw;
+max-width:82vw;
+
+height:360px;
 }
 
-.chapter-content{
-padding:26px;
+.chapter-building{
+padding:36px;
+transform:scale(0.70);
 }
 
 .chapter-title{
-font-size:2.5rem;
+font-size:2.35rem;
 }
 
-.nav-arrow{
-width:52px;
-height:52px;
-}
-
-.nav-arrow.prev{
-left:12px;
-}
-
-.nav-arrow.next{
-right:12px;
+.ai-panel{
+width:94%;
+right:3%;
 }
 
 }
@@ -1012,127 +1143,51 @@ bottom:22px;
 }
 
 .hero-content h1{
-font-size:2.1rem;
-}
-
-.hero-content p{
-font-size:0.88rem;
+font-size:2.15rem;
 }
 
 .chapter-card{
-height:340px;
+min-width:86vw;
+width:86vw;
+max-width:86vw;
+
+height:330px;
+
 border-radius:28px;
 }
 
-.chapter-content{
-padding:20px;
+.chapter-building{
+padding:22px;
+transform:scale(0.66);
 }
 
 .chapter-title{
-font-size:1.9rem;
-
-line-height:1.02;
-
-letter-spacing:-0.04em;
-}
-
-.chapter-roman{
-font-size:0.72rem;
+font-size:1.95rem;
+line-height:1;
 }
 
 .nav-arrow{
 width:44px;
 height:44px;
-
 font-size:.82rem;
 }
 
-.nav-arrow.prev{
-left:8px;
-}
+.ai-panel{
+width:calc(100% - 16px);
 
-.nav-arrow.next{
 right:8px;
-}
+bottom:86px;
 
-.about-card,
-.contacts-card{
-padding:24px;
 border-radius:28px;
 }
 
+.contacts-card{
+padding:24px;
 }
 
-@media screen and (max-width:360px){
-
-.chapter-title{
-font-size:1.65rem;
-}
-
-.chapter-card{
-height:310px;
-}
-
-.hero-content h1{
-font-size:1.85rem;
+.footer{
+width:calc(100% - 18px);
+padding:18px;
 }
 
 }
-
-/* =========================================
-   PERFORMANCE
-========================================= */
-
-.hero,
-.chapter-card,
-.chapter-image,
-.nav-arrow,
-.glass{
-transform:translateZ(0);
-
-will-change:transform;
-
-backface-visibility:hidden;
-
-contain:layout paint;
-}
-
-/* =========================================
-   CLEANUP
-========================================= */
-
-.chapter-building,
-.portal-footer,
-.portal-system-label,
-.portal-version,
-.old-footer,
-.extra-info-section{
-display:none !important;
-}
-
-/* =========================================
-   SCROLLBAR
-========================================= */
-
-::-webkit-scrollbar{
-width:10px;
-height:10px;
-}
-
-::-webkit-scrollbar-track{
-background:rgba(255,255,255,0.03);
-}
-
-::-webkit-scrollbar-thumb{
-background:rgba(255,255,255,0.14);
-border-radius:999px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-background:rgba(255,255,255,0.22);
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-              YEYO 💎
-          END OF SYSTEM FILE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
