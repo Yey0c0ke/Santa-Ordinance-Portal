@@ -1056,3 +1056,187 @@ bottom:95px;
     }
 
 }
+
+/* =========================================
+   LGU PORTAL MOBILE RESPONSIVE FIX
+========================================= */
+
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* MAIN CONTAINER */
+
+    .container,
+    .hero,
+    .main-system,
+    .topbar,
+    .navbar {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 18px;
+        padding-right: 18px;
+        box-sizing: border-box;
+    }
+
+    /* FLOATING NAVBAR */
+
+    .topbar,
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        border-radius: 28px;
+        padding: 22px;
+    }
+
+    /* LOGO + TITLE */
+
+    .logo-section {
+        width: 100%;
+    }
+
+    .logo-section h1 {
+        font-size: 2rem;
+        line-height: 1;
+    }
+
+    .logo-section p {
+        font-size: 0.95rem;
+    }
+
+    /* NAV LINKS */
+
+    .nav-links {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+    }
+
+    /* LEGAL AI BUTTON */
+
+    .legal-ai-btn,
+    .ai-button {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+        border-radius: 22px;
+        justify-content: center;
+        padding: 18px;
+        margin-top: 5px;
+    }
+
+    /* HERO SECTION */
+
+    .hero {
+        padding-top: 40px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.05;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* SEARCH BAR */
+
+    .search-box,
+    .search-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .search-box input,
+    .search-container input {
+        width: 100%;
+        font-size: 1rem;
+        padding: 18px;
+    }
+
+    /* STATS CARDS */
+
+    .stats-grid,
+    .cards-grid,
+    .chapter-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* CHAPTER CARDS */
+
+    .chapter-card,
+    .glass-card {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .chapter-card img {
+        height: 180px;
+        object-fit: cover;
+    }
+
+    /* FLOATING ELEMENTS */
+
+    .floating-orb,
+    .glow-orb,
+    .floating-ai {
+        display: none;
+    }
+
+    /* SECTION TITLES */
+
+    .section-title h2,
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    /* FOOTER */
+
+    footer {
+        padding: 40px 20px;
+    }
+
+}
+
+/* =========================================
+   EXTRA SMALL DEVICES
+========================================= */
+
+@media (max-width: 480px) {
+
+    .logo-section h1 {
+        font-size: 1.7rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .topbar,
+    .navbar {
+        padding: 18px;
+    }
+
+    .search-box input,
+    .search-container input {
+        padding: 16px;
+        font-size: 0.95rem;
+    }
+
+    .chapter-card {
+        border-radius: 24px;
+    }
+
+}
