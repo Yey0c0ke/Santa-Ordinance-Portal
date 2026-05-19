@@ -1,6 +1,6 @@
 /* =========================================
    LGU PORTAL MAIN CSS
-   PRESERVED + UPDATED VERSION
+   PRESERVED + UPDATED FINAL VERSION
 ========================================= */
 
 *{
@@ -379,7 +379,92 @@ color:rgba(255,255,255,0.82);
 }
 
 /* =========================================
-   CHAPTERS
+   HERO STATS
+========================================= */
+
+.hero-stats{
+display:flex;
+gap:14px;
+
+margin-top:26px;
+margin-bottom:28px;
+
+flex-wrap:wrap;
+}
+
+.hero-stat{
+padding:18px 22px;
+
+border-radius:24px;
+
+background:
+rgba(255,255,255,0.08);
+
+backdrop-filter:blur(18px);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.24);
+}
+
+.hero-stat h3{
+font-size:1.8rem;
+font-weight:800;
+}
+
+.hero-stat span{
+display:block;
+
+margin-top:4px;
+
+font-size:0.82rem;
+
+opacity:0.76;
+}
+
+/* =========================================
+   HERO SEARCH
+========================================= */
+
+.hero-search{
+padding:10px;
+
+border-radius:24px;
+
+max-width:580px;
+
+background:
+rgba(255,255,255,0.08);
+
+backdrop-filter:blur(18px);
+
+border:
+1px solid rgba(255,255,255,0.08);
+}
+
+.hero-search input{
+width:100%;
+
+padding:16px 18px;
+
+background:transparent;
+
+border:none;
+outline:none;
+
+color:white;
+
+font-size:0.92rem;
+}
+
+.hero-search input::placeholder{
+color:rgba(255,255,255,0.5);
+}
+
+/* =========================================
+   CHAPTERS SECTION
 ========================================= */
 
 .chapters-section{
@@ -391,15 +476,31 @@ width:95%;
 margin:auto auto 20px;
 }
 
+.section-mini{
+font-size:0.75rem;
+
+letter-spacing:0.18em;
+
+text-transform:uppercase;
+
+opacity:0.7;
+
+margin-bottom:10px;
+}
+
 .section-header h2{
 font-size:clamp(2rem,5vw,4rem);
+
 line-height:0.95;
+
 font-weight:900;
+
 letter-spacing:-0.05em;
 }
 
 .chapters-wrapper{
 width:100%;
+
 position:relative;
 
 display:flex;
@@ -421,6 +522,7 @@ scrollbar-width:none;
 padding:20px 18vw 26px;
 
 scroll-snap-type:x mandatory;
+
 scroll-behavior:smooth;
 
 -webkit-overflow-scrolling:touch;
@@ -454,6 +556,7 @@ overflow:hidden;
 flex-shrink:0;
 
 text-decoration:none;
+
 color:white;
 
 scroll-snap-align:center;
@@ -545,7 +648,9 @@ gap:8px;
 .chapter-roman{
 font-size:0.82rem;
 font-weight:700;
+
 letter-spacing:2px;
+
 opacity:0.82;
 }
 
@@ -564,7 +669,7 @@ text-shadow:
 }
 
 /* =========================================
-   NAVIGATION
+   NAVIGATION ARROWS
 ========================================= */
 
 .nav-arrow{
@@ -609,104 +714,12 @@ translateY(-50%)
 scale(1.04);
 }
 
-/* =========================================
-   AI PANEL
-========================================= */
-
-.floating-ai{
-position:fixed;
-
-right:25px;
-bottom:25px;
-
-width:66px;
-height:66px;
-
-border-radius:50%;
-
-border:none;
-
-color:white;
-
-font-size:1.2rem;
-
-cursor:pointer;
-
-z-index:998;
-
-background:
-rgba(15,23,42,0.72);
-
-backdrop-filter:blur(18px);
-
-border:
-1px solid rgba(255,255,255,0.08);
+.nav-arrow.prev{
+left:8px;
 }
 
-.ai-panel{
-position:fixed;
-
-right:20px;
-bottom:105px;
-
-width:360px;
-height:min(80vh,700px);
-
-border-radius:34px;
-
-display:flex;
-flex-direction:column;
-
-overflow:hidden;
-
-z-index:999;
-
-opacity:0;
-
-pointer-events:none;
-
-transform:translateY(20px);
-
-transition:
-opacity .3s ease,
-transform .3s ease;
-
-background:
-rgba(15,23,42,0.72);
-
-backdrop-filter:blur(28px);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-box-shadow:
-0 30px 80px rgba(0,0,0,0.48);
-}
-
-.ai-panel.active{
-opacity:1;
-pointer-events:auto;
-transform:translateY(0);
-}
-
-/* =========================================
-   FOOTER
-========================================= */
-
-.footer{
-width:95%;
-
-margin:45px auto 25px;
-
-padding:22px;
-
-border-radius:24px;
-
-text-align:center;
-
-font-size:0.82rem;
-
-opacity:0.8;
+.nav-arrow.next{
+right:8px;
 }
 
 /* =========================================
@@ -726,7 +739,6 @@ background:
 rgba(255,255,255,0.06);
 
 backdrop-filter:blur(18px);
--webkit-backdrop-filter:blur(18px);
 
 border:
 1px solid rgba(255,255,255,0.08);
@@ -855,26 +867,32 @@ opacity:0.72;
 }
 
 /* =========================================
-   HERO STATS
+   AI PANEL
 ========================================= */
 
-.hero-stats{
-display:flex;
-gap:14px;
+.floating-ai{
+position:fixed;
 
-margin-top:26px;
-margin-bottom:28px;
+right:25px;
+bottom:25px;
 
-flex-wrap:wrap;
-}
+width:66px;
+height:66px;
 
-.hero-stat{
-padding:18px 22px;
+border-radius:50%;
 
-border-radius:24px;
+border:none;
+
+color:white;
+
+font-size:1.2rem;
+
+cursor:pointer;
+
+z-index:998;
 
 background:
-rgba(255,255,255,0.08);
+rgba(15,23,42,0.72);
 
 backdrop-filter:blur(18px);
 
@@ -882,65 +900,57 @@ border:
 1px solid rgba(255,255,255,0.08);
 
 box-shadow:
-0 10px 30px rgba(0,0,0,0.24);
+0 20px 40px rgba(0,0,0,0.28);
 }
 
-.hero-stat h3{
-font-size:1.8rem;
-font-weight:800;
-}
+.ai-panel{
+position:fixed;
 
-.hero-stat span{
-display:block;
+right:20px;
+bottom:105px;
 
-margin-top:4px;
+width:360px;
+height:min(80vh,700px);
 
-font-size:0.82rem;
+border-radius:34px;
 
-opacity:0.76;
-}
+display:flex;
+flex-direction:column;
 
-/* =========================================
-   HERO SEARCH
-========================================= */
+overflow:hidden;
 
-.hero-search{
-padding:10px;
+z-index:999;
 
-border-radius:24px;
+opacity:0;
 
-max-width:580px;
+pointer-events:none;
+
+transform:translateY(20px);
+
+transition:
+opacity .3s ease,
+transform .3s ease;
 
 background:
-rgba(255,255,255,0.08);
+rgba(15,23,42,0.72);
 
-backdrop-filter:blur(18px);
+backdrop-filter:blur(28px);
 
 border:
 1px solid rgba(255,255,255,0.08);
+
+box-shadow:
+0 30px 80px rgba(0,0,0,0.48);
 }
 
-.hero-search input{
-width:100%;
-
-padding:16px 18px;
-
-background:transparent;
-
-border:none;
-outline:none;
-
-color:white;
-
-font-size:0.92rem;
-}
-
-.hero-search input::placeholder{
-color:rgba(255,255,255,0.5);
+.ai-panel.active{
+opacity:1;
+pointer-events:auto;
+transform:translateY(0);
 }
 
 /* =========================================
-   AI MESSAGES
+   AI HEADER
 ========================================= */
 
 .ai-header{
@@ -954,84 +964,45 @@ border-bottom:
 1px solid rgba(255,255,255,0.08);
 }
 
-.ai-messages{
-flex:1;
-
-padding:18px;
-
-overflow-y:auto;
-
-display:flex;
-flex-direction:column;
-gap:12px;
-}
-
-.ai-message{
-padding:14px 16px;
-
-border-radius:18px;
-
-background:
-rgba(255,255,255,0.08);
-
-font-size:0.82rem;
-
-line-height:1.7;
-
-max-width:92%;
-}
-
-.ai-user{
-background:
-rgba(37,99,235,0.24);
-
-align-self:flex-end;
-}
-
-.ai-input-area{
-display:flex;
-gap:10px;
-
-padding:18px;
-
-border-top:
-1px solid rgba(255,255,255,0.08);
-}
-
-.ai-input-area input{
-flex:1;
-
-padding:14px 16px;
+#closeAi{
+width:38px;
+height:38px;
 
 border:none;
-outline:none;
 
-border-radius:18px;
+border-radius:50%;
 
 background:
 rgba(255,255,255,0.08);
 
 color:white;
-}
 
-.ai-input-area button{
-border:none;
+font-size:1rem;
 
-padding:14px 18px;
-
-border-radius:18px;
-
-background:white;
-
-color:#111827;
-
-font-weight:700;
+display:flex;
+align-items:center;
+justify-content:center;
 
 cursor:pointer;
+
+backdrop-filter:blur(16px);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+transition:
+all .22s ease;
+}
+
+#closeAi:hover{
+background:
+rgba(255,255,255,0.14);
+
+transform:scale(1.05);
 }
 
 /* =========================================
-   SUGGESTION CHIPS
+   AI SUGGESTIONS
 ========================================= */
 
 .ai-suggestions{
@@ -1076,462 +1047,102 @@ translateY(-2px);
 }
 
 /* =========================================
-   CLOSE AI BUTTON
+   AI MESSAGES
 ========================================= */
 
-#closeAi{
-width:38px;
-height:38px;
+.ai-messages{
+flex:1;
+
+padding:18px;
+
+overflow-y:auto;
+
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.ai-message{
+padding:14px 16px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.08);
+
+font-size:0.82rem;
+
+line-height:1.7;
+
+max-width:92%;
+}
+
+.ai-user{
+background:
+rgba(37,99,235,0.24);
+
+align-self:flex-end;
+}
+
+/* =========================================
+   AI INPUT
+========================================= */
+
+.ai-input-area{
+display:flex;
+gap:10px;
+
+padding:18px;
+
+border-top:
+1px solid rgba(255,255,255,0.08);
+}
+
+.ai-input-area input{
+flex:1;
+
+padding:14px 16px;
 
 border:none;
+outline:none;
 
-border-radius:50%;
+border-radius:18px;
 
 background:
 rgba(255,255,255,0.08);
 
 color:white;
+}
 
-font-size:1rem;
+.ai-input-area input::placeholder{
+color:rgba(255,255,255,0.5);
+}
 
-display:flex;
-align-items:center;
-justify-content:center;
+.ai-input-area button{
+border:none;
+
+padding:14px 18px;
+
+border-radius:18px;
+
+background:white;
+
+color:#111827;
+
+font-weight:700;
 
 cursor:pointer;
-
-backdrop-filter:blur(16px);
-
-border:
-1px solid rgba(255,255,255,0.06);
 
 transition:
 all .22s ease;
 }
 
-#closeAi:hover{
-background:
-rgba(255,255,255,0.14);
-
-transform:scale(1.05);
+.ai-input-area button:hover{
+transform:translateY(-2px);
 }
 
 /* =========================================
-   SCROLLBARS
-========================================= */
-
-::-webkit-scrollbar{
-width:10px;
-height:10px;
-}
-
-::-webkit-scrollbar-track{
-background:rgba(255,255,255,0.03);
-}
-
-::-webkit-scrollbar-thumb{
-background:rgba(255,255,255,0.14);
-border-radius:999px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-background:rgba(255,255,255,0.22);
-}
-
-/* =========================================
-   UTILITIES
-========================================= */
-
-.hidden{
-display:none !important;
-}
-
-.fade-in{
-animation:fadeIn .45s ease;
-}
-
-@keyframes fadeIn{
-
-from{
-opacity:0;
-transform:translateY(10px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
-.glow-text{
-text-shadow:
-0 0 20px rgba(255,255,255,0.18);
-}
-
-.blur-bg{
-backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);
-}
-
-.center-flex{
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.text-gradient{
-background:
-linear-gradient(
-90deg,
-#ffffff,
-#cbd5e1
-);
-
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-/* =========================================
-   SAFE OVERFLOW FIXES
-========================================= */
-
-.hero-content,
-.chapter-content,
-.about-card,
-.contacts-card,
-.ai-message{
-overflow-wrap:break-word;
-word-break:break-word;
-}
-
-.chapter-title,
-.hero-content h1{
-text-wrap:balance;
-}
-
-/* =========================================
-   BETTER TOUCH SUPPORT
-========================================= */
-
-button,
-a,
-.chapter-card,
-.suggestion-chip{
--webkit-tap-highlight-color:transparent;
-}
-
-button:active,
-.chapter-card:active,
-.ai-button:active{
-transform:scale(.98);
-}
-
-/* =========================================
-   IMAGE SAFETY
-========================================= */
-
-.chapter-card img,
-.hero img,
-.contacts-card img{
-max-width:100%;
-display:block;
-}
-
-.chapter-building{
-display:none !important;
-}
-
-/* =========================================
-   CLEAN CARD SYSTEM
-========================================= */
-
-.chapter-card::before,
-.chapter-card::after{
-display:none !important;
-content:none !important;
-}
-
-.chapter-card{
-will-change:transform;
-transform:translateZ(0);
-backface-visibility:hidden;
-}
-
-/* =========================================
-   ULTRA WIDE SUPPORT
-========================================= */
-
-@media screen and (min-width:1600px){
-
-.hero{
-max-width:1600px;
-}
-
-.chapter-card{
-max-width:580px;
-height:430px;
-}
-
-.hero-content{
-max-width:900px;
-}
-
-.hero-content h1{
-font-size:5.2rem;
-}
-
-}
-
-/* =========================================
-   TABLET FIXES
-========================================= */
-
-@media screen and (max-width:1024px){
-
-.hero-content h1{
-font-size:3.5rem;
-}
-
-.chapter-title{
-font-size:2.6rem;
-}
-
-}
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media screen and (max-width:768px){
-
-.nav-center{
-display:none;
-}
-
-.navbar{
-padding:12px 14px;
-border-radius:24px;
-}
-
-.logo{
-width:46px;
-height:46px;
-}
-
-.hero{
-border-radius:34px;
-min-height:78vh;
-}
-
-.hero-content{
-left:22px;
-right:22px;
-bottom:28px;
-}
-
-.hero-content h1{
-font-size:2.7rem;
-}
-
-.hero-content p{
-font-size:0.95rem;
-line-height:1.6;
-}
-
-.hero-stats{
-gap:10px;
-}
-
-.hero-stat{
-padding:14px 16px;
-}
-
-.hero-stat h3{
-font-size:1.4rem;
-}
-
-.chapter-card{
-min-width:82vw;
-width:82vw;
-max-width:82vw;
-
-height:360px;
-}
-
-.chapter-title{
-font-size:2.35rem;
-}
-
-.chapter-content{
-padding:24px;
-}
-
-.chapters-track{
-padding-left:9vw;
-padding-right:9vw;
-}
-
-.ai-panel{
-width:94%;
-right:3%;
-}
-
-.contacts-grid{
-grid-template-columns:1fr;
-}
-
-}
-
-/* =========================================
-   SMALL PHONE FIXES
-========================================= */
-
-@media screen and (max-width:430px){
-
-.hero{
-width:calc(100% - 18px);
-
-min-height:72vh;
-
-border-radius:28px;
-}
-
-.hero-content{
-left:18px;
-right:18px;
-bottom:22px;
-}
-
-.hero-content h1{
-font-size:2.15rem;
-}
-
-.hero-content p{
-font-size:0.88rem;
-}
-
-.chapter-card{
-min-width:86vw;
-width:86vw;
-max-width:86vw;
-
-height:330px;
-
-border-radius:28px;
-
-margin:auto;
-}
-
-.chapter-title{
-font-size:1.95rem;
-line-height:1;
-}
-
-.chapter-content{
-padding:20px;
-}
-
-.chapters-track{
-padding-left:7vw;
-padding-right:7vw;
-gap:14px;
-}
-
-.nav-arrow{
-width:44px;
-height:44px;
-font-size:.82rem;
-}
-
-.ai-panel{
-width:calc(100% - 16px);
-
-right:8px;
-bottom:86px;
-
-border-radius:28px;
-}
-
-.contacts-card{
-padding:24px;
-}
-
-.about-card{
-padding:24px;
-}
-
-.footer{
-width:calc(100% - 18px);
-padding:18px;
-}
-
-}
-
-/* =========================================
-   FINAL RESTORE LOCK
-========================================= */
-
-.chapter-image{
-opacity:1 !important;
-
-filter:none !important;
-
-mix-blend-mode:normal !important;
-
-transform:none !important;
-
-object-fit:cover !important;
-object-position:center center !important;
-}
-
-.chapter-overlay{
-display:block !important;
-}
-
-.chapter-card{
-background:#0f172a !important;
-}
-
-/* =========================================
-   ADVANCED IOS GLASS EFFECTS
-========================================= */
-
-.glass-hover{
-transition:
-transform .28s ease,
-background .28s ease,
-border .28s ease,
-box-shadow .28s ease;
-}
-
-.glass-hover:hover{
-transform:translateY(-4px);
-
-background:
-rgba(255,255,255,0.10);
-
-border:
-1px solid rgba(255,255,255,0.14);
-
-box-shadow:
-0 18px 40px rgba(0,0,0,0.32);
-}
-
-/* =========================================
-   SECTION SPACING
-========================================= */
-
-.section-spacing{
-margin-top:65px;
-}
-
-.section-padding{
-padding:40px;
-}
-
-/* =========================================
-   LEGAL CONTENT STYLES
+   LEGAL READER
 ========================================= */
 
 .legal-reader{
@@ -1572,23 +1183,7 @@ margin-bottom:18px;
 .legal-description{
 font-size:1rem;
 line-height:1.9;
-
 opacity:0.82;
-}
-
-.legal-divider{
-width:100%;
-height:1px;
-
-margin:28px 0;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,0.14),
-transparent
-);
 }
 
 /* =========================================
@@ -1640,12 +1235,14 @@ transition:max-height .35s ease;
 
 .accordion-inner{
 padding:0 22px 22px;
+
 line-height:1.8;
+
 opacity:0.82;
 }
 
 /* =========================================
-   POPUP / MODAL
+   MODAL SYSTEM
 ========================================= */
 
 .modal-overlay{
@@ -1832,23 +1429,57 @@ color:#f87171;
 }
 
 /* =========================================
-   FLOATING ANIMATIONS
+   UTILITIES
 ========================================= */
 
-.float-soft{
-animation:floatSoft 5s ease-in-out infinite;
+.hidden{
+display:none !important;
 }
 
-@keyframes floatSoft{
-
-0%,100%{
-transform:translateY(0px);
+.fade-in{
+animation:fadeIn .45s ease;
 }
 
-50%{
-transform:translateY(-6px);
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(10px);
 }
 
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.glow-text{
+text-shadow:
+0 0 20px rgba(255,255,255,0.18);
+}
+
+.blur-bg{
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+}
+
+.center-flex{
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.text-gradient{
+background:
+linear-gradient(
+90deg,
+#ffffff,
+#cbd5e1
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 /* =========================================
@@ -1867,10 +1498,122 @@ contain:layout paint;
 }
 
 /* =========================================
-   FINAL MOBILE OPTIMIZATION
+   SAFE OVERFLOW FIXES
 ========================================= */
 
+.hero-content,
+.chapter-content,
+.about-card,
+.contacts-card,
+.ai-message{
+overflow-wrap:break-word;
+word-break:break-word;
+}
+
+.chapter-title,
+.hero-content h1{
+text-wrap:balance;
+}
+
+/* =========================================
+   SCROLLBARS
+========================================= */
+
+::-webkit-scrollbar{
+width:10px;
+height:10px;
+}
+
+::-webkit-scrollbar-track{
+background:rgba(255,255,255,0.03);
+}
+
+::-webkit-scrollbar-thumb{
+background:rgba(255,255,255,0.14);
+border-radius:999px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+background:rgba(255,255,255,0.22);
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media screen and (max-width:1024px){
+
+.hero-content h1{
+font-size:3.5rem;
+}
+
+.chapter-title{
+font-size:2.6rem;
+}
+
+}
+
 @media screen and (max-width:768px){
+
+.nav-center{
+display:none;
+}
+
+.navbar{
+padding:12px 14px;
+border-radius:24px;
+}
+
+.logo{
+width:46px;
+height:46px;
+}
+
+.hero{
+border-radius:34px;
+min-height:78vh;
+}
+
+.hero-content{
+left:22px;
+right:22px;
+bottom:28px;
+}
+
+.hero-content h1{
+font-size:2.7rem;
+}
+
+.hero-content p{
+font-size:0.95rem;
+line-height:1.6;
+}
+
+.chapter-card{
+min-width:82vw;
+width:82vw;
+max-width:82vw;
+
+height:360px;
+}
+
+.chapter-title{
+font-size:2.35rem;
+}
+
+.chapter-content{
+padding:24px;
+}
+
+.chapters-track{
+padding-left:9vw;
+padding-right:9vw;
+}
+
+.ai-panel{
+width:94%;
+right:3%;
+}
 
 .modal{
 padding:24px;
@@ -1881,18 +1624,71 @@ border-radius:28px;
 padding:24px;
 }
 
-.legal-title{
-font-size:2.2rem;
-}
-
-.accordion-header{
-padding:18px;
-font-size:0.92rem;
-}
-
 }
 
 @media screen and (max-width:430px){
+
+.hero{
+width:calc(100% - 18px);
+
+min-height:72vh;
+
+border-radius:28px;
+}
+
+.hero-content{
+left:18px;
+right:18px;
+bottom:22px;
+}
+
+.hero-content h1{
+font-size:2.15rem;
+}
+
+.hero-content p{
+font-size:0.88rem;
+}
+
+.chapter-card{
+min-width:86vw;
+width:86vw;
+max-width:86vw;
+
+height:330px;
+
+border-radius:28px;
+}
+
+.chapter-title{
+font-size:1.95rem;
+line-height:1;
+}
+
+.chapter-content{
+padding:20px;
+}
+
+.chapters-track{
+padding-left:7vw;
+padding-right:7vw;
+gap:14px;
+}
+
+.nav-arrow{
+width:44px;
+height:44px;
+font-size:.82rem;
+}
+
+.ai-panel{
+width:calc(100% - 16px);
+
+right:8px;
+bottom:86px;
+
+border-radius:28px;
+}
 
 .modal{
 width:calc(100% - 14px);
@@ -1907,28 +1703,48 @@ padding:20px;
 border-radius:24px;
 }
 
-.legal-title{
-font-size:1.8rem;
-line-height:1;
-}
-
-.legal-description{
-font-size:0.9rem;
-line-height:1.8;
-}
-
-.accordion-header{
-padding:16px;
-font-size:0.88rem;
-}
-
-.accordion-inner{
-padding:0 16px 16px;
-font-size:0.9rem;
-}
-
-.search-item{
-padding:16px;
+.footer{
+width:calc(100% - 18px);
+padding:18px;
 }
 
 }
+
+/* =========================================
+   FINAL RESTORE LOCK
+========================================= */
+
+.chapter-building{
+display:none !important;
+}
+
+.chapter-card::before,
+.chapter-card::after{
+display:none !important;
+content:none !important;
+}
+
+.chapter-image{
+opacity:1 !important;
+
+filter:none !important;
+
+mix-blend-mode:normal !important;
+
+transform:none !important;
+
+object-fit:cover !important;
+object-position:center center !important;
+}
+
+.chapter-overlay{
+display:block !important;
+}
+
+.chapter-card{
+background:#0f172a !important;
+}
+
+/* =========================================
+   END OF LGU PORTAL MAIN CSS
+========================================= */
