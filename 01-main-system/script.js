@@ -8,7 +8,7 @@ const chaptersData = [
 {
 number:"I",
 title:"General Provisions",
-image:"./phts/balayili.png",
+image:"./phts/coverphoto.png",
 file:"./chapters/chapter1/index.html",
 keywords:[
 "general",
