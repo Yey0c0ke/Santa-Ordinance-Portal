@@ -9,88 +9,133 @@ const chaptersData = [
 number:"I",
 title:"General Provisions",
 image:"./phts/coverphoto.png",
-file:"./chapters/chapter1/index.html",
-keywords:["general","provisions","ordinance"]
+file:"../chapters/chapter1/index.html",
+keywords:[
+"general",
+"provisions",
+"ordinance",
+"definitions",
+"rules"
+]
 },
 
 {
 number:"II",
 title:"Administrative Matters",
 image:"./phts/coverphoto.png",
-file:"./chapters/chapter2/index.html",
-keywords:["administrative","government"]
+file:"../chapters/chapter2/index.html",
+keywords:[
+"administrative",
+"government"
+]
 },
 
 {
 number:"III",
 title:"Revenue and Taxation",
 image:"./phts/coverphoto.png",
-file:"./chapters/chapter3/index.html",
-keywords:["tax","taxation","revenue","fees"]
+file:"../chapters/chapter3/index.html",
+keywords:[
+"tax",
+"taxation",
+"revenue",
+"fees"
+]
 },
 
 {
 number:"IV",
 title:"Public Safety",
 image:"./phts/coverphoto.png",
-file:"./chapters/chapter4/index.html",
-keywords:["safety","emergency","security"]
+file:"../chapters/chapter4/index.html",
+keywords:[
+"safety",
+"emergency",
+"security"
+]
 },
 
 {
 number:"V",
 title:"Health and Sanitation",
 image:"./phts/coverphoto.png",
-file:"./chapters/chapter5/index.html",
-keywords:["health","sanitation","garbage"]
+file:"../chapters/chapter5/index.html",
+keywords:[
+"health",
+"sanitation",
+"garbage"
+]
 },
 
 {
 number:"VI",
 title:"Environmental Management",
 image:"./phts/coverphoto.png",
-file:"./chapters/chapter6/index.html",
-keywords:["environment","waste","pollution"]
+file:"../chapters/chapter6/index.html",
+keywords:[
+"environment",
+"waste",
+"pollution"
+]
 },
 
 {
 number:"VII",
 title:"Business Regulations",
 image:"./phts/coverphoto.png",
-file:"./chapters/chapter7/index.html",
-keywords:["business","permit","commercial"]
+file:"../chapters/chapter7/index.html",
+keywords:[
+"business",
+"permit",
+"commercial"
+]
 },
 
 {
 number:"VIII",
 title:"Traffic and Transportation",
 image:"./phts/coverphoto.png",
-file:"./chapters/chapter8/index.html",
-keywords:["traffic","vehicle","parking"]
+file:"../chapters/chapter8/index.html",
+keywords:[
+"traffic",
+"vehicle",
+"parking"
+]
 },
 
 {
 number:"IX",
 title:"Public Utilities",
 image:"./phts/coverphoto.png",
-file:"./chapters/chapter9/index.html",
-keywords:["utilities","water","electricity"]
+file:"../chapters/chapter9/index.html",
+keywords:[
+"utilities",
+"water",
+"electricity"
+]
 },
 
 {
 number:"X",
 title:"Penal Provisions",
 image:"./phts/coverphoto.png",
-file:"./chapters/chapter10/index.html",
-keywords:["penalty","violation","fine"]
+file:"../chapters/chapter10/index.html",
+keywords:[
+"penalty",
+"violation",
+"fine"
+]
 },
 
 {
 number:"XI",
 title:"Final Provisions",
 image:"./phts/coverphoto.png",
-file:"./chapters/chapter11/index.html",
-keywords:["final","effectivity"]
+file:"../chapters/chapter11/index.html",
+keywords:[
+"final",
+"effectivity"
+]
 }
 
 ];
@@ -234,95 +279,6 @@ chaptersTrack.appendChild(card);
 }
 
 // ======================================================
-// SEARCH
-// ======================================================
-
-function initializeSearch(){
-
-searchInput.addEventListener(
-"input",
-(e)=>{
-
-const query =
-e.target.value
-.toLowerCase()
-.trim();
-
-if(query === ""){
-
-renderChapters(chaptersData);
-
-return;
-
-}
-
-const filtered =
-chaptersData.filter((chapter)=>{
-
-const titleMatch =
-chapter.title
-.toLowerCase()
-.includes(query);
-
-const numberMatch =
-chapter.number
-.toLowerCase()
-.includes(query);
-
-const keywordMatch =
-chapter.keywords.some(
-(keyword)=>
-keyword.includes(query)
-);
-
-return(
-titleMatch ||
-numberMatch ||
-keywordMatch
-);
-
-});
-
-renderChapters(filtered);
-
-}
-);
-
-}
-
-// ======================================================
-// LOADING
-// ======================================================
-
-function initializeLoading(){
-
-window.addEventListener(
-"load",
-()=>{
-
-setTimeout(()=>{
-
-loadingScreen.classList.add("hide");
-
-},700);
-
-}
-);
-
-}
-
-// ======================================================
-// YEAR
-// ======================================================
-
-function initializeYear(){
-
-currentYear.textContent =
-new Date().getFullYear();
-
-}
-
-// ======================================================
 // TRUE CENTER CAROUSEL
 // ======================================================
 
@@ -436,6 +392,94 @@ scrollToCard("left");
 }
 
 // ======================================================
+// SEARCH
+// ======================================================
+
+function initializeSearch(){
+
+searchInput.addEventListener(
+"input",
+(e)=>{
+
+const query =
+e.target.value
+.toLowerCase()
+.trim();
+
+if(query === ""){
+
+renderChapters(chaptersData);
+
+return;
+
+}
+
+const filtered =
+chaptersData.filter((chapter)=>{
+
+return(
+
+chapter.title
+.toLowerCase()
+.includes(query)
+
+||
+
+chapter.number
+.toLowerCase()
+.includes(query)
+
+||
+
+chapter.keywords.some(
+(keyword)=>
+keyword.includes(query)
+)
+
+);
+
+});
+
+renderChapters(filtered);
+
+}
+);
+
+}
+
+// ======================================================
+// LOADING
+// ======================================================
+
+function initializeLoading(){
+
+window.addEventListener(
+"load",
+()=>{
+
+setTimeout(()=>{
+
+loadingScreen.classList.add("hide");
+
+},700);
+
+}
+);
+
+}
+
+// ======================================================
+// YEAR
+// ======================================================
+
+function initializeYear(){
+
+currentYear.textContent =
+new Date().getFullYear();
+
+}
+
+// ======================================================
 // NAVBAR
 // ======================================================
 
@@ -495,32 +539,20 @@ aiPanel.classList.remove("active");
 
 };
 
-if(aiButton){
-
 aiButton.addEventListener(
 "click",
 openAI
 );
-
-}
-
-if(floatingAi){
 
 floatingAi.addEventListener(
 "click",
 openAI
 );
 
-}
-
-if(closeAi){
-
 closeAi.addEventListener(
 "click",
 closeAI
 );
-
-}
 
 sendAi.addEventListener(
 "click",
@@ -548,10 +580,9 @@ sendMessage();
 
 function initializeSuggestions(){
 
-const chips =
-document.querySelectorAll(".suggestion-chip");
-
-chips.forEach((chip)=>{
+document
+.querySelectorAll(".suggestion-chip")
+.forEach((chip)=>{
 
 chip.addEventListener(
 "click",
@@ -578,12 +609,9 @@ function sendMessage(){
 const text =
 aiInput.value.trim();
 
-if(text === "") return;
+if(!text) return;
 
-addMessage(
-text,
-"user"
-);
+addMessage(text,"user");
 
 aiInput.value = "";
 
@@ -599,10 +627,7 @@ generateResponse(text);
 // ADD MESSAGE
 // ======================================================
 
-function addMessage(
-text,
-type
-){
+function addMessage(text,type){
 
 const div =
 document.createElement("div");
@@ -642,7 +667,15 @@ let response =
 const ordinanceMap = [
 
 {
-keywords:["business","permit","commercial"],
+keywords:["general","definitions","rules"],
+response:`
+<b>Chapter I</b><br>
+General Provisions
+`
+},
+
+{
+keywords:["business","permit"],
 response:`
 <b>Chapter VII</b><br>
 Business Regulations
@@ -650,42 +683,10 @@ Business Regulations
 },
 
 {
-keywords:["traffic","parking","vehicle"],
+keywords:["traffic","parking"],
 response:`
 <b>Chapter VIII</b><br>
 Traffic and Transportation
-`
-},
-
-{
-keywords:["penalty","violation","fine"],
-response:`
-<b>Chapter X</b><br>
-Penal Provisions
-`
-},
-
-{
-keywords:["health","sanitation","garbage"],
-response:`
-<b>Chapter V</b><br>
-Health and Sanitation
-`
-},
-
-{
-keywords:["environment","pollution","waste"],
-response:`
-<b>Chapter VI</b><br>
-Environmental Management
-`
-},
-
-{
-keywords:["tax","taxation","fees"],
-response:`
-<b>Chapter III</b><br>
-Revenue and Taxation
 `
 }
 
@@ -706,20 +707,7 @@ item.response;
 
 });
 
-if(lower.includes("chapter")){
-
-response =
-`
-The ordinance portal contains
-11 codified chapters.
-`;
-
-}
-
-addMessage(
-response,
-"ai"
-);
+addMessage(response,"ai");
 
 }
 
@@ -731,9 +719,6 @@ function initializePerformance(){
 
 document.body.style.overflowX =
 "hidden";
-
-chaptersTrack.style.webkitOverflowScrolling =
-"touch";
 
 window.addEventListener(
 "resize",
@@ -758,6 +743,5 @@ console.log(`
 ========================================
 LGU PORTAL 15 💎
 OPTIMIZED PRESERVED SYSTEM
-TRUE CENTER CAROUSEL ACTIVE
 ========================================
 `);
