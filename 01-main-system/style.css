@@ -419,15 +419,34 @@ rgba(2,6,23,0.12)
 .chapter-content{
 position:absolute;
 left:22px;
+right:22px;
 bottom:22px;
 z-index:2;
+
+display:flex;
+flex-direction:column;
+gap:8px;
+}
+
+.chapter-roman{
+font-size:0.78rem;
+font-weight:600;
+letter-spacing:1px;
+opacity:0.82;
 }
 
 .chapter-title{
 font-size:1.2rem;
 font-weight:800;
-max-width:220px;
-line-height:1.1;
+
+width:100%;
+max-width:100%;
+
+line-height:1.08;
+
+word-break:break-word;
+
+text-wrap:balance;
 }
 
 .nav-arrow{
@@ -531,6 +550,79 @@ pointer-events:auto;
 transform:translateY(0);
 }
 
+.ai-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:18px;
+
+border-bottom:
+1px solid rgba(255,255,255,0.08);
+}
+
+.ai-header p{
+font-size:0.75rem;
+opacity:0.7;
+}
+
+.ai-header h2{
+font-size:1rem;
+margin-top:3px;
+}
+
+#closeAi{
+background:transparent;
+border:none;
+color:white;
+font-size:1rem;
+cursor:pointer;
+}
+
+.ai-suggestions{
+display:flex;
+gap:10px;
+overflow-x:auto;
+
+padding:14px 18px;
+
+scrollbar-width:none;
+}
+
+.ai-suggestions::-webkit-scrollbar{
+display:none;
+}
+
+.suggestion-chip{
+border:none;
+
+padding:10px 14px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.08);
+
+color:white;
+
+font-size:0.75rem;
+
+cursor:pointer;
+
+white-space:nowrap;
+
+transition:
+background 0.2s ease,
+transform 0.2s ease;
+}
+
+.suggestion-chip:hover{
+background:
+rgba(255,255,255,0.14);
+
+transform:translateY(-1px);
+}
+
 .ai-messages{
 flex:1;
 padding:18px;
@@ -546,6 +638,54 @@ border-radius:18px;
 background:rgba(255,255,255,0.08);
 font-size:0.82rem;
 line-height:1.6;
+}
+
+.ai-user{
+background:
+rgba(37,99,235,0.24);
+align-self:flex-end;
+}
+
+.ai-input-area{
+display:flex;
+gap:10px;
+
+padding:18px;
+
+border-top:
+1px solid rgba(255,255,255,0.08);
+}
+
+.ai-input-area input{
+flex:1;
+
+padding:14px 16px;
+
+border:none;
+outline:none;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.08);
+
+color:white;
+}
+
+.ai-input-area button{
+border:none;
+
+padding:14px 18px;
+
+border-radius:18px;
+
+background:white;
+
+color:#111827;
+
+font-weight:700;
+
+cursor:pointer;
 }
 
 .footer{
@@ -610,6 +750,23 @@ width:82vw;
 max-width:82vw;
 
 height:220px;
+}
+
+.chapter-title{
+font-size:2rem;
+line-height:1;
+max-width:100%;
+}
+
+.chapter-content{
+left:18px;
+right:18px;
+bottom:18px;
+}
+
+.chapter-roman{
+font-size:0.82rem;
+opacity:0.85;
 }
 
 .nav-arrow{
