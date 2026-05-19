@@ -1,6 +1,10 @@
 // ======================================================
-// LGU PORTAL 15 💎
-// PRESERVED + UPDATED MAIN SYSTEM
+//                 YEYO 💎
+//     LGU PORTAL 15 • IOS SYSTEM ENGINE
+// ======================================================
+
+// ======================================================
+// CHAPTER DATA
 // ======================================================
 
 const chaptersData = [
@@ -180,6 +184,22 @@ const aiMessages =
 document.getElementById("aiMessages");
 
 // ======================================================
+// GLOBALS
+// ======================================================
+
+let carouselCardWidth = 0;
+
+let isDragging = false;
+
+let startX = 0;
+
+let scrollLeftStart = 0;
+
+let activeIndex = 0;
+
+let revealObserver;
+
+// ======================================================
 // INIT
 // ======================================================
 
@@ -195,15 +215,17 @@ initializeLoading();
 
 initializeYear();
 
-initializeCarousel();
-
 initializeNavbar();
+
+initializeCarousel();
 
 initializeAI();
 
 initializeSuggestions();
 
 initializeRevealAnimations();
+
+initializeResizeHandler();
 
 }
 );
@@ -216,7 +238,7 @@ function renderChapters(chapters){
 
 chaptersTrack.innerHTML = "";
 
-chapters.forEach((chapter)=>{
+chapters.forEach((chapter,index)=>{
 
 const card =
 document.createElement("a");
@@ -226,6 +248,11 @@ card.className =
 
 card.href =
 chapter.file;
+
+card.setAttribute(
+"data-index",
+index
+);
 
 card.innerHTML = `
 
@@ -264,37 +291,54 @@ chaptersTrack.appendChild(card);
 
 });
 
+updateCarouselMetrics();
+
+updateActiveCard();
+
+reinitializeRevealObserver();
+
 }
 
 // ======================================================
-// STABILIZED CAROUSEL
+// UPDATE METRICS
 // ======================================================
 
-function initializeCarousel(){
-
-const scrollAmount = ()=>{
+function updateCarouselMetrics(){
 
 const firstCard =
 document.querySelector(".chapter-card");
 
-if(!firstCard) return 320;
+if(!firstCard){
 
-const gap = 18;
+carouselCardWidth = 320;
 
-return firstCard.offsetWidth + gap;
+return;
+}
 
-};
+const style =
+window.getComputedStyle(chaptersTrack);
+
+const gap =
+parseFloat(style.columnGap || style.gap || 24);
+
+carouselCardWidth =
+firstCard.offsetWidth + gap;
+
+}
+
+// ======================================================
+// IOS CAROUSEL
+// ======================================================
+
+function initializeCarousel(){
+
+if(!chaptersTrack) return;
 
 scrollRight.addEventListener(
 "click",
 ()=>{
 
-chaptersTrack.scrollBy({
-
-left:scrollAmount(),
-behavior:"smooth"
-
-});
+goToCard(activeIndex + 1);
 
 }
 );
@@ -303,71 +347,254 @@ scrollLeft.addEventListener(
 "click",
 ()=>{
 
-chaptersTrack.scrollBy({
-
-left:-scrollAmount(),
-behavior:"smooth"
-
-});
+goToCard(activeIndex - 1);
 
 }
 );
 
-let isDown = false;
-let startX;
-let scrollLeftStart;
-
 chaptersTrack.addEventListener(
-"touchstart",
-()=>{
-
-chaptersTrack.style.scrollBehavior = "smooth";
-
-},
+"scroll",
+handleCarouselScroll,
 {
 passive:true
 }
 );
 
+// ======================================================
+// DRAG SYSTEM
+// ======================================================
+
 chaptersTrack.addEventListener(
 "mousedown",
-(e)=>{
+startDrag
+);
 
-isDown = true;
+chaptersTrack.addEventListener(
+"touchstart",
+startDrag,
+{
+passive:true
+}
+);
 
-startX = e.pageX;
+window.addEventListener(
+"mousemove",
+dragMove,
+{
+passive:false
+}
+);
 
-scrollLeftStart =
-chaptersTrack.scrollLeft;
-
+window.addEventListener(
+"touchmove",
+dragMove,
+{
+passive:false
 }
 );
 
 window.addEventListener(
 "mouseup",
-()=>{
-
-isDown = false;
-
-}
+endDrag
 );
 
-chaptersTrack.addEventListener(
-"mousemove",
-(e)=>{
+window.addEventListener(
+"touchend",
+endDrag
+);
 
-if(!isDown) return;
+}
 
-e.preventDefault();
+// ======================================================
+// DRAG START
+// ======================================================
+
+function startDrag(event){
+
+isDragging = true;
+
+chaptersTrack.classList.add("dragging");
+
+startX =
+event.type.includes("mouse")
+? event.pageX
+: event.touches[0].clientX;
+
+scrollLeftStart =
+chaptersTrack.scrollLeft;
+
+}
+
+// ======================================================
+// DRAG MOVE
+// ======================================================
+
+function dragMove(event){
+
+if(!isDragging) return;
+
+event.preventDefault();
+
+const currentX =
+event.type.includes("mouse")
+? event.pageX
+: event.touches[0].clientX;
 
 const walk =
-(startX - e.pageX) * 1.1;
+(startX - currentX) * 1.08;
 
 chaptersTrack.scrollLeft =
 scrollLeftStart + walk;
 
 }
+
+// ======================================================
+// DRAG END
+// ======================================================
+
+function endDrag(){
+
+if(!isDragging) return;
+
+isDragging = false;
+
+chaptersTrack.classList.remove("dragging");
+
+snapToNearestCard();
+
+}
+
+// ======================================================
+// SCROLL
+// ======================================================
+
+function handleCarouselScroll(){
+
+window.requestAnimationFrame(()=>{
+
+updateActiveCard();
+
+});
+
+}
+
+// ======================================================
+// SNAP
+// ======================================================
+
+function snapToNearestCard(){
+
+updateCarouselMetrics();
+
+const index =
+Math.round(
+chaptersTrack.scrollLeft
+/
+carouselCardWidth
 );
+
+goToCard(index);
+
+}
+
+// ======================================================
+// GO TO CARD
+// ======================================================
+
+function goToCard(index){
+
+const cards =
+document.querySelectorAll(".chapter-card");
+
+if(!cards.length) return;
+
+activeIndex =
+Math.max(
+0,
+Math.min(
+index,
+cards.length - 1
+)
+);
+
+const target =
+cards[activeIndex];
+
+const trackRect =
+chaptersTrack.getBoundingClientRect();
+
+const cardRect =
+target.getBoundingClientRect();
+
+const offset =
+(cardRect.left - trackRect.left)
+-
+((trackRect.width / 2)
+-
+(cardRect.width / 2));
+
+chaptersTrack.scrollBy({
+
+left:offset,
+
+behavior:"smooth"
+
+});
+
+updateActiveCard();
+
+}
+
+// ======================================================
+// ACTIVE CARD
+// ======================================================
+
+function updateActiveCard(){
+
+const cards =
+document.querySelectorAll(".chapter-card");
+
+if(!cards.length) return;
+
+const trackCenter =
+chaptersTrack.getBoundingClientRect().left
++
+(chaptersTrack.offsetWidth / 2);
+
+let closestCard = null;
+
+let closestDistance = Infinity;
+
+cards.forEach((card,index)=>{
+
+const rect =
+card.getBoundingClientRect();
+
+const cardCenter =
+rect.left + (rect.width / 2);
+
+const distance =
+Math.abs(trackCenter - cardCenter);
+
+card.classList.remove("active");
+
+if(distance < closestDistance){
+
+closestDistance = distance;
+
+closestCard = card;
+
+activeIndex = index;
+
+}
+
+});
+
+if(closestCard){
+
+closestCard.classList.add("active");
+
+}
 
 }
 
@@ -377,12 +604,14 @@ scrollLeftStart + walk;
 
 function initializeSearch(){
 
+if(!searchInput) return;
+
 searchInput.addEventListener(
 "input",
-(e)=>{
+debounce((event)=>{
 
 const query =
-e.target.value
+event.target.value
 .toLowerCase()
 .trim();
 
@@ -397,27 +626,50 @@ return;
 const filtered =
 chaptersData.filter((chapter)=>{
 
-return(
-
+const titleMatch =
 chapter.title
 .toLowerCase()
-.includes(query)
+.includes(query);
 
-||
-
+const keywordMatch =
 chapter.keywords.some(
 (keyword)=>
 keyword.includes(query)
-)
+);
 
+return (
+titleMatch ||
+keywordMatch
 );
 
 });
 
 renderChapters(filtered);
 
-}
+},120)
 );
+
+}
+
+// ======================================================
+// DEBOUNCE
+// ======================================================
+
+function debounce(callback,delay=120){
+
+let timeout;
+
+return(...args)=>{
+
+clearTimeout(timeout);
+
+timeout = setTimeout(()=>{
+
+callback(...args);
+
+},delay);
+
+};
 
 }
 
@@ -448,8 +700,12 @@ loadingScreen.classList.add("hide");
 
 function initializeYear(){
 
+if(currentYear){
+
 currentYear.textContent =
 new Date().getFullYear();
+
+}
 
 }
 
@@ -482,48 +738,115 @@ passive:true
 }
 
 // ======================================================
-// AI
+// AI SYSTEM
 // ======================================================
 
 function initializeAI(){
+
+if(!aiPanel) return;
+
+// OPEN
 
 const openAI = ()=>{
 
 aiPanel.classList.add("active");
 
+document.body.style.overflow = "hidden";
+
+setTimeout(()=>{
+
+aiInput?.focus();
+
+},120);
+
 };
+
+// CLOSE
 
 const closeAI = ()=>{
 
 aiPanel.classList.remove("active");
 
+document.body.style.overflow = "";
+
 };
 
-aiButton.addEventListener(
+// BUTTONS
+
+aiButton?.addEventListener(
 "click",
 openAI
 );
 
-floatingAi.addEventListener(
+floatingAi?.addEventListener(
 "click",
 openAI
 );
 
-closeAi.addEventListener(
+closeAi?.addEventListener(
 "click",
 closeAI
 );
 
-sendAi.addEventListener(
+// OUTSIDE CLICK
+
+document.addEventListener(
+"click",
+(event)=>{
+
+const clickedInside =
+aiPanel.contains(event.target)
+||
+floatingAi.contains(event.target)
+||
+aiButton.contains(event.target);
+
+if(
+!clickedInside
+&&
+aiPanel.classList.contains("active")
+){
+
+closeAI();
+
+}
+
+}
+);
+
+// ESCAPE
+
+window.addEventListener(
+"keydown",
+(event)=>{
+
+if(
+event.key === "Escape"
+&&
+aiPanel.classList.contains("active")
+){
+
+closeAI();
+
+}
+
+}
+);
+
+// SEND
+
+sendAi?.addEventListener(
 "click",
 sendMessage
 );
 
-aiInput.addEventListener(
-"keydown",
-(e)=>{
+// ENTER
 
-if(e.key === "Enter"){
+aiInput?.addEventListener(
+"keydown",
+(event)=>{
+
+if(event.key === "Enter"){
 
 sendMessage();
 
@@ -535,7 +858,7 @@ sendMessage();
 }
 
 // ======================================================
-// AI SUGGESTIONS
+// SUGGESTIONS
 // ======================================================
 
 function initializeSuggestions(){
@@ -549,7 +872,7 @@ chip.addEventListener(
 ()=>{
 
 aiInput.value =
-chip.textContent;
+chip.textContent.trim();
 
 sendMessage();
 
@@ -579,7 +902,7 @@ setTimeout(()=>{
 
 generateResponse(text);
 
-},300);
+},360);
 
 }
 
@@ -599,17 +922,40 @@ type === "user"
 : ""
 }`;
 
-div.innerHTML = text;
+// SAFE RENDER
+
+div.innerHTML =
+sanitizeHTML(text);
 
 aiMessages.appendChild(div);
+
+requestAnimationFrame(()=>{
 
 aiMessages.scrollTop =
 aiMessages.scrollHeight;
 
+});
+
 }
 
 // ======================================================
-// AI KNOWLEDGE
+// SANITIZE
+// ======================================================
+
+function sanitizeHTML(input){
+
+const temp =
+document.createElement("div");
+
+temp.textContent = input;
+
+return temp.innerHTML
+.replace(/\n/g,"<br>");
+
+}
+
+// ======================================================
+// LEGAL AI ENGINE
 // ======================================================
 
 function generateResponse(input){
@@ -618,92 +964,140 @@ const lower =
 input.toLowerCase();
 
 let response =
-"Legal ordinance information unavailable.";
+`
+<b>LGU PORTAL 15</b>
+<br><br>
 
-if(
-lower.includes("tax")
-){
-
-response = `
-<b>Chapter III — Revenue and Taxation</b><br><br>
-
-Municipal taxation provisions regulate local revenue generation, fees, and lawful fiscal collection systems.
+Legal ordinance information unavailable.
 `;
+
+const responses = [
+
+{
+keywords:[
+"tax",
+"taxation",
+"fees",
+"revenue"
+],
+
+response:`
+<b>Chapter III — Revenue and Taxation</b>
+<br><br>
+
+Municipal taxation provisions regulate local revenue systems, lawful fee collection, fiscal enforcement, and ordinance-based taxation authority.
+`
+},
+
+{
+keywords:[
+"permit",
+"business",
+"license"
+],
+
+response:`
+<b>Chapter VII — Business Regulations</b>
+<br><br>
+
+This chapter governs municipal permits, business licensing, compliance requirements, and regulated commercial operations.
+`
+},
+
+{
+keywords:[
+"traffic",
+"parking",
+"vehicle",
+"transportation"
+],
+
+response:`
+<b>Chapter VIII — Traffic and Transportation</b>
+<br><br>
+
+Traffic ordinances regulate vehicle movement, parking enforcement, transportation systems, and municipal road safety.
+`
+},
+
+{
+keywords:[
+"definitions",
+"general",
+"construction"
+],
+
+response:`
+<b>Chapter I — General Provisions</b>
+<br><br>
+
+Article C contains foundational legal definitions, ordinance interpretation principles, and statutory construction rules.
+`
+},
+
+{
+keywords:[
+"sanitation",
+"health",
+"waste"
+],
+
+response:`
+<b>Chapter V — Health and Sanitation</b>
+<br><br>
+
+This chapter governs sanitation systems, public cleanliness standards, health compliance measures, and waste regulation.
+`
+},
+
+{
+keywords:[
+"safety",
+"emergency",
+"public safety"
+],
+
+response:`
+<b>Chapter IV — Public Safety</b>
+<br><br>
+
+Public safety provisions regulate emergency response systems, municipal protection measures, and community safety enforcement.
+`
+}
+
+];
+
+responses.forEach((item)=>{
+
+const matched =
+item.keywords.some(
+(keyword)=>
+lower.includes(keyword)
+);
+
+if(matched){
+
+response =
+item.response;
 
 }
 
-if(
-lower.includes("permit")
-){
-
-response = `
-<b>Chapter VII — Business Regulations</b><br><br>
-
-Permits are municipal authorizations required before regulated commercial or operational activity.
-`;
-
-}
-
-if(
-lower.includes("business")
-){
-
-response = `
-<b>Chapter VII — Business Regulations</b><br><br>
-
-This chapter governs licensing, permits, municipal compliance, and business regulation systems.
-`;
-
-}
-
-if(
-lower.includes("traffic")
-){
-
-response = `
-<b>Chapter VIII — Traffic and Transportation</b><br><br>
-
-Traffic management includes parking control, vehicle regulation, and municipal transportation enforcement.
-`;
-
-}
-
-if(
-lower.includes("definitions")
-){
-
-response = `
-<b>Chapter I — General Provisions</b><br><br>
-
-Article C contains foundational legal definitions used throughout the Code of General Ordinances.
-`;
-
-}
-
-if(
-lower.includes("sanitation")
-){
-
-response = `
-<b>Chapter V — Health and Sanitation</b><br><br>
-
-This chapter governs sanitation systems, public cleanliness, and municipal health compliance.
-`;
-
-}
+});
 
 addMessage(response,"ai");
 
 }
 
 // ======================================================
-// REVEAL ANIMATION
+// REVEAL ANIMATIONS
 // ======================================================
 
 function initializeRevealAnimations(){
 
-const observer =
-new IntersectionObserver((entries)=>{
+revealObserver =
+new IntersectionObserver(
+
+(entries)=>{
 
 entries.forEach((entry)=>{
 
@@ -711,32 +1105,268 @@ if(entry.isIntersecting){
 
 entry.target.classList.add("show");
 
+}else{
+
+entry.target.classList.remove("show");
+
 }
 
 });
 
-},{
+},
+
+{
 threshold:0.12
-});
+}
+
+);
+
+reinitializeRevealObserver();
+
+}
+
+// ======================================================
+// REINITIALIZE OBSERVER
+// ======================================================
+
+function reinitializeRevealObserver(){
+
+if(!revealObserver) return;
 
 document
 .querySelectorAll(
 ".about-card, .contacts-card, .chapter-card"
 )
-.forEach((el)=>{
+.forEach((element)=>{
 
-observer.observe(el);
+revealObserver.observe(element);
 
 });
 
 }
 
 // ======================================================
+// RESIZE HANDLER
+// ======================================================
+
+function initializeResizeHandler(){
+
+window.addEventListener(
+"resize",
+debounce(()=>{
+
+updateCarouselMetrics();
+
+snapActiveCard();
+
+},160)
+);
+
+}
+
+// ======================================================
+// SNAP ACTIVE
+// ======================================================
+
+function snapActiveCard(){
+
+goToCard(activeIndex);
+
+}
+
+// ======================================================
+// AUTO CENTER FIRST CARD
+// ======================================================
+
+window.addEventListener(
+"load",
+()=>{
+
+setTimeout(()=>{
+
+updateCarouselMetrics();
+
+goToCard(0);
+
+},180);
+
+}
+);
+
+// ======================================================
+// TOUCH MOMENTUM FIX
+// ======================================================
+
+chaptersTrack?.addEventListener(
+"touchend",
+()=>{
+
+setTimeout(()=>{
+
+snapToNearestCard();
+
+},120);
+
+},
+{
+passive:true
+}
+);
+
+// ======================================================
+// KEYBOARD NAVIGATION
+// ======================================================
+
+window.addEventListener(
+"keydown",
+(event)=>{
+
+const aiOpened =
+aiPanel.classList.contains("active");
+
+if(aiOpened) return;
+
+if(event.key === "ArrowRight"){
+
+goToCard(activeIndex + 1);
+
+}
+
+if(event.key === "ArrowLeft"){
+
+goToCard(activeIndex - 1);
+
+}
+
+}
+);
+
+// ======================================================
+// IOS SCROLL SHADOW
+// ======================================================
+
+window.addEventListener(
+"scroll",
+()=>{
+
+const scrollTop =
+window.scrollY;
+
+document.body.style.setProperty(
+"--scroll-opacity",
+Math.min(scrollTop / 400,1)
+);
+
+},
+{
+passive:true
+}
+);
+
+// ======================================================
+// PERFORMANCE
+// ======================================================
+
+function preloadCriticalImages(){
+
+const images = [
+
+"./phts/balayili.png",
+"./phts/coverphoto.png",
+"./phts/logo.png"
+
+];
+
+images.forEach((src)=>{
+
+const image =
+new Image();
+
+image.src = src;
+
+});
+
+}
+
+preloadCriticalImages();
+
+// ======================================================
+// PREVENT DOUBLE TAP ZOOM IOS
+// ======================================================
+
+let lastTouchEnd = 0;
+
+document.addEventListener(
+"touchend",
+(event)=>{
+
+const now = Date.now();
+
+if(now - lastTouchEnd <= 300){
+
+event.preventDefault();
+
+}
+
+lastTouchEnd = now;
+
+},
+{
+passive:false
+}
+);
+
+// ======================================================
+// SMOOTH SECTION LINKS
+// ======================================================
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach((anchor)=>{
+
+anchor.addEventListener(
+"click",
+(event)=>{
+
+const targetId =
+anchor.getAttribute("href");
+
+const target =
+document.querySelector(targetId);
+
+if(!target) return;
+
+event.preventDefault();
+
+target.scrollIntoView({
+
+behavior:"smooth",
+block:"start"
+
+});
+
+}
+);
+
+});
+
+// ======================================================
+// SYSTEM LOG
+// ======================================================
 
 console.log(`
+
 ========================================
 LGU PORTAL 15 💎
-PRESERVED SYSTEM ACTIVE
-UPDATED BUILD ACTIVE
+PRESERVED FOUNDATION ACTIVE
+IOS SYSTEM ACTIVE
+STABILIZED CAROUSEL ACTIVE
+LEGALOS ENGINE ACTIVE
+RESPONSIVE ENGINE ACTIVE
 ========================================
+
 `);
+
+// ======================================================
+// END SYSTEM
+// ======================================================

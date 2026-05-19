@@ -1,3 +1,8 @@
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                YEYO 💎
+     LGU PORTAL 15 • PRESERVED SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +12,7 @@
 
 <meta
 name="viewport"
-content="width=device-width, initial-scale=1.0"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 >
 
 <meta
@@ -23,6 +28,11 @@ content="yes"
 <meta
 name="apple-mobile-web-app-status-bar-style"
 content="black-translucent"
+>
+
+<meta
+name="format-detection"
+content="telephone=no"
 >
 
 <title>
@@ -43,6 +53,8 @@ rel="stylesheet"
 
 <body>
 
+<!-- LOADING -->
+
 <div
 id="loadingScreen"
 class="loading-screen"
@@ -56,6 +68,8 @@ LGU PORTAL 15 💎
 
 </div>
 
+<!-- BACKGROUND SYSTEM -->
+
 <div class="bg-gradient"></div>
 
 <div class="grid-overlay"></div>
@@ -63,6 +77,12 @@ LGU PORTAL 15 💎
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
 <div class="orb orb3"></div>
+
+<!-- MAIN APP -->
+
+<div class="app-shell">
+
+<!-- NAVBAR -->
 
 <nav
 id="navbar"
@@ -75,6 +95,8 @@ class="navbar glass"
 src="./phts/logo.png"
 class="logo"
 alt="Santa Logo"
+loading="eager"
+decoding="async"
 >
 
 <div class="nav-text">
@@ -83,16 +105,31 @@ alt="Santa Logo"
 Municipality of Santa
 </h1>
 
+<p>
+LGU PORTAL 15
+</p>
+
 </div>
 
 </div>
 
 <div class="nav-center">
 
-<a href="#home">Home</a>
-<a href="#chapters">Chapters</a>
-<a href="#about">About</a>
-<a href="#contacts">Contacts</a>
+<a href="#home">
+Home
+</a>
+
+<a href="#chapters">
+Chapters
+</a>
+
+<a href="#about">
+About
+</a>
+
+<a href="#contacts">
+Contacts
+</a>
 
 </div>
 
@@ -105,6 +142,8 @@ AI Assistant
 </button>
 
 </nav>
+
+<!-- HERO -->
 
 <section
 id="home"
@@ -120,6 +159,8 @@ decoding="async"
 >
 
 <div class="hero-overlay"></div>
+
+<div class="hero-noise"></div>
 
 <div class="hero-content">
 
@@ -139,7 +180,9 @@ Municipality of Santa, Ilocos Sur
 
 <div class="hero-stat glass">
 
-<h3>11</h3>
+<h3>
+11
+</h3>
 
 <span>
 Codified Chapters
@@ -149,10 +192,24 @@ Codified Chapters
 
 <div class="hero-stat glass">
 
-<h3>24/7</h3>
+<h3>
+24/7
+</h3>
 
 <span>
 Municipal Access
+</span>
+
+</div>
+
+<div class="hero-stat glass">
+
+<h3>
+AI
+</h3>
+
+<span>
+Legal Intelligence
 </span>
 
 </div>
@@ -165,6 +222,7 @@ Municipal Access
 type="text"
 id="searchInput"
 placeholder="Search ordinances, penalties, chapters..."
+autocomplete="off"
 >
 
 </div>
@@ -172,6 +230,8 @@ placeholder="Search ordinances, penalties, chapters..."
 </div>
 
 </section>
+
+<!-- CHAPTERS -->
 
 <section
 id="chapters"
@@ -200,6 +260,7 @@ Codified Chapters
 class="nav-arrow glass prev"
 id="scrollLeft"
 type="button"
+aria-label="Previous Chapter"
 >
 ←
 </button>
@@ -213,6 +274,7 @@ id="chaptersTrack"
 class="nav-arrow glass next"
 id="scrollRight"
 type="button"
+aria-label="Next Chapter"
 >
 →
 </button>
@@ -221,6 +283,8 @@ type="button"
 
 </section>
 
+<!-- ABOUT -->
+
 <section
 id="about"
 class="about-section"
@@ -228,17 +292,23 @@ class="about-section"
 
 <div class="about-card glass">
 
+<p class="section-mini">
+MUNICIPAL LEGAL SYSTEM
+</p>
+
 <h2>
 LGU PORTAL 15
 </h2>
 
 <p>
-A preserved municipal legal operating system for ordinance navigation, codification, legal interpretation, and intelligent municipal access.
+A preserved municipal legal operating system for ordinance navigation, codification, legal interpretation, intelligent municipal access, and future ordinance-aware AI integration.
 </p>
 
 </div>
 
 </section>
+
+<!-- CONTACTS -->
 
 <section
 id="contacts"
@@ -258,13 +328,43 @@ Municipality of Santa
 <div class="contacts-grid">
 
 <div class="contact-item">
-<span>☎</span>
-<p>0964</p>
+
+<span>
+☎
+</span>
+
+<div>
+
+<h3>
+Telephone
+</h3>
+
+<p>
+0964
+</p>
+
+</div>
+
 </div>
 
 <div class="contact-item">
-<span>✉</span>
-<p>lgusanta.a.2703@gmail.com</p>
+
+<span>
+✉
+</span>
+
+<div>
+
+<h3>
+Email
+</h3>
+
+<p>
+lgusanta.a.2703@gmail.com
+</p>
+
+</div>
+
 </div>
 
 </div>
@@ -273,13 +373,18 @@ Municipality of Santa
 
 </section>
 
+<!-- FLOATING AI -->
+
 <button
 id="floatingAi"
 class="floating-ai glass"
 type="button"
+aria-label="Open AI Assistant"
 >
 ✦
 </button>
+
+<!-- AI PANEL -->
 
 <div
 id="aiPanel"
@@ -303,6 +408,7 @@ Santa LegalOS
 <button
 id="closeAi"
 type="button"
+aria-label="Close AI"
 >
 ✕
 </button>
@@ -338,12 +444,20 @@ class="ai-messages"
 
 Welcome to LGU PORTAL 15 💎
 
+<br><br>
+
 AI Assistant can help navigate:
+<br>
 • codified chapters
+<br>
 • penalties
+<br>
 • sanitation rules
+<br>
 • taxation
+<br>
 • business regulations
+<br>
 • public safety
 
 </div>
@@ -356,15 +470,21 @@ AI Assistant can help navigate:
 type="text"
 id="aiInput"
 placeholder="Ask about ordinances..."
+autocomplete="off"
 >
 
-<button id="sendAi">
+<button
+id="sendAi"
+type="button"
+>
 Send
 </button>
 
 </div>
 
 </div>
+
+<!-- FOOTER -->
 
 <footer
 class="footer glass"
@@ -373,12 +493,20 @@ class="footer glass"
 <p>
 ©
 <span id="currentYear"></span>
+
 Municipality of Santa • LGU PORTAL 15
 </p>
 
 </footer>
 
+</div>
+
 <script src="./script.js"></script>
 
 </body>
 </html>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                YEYO 💎
+         END OF HTML SYSTEM FILE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
