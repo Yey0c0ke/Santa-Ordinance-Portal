@@ -7,6 +7,7 @@ box-sizing:border-box;
 
 html{
 scroll-behavior:smooth;
+scroll-padding-top:100px;
 }
 
 body{
@@ -80,7 +81,6 @@ filter:blur(80px);
 opacity:0.22;
 z-index:-4;
 pointer-events:none;
-will-change:transform;
 animation:floatOrb 14s ease-in-out infinite;
 }
 
@@ -175,9 +175,7 @@ transform:rotate(360deg);
 
 }
 
-/* =========================
-   PRESERVED UPDATED NAVBAR
-========================= */
+/* NAVBAR */
 
 .navbar{
 position:sticky;
@@ -199,10 +197,6 @@ align-items:center;
 
 gap:14px;
 
-transition:
-background 0.3s ease,
-transform 0.3s ease;
-
 background:
 rgba(15,23,42,0.46);
 
@@ -215,8 +209,6 @@ box-shadow:
 0 10px 40px rgba(0,0,0,0.26);
 
 overflow:hidden;
-
-contain:layout style;
 }
 
 .navbar.scrolled{
@@ -238,18 +230,9 @@ height:52px;
 object-fit:contain;
 
 flex-shrink:0;
-
-filter:
-drop-shadow(0 6px 14px rgba(0,0,0,0.24));
-}
-
-.nav-text{
-min-width:0;
 }
 
 .nav-text h1{
-margin:0;
-
 font-size:clamp(1.4rem,4vw,2.4rem);
 
 line-height:0.92;
@@ -257,18 +240,6 @@ line-height:0.92;
 font-weight:800;
 
 letter-spacing:-0.05em;
-
-color:white;
-}
-
-.nav-text p{
-margin-top:4px;
-
-font-size:0.84rem;
-
-line-height:1.25;
-
-color:rgba(255,255,255,0.78);
 }
 
 .nav-center{
@@ -277,16 +248,43 @@ gap:26px;
 }
 
 .nav-center a{
+position:relative;
+
 text-decoration:none;
 color:white;
+
 font-size:0.88rem;
 font-weight:500;
+
 opacity:0.75;
+
 transition:opacity 0.3s ease;
 }
 
 .nav-center a:hover{
 opacity:1;
+}
+
+.nav-center a::after{
+content:'';
+
+position:absolute;
+
+left:0;
+bottom:-6px;
+
+width:0;
+height:2px;
+
+background:white;
+
+border-radius:999px;
+
+transition:width .25s ease;
+}
+
+.nav-center a:hover::after{
+width:100%;
 }
 
 .ai-button{
@@ -305,22 +303,6 @@ font-weight:700;
 font-size:0.84rem;
 
 cursor:pointer;
-
-white-space:nowrap;
-
-transition:
-transform 0.25s ease,
-box-shadow 0.25s ease;
-
-box-shadow:
-0 10px 24px rgba(0,0,0,0.24);
-}
-
-.ai-button:hover{
-transform:translateY(-2px);
-
-box-shadow:
-0 14px 30px rgba(0,0,0,0.30);
 }
 
 /* HERO */
@@ -336,16 +318,16 @@ overflow:hidden;
 
 .hero-image{
 position:absolute;
+inset:0;
+
 width:100%;
 height:100%;
 
 object-fit:cover;
 
-transform:translateZ(0) scale(1.01);
+transform:scale(1.01);
 
-backface-visibility:hidden;
-
-will-change:transform;
+z-index:1;
 }
 
 .hero-overlay{
@@ -355,18 +337,48 @@ inset:0;
 background:
 linear-gradient(
 to top,
-rgba(2,6,23,0.95),
-rgba(2,6,23,0.25)
+rgba(2,6,23,0.96),
+rgba(2,6,23,0.36),
+rgba(2,6,23,0.08)
 );
+
+z-index:2;
 }
 
 .hero-content{
 position:absolute;
 left:50px;
 bottom:50px;
-z-index:2;
+
+z-index:3;
+
 max-width:760px;
-min-width:0;
+}
+
+.hero-badge{
+display:inline-flex;
+align-items:center;
+
+padding:12px 18px;
+
+border-radius:999px;
+
+margin-bottom:22px;
+
+background:
+rgba(255,255,255,0.08);
+
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+font-size:0.78rem;
+font-weight:700;
+
+letter-spacing:0.08em;
+
+text-transform:uppercase;
 }
 
 .hero-content h1{
@@ -374,17 +386,26 @@ font-size:4.5rem;
 line-height:0.92;
 font-weight:900;
 
-word-break:break-word;
-overflow-wrap:break-word;
+letter-spacing:-0.06em;
+}
 
-text-wrap:balance;
+.hero-content p{
+margin-top:18px;
+
+font-size:1.05rem;
+
+line-height:1.7;
+
+color:rgba(255,255,255,0.82);
 }
 
 .hero-stats{
 display:flex;
 gap:14px;
+
 margin-top:26px;
 margin-bottom:28px;
+
 flex-wrap:wrap;
 }
 
@@ -393,19 +414,41 @@ padding:18px 22px;
 border-radius:24px;
 }
 
+.hero-stat h3{
+font-size:1.8rem;
+font-weight:800;
+}
+
+.hero-stat span{
+display:block;
+
+margin-top:4px;
+
+font-size:0.82rem;
+
+opacity:0.76;
+}
+
 .hero-search{
 padding:10px;
+
 border-radius:24px;
+
 max-width:580px;
 }
 
 .hero-search input{
 width:100%;
+
 padding:16px 18px;
+
 background:transparent;
+
 border:none;
 outline:none;
+
 color:white;
+
 font-size:0.92rem;
 }
 
@@ -420,8 +463,31 @@ width:95%;
 margin:auto auto 20px;
 }
 
+.section-mini{
+font-size:0.75rem;
+
+letter-spacing:0.18em;
+
+text-transform:uppercase;
+
+opacity:0.7;
+
+margin-bottom:10px;
+}
+
+.section-header h2{
+font-size:clamp(2rem,5vw,4rem);
+
+line-height:0.95;
+
+font-weight:900;
+
+letter-spacing:-0.05em;
+}
+
 .chapters-wrapper{
 width:100%;
+
 position:relative;
 
 display:flex;
@@ -449,8 +515,6 @@ scroll-behavior:smooth;
 -webkit-overflow-scrolling:touch;
 
 touch-action:pan-x;
-
-align-items:stretch;
 
 width:100%;
 }
@@ -480,49 +544,31 @@ color:white;
 
 scroll-snap-align:center;
 
-transition:
-transform 0.3s ease,
-opacity 0.3s ease;
-
-will-change:transform;
-
 display:flex;
 align-items:flex-end;
 
-transform:translateZ(0);
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,0.06),
+rgba(255,255,255,0.02)
+);
+
+border:
+1px solid rgba(255,255,255,0.08);
 
 box-shadow:
 0 20px 40px rgba(0,0,0,0.35);
-}
 
-.chapter-card::after{
-content:'';
-
-position:absolute;
-inset:0;
-
-background:
-linear-gradient(
-180deg,
-rgba(255,255,255,.06),
-transparent 28%
-);
-
-pointer-events:none;
-}
-
-.chapter-card *{
-min-width:0;
+transition:
+transform 0.3s ease,
+opacity 0.3s ease;
 }
 
 .chapter-card:hover{
 transform:
 translateY(-6px)
 scale(1.01);
-}
-
-.chapter-card:active{
-transform:scale(0.985);
 }
 
 .chapter-image{
@@ -532,13 +578,14 @@ inset:0;
 width:100%;
 height:100%;
 
-object-fit:cover;
+object-fit:cover !important;
+object-position:center !important;
 
-opacity:.34;
+opacity:0.42 !important;
 
-transform:translateZ(0);
+transform:scale(1.02);
 
-backface-visibility:hidden;
+z-index:1;
 }
 
 .chapter-overlay{
@@ -548,10 +595,37 @@ inset:0;
 background:
 linear-gradient(
 to top,
-rgba(2,6,23,0.96),
-rgba(2,6,23,0.25),
-rgba(2,6,23,0.08)
+rgba(2,6,23,0.97),
+rgba(2,6,23,0.42),
+rgba(2,6,23,0.12)
 );
+
+z-index:2;
+}
+
+.chapter-building{
+position:absolute;
+
+inset:0;
+
+width:100%;
+height:100%;
+
+object-fit:contain;
+object-position:center;
+
+padding:40px;
+
+opacity:0.14;
+
+z-index:3;
+
+pointer-events:none;
+
+transform:scale(0.82);
+
+filter:
+drop-shadow(0 20px 40px rgba(0,0,0,0.34));
 }
 
 .chapter-content{
@@ -561,17 +635,13 @@ left:0;
 right:0;
 bottom:0;
 
-padding:26px;
+padding:28px;
 
-z-index:2;
+z-index:5;
 
 display:flex;
 flex-direction:column;
 gap:8px;
-
-width:100%;
-
-overflow:hidden;
 }
 
 .chapter-roman{
@@ -580,29 +650,22 @@ font-weight:700;
 
 letter-spacing:2px;
 
-opacity:0.85;
+opacity:0.72;
 }
 
 .chapter-title{
 font-size:3rem;
 font-weight:800;
 
-width:100%;
-max-width:100%;
+line-height:0.95;
 
-line-height:.92;
+letter-spacing:-0.05em;
 
-word-break:break-word;
-overflow-wrap:break-word;
-
-hyphens:none;
-
-padding-right:6px;
-
-text-wrap:balance;
+text-shadow:
+0 8px 30px rgba(0,0,0,0.4);
 }
 
-/* CONTINUE USING YOUR REMAINING ORIGINAL CSS BELOW */
+/* NAVIGATION ARROWS */
 
 .nav-arrow{
 position:absolute;
@@ -612,8 +675,8 @@ transform:translateY(-50%);
 
 z-index:50;
 
-width:62px;
-height:62px;
+width:52px;
+height:52px;
 
 border:none;
 
@@ -621,7 +684,7 @@ border-radius:50%;
 
 color:white;
 
-font-size:1.2rem;
+font-size:1rem;
 
 cursor:pointer;
 
@@ -630,29 +693,41 @@ align-items:center;
 justify-content:center;
 
 background:
-rgba(15,23,42,0.72);
+rgba(15,23,42,0.58);
 
-backdrop-filter:blur(16px);
--webkit-backdrop-filter:blur(16px);
+backdrop-filter:blur(24px);
+-webkit-backdrop-filter:blur(24px);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.25);
+
+opacity:0.92;
 
 transition:
-transform 0.2s ease,
-background 0.2s ease;
+transform .22s ease,
+opacity .22s ease;
 }
 
 .nav-arrow:hover{
+opacity:1;
+
 transform:
 translateY(-50%)
-scale(1.05);
+scale(1.06);
 }
 
 .nav-arrow.prev{
-left:10px;
+left:8px;
 }
 
 .nav-arrow.next{
-right:10px;
+right:8px;
 }
+
+/* ABOUT */
 
 .about-section{
 width:95%;
@@ -663,6 +738,75 @@ margin:50px auto 0;
 padding:35px;
 border-radius:32px;
 }
+
+.about-card h2{
+font-size:2rem;
+font-weight:800;
+
+margin-bottom:14px;
+}
+
+.about-card p{
+line-height:1.8;
+
+font-size:1rem;
+
+opacity:0.82;
+
+max-width:760px;
+}
+
+/* CONTACTS */
+
+.contacts-section{
+width:95%;
+
+margin:50px auto 0;
+}
+
+.contacts-card{
+padding:36px;
+
+border-radius:34px;
+}
+
+.contacts-card h2{
+font-size:
+clamp(2rem,5vw,3rem);
+
+font-weight:900;
+
+letter-spacing:-0.05em;
+
+margin-bottom:26px;
+}
+
+.contacts-grid{
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:18px;
+}
+
+.contact-item{
+display:flex;
+align-items:center;
+gap:14px;
+
+padding:20px;
+
+border-radius:24px;
+
+background:
+rgba(255,255,255,0.05);
+
+border:
+1px solid rgba(255,255,255,0.06);
+}
+
+/* AI */
 
 .floating-ai{
 position:fixed;
@@ -685,22 +829,13 @@ cursor:pointer;
 
 z-index:998;
 
-transition:transform 0.25s ease;
-
 background:
 rgba(15,23,42,0.72);
 
 backdrop-filter:blur(18px);
--webkit-backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,0.08);
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.28);
-}
-
-.floating-ai:hover{
-transform:scale(1.05);
+border:
+1px solid rgba(255,255,255,0.08);
 }
 
 .ai-panel{
@@ -730,6 +865,15 @@ transform:translateY(20px);
 transition:
 opacity 0.3s ease,
 transform 0.3s ease;
+
+background:
+rgba(15,23,42,0.72);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+box-shadow:
+0 30px 60px rgba(0,0,0,0.4);
 }
 
 .ai-panel.active{
@@ -749,72 +893,13 @@ border-bottom:
 1px solid rgba(255,255,255,0.08);
 }
 
-.ai-header p{
-font-size:0.75rem;
-opacity:0.7;
-}
-
-.ai-header h2{
-font-size:1rem;
-margin-top:3px;
-}
-
-#closeAi{
-background:transparent;
-border:none;
-color:white;
-font-size:1rem;
-cursor:pointer;
-}
-
-.ai-suggestions{
-display:flex;
-gap:10px;
-overflow-x:auto;
-
-padding:14px 18px;
-
-scrollbar-width:none;
-}
-
-.ai-suggestions::-webkit-scrollbar{
-display:none;
-}
-
-.suggestion-chip{
-border:none;
-
-padding:10px 14px;
-
-border-radius:18px;
-
-background:
-rgba(255,255,255,0.08);
-
-color:white;
-
-font-size:0.75rem;
-
-cursor:pointer;
-
-white-space:nowrap;
-
-transition:
-background 0.2s ease,
-transform 0.2s ease;
-}
-
-.suggestion-chip:hover{
-background:
-rgba(255,255,255,0.14);
-
-transform:translateY(-1px);
-}
-
 .ai-messages{
 flex:1;
+
 padding:18px;
+
 overflow-y:auto;
+
 display:flex;
 flex-direction:column;
 gap:12px;
@@ -822,9 +907,14 @@ gap:12px;
 
 .ai-message{
 padding:14px;
+
 border-radius:18px;
-background:rgba(255,255,255,0.08);
+
+background:
+rgba(255,255,255,0.08);
+
 font-size:0.82rem;
+
 line-height:1.6;
 }
 
@@ -877,17 +967,25 @@ font-weight:700;
 cursor:pointer;
 }
 
+/* FOOTER */
+
 .footer{
 width:95%;
+
 margin:45px auto 25px;
+
 padding:22px;
+
 border-radius:24px;
+
 text-align:center;
+
 font-size:0.82rem;
+
 opacity:0.8;
 }
 
-/* TABLET */
+/* MOBILE */
 
 @media screen and (max-width:768px){
 
@@ -908,34 +1006,6 @@ bottom:28px;
 
 .hero-content h1{
 font-size:2.7rem;
-line-height:0.95;
-}
-
-.navbar{
-padding:12px 16px;
-}
-
-.logo{
-width:50px;
-height:50px;
-}
-
-.nav-text h1{
-font-size:2rem;
-}
-
-.nav-text p{
-font-size:0.78rem;
-}
-
-.ai-button{
-padding:10px 14px;
-font-size:0.82rem;
-}
-
-.chapters-track{
-padding-left:14vw;
-padding-right:14vw;
 }
 
 .chapter-card{
@@ -946,73 +1016,23 @@ max-width:82vw;
 height:360px;
 }
 
+.chapter-building{
+padding:28px;
+transform:scale(0.80);
+}
+
 .chapter-title{
 font-size:2.35rem;
-line-height:.96;
-}
-
-.chapter-content{
-padding:22px;
-}
-
-.nav-arrow{
-width:54px;
-height:54px;
-font-size:1rem;
 }
 
 .ai-panel{
 width:94%;
-height:min(80vh,700px);
 right:3%;
-bottom:92px;
 }
 
 }
-
-/* SMALL IPHONE */
 
 @media screen and (max-width:430px){
-
-.navbar{
-width:calc(100% - 14px);
-
-padding:12px;
-
-border-radius:24px;
-
-top:8px;
-}
-
-.logo{
-width:42px;
-height:42px;
-}
-
-.nav-left{
-gap:10px;
-}
-
-.nav-text h1{
-font-size:1.65rem;
-line-height:0.95;
-}
-
-.nav-text p{
-font-size:0.72rem;
-}
-
-.nav-center{
-display:none;
-}
-
-.ai-button{
-padding:10px 12px;
-
-font-size:0.72rem;
-
-border-radius:16px;
-}
 
 .hero{
 width:calc(100% - 18px);
@@ -1030,33 +1050,6 @@ bottom:22px;
 
 .hero-content h1{
 font-size:2.15rem;
-line-height:1;
-}
-
-.hero-stats{
-gap:10px;
-margin-top:18px;
-margin-bottom:18px;
-}
-
-.hero-stat{
-padding:14px 16px;
-border-radius:18px;
-}
-
-.hero-search{
-padding:8px;
-border-radius:18px;
-}
-
-.hero-search input{
-padding:14px 14px;
-font-size:.9rem;
-}
-
-.chapters-track{
-padding-left:18vw;
-padding-right:18vw;
 }
 
 .chapter-card{
@@ -1069,42 +1062,24 @@ height:330px;
 border-radius:28px;
 }
 
+.chapter-building{
+padding:18px;
+transform:scale(0.78);
+}
+
 .chapter-title{
-font-size:2rem;
+font-size:1.95rem;
 line-height:1;
 }
 
-.chapter-content{
-padding:20px;
-}
-
-.chapter-roman{
-font-size:.76rem;
-}
-
 .nav-arrow{
-width:50px;
-height:50px;
-font-size:.9rem;
-}
-
-.nav-arrow.prev{
-left:4px;
-}
-
-.nav-arrow.next{
-right:4px;
-}
-
-.about-card{
-padding:22px;
-border-radius:26px;
+width:44px;
+height:44px;
+font-size:.82rem;
 }
 
 .ai-panel{
 width:calc(100% - 16px);
-
-height:min(78vh,680px);
 
 right:8px;
 bottom:86px;
@@ -1112,740 +1087,13 @@ bottom:86px;
 border-radius:28px;
 }
 
-.ai-input-area{
-padding:14px;
-}
-
-.ai-input-area input{
-padding:13px 14px;
-}
-
-.ai-input-area button{
-padding:13px 16px;
+.contacts-card{
+padding:24px;
 }
 
 .footer{
 width:calc(100% - 18px);
 padding:18px;
-font-size:.75rem;
-}
-
-}
-
-/* EXTRA POLISH + PRESERVED ENHANCEMENTS */
-
-.hero-badge{
-display:inline-flex;
-align-items:center;
-gap:10px;
-
-padding:12px 18px;
-
-border-radius:999px;
-
-margin-bottom:22px;
-
-background:
-rgba(255,255,255,0.08);
-
-backdrop-filter:blur(16px);
--webkit-backdrop-filter:blur(16px);
-
-border:1px solid rgba(255,255,255,0.08);
-
-font-size:0.78rem;
-font-weight:700;
-
-letter-spacing:0.08em;
-
-text-transform:uppercase;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.22);
-}
-
-.hero-content p{
-margin-top:18px;
-
-font-size:1.05rem;
-
-line-height:1.7;
-
-color:rgba(255,255,255,0.82);
-
-max-width:620px;
-}
-
-.hero-stat h3{
-font-size:1.8rem;
-font-weight:800;
-}
-
-.hero-stat span{
-display:block;
-
-margin-top:4px;
-
-font-size:0.82rem;
-
-opacity:0.76;
-}
-
-.section-mini{
-font-size:0.75rem;
-
-letter-spacing:0.18em;
-
-text-transform:uppercase;
-
-opacity:0.7;
-
-margin-bottom:10px;
-}
-
-.section-header h2{
-font-size:clamp(2rem,5vw,4rem);
-
-line-height:0.95;
-
-font-weight:900;
-
-letter-spacing:-0.05em;
-}
-
-.about-card h2{
-font-size:2rem;
-font-weight:800;
-
-margin-bottom:14px;
-}
-
-.about-card p{
-line-height:1.8;
-
-font-size:1rem;
-
-opacity:0.82;
-
-max-width:760px;
-}
-
-/* GLASS DEPTH */
-
-.chapter-card,
-.about-card,
-.hero-stat,
-.hero-search,
-.ai-panel,
-.footer{
-box-shadow:
-0 10px 40px rgba(0,0,0,0.28),
-inset 0 1px 0 rgba(255,255,255,0.06);
-}
-
-/* SMOOTHER MOBILE */
-
-@media screen and (max-width:768px){
-
-.hero-badge{
-font-size:0.7rem;
-
-padding:10px 14px;
-
-margin-bottom:18px;
-}
-
-.hero-content p{
-font-size:0.95rem;
-
-line-height:1.6;
-}
-
-.section-header h2{
-font-size:2.4rem;
-}
-
-.about-card h2{
-font-size:1.7rem;
-}
-
-.about-card p{
-font-size:0.92rem;
-}
-
-.hero-stat h3{
-font-size:1.5rem;
-}
-
-}
-
-@media screen and (max-width:430px){
-
-.hero-badge{
-font-size:0.62rem;
-
-padding:9px 12px;
-
-border-radius:18px;
-}
-
-.hero-content p{
-font-size:0.88rem;
-
-margin-top:14px;
-}
-
-.section-header h2{
-font-size:2rem;
-}
-
-.about-card h2{
-font-size:1.45rem;
-}
-
-.about-card p{
-font-size:0.86rem;
-line-height:1.7;
-}
-
-.hero-stat h3{
-font-size:1.3rem;
-}
-
-.hero-stat span{
-font-size:0.72rem;
-}
-
-}
-
-/* =========================================================
-   LGU PORTAL 15 💎
-   PRESERVED + UPDATED MAIN CSS
-   ADD THIS BELOW YOUR CURRENT CSS
-========================================================= */
-
-/* =========================================================
-   CONTACTS NAVBAR
-========================================================= */
-
-.nav-center a{
-position:relative;
-}
-
-.nav-center a::after{
-content:'';
-
-position:absolute;
-
-left:0;
-bottom:-6px;
-
-width:0;
-height:2px;
-
-background:white;
-
-border-radius:999px;
-
-transition:width .25s ease;
-}
-
-.nav-center a:hover::after{
-width:100%;
-}
-
-/* =========================================================
-   CENTERED MUNICIPAL HALL IMAGE
-========================================================= */
-
-.chapter-image{
-position:absolute;
-inset:0;
-
-width:100%;
-height:100%;
-
-object-fit:contain !important;
-object-position:center center !important;
-
-padding:40px;
-
-opacity:0.16 !important;
-
-transform:
-scale(0.88)
-translateZ(0);
-
-filter:
-drop-shadow(0 20px 40px rgba(0,0,0,0.35));
-
-pointer-events:none;
-}
-
-/* =========================================================
-   CLEANER CHAPTER OVERLAY
-========================================================= */
-
-.chapter-overlay{
-background:
-linear-gradient(
-to top,
-rgba(2,6,23,0.97),
-rgba(2,6,23,0.42),
-rgba(2,6,23,0.12)
-) !important;
-}
-
-/* =========================================================
-   IMPROVED CHAPTER CONTENT POSITIONING
-========================================================= */
-
-.chapter-content{
-justify-content:flex-end;
-
-padding:28px;
-
-z-index:5;
-}
-
-.chapter-title{
-max-width:92%;
-
-font-size:3rem;
-
-line-height:0.95;
-
-letter-spacing:-0.05em;
-
-text-shadow:
-0 8px 30px rgba(0,0,0,0.4);
-}
-
-.chapter-roman{
-margin-bottom:6px;
-
-opacity:0.72;
-}
-
-/* =========================================================
-   CLEANER CHAPTER CARD
-========================================================= */
-
-.chapter-card{
-background:
-linear-gradient(
-145deg,
-rgba(255,255,255,0.06),
-rgba(255,255,255,0.02)
-);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-overflow:hidden;
-}
-
-/* =========================================================
-   MOBILE CHAPTER CENTERING FIX
-========================================================= */
-
-@media screen and (max-width:768px){
-
-.chapter-card{
-display:flex;
-align-items:flex-end;
-justify-content:flex-start;
-}
-
-.chapter-image{
-padding:28px;
-
-opacity:0.14 !important;
-
-transform:
-scale(0.82)
-translateY(-4px);
-}
-
-.chapter-title{
-font-size:2.35rem;
-max-width:100%;
-}
-
-}
-
-/* =========================================================
-   SMALL PHONE FIX
-========================================================= */
-
-@media screen and (max-width:430px){
-
-.chapter-card{
-height:320px;
-}
-
-.chapter-image{
-padding:20px;
-
-opacity:0.13 !important;
-
-transform:
-scale(0.78)
-translateY(-8px);
-}
-
-.chapter-content{
-padding:20px;
-}
-
-.chapter-title{
-font-size:1.95rem;
-
-line-height:1;
-
-max-width:100%;
-}
-
-}
-
-/* =========================================================
-   IMPROVED ARROWS
-========================================================= */
-
-.nav-arrow{
-width:52px !important;
-height:52px !important;
-
-background:
-rgba(15,23,42,0.58) !important;
-
-backdrop-filter:blur(24px);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.25);
-
-opacity:0.92;
-
-transition:
-transform .22s ease,
-opacity .22s ease,
-background .22s ease;
-}
-
-.nav-arrow:hover{
-opacity:1;
-
-transform:
-translateY(-50%)
-scale(1.06);
-}
-
-.nav-arrow.prev{
-left:8px;
-}
-
-.nav-arrow.next{
-right:8px;
-}
-
-/* =========================================================
-   PHONE ARROWS
-========================================================= */
-
-@media screen and (max-width:430px){
-
-.nav-arrow{
-width:44px !important;
-height:44px !important;
-
-font-size:.82rem;
-
-background:
-rgba(15,23,42,0.52) !important;
-}
-
-.nav-arrow.prev{
-left:2px;
-}
-
-.nav-arrow.next{
-right:2px;
-}
-
-}
-
-/* =========================================================
-   CONTACTS SECTION
-========================================================= */
-
-.contacts-section{
-width:95%;
-
-margin:
-50px auto 0;
-}
-
-.contacts-card{
-padding:36px;
-
-border-radius:34px;
-}
-
-.contacts-card h2{
-font-size:
-clamp(2rem,5vw,3rem);
-
-font-weight:900;
-
-letter-spacing:-0.05em;
-
-margin-bottom:26px;
-}
-
-.contacts-grid{
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(220px,1fr));
-
-gap:18px;
-}
-
-.contact-item{
-display:flex;
-align-items:center;
-gap:14px;
-
-padding:20px;
-
-border-radius:24px;
-
-background:
-rgba(255,255,255,0.05);
-
-border:
-1px solid rgba(255,255,255,0.06);
-
-transition:
-transform .25s ease,
-background .25s ease;
-}
-
-.contact-item:hover{
-transform:translateY(-3px);
-
-background:
-rgba(255,255,255,0.08);
-}
-
-.contact-item span{
-font-size:1.4rem;
-}
-
-.contact-item p{
-font-size:0.92rem;
-
-line-height:1.6;
-
-opacity:0.82;
-}
-
-/* =========================================================
-   MOBILE CONTACTS
-========================================================= */
-
-@media screen and (max-width:430px){
-
-.contacts-card{
-padding:24px;
-
-border-radius:28px;
-}
-
-.contacts-card h2{
-font-size:1.8rem;
-}
-
-.contact-item{
-padding:16px;
-
-border-radius:20px;
-}
-
-.contact-item p{
-font-size:0.84rem;
-}
-
-}
-
-/* =========================================================
-   REVEAL ANIMATIONS
-========================================================= */
-
-.about-card,
-.contacts-card,
-.chapter-card{
-opacity:0;
-
-transform:
-translateY(30px);
-
-transition:
-opacity .6s ease,
-transform .6s ease;
-}
-
-.about-card.show,
-.contacts-card.show,
-.chapter-card.show{
-opacity:1;
-
-transform:
-translateY(0);
-}
-
-/* =========================================================
-   CLEANER AI PANEL DEPTH
-========================================================= */
-
-.ai-panel{
-background:
-rgba(15,23,42,0.72);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-box-shadow:
-0 30px 60px rgba(0,0,0,0.4);
-}
-
-/* =========================================================
-   HERO DEPTH ENHANCEMENT
-========================================================= */
-
-.hero-overlay{
-background:
-linear-gradient(
-to top,
-rgba(2,6,23,0.96),
-rgba(2,6,23,0.36),
-rgba(2,6,23,0.08)
-);
-}
-
-/* =========================================================
-   SMOOTHER SCROLLING
-========================================================= */
-
-html{
-scroll-padding-top:100px;
-}
-
-body{
-overflow-x:hidden;
-}
-
-/* =========================================================
-   FINAL MOBILE OPTIMIZATION
-========================================================= */
-
-@media screen and (max-width:430px){
-
-.hero-content{
-bottom:20px;
-}
-
-.hero-stat{
-min-width:92px;
-}
-
-.hero-search{
-margin-top:4px;
-}
-
-.footer{
-margin-bottom:20px;
-}
-
-}
-
-/* =========================================================
-   COVERPHOTO + CENTERED MUNICIPAL HALL
-========================================================= */
-
-.chapter-image{
-object-fit:cover !important;
-object-position:center !important;
-
-opacity:0.42 !important;
-
-padding:0 !important;
-
-transform:scale(1.02);
-}
-
-.chapter-building{
-position:absolute;
-
-inset:0;
-
-width:100%;
-height:100%;
-
-object-fit:contain;
-object-position:center;
-
-padding:40px;
-
-opacity:0.15;
-
-z-index:2;
-
-pointer-events:none;
-
-transform:
-scale(0.82)
-translateY(-4px);
-
-filter:
-drop-shadow(0 20px 40px rgba(0,0,0,0.34));
-}
-
-.chapter-content{
-z-index:5;
-}
-
-@media screen and (max-width:768px){
-
-.chapter-building{
-
-padding:28px;
-
-transform:
-scale(0.78)
-translateY(-6px);
-
-opacity:0.14;
-
-}
-
-}
-
-@media screen and (max-width:430px){
-
-.chapter-building{
-
-padding:18px;
-
-transform:
-scale(0.74)
-translateY(-8px);
-
-opacity:0.12;
-
 }
 
 }
