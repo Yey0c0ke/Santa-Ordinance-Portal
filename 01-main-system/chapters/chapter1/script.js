@@ -7,10 +7,9 @@ document.querySelectorAll(".legal-modal");
 const closeButtons =
 document.querySelectorAll(".close-modal");
 
-const accordions =
-document.querySelectorAll(".accordion");
-
+// ======================================
 // OPEN MODALS
+// ======================================
 
 legalCards.forEach((card)=>{
 
@@ -24,6 +23,18 @@ card.dataset.modal;
 const modal =
 document.getElementById(modalId);
 
+if(!modal) return;
+
+// CLOSE OTHER MODALS FIRST
+
+modals.forEach((item)=>{
+
+item.classList.remove("active");
+
+});
+
+// OPEN TARGET
+
 modal.classList.add("active");
 
 document.body.style.overflow =
@@ -34,13 +45,11 @@ document.body.style.overflow =
 
 });
 
-// CLOSE BUTTONS
+// ======================================
+// CLOSE ALL MODALS
+// ======================================
 
-closeButtons.forEach((button)=>{
-
-button.addEventListener(
-"click",
-()=>{
+function closeAllModals(){
 
 modals.forEach((modal)=>{
 
@@ -52,11 +61,23 @@ document.body.style.overflow =
 "auto";
 
 }
+
+// ======================================
+// CLOSE BUTTONS
+// ======================================
+
+closeButtons.forEach((button)=>{
+
+button.addEventListener(
+"click",
+closeAllModals
 );
 
 });
 
-// CLOSE OUTSIDE
+// ======================================
+// CLICK OUTSIDE
+// ======================================
 
 modals.forEach((modal)=>{
 
@@ -66,10 +87,7 @@ modal.addEventListener(
 
 if(e.target === modal){
 
-modal.classList.remove("active");
-
-document.body.style.overflow =
-"auto";
+closeAllModals();
 
 }
 
@@ -78,18 +96,60 @@ document.body.style.overflow =
 
 });
 
-// ACCORDIONS
+// ======================================
+// ESC CLOSE
+// ======================================
 
-accordions.forEach((accordion)=>{
+document.addEventListener(
+"keydown",
+(e)=>{
 
-const header =
-accordion.querySelector(".accordion-header");
+if(e.key === "Escape"){
+
+closeAllModals();
+
+}
+
+}
+);
+
+// ======================================
+// GLOBAL ACCORDION SYSTEM
+// ONLY ONE OPEN
+// ======================================
+
+document
+.querySelectorAll(".accordion-header")
+.forEach((header)=>{
 
 header.addEventListener(
 "click",
 ()=>{
 
-accordion.classList.toggle("active");
+const currentAccordion =
+header.parentElement;
+
+const parentModal =
+currentAccordion.closest(".modal-scroll");
+
+// CLOSE ALL ACCORDIONS
+// INSIDE CURRENT MODAL ONLY
+
+parentModal
+.querySelectorAll(".accordion")
+.forEach((accordion)=>{
+
+if(accordion !== currentAccordion){
+
+accordion.classList.remove("active");
+
+}
+
+});
+
+// TOGGLE CURRENT
+
+currentAccordion.classList.toggle("active");
 
 }
 );
@@ -99,7 +159,7 @@ accordion.classList.toggle("active");
 console.log(`
 ========================================
 CHAPTER I
-GENERAL PROVISIONS
-LEGAL ACCORDION SYSTEM ACTIVE
+LEGAL READER ACTIVE
+GLOBAL ACCORDION SYSTEM ACTIVE
 ========================================
 `);

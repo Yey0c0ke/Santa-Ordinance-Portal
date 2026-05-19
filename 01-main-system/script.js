@@ -1,7 +1,6 @@
 // ======================================================
 // LGU PORTAL 15 💎
-// OPTIMIZED PRESERVED MAIN SYSTEM
-// TRUE CENTER CAROUSEL + AI UPGRADE
+// PRESERVED + OPTIMIZED MAIN SYSTEM
 // ======================================================
 
 const chaptersData = [
@@ -13,7 +12,6 @@ image:"./phts/coverphoto.png",
 file:"./chapters/chapter1/index.html",
 keywords:[
 "general",
-"provisions",
 "definitions",
 "rules",
 "construction",
@@ -39,7 +37,6 @@ image:"./phts/coverphoto.png",
 file:"./chapters/chapter3/index.html",
 keywords:[
 "tax",
-"taxation",
 "revenue",
 "fees"
 ]
@@ -52,8 +49,7 @@ image:"./phts/coverphoto.png",
 file:"./chapters/chapter4/index.html",
 keywords:[
 "safety",
-"emergency",
-"security"
+"emergency"
 ]
 },
 
@@ -64,8 +60,7 @@ image:"./phts/coverphoto.png",
 file:"./chapters/chapter5/index.html",
 keywords:[
 "health",
-"sanitation",
-"garbage"
+"sanitation"
 ]
 },
 
@@ -76,8 +71,7 @@ image:"./phts/coverphoto.png",
 file:"./chapters/chapter6/index.html",
 keywords:[
 "environment",
-"waste",
-"pollution"
+"waste"
 ]
 },
 
@@ -88,8 +82,7 @@ image:"./phts/coverphoto.png",
 file:"./chapters/chapter7/index.html",
 keywords:[
 "business",
-"permit",
-"commercial"
+"permit"
 ]
 },
 
@@ -112,8 +105,7 @@ image:"./phts/coverphoto.png",
 file:"./chapters/chapter9/index.html",
 keywords:[
 "utilities",
-"water",
-"electricity"
+"water"
 ]
 },
 
@@ -124,8 +116,7 @@ image:"./phts/coverphoto.png",
 file:"./chapters/chapter10/index.html",
 keywords:[
 "penalty",
-"violation",
-"fine"
+"violation"
 ]
 },
 
@@ -212,8 +203,6 @@ initializeAI();
 
 initializeSuggestions();
 
-initializePerformance();
-
 }
 );
 
@@ -224,18 +213,6 @@ initializePerformance();
 function renderChapters(chapters){
 
 chaptersTrack.innerHTML = "";
-
-if(chapters.length === 0){
-
-chaptersTrack.innerHTML = `
-<div class="ai-message">
-No ordinance chapters found.
-</div>
-`;
-
-return;
-
-}
 
 chapters.forEach((chapter)=>{
 
@@ -352,8 +329,6 @@ currentIndex - 1,
 
 }
 
-if(!targetCard) return;
-
 const targetRect =
 targetCard.getBoundingClientRect();
 
@@ -366,7 +341,6 @@ targetCenter - trackCenter;
 chaptersTrack.scrollBy({
 
 left:offset,
-
 behavior:"smooth"
 
 });
@@ -427,12 +401,6 @@ chapter.title
 
 ||
 
-chapter.number
-.toLowerCase()
-.includes(query)
-
-||
-
 chapter.keywords.some(
 (keyword)=>
 keyword.includes(query)
@@ -487,15 +455,9 @@ new Date().getFullYear();
 
 function initializeNavbar(){
 
-let ticking = false;
-
 window.addEventListener(
 "scroll",
 ()=>{
-
-if(!ticking){
-
-window.requestAnimationFrame(()=>{
 
 if(window.scrollY > 40){
 
@@ -504,14 +466,6 @@ navbar.classList.add("scrolled");
 }else{
 
 navbar.classList.remove("scrolled");
-
-}
-
-ticking = false;
-
-});
-
-ticking = true;
 
 }
 
@@ -524,7 +478,7 @@ passive:true
 }
 
 // ======================================================
-// AI SYSTEM
+// AI
 // ======================================================
 
 function initializeAI(){
@@ -541,32 +495,20 @@ aiPanel.classList.remove("active");
 
 };
 
-if(aiButton){
-
 aiButton.addEventListener(
 "click",
 openAI
 );
-
-}
-
-if(floatingAi){
 
 floatingAi.addEventListener(
 "click",
 openAI
 );
 
-}
-
-if(closeAi){
-
 closeAi.addEventListener(
 "click",
 closeAI
 );
-
-}
 
 sendAi.addEventListener(
 "click",
@@ -594,10 +536,9 @@ sendMessage();
 
 function initializeSuggestions(){
 
-const chips =
-document.querySelectorAll(".suggestion-chip");
-
-chips.forEach((chip)=>{
+document
+.querySelectorAll(".suggestion-chip")
+.forEach((chip)=>{
 
 chip.addEventListener(
 "click",
@@ -624,12 +565,9 @@ function sendMessage(){
 const text =
 aiInput.value.trim();
 
-if(text === "") return;
+if(!text) return;
 
-addMessage(
-text,
-"user"
-);
+addMessage(text,"user");
 
 aiInput.value = "";
 
@@ -637,7 +575,7 @@ setTimeout(()=>{
 
 generateResponse(text);
 
-},350);
+},300);
 
 }
 
@@ -645,10 +583,7 @@ generateResponse(text);
 // ADD MESSAGE
 // ======================================================
 
-function addMessage(
-text,
-type
-){
+function addMessage(text,type){
 
 const div =
 document.createElement("div");
@@ -664,17 +599,13 @@ div.innerHTML = text;
 
 aiMessages.appendChild(div);
 
-requestAnimationFrame(()=>{
-
 aiMessages.scrollTop =
 aiMessages.scrollHeight;
-
-});
 
 }
 
 // ======================================================
-// AI KNOWLEDGE SYSTEM
+// AI KNOWLEDGE
 // ======================================================
 
 function generateResponse(input){
@@ -685,164 +616,61 @@ input.toLowerCase();
 let response =
 "Legal ordinance information unavailable.";
 
-const legalKnowledge = [
+if(
+lower.includes("tax")
+){
 
-{
-keywords:[
-"general",
-"definitions",
-"rules",
-"construction",
-"scope"
-],
+response = `
+<b>Chapter I — Definitions</b><br><br>
 
-response:`
-<b>Chapter I — General Provisions</b><br><br>
+Tax refers to an enforced monetary contribution imposed by law to support governmental operations and public services.
+`;
 
-Chapter I establishes the foundational legal framework of the Code of General Ordinances.<br><br>
+}
 
-It includes:
-• ordinance scope
-• legal definitions
-• rules of construction
-• interpretation standards
-• codification framework
-`
-},
+if(
+lower.includes("permit")
+){
 
-{
-keywords:[
-"tax",
-"taxation",
-"fees"
-],
+response = `
+<b>Chapter I — License or Permit</b><br><br>
 
-response:`
-<b>Chapter III — Revenue and Taxation</b><br><br>
+A permit is a legal authorization granted by competent authority allowing regulated activity or occupation.
+`;
 
-This chapter governs municipal taxation, fees, revenue generation, and related fiscal regulations.
-`
-},
+}
 
-{
-keywords:[
-"business",
-"permit",
-"commercial"
-],
+if(
+lower.includes("business")
+){
 
-response:`
+response = `
 <b>Chapter VII — Business Regulations</b><br><br>
 
-This chapter governs business permits, commercial regulation, licensing, and municipal business compliance.
-`
-},
+This chapter governs business permits, licensing, and municipal commercial regulation.
+`;
 
-{
-keywords:[
-"traffic",
-"parking",
-"vehicle"
-],
+}
 
-response:`
+if(
+lower.includes("traffic")
+){
+
+response = `
 <b>Chapter VIII — Traffic and Transportation</b><br><br>
 
-This chapter governs traffic management, parking rules, transportation regulation, and vehicle-related municipal provisions.
-`
-},
-
-{
-keywords:[
-"penalty",
-"violation",
-"fine"
-],
-
-response:`
-<b>Chapter X — Penal Provisions</b><br><br>
-
-This chapter establishes penalties, violations, fines, and enforcement consequences for ordinance infractions.
-`
-}
-
-];
-
-legalKnowledge.forEach((item)=>{
-
-item.keywords.forEach((keyword)=>{
-
-if(lower.includes(keyword)){
-
-response =
-item.response;
-
-}
-
-});
-
-});
-
-if(lower.includes("what is tax")){
-
-response = `
-<b>Definition — Tax</b><br><br>
-
-Under Chapter I Article C, tax refers to an enforced monetary contribution imposed by law to support governmental operations and public services.
+This chapter governs municipal traffic management and transportation regulation.
 `;
 
 }
 
-if(lower.includes("what is permit")){
-
-response = `
-<b>Definition — Permit</b><br><br>
-
-Under Chapter I Article C, a license or permit is a legal authorization granted by competent authority allowing regulated activity or occupation.
-`;
+addMessage(response,"ai");
 
 }
-
-addMessage(
-response,
-"ai"
-);
-
-}
-
-// ======================================================
-// PERFORMANCE
-// ======================================================
-
-function initializePerformance(){
-
-document.body.style.overflowX =
-"hidden";
-
-window.addEventListener(
-"resize",
-()=>{
-
-document.body.style.overflowX =
-"hidden";
-
-},
-{
-passive:true
-}
-);
-
-}
-
-// ======================================================
-// SYSTEM LOG
-// ======================================================
 
 console.log(`
 ========================================
 LGU PORTAL 15 💎
-OPTIMIZED PRESERVED MAIN SYSTEM
-TRUE CENTER CAROUSEL ACTIVE
-AI KNOWLEDGE SYSTEM ACTIVE
+MAIN SYSTEM ACTIVE
 ========================================
 `);
