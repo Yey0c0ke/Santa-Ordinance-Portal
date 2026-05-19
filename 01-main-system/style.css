@@ -18,14 +18,10 @@ min-height:100vh;
 text-rendering:optimizeLegibility;
 }
 
-/* PERFORMANCE */
-
 img{
 user-select:none;
 -webkit-user-drag:none;
 }
-
-/* BACKGROUND */
 
 .bg-gradient{
 position:fixed;
@@ -109,10 +105,7 @@ border:1px solid rgba(255,255,255,0.10);
 
 box-shadow:
 0 10px 30px rgba(0,0,0,0.22);
-
 }
-
-/* LOADING */
 
 .loading-screen{
 position:fixed;
@@ -389,8 +382,7 @@ transform:translateZ(0);
 }
 
 .chapter-card:hover{
-transform:
-translateY(-6px);
+transform:translateY(-6px);
 }
 
 .chapter-card:active{
@@ -425,7 +417,7 @@ z-index:2;
 
 display:flex;
 flex-direction:column;
-gap:8px;
+gap:6px;
 }
 
 .chapter-roman{
@@ -445,6 +437,10 @@ max-width:100%;
 line-height:1.08;
 
 word-break:break-word;
+
+overflow-wrap:anywhere;
+
+hyphens:auto;
 
 text-wrap:balance;
 }
@@ -536,8 +532,7 @@ opacity:0;
 
 pointer-events:none;
 
-transform:
-translateY(20px);
+transform:translateY(20px);
 
 transition:
 opacity 0.3s ease,
@@ -643,6 +638,7 @@ line-height:1.6;
 .ai-user{
 background:
 rgba(37,99,235,0.24);
+
 align-self:flex-end;
 }
 
@@ -750,22 +746,35 @@ width:82vw;
 max-width:82vw;
 
 height:220px;
+
+display:flex;
+align-items:flex-end;
 }
 
 .chapter-title{
-font-size:2rem;
-line-height:1;
+font-size:1.55rem;
+line-height:1.02;
+
 max-width:100%;
+
+word-break:break-word;
+
+overflow-wrap:anywhere;
+
+hyphens:auto;
 }
 
 .chapter-content{
 left:18px;
 right:18px;
 bottom:18px;
+
+gap:6px;
 }
 
 .chapter-roman{
-font-size:0.82rem;
+font-size:0.78rem;
+letter-spacing:1px;
 opacity:0.85;
 }
 
