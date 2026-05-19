@@ -1,6 +1,7 @@
 // ======================================================
 // LGU PORTAL 15 💎
-// OPTIMIZED PRESERVED SYSTEM
+// OPTIMIZED PRESERVED MAIN SYSTEM
+// TRUE CENTER CAROUSEL + AI UPGRADE
 // ======================================================
 
 const chaptersData = [
@@ -9,13 +10,14 @@ const chaptersData = [
 number:"I",
 title:"General Provisions",
 image:"./phts/coverphoto.png",
-file:"../chapters/chapter1/index.html",
+file:"./chapters/chapter1/index.html",
 keywords:[
 "general",
 "provisions",
-"ordinance",
 "definitions",
-"rules"
+"rules",
+"construction",
+"scope"
 ]
 },
 
@@ -23,7 +25,7 @@ keywords:[
 number:"II",
 title:"Administrative Matters",
 image:"./phts/coverphoto.png",
-file:"../chapters/chapter2/index.html",
+file:"./chapters/chapter2/index.html",
 keywords:[
 "administrative",
 "government"
@@ -34,7 +36,7 @@ keywords:[
 number:"III",
 title:"Revenue and Taxation",
 image:"./phts/coverphoto.png",
-file:"../chapters/chapter3/index.html",
+file:"./chapters/chapter3/index.html",
 keywords:[
 "tax",
 "taxation",
@@ -47,7 +49,7 @@ keywords:[
 number:"IV",
 title:"Public Safety",
 image:"./phts/coverphoto.png",
-file:"../chapters/chapter4/index.html",
+file:"./chapters/chapter4/index.html",
 keywords:[
 "safety",
 "emergency",
@@ -59,7 +61,7 @@ keywords:[
 number:"V",
 title:"Health and Sanitation",
 image:"./phts/coverphoto.png",
-file:"../chapters/chapter5/index.html",
+file:"./chapters/chapter5/index.html",
 keywords:[
 "health",
 "sanitation",
@@ -71,7 +73,7 @@ keywords:[
 number:"VI",
 title:"Environmental Management",
 image:"./phts/coverphoto.png",
-file:"../chapters/chapter6/index.html",
+file:"./chapters/chapter6/index.html",
 keywords:[
 "environment",
 "waste",
@@ -83,7 +85,7 @@ keywords:[
 number:"VII",
 title:"Business Regulations",
 image:"./phts/coverphoto.png",
-file:"../chapters/chapter7/index.html",
+file:"./chapters/chapter7/index.html",
 keywords:[
 "business",
 "permit",
@@ -95,7 +97,7 @@ keywords:[
 number:"VIII",
 title:"Traffic and Transportation",
 image:"./phts/coverphoto.png",
-file:"../chapters/chapter8/index.html",
+file:"./chapters/chapter8/index.html",
 keywords:[
 "traffic",
 "vehicle",
@@ -107,7 +109,7 @@ keywords:[
 number:"IX",
 title:"Public Utilities",
 image:"./phts/coverphoto.png",
-file:"../chapters/chapter9/index.html",
+file:"./chapters/chapter9/index.html",
 keywords:[
 "utilities",
 "water",
@@ -119,7 +121,7 @@ keywords:[
 number:"X",
 title:"Penal Provisions",
 image:"./phts/coverphoto.png",
-file:"../chapters/chapter10/index.html",
+file:"./chapters/chapter10/index.html",
 keywords:[
 "penalty",
 "violation",
@@ -131,7 +133,7 @@ keywords:[
 number:"XI",
 title:"Final Provisions",
 image:"./phts/coverphoto.png",
-file:"../chapters/chapter11/index.html",
+file:"./chapters/chapter11/index.html",
 keywords:[
 "final",
 "effectivity"
@@ -522,7 +524,7 @@ passive:true
 }
 
 // ======================================================
-// AI
+// AI SYSTEM
 // ======================================================
 
 function initializeAI(){
@@ -539,20 +541,32 @@ aiPanel.classList.remove("active");
 
 };
 
+if(aiButton){
+
 aiButton.addEventListener(
 "click",
 openAI
 );
+
+}
+
+if(floatingAi){
 
 floatingAi.addEventListener(
 "click",
 openAI
 );
 
+}
+
+if(closeAi){
+
 closeAi.addEventListener(
 "click",
 closeAI
 );
+
+}
 
 sendAi.addEventListener(
 "click",
@@ -580,9 +594,10 @@ sendMessage();
 
 function initializeSuggestions(){
 
-document
-.querySelectorAll(".suggestion-chip")
-.forEach((chip)=>{
+const chips =
+document.querySelectorAll(".suggestion-chip");
+
+chips.forEach((chip)=>{
 
 chip.addEventListener(
 "click",
@@ -609,9 +624,12 @@ function sendMessage(){
 const text =
 aiInput.value.trim();
 
-if(!text) return;
+if(text === "") return;
 
-addMessage(text,"user");
+addMessage(
+text,
+"user"
+);
 
 aiInput.value = "";
 
@@ -627,7 +645,10 @@ generateResponse(text);
 // ADD MESSAGE
 // ======================================================
 
-function addMessage(text,type){
+function addMessage(
+text,
+type
+){
 
 const div =
 document.createElement("div");
@@ -653,7 +674,7 @@ aiMessages.scrollHeight;
 }
 
 // ======================================================
-// AI RESPONSE
+// AI KNOWLEDGE SYSTEM
 // ======================================================
 
 function generateResponse(input){
@@ -664,35 +685,90 @@ input.toLowerCase();
 let response =
 "Legal ordinance information unavailable.";
 
-const ordinanceMap = [
+const legalKnowledge = [
 
 {
-keywords:["general","definitions","rules"],
+keywords:[
+"general",
+"definitions",
+"rules",
+"construction",
+"scope"
+],
+
 response:`
-<b>Chapter I</b><br>
-General Provisions
+<b>Chapter I — General Provisions</b><br><br>
+
+Chapter I establishes the foundational legal framework of the Code of General Ordinances.<br><br>
+
+It includes:
+• ordinance scope
+• legal definitions
+• rules of construction
+• interpretation standards
+• codification framework
 `
 },
 
 {
-keywords:["business","permit"],
+keywords:[
+"tax",
+"taxation",
+"fees"
+],
+
 response:`
-<b>Chapter VII</b><br>
-Business Regulations
+<b>Chapter III — Revenue and Taxation</b><br><br>
+
+This chapter governs municipal taxation, fees, revenue generation, and related fiscal regulations.
 `
 },
 
 {
-keywords:["traffic","parking"],
+keywords:[
+"business",
+"permit",
+"commercial"
+],
+
 response:`
-<b>Chapter VIII</b><br>
-Traffic and Transportation
+<b>Chapter VII — Business Regulations</b><br><br>
+
+This chapter governs business permits, commercial regulation, licensing, and municipal business compliance.
+`
+},
+
+{
+keywords:[
+"traffic",
+"parking",
+"vehicle"
+],
+
+response:`
+<b>Chapter VIII — Traffic and Transportation</b><br><br>
+
+This chapter governs traffic management, parking rules, transportation regulation, and vehicle-related municipal provisions.
+`
+},
+
+{
+keywords:[
+"penalty",
+"violation",
+"fine"
+],
+
+response:`
+<b>Chapter X — Penal Provisions</b><br><br>
+
+This chapter establishes penalties, violations, fines, and enforcement consequences for ordinance infractions.
 `
 }
 
 ];
 
-ordinanceMap.forEach((item)=>{
+legalKnowledge.forEach((item)=>{
 
 item.keywords.forEach((keyword)=>{
 
@@ -707,7 +783,30 @@ item.response;
 
 });
 
-addMessage(response,"ai");
+if(lower.includes("what is tax")){
+
+response = `
+<b>Definition — Tax</b><br><br>
+
+Under Chapter I Article C, tax refers to an enforced monetary contribution imposed by law to support governmental operations and public services.
+`;
+
+}
+
+if(lower.includes("what is permit")){
+
+response = `
+<b>Definition — Permit</b><br><br>
+
+Under Chapter I Article C, a license or permit is a legal authorization granted by competent authority allowing regulated activity or occupation.
+`;
+
+}
+
+addMessage(
+response,
+"ai"
+);
 
 }
 
@@ -742,6 +841,8 @@ passive:true
 console.log(`
 ========================================
 LGU PORTAL 15 💎
-OPTIMIZED PRESERVED SYSTEM
+OPTIMIZED PRESERVED MAIN SYSTEM
+TRUE CENTER CAROUSEL ACTIVE
+AI KNOWLEDGE SYSTEM ACTIVE
 ========================================
 `);

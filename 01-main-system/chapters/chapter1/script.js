@@ -1,44 +1,78 @@
-const scrollTopBtn =
-document.getElementById("scrollTopBtn");
+const legalCards =
+document.querySelectorAll(".legal-card");
 
-window.addEventListener(
-"scroll",
-()=>{
+const modals =
+document.querySelectorAll(".legal-modal");
 
-if(window.scrollY > 400){
+const closeButtons =
+document.querySelectorAll(".close-modal");
 
-scrollTopBtn.style.opacity = "1";
+legalCards.forEach((card)=>{
 
-}else{
-
-scrollTopBtn.style.opacity = "0";
-
-}
-
-},
-{
-passive:true
-}
-);
-
-scrollTopBtn.addEventListener(
+card.addEventListener(
 "click",
 ()=>{
 
-window.scrollTo({
+const modalId =
+card.dataset.modal;
 
-top:0,
-behavior:"smooth"
+const modal =
+document.getElementById(modalId);
 
-});
+modal.classList.add("active");
+
+document.body.style.overflow =
+"hidden";
 
 }
 );
+
+});
+
+closeButtons.forEach((button)=>{
+
+button.addEventListener(
+"click",
+()=>{
+
+modals.forEach((modal)=>{
+
+modal.classList.remove("active");
+
+});
+
+document.body.style.overflow =
+"auto";
+
+}
+);
+
+});
+
+modals.forEach((modal)=>{
+
+modal.addEventListener(
+"click",
+(e)=>{
+
+if(e.target === modal){
+
+modal.classList.remove("active");
+
+document.body.style.overflow =
+"auto";
+
+}
+
+}
+);
+
+});
 
 console.log(`
 ========================================
 CHAPTER I
 GENERAL PROVISIONS
-LGU PORTAL 15 LEGAL SYSTEM
+POPUP LEGAL SYSTEM ACTIVE
 ========================================
 `);
