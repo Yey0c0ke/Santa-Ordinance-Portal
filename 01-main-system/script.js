@@ -1,6 +1,6 @@
 // ======================================================
 //                 YEYO 💎
-//      LGU PORTAL 16 • FINAL IOS ENGINE
+//      LGU PORTAL 16 • MAIN ENGINE
 // ======================================================
 
 // ======================================================
@@ -153,14 +153,14 @@ document.getElementById("loadingScreen");
 const currentYear =
 document.getElementById("currentYear");
 
+const navbar =
+document.getElementById("navbar");
+
 const scrollLeftButton =
 document.getElementById("scrollLeft");
 
 const scrollRightButton =
 document.getElementById("scrollRight");
-
-const navbar =
-document.getElementById("navbar");
 
 const aiButton =
 document.getElementById("aiButton");
@@ -199,10 +199,8 @@ let revealObserver;
 
 let carouselTimeout;
 
-let cardWidth = 0;
-
 // ======================================================
-// INITIALIZE
+// INIT
 // ======================================================
 
 document.addEventListener(
@@ -263,6 +261,7 @@ src="${chapter.image}"
 class="chapter-image"
 loading="lazy"
 decoding="async"
+onerror="this.src='./phts/coverphoto.png'"
 >
 
 <div class="chapter-overlay"></div>
@@ -285,52 +284,6 @@ chaptersTrack.appendChild(card);
 
 });
 
-calculateCardWidth();
-
-setInitialCarouselPosition();
-
-updateActiveCard();
-
-reinitializeRevealObserver();
-
-}
-
-// ======================================================
-// CARD WIDTH
-// ======================================================
-
-function calculateCardWidth(){
-
-const firstCard =
-document.querySelector(".chapter-card");
-
-if(!firstCard){
-
-cardWidth = 340;
-
-return;
-
-}
-
-const style =
-window.getComputedStyle(chaptersTrack);
-
-const gap =
-parseFloat(style.gap || 24);
-
-cardWidth =
-firstCard.offsetWidth + gap;
-
-}
-
-// ======================================================
-// INITIAL POSITION
-// ======================================================
-
-function setInitialCarouselPosition(){
-
-requestAnimationFrame(()=>{
-
 requestAnimationFrame(()=>{
 
 chaptersTrack.scrollLeft = 0;
@@ -338,8 +291,6 @@ chaptersTrack.scrollLeft = 0;
 activeIndex = 0;
 
 updateActiveCard();
-
-});
 
 });
 
@@ -1025,8 +976,6 @@ function initializeResizeHandler(){
 window.addEventListener(
 "resize",
 debounce(()=>{
-
-calculateCardWidth();
 
 snapToNearestCard();
 
