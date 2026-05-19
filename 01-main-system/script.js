@@ -22,7 +22,7 @@ keywords:[
 {
 number:"II",
 title:"Administrative Matters",
-image:"./phts/balayili.png",
+image:"./phts/coverphoto.png",
 file:"./chapters/chapter2/index.html",
 keywords:[
 "administrative",
@@ -33,7 +33,7 @@ keywords:[
 {
 number:"III",
 title:"Revenue and Taxation",
-image:"./phts/balayili.png",
+image:"./phts/coverphoto.png",
 file:"./chapters/chapter3/index.html",
 keywords:[
 "tax",
@@ -45,7 +45,7 @@ keywords:[
 {
 number:"IV",
 title:"Public Safety",
-image:"./phts/balayili.png",
+image:"./phts/coverphoto.png",
 file:"./chapters/chapter4/index.html",
 keywords:[
 "safety",
@@ -56,7 +56,7 @@ keywords:[
 {
 number:"V",
 title:"Health and Sanitation",
-image:"./phts/balayili.png",
+image:"./phts/coverphoto.png",
 file:"./chapters/chapter5/index.html",
 keywords:[
 "health",
@@ -67,7 +67,7 @@ keywords:[
 {
 number:"VI",
 title:"Environmental Management",
-image:"./phts/balayili.png",
+image:"./phts/coverphoto.png",
 file:"./chapters/chapter6/index.html",
 keywords:[
 "environment",
@@ -78,7 +78,7 @@ keywords:[
 {
 number:"VII",
 title:"Business Regulations",
-image:"./phts/balayili.png",
+image:"./phts/coverphoto.png",
 file:"./chapters/chapter7/index.html",
 keywords:[
 "business",
@@ -89,7 +89,7 @@ keywords:[
 {
 number:"VIII",
 title:"Traffic and Transportation",
-image:"./phts/balayili.png",
+image:"./phts/coverphoto.png",
 file:"./chapters/chapter8/index.html",
 keywords:[
 "traffic",
@@ -101,7 +101,7 @@ keywords:[
 {
 number:"IX",
 title:"Public Utilities",
-image:"./phts/balayili.png",
+image:"./phts/coverphoto.png",
 file:"./chapters/chapter9/index.html",
 keywords:[
 "utilities",
@@ -112,7 +112,7 @@ keywords:[
 {
 number:"X",
 title:"Penal Provisions",
-image:"./phts/balayili.png",
+image:"./phts/coverphoto.png",
 file:"./chapters/chapter10/index.html",
 keywords:[
 "penalty",
@@ -123,7 +123,7 @@ keywords:[
 {
 number:"XI",
 title:"Final Provisions",
-image:"./phts/balayili.png",
+image:"./phts/coverphoto.png",
 file:"./chapters/chapter11/index.html",
 keywords:[
 "final",
@@ -234,10 +234,17 @@ src="${chapter.image}"
 class="chapter-image"
 loading="lazy"
 decoding="async"
-onerror="this.src='./phts/balayili.png'"
+onerror="this.src='./phts/coverphoto.png'"
 >
 
 <div class="chapter-overlay"></div>
+
+<img
+src="./phts/balayili.png"
+class="chapter-building"
+loading="lazy"
+decoding="async"
+>
 
 <div class="chapter-content">
 
