@@ -1,3 +1,8 @@
+// ======================================================
+// LGU PORTAL 15 💎
+// OPTIMIZED PRESERVED SYSTEM
+// ======================================================
+
 const chaptersData = [
 
 {
@@ -90,21 +95,55 @@ keywords:["final","effectivity"]
 
 ];
 
-const chaptersTrack = document.getElementById("chaptersTrack");
-const searchInput = document.getElementById("searchInput");
-const loadingScreen = document.getElementById("loadingScreen");
-const currentYear = document.getElementById("currentYear");
-const scrollLeft = document.getElementById("scrollLeft");
-const scrollRight = document.getElementById("scrollRight");
-const navbar = document.getElementById("navbar");
+// ======================================================
+// ELEMENTS
+// ======================================================
 
-const aiButton = document.getElementById("aiButton");
-const floatingAi = document.getElementById("floatingAi");
-const aiPanel = document.getElementById("aiPanel");
-const closeAi = document.getElementById("closeAi");
-const sendAi = document.getElementById("sendAi");
-const aiInput = document.getElementById("aiInput");
-const aiMessages = document.getElementById("aiMessages");
+const chaptersTrack =
+document.getElementById("chaptersTrack");
+
+const searchInput =
+document.getElementById("searchInput");
+
+const loadingScreen =
+document.getElementById("loadingScreen");
+
+const currentYear =
+document.getElementById("currentYear");
+
+const scrollLeft =
+document.getElementById("scrollLeft");
+
+const scrollRight =
+document.getElementById("scrollRight");
+
+const navbar =
+document.getElementById("navbar");
+
+const aiButton =
+document.getElementById("aiButton");
+
+const floatingAi =
+document.getElementById("floatingAi");
+
+const aiPanel =
+document.getElementById("aiPanel");
+
+const closeAi =
+document.getElementById("closeAi");
+
+const sendAi =
+document.getElementById("sendAi");
+
+const aiInput =
+document.getElementById("aiInput");
+
+const aiMessages =
+document.getElementById("aiMessages");
+
+// ======================================================
+// INIT
+// ======================================================
 
 document.addEventListener(
 "DOMContentLoaded",
@@ -126,20 +165,41 @@ initializeAI();
 
 initializeSuggestions();
 
+initializePerformance();
+
 }
 );
+
+// ======================================================
+// RENDER CHAPTERS
+// ======================================================
 
 function renderChapters(chapters){
 
 chaptersTrack.innerHTML = "";
 
+if(chapters.length === 0){
+
+chaptersTrack.innerHTML = `
+<div class="ai-message">
+No ordinance chapters found.
+</div>
+`;
+
+return;
+
+}
+
 chapters.forEach((chapter)=>{
 
-const card = document.createElement("a");
+const card =
+document.createElement("a");
 
-card.className = "chapter-card glass";
+card.className =
+"chapter-card glass";
 
-card.href = chapter.file;
+card.href =
+chapter.file;
 
 card.innerHTML = `
 
@@ -148,6 +208,7 @@ src="${chapter.image}"
 class="chapter-image"
 loading="lazy"
 decoding="async"
+onerror="this.src='./phts/balayili.png'"
 >
 
 <div class="chapter-overlay"></div>
@@ -172,6 +233,10 @@ chaptersTrack.appendChild(card);
 
 }
 
+// ======================================================
+// SEARCH
+// ======================================================
+
 function initializeSearch(){
 
 searchInput.addEventListener(
@@ -194,25 +259,26 @@ return;
 const filtered =
 chaptersData.filter((chapter)=>{
 
-return(
-
+const titleMatch =
 chapter.title
 .toLowerCase()
-.includes(query)
+.includes(query);
 
-||
-
+const numberMatch =
 chapter.number
 .toLowerCase()
-.includes(query)
+.includes(query);
 
-||
-
+const keywordMatch =
 chapter.keywords.some(
 (keyword)=>
 keyword.includes(query)
-)
+);
 
+return(
+titleMatch ||
+numberMatch ||
+keywordMatch
 );
 
 });
@@ -223,6 +289,10 @@ renderChapters(filtered);
 );
 
 }
+
+// ======================================================
+// LOADING
+// ======================================================
 
 function initializeLoading(){
 
@@ -241,6 +311,10 @@ loadingScreen.classList.add("hide");
 
 }
 
+// ======================================================
+// YEAR
+// ======================================================
+
 function initializeYear(){
 
 currentYear.textContent =
@@ -248,16 +322,96 @@ new Date().getFullYear();
 
 }
 
+// ======================================================
+// TRUE CENTER CAROUSEL
+// ======================================================
+
 function initializeCarousel(){
 
-const getCardWidth = ()=>{
+const scrollToCard = (direction)=>{
 
-const card =
-document.querySelector(".chapter-card");
+const cards =
+document.querySelectorAll(".chapter-card");
 
-return card
-? card.offsetWidth + 18
-: 320;
+if(cards.length === 0) return;
+
+const trackRect =
+chaptersTrack.getBoundingClientRect();
+
+const trackCenter =
+trackRect.left + (trackRect.width / 2);
+
+let closestCard = null;
+let closestDistance = Infinity;
+
+cards.forEach((card)=>{
+
+const rect =
+card.getBoundingClientRect();
+
+const cardCenter =
+rect.left + (rect.width / 2);
+
+const distance =
+Math.abs(trackCenter - cardCenter);
+
+if(distance < closestDistance){
+
+closestDistance = distance;
+closestCard = card;
+
+}
+
+});
+
+if(!closestCard) return;
+
+const currentIndex =
+Array.from(cards)
+.indexOf(closestCard);
+
+let targetCard;
+
+if(direction === "right"){
+
+targetCard =
+cards[
+Math.min(
+currentIndex + 1,
+cards.length - 1
+)
+];
+
+}else{
+
+targetCard =
+cards[
+Math.max(
+currentIndex - 1,
+0
+)
+];
+
+}
+
+if(!targetCard) return;
+
+const targetRect =
+targetCard.getBoundingClientRect();
+
+const targetCenter =
+targetRect.left + (targetRect.width / 2);
+
+const offset =
+targetCenter - trackCenter;
+
+chaptersTrack.scrollBy({
+
+left:offset,
+
+behavior:"smooth"
+
+});
 
 };
 
@@ -265,10 +419,7 @@ scrollRight.addEventListener(
 "click",
 ()=>{
 
-chaptersTrack.scrollBy({
-left:getCardWidth(),
-behavior:"smooth"
-});
+scrollToCard("right");
 
 }
 );
@@ -277,15 +428,16 @@ scrollLeft.addEventListener(
 "click",
 ()=>{
 
-chaptersTrack.scrollBy({
-left:-getCardWidth(),
-behavior:"smooth"
-});
+scrollToCard("left");
 
 }
 );
 
 }
+
+// ======================================================
+// NAVBAR
+// ======================================================
 
 function initializeNavbar(){
 
@@ -318,10 +470,16 @@ ticking = true;
 }
 
 },
-{ passive:true }
+{
+passive:true
+}
 );
 
 }
+
+// ======================================================
+// AI
+// ======================================================
 
 function initializeAI(){
 
@@ -337,20 +495,32 @@ aiPanel.classList.remove("active");
 
 };
 
+if(aiButton){
+
 aiButton.addEventListener(
 "click",
 openAI
 );
+
+}
+
+if(floatingAi){
 
 floatingAi.addEventListener(
 "click",
 openAI
 );
 
+}
+
+if(closeAi){
+
 closeAi.addEventListener(
 "click",
 closeAI
 );
+
+}
 
 sendAi.addEventListener(
 "click",
@@ -372,11 +542,16 @@ sendMessage();
 
 }
 
+// ======================================================
+// AI SUGGESTIONS
+// ======================================================
+
 function initializeSuggestions(){
 
-document
-.querySelectorAll(".suggestion-chip")
-.forEach((chip)=>{
+const chips =
+document.querySelectorAll(".suggestion-chip");
+
+chips.forEach((chip)=>{
 
 chip.addEventListener(
 "click",
@@ -394,14 +569,21 @@ sendMessage();
 
 }
 
+// ======================================================
+// SEND MESSAGE
+// ======================================================
+
 function sendMessage(){
 
 const text =
 aiInput.value.trim();
 
-if(!text) return;
+if(text === "") return;
 
-addMessage(text,"user");
+addMessage(
+text,
+"user"
+);
 
 aiInput.value = "";
 
@@ -413,7 +595,14 @@ generateResponse(text);
 
 }
 
-function addMessage(text,type){
+// ======================================================
+// ADD MESSAGE
+// ======================================================
+
+function addMessage(
+text,
+type
+){
 
 const div =
 document.createElement("div");
@@ -438,6 +627,10 @@ aiMessages.scrollHeight;
 
 }
 
+// ======================================================
+// AI RESPONSE
+// ======================================================
+
 function generateResponse(input){
 
 const lower =
@@ -450,27 +643,50 @@ const ordinanceMap = [
 
 {
 keywords:["business","permit","commercial"],
-response:"<b>Chapter VII</b><br>Business Regulations"
+response:`
+<b>Chapter VII</b><br>
+Business Regulations
+`
 },
 
 {
 keywords:["traffic","parking","vehicle"],
-response:"<b>Chapter VIII</b><br>Traffic and Transportation"
+response:`
+<b>Chapter VIII</b><br>
+Traffic and Transportation
+`
 },
 
 {
 keywords:["penalty","violation","fine"],
-response:"<b>Chapter X</b><br>Penal Provisions"
+response:`
+<b>Chapter X</b><br>
+Penal Provisions
+`
 },
 
 {
 keywords:["health","sanitation","garbage"],
-response:"<b>Chapter V</b><br>Health and Sanitation"
+response:`
+<b>Chapter V</b><br>
+Health and Sanitation
+`
+},
+
+{
+keywords:["environment","pollution","waste"],
+response:`
+<b>Chapter VI</b><br>
+Environmental Management
+`
 },
 
 {
 keywords:["tax","taxation","fees"],
-response:"<b>Chapter III</b><br>Revenue and Taxation"
+response:`
+<b>Chapter III</b><br>
+Revenue and Taxation
+`
 }
 
 ];
@@ -490,13 +706,58 @@ item.response;
 
 });
 
-addMessage(response,"ai");
+if(lower.includes("chapter")){
+
+response =
+`
+The ordinance portal contains
+11 codified chapters.
+`;
 
 }
+
+addMessage(
+response,
+"ai"
+);
+
+}
+
+// ======================================================
+// PERFORMANCE
+// ======================================================
+
+function initializePerformance(){
+
+document.body.style.overflowX =
+"hidden";
+
+chaptersTrack.style.webkitOverflowScrolling =
+"touch";
+
+window.addEventListener(
+"resize",
+()=>{
+
+document.body.style.overflowX =
+"hidden";
+
+},
+{
+passive:true
+}
+);
+
+}
+
+// ======================================================
+// SYSTEM LOG
+// ======================================================
 
 console.log(`
 ========================================
 LGU PORTAL 15 💎
 OPTIMIZED PRESERVED SYSTEM
+TRUE CENTER CAROUSEL ACTIVE
 ========================================
 `);
