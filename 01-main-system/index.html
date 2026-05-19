@@ -1,471 +1,369 @@
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                YEYO 💎
-      LGU PORTAL 16 • PRESERVED SYSTEM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LGU PORTAL • Municipality of Santa</title>
 
-<meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
-
-<meta
-name="theme-color"
-content="#020617"
->
-
-<meta
-name="apple-mobile-web-app-capable"
-content="yes"
->
-
-<meta
-name="apple-mobile-web-app-status-bar-style"
-content="black-translucent"
->
-
-<meta
-name="format-detection"
-content="telephone=no"
->
-
-<title>
-LGU PORTAL 16 💎
-</title>
-
-<link
-rel="stylesheet"
-href="./style.css"
->
-
-<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-rel="stylesheet"
->
-
+    <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<!-- LOADING -->
+    <!-- YEYO 💎 -->
+
+    <div class="bg-orbs orb-1"></div>
+    <div class="bg-orbs orb-2"></div>
+    <div class="bg-orbs orb-3"></div>
 
-<div
-id="loadingScreen"
-class="loading-screen"
->
+    <!-- NAVBAR -->
 
-<div class="loader"></div>
+    <header class="navbar" id="navbar">
+        <div class="nav-left">
+            <img src="logo.png" alt="LGU Logo" class="nav-logo">
 
-<h1>
-LGU PORTAL 16 💎
-</h1>
+            <div>
+                <h1>LGU PORTAL</h1>
+                <p>Municipal Legal Operating System</p>
+            </div>
+        </div>
 
-</div>
+        <div class="nav-right">
+            <button class="glass-btn" id="themeToggle">
+                <span>◐</span>
+            </button>
 
-<!-- BACKGROUND SYSTEM -->
+            <button class="glass-btn mobile-menu-btn" id="mobileMenuBtn">
+                ☰
+            </button>
+        </div>
+    </header>
 
-<div class="bg-gradient"></div>
+    <!-- MOBILE MENU -->
 
-<div class="grid-overlay"></div>
+    <aside class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-top">
+            <h2>Navigation</h2>
+            <button id="closeSidebar">✕</button>
+        </div>
 
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
+        <nav class="sidebar-links">
+            <a href="#hero">Home</a>
+            <a href="#chapters">Chapters</a>
+            <a href="#ai-system">AI System</a>
+            <a href="#legal-library">Legal Library</a>
+            <a href="#footer">About</a>
+        </nav>
+    </aside>
 
-<!-- MAIN APP -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-<div class="app-shell">
+    <!-- HERO -->
 
-<!-- NAVBAR -->
+    <section class="hero" id="hero">
 
-<nav
-id="navbar"
-class="navbar glass"
->
+        <div class="hero-overlay"></div>
 
-<div class="nav-left">
+        <img src="coverphoto.png" class="hero-bg" alt="Santa Ilocos Sur" />
 
-<img
-src="./phts/logo.png"
-class="logo"
-alt="Santa Logo"
-loading="eager"
-decoding="async"
->
+        <div class="hero-content">
 
-<div class="nav-text">
+            <div class="hero-badge glass-card fade-up">
+                <span class="pulse"></span>
+                MUNICIPAL DIGITAL GOVERNANCE PLATFORM
+            </div>
 
-<h1>
-Municipality of Santa
-</h1>
+            <h1 class="fade-up delay-1">
+                Code of General Ordinances
+                <span>Municipality of Santa</span>
+            </h1>
 
-<p>
-LGU PORTAL 16
-</p>
+            <p class="fade-up delay-2">
+                AI-powered legal portal engineered for ordinance intelligence,
+                codification, semantic legal search, chapter indexing,
+                and municipal governance modernization.
+            </p>
 
-</div>
+            <div class="hero-buttons fade-up delay-3">
+                <a href="#chapters" class="primary-btn">
+                    Open Chapters
+                </a>
 
-</div>
+                <a href="#ai-system" class="secondary-btn">
+                    AI Legal System
+                </a>
+            </div>
 
-<div class="nav-center">
+        </div>
 
-<a href="#home">
-Home
-</a>
+        <div class="floating-cards">
 
-<a href="#chapters">
-Chapters
-</a>
+            <div class="float-card glass-card card-a">
+                <h3>11</h3>
+                <p>Core Chapters</p>
+            </div>
 
-<a href="#contacts">
-Contacts
-</a>
+            <div class="float-card glass-card card-b">
+                <h3>AI</h3>
+                <p>Legal Intelligence</p>
+            </div>
 
-</div>
+            <div class="float-card glass-card card-c">
+                <h3>24/7</h3>
+                <p>Digital Access</p>
+            </div>
 
-<button
-id="aiButton"
-class="ai-button"
-type="button"
->
-AI Assistant
-</button>
+        </div>
 
-</nav>
+    </section>
 
-<!-- HERO -->
+    <!-- QUICK ACCESS -->
 
-<section
-id="home"
-class="hero"
->
+    <section class="quick-access fade-section">
 
-<img
-src="./phts/balayili.png"
-class="hero-image"
-alt="Balay Ti Ili"
-loading="eager"
-decoding="async"
->
+        <div class="section-heading">
+            <span>Municipal Operations</span>
+            <h2>Quick Access Systems</h2>
+        </div>
 
-<div class="hero-overlay"></div>
+        <div class="quick-grid">
+
+            <div class="quick-card glass-card">
+                <div class="quick-icon">⚖</div>
+                <h3>Legal Codification</h3>
+                <p>Structured ordinance organization and legal indexing.</p>
+            </div>
 
-<div class="hero-noise"></div>
+            <div class="quick-card glass-card">
+                <div class="quick-icon">📚</div>
+                <h3>Legal Library</h3>
+                <p>Centralized ordinance and chapter access.</p>
+            </div>
+
+            <div class="quick-card glass-card">
+                <div class="quick-icon">🧠</div>
+                <h3>AI Analysis</h3>
+                <p>Semantic ordinance interpretation and assistance.</p>
+            </div>
 
-<div class="hero-content">
+            <div class="quick-card glass-card">
+                <div class="quick-icon">🔎</div>
+                <h3>Smart Search</h3>
+                <p>Fast contextual ordinance retrieval engine.</p>
+            </div>
 
-<span class="hero-badge">
-DIGITAL ORDINANCE PLATFORM
-</span>
+        </div>
 
-<h1>
-Code of General Ordinances
-</h1>
+    </section>
 
-<p>
-Municipality of Santa, Ilocos Sur
-</p>
+    <!-- CHAPTERS -->
 
-<div class="hero-stats">
+    <section class="chapters-section fade-section" id="chapters">
 
-<div class="hero-stat glass">
+        <div class="section-heading">
+            <span>Municipal Ordinance Structure</span>
+            <h2>Legal Chapters</h2>
+        </div>
 
-<h3>
-11
-</h3>
+        <div class="chapter-grid">
 
-<span>
-Codified Chapters
-</span>
+            <a class="chapter-card glass-card" href="chapters/chapter1/index.html">
+                <div class="chapter-top">
+                    <span>CHAPTER I</span>
+                    <div class="chapter-number">01</div>
+                </div>
 
-</div>
+                <h3>General Provisions</h3>
 
-<div class="hero-stat glass">
+                <p>
+                    Foundational legal definitions, scope, governance principles,
+                    and municipal interpretation framework.
+                </p>
 
-<h3>
-24/7
-</h3>
+                <div class="chapter-footer">
+                    <span>Open Chapter</span>
+                    <span>→</span>
+                </div>
+            </a>
 
-<span>
-Municipal Access
-</span>
+            <a class="chapter-card glass-card" href="#">
+                <div class="chapter-top">
+                    <span>CHAPTER II</span>
+                    <div class="chapter-number">02</div>
+                </div>
+
+                <h3>Administrative Structure</h3>
 
-</div>
+                <p>
+                    Municipal governance systems, departmental structure,
+                    powers, and administrative processes.
+                </p>
 
-<div class="hero-stat glass">
+                <div class="chapter-footer">
+                    <span>Open Chapter</span>
+                    <span>→</span>
+                </div>
+            </a>
 
-<h3>
-AI
-</h3>
+            <a class="chapter-card glass-card" href="#">
+                <div class="chapter-top">
+                    <span>CHAPTER III</span>
+                    <div class="chapter-number">03</div>
+                </div>
 
-<span>
-Legal Intelligence
-</span>
+                <h3>Public Safety</h3>
 
-</div>
+                <p>
+                    Community safety systems, enforcement authority,
+                    emergency management, and compliance mechanisms.
+                </p>
 
-</div>
+                <div class="chapter-footer">
+                    <span>Open Chapter</span>
+                    <span>→</span>
+                </div>
+            </a>
 
-<div class="hero-search glass">
+            <a class="chapter-card glass-card" href="#">
+                <div class="chapter-top">
+                    <span>CHAPTER IV</span>
+                    <div class="chapter-number">04</div>
+                </div>
 
-<input
-type="text"
-id="searchInput"
-placeholder="Search ordinances, penalties, chapters..."
-autocomplete="off"
->
+                <h3>Environmental Governance</h3>
 
-</div>
+                <p>
+                    Environmental preservation, sanitation,
+                    ecological protection, and sustainability provisions.
+                </p>
 
-</div>
+                <div class="chapter-footer">
+                    <span>Open Chapter</span>
+                    <span>→</span>
+                </div>
+            </a>
 
-</section>
+        </div>
 
-<!-- CHAPTERS -->
+    </section>
 
-<section
-id="chapters"
-class="chapters-section"
->
+    <!-- AI SYSTEM -->
 
-<div class="section-header">
+    <section class="ai-system fade-section" id="ai-system">
 
-<div>
+        <div class="ai-wrapper glass-card">
 
-<p class="section-mini">
-LEGAL STRUCTURE
-</p>
+            <div class="ai-left">
+                <span class="mini-tag">AI LEGAL INTELLIGENCE</span>
 
-<h2>
-Codified Chapters
-</h2>
+                <h2>
+                    Municipal AI Operating System
+                </h2>
 
-</div>
+                <p>
+                    Integrated ordinance-aware intelligence system capable of
+                    semantic search, legal indexing, ordinance interpretation,
+                    contextual referencing, and chapter relationship analysis.
+                </p>
 
-</div>
+                <div class="ai-features">
+                    <div>✓ Dynamic Chapter Awareness</div>
+                    <div>✓ Semantic Ordinance Search</div>
+                    <div>✓ AI Legal Response System</div>
+                    <div>✓ Municipal Intelligence Engine</div>
+                </div>
+            </div>
 
-<div class="chapters-wrapper">
+            <div class="ai-right">
 
-<button
-class="nav-arrow glass prev"
-id="scrollLeft"
-type="button"
-aria-label="Previous Chapter"
->
-←
-</button>
+                <div class="ai-console">
 
-<div
-class="chapters-track"
-id="chaptersTrack"
-></div>
+                    <div class="console-header">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
 
-<button
-class="nav-arrow glass next"
-id="scrollRight"
-type="button"
-aria-label="Next Chapter"
->
-→
-</button>
+                    <div class="console-body">
+                        <p>> Initializing Legal Intelligence...</p>
+                        <p>> Loading Ordinance Database...</p>
+                        <p>> Connecting Chapter Systems...</p>
+                        <p class="typing-line">
+                            > AI System Ready.
+                        </p>
+                    </div>
 
-</div>
+                </div>
 
-</section>
+            </div>
 
-<!-- CONTACTS -->
+        </div>
 
-<section
-id="contacts"
-class="contacts-section"
->
+    </section>
 
-<div class="contacts-card glass">
+    <!-- LEGAL LIBRARY -->
 
-<p class="section-mini">
-MUNICIPAL CONTACTS
-</p>
+    <section class="legal-library fade-section" id="legal-library">
 
-<h2>
-Municipality of Santa
-</h2>
+        <div class="section-heading">
+            <span>Municipal Legal Assets</span>
+            <h2>Digital Legal Library</h2>
+        </div>
 
-<div class="contacts-grid">
+        <div class="library-grid">
 
-<div class="contact-item">
+            <div class="library-card glass-card">
+                <h3>Codified Ordinances</h3>
+                <p>Structured municipal legislation archives.</p>
+            </div>
 
-<span>
-☎
-</span>
+            <div class="library-card glass-card">
+                <h3>Resolution Records</h3>
+                <p>Municipal resolutions and implementation records.</p>
+            </div>
 
-<div>
+            <div class="library-card glass-card">
+                <h3>Legal References</h3>
+                <p>Cross-linked legal references and annotations.</p>
+            </div>
 
-<h3>
-Telephone
-</h3>
+            <div class="library-card glass-card">
+                <h3>AI Knowledge Base</h3>
+                <p>Integrated semantic ordinance learning database.</p>
+            </div>
 
-<p>
-0964
-</p>
+        </div>
 
-</div>
+    </section>
 
-</div>
+    <!-- FOOTER -->
 
-<div class="contact-item">
+    <footer class="footer" id="footer">
 
-<span>
-✉
-</span>
+        <div class="footer-inner">
 
-<div>
+            <div>
+                <h2>LGU PORTAL</h2>
+                <p>
+                    Municipality of Santa • Ilocos Sur
+                </p>
+            </div>
 
-<h3>
-Email
-</h3>
+            <div class="footer-links">
+                <a href="#hero">Home</a>
+                <a href="#chapters">Chapters</a>
+                <a href="#ai-system">AI</a>
+                <a href="#legal-library">Library</a>
+            </div>
 
-<p>
-lgusanta.a.2703@gmail.com
-</p>
+        </div>
 
-</div>
+    </footer>
 
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FLOATING AI -->
-
-<button
-id="floatingAi"
-class="floating-ai glass"
-type="button"
-aria-label="Open AI Assistant"
->
-✦
-</button>
-
-<!-- AI PANEL -->
-
-<div
-id="aiPanel"
-class="ai-panel glass"
->
-
-<div class="ai-header">
-
-<button
-id="closeAi"
-type="button"
-aria-label="Close AI"
->
-✕
-</button>
-
-</div>
-
-<div class="ai-suggestions">
-
-<button class="suggestion-chip">
-Traffic
-</button>
-
-<button class="suggestion-chip">
-Permits
-</button>
-
-<button class="suggestion-chip">
-Sanitation
-</button>
-
-<button class="suggestion-chip">
-Taxation
-</button>
-
-</div>
-
-<div
-id="aiMessages"
-class="ai-messages"
->
-
-<div class="ai-message">
-
-Welcome to LGU PORTAL 16 💎
-
-<br><br>
-
-AI Assistant can help navigate:
-<br>
-• codified chapters
-<br>
-• penalties
-<br>
-• sanitation rules
-<br>
-• taxation
-<br>
-• business regulations
-<br>
-• public safety
-
-</div>
-
-</div>
-
-<div class="ai-input-area">
-
-<input
-type="text"
-id="aiInput"
-placeholder="Ask about ordinances..."
-autocomplete="off"
->
-
-<button
-id="sendAi"
-type="button"
->
-Send
-</button>
-
-</div>
-
-</div>
-
-<!-- FOOTER -->
-
-<footer
-class="footer glass"
->
-
-<p>
-©
-<span id="currentYear"></span>
-
-Municipality of Santa • LGU PORTAL 16
-</p>
-
-</footer>
-
-</div>
-
-<script src="./script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                YEYO 💎
-         END OF HTML SYSTEM FILE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
