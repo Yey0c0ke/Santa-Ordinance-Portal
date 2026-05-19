@@ -871,6 +871,7 @@ bottom:95px;
 /* =========================================
 IOS MOBILE CHAPTER CAROUSEL FIX
 LGU PORTAL 14
+PRESERVED SYSTEM
 ========================================= */
 
 @media (max-width:768px){
@@ -884,6 +885,9 @@ padding:0 10px;
 
 .chapters-track{
 display:flex;
+justify-content:flex-start;
+align-items:center;
+
 gap:18px;
 
 overflow-x:auto;
@@ -891,7 +895,7 @@ overflow-x:auto;
 scroll-snap-type:x mandatory;
 scroll-behavior:smooth;
 
-padding:20px 14px 30px;
+padding:20px calc(50vw - 37%) 30px;
 
 scrollbar-width:none;
 }
@@ -901,8 +905,10 @@ display:none;
 }
 
 .chapter-card{
-flex:0 0 82%;
-max-width:82%;
+flex:0 0 74%;
+max-width:74%;
+
+margin:auto;
 
 height:420px;
 
