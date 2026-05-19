@@ -355,8 +355,6 @@ passive:true
 }
 );
 
-// DRAG
-
 chaptersTrack.addEventListener(
 "mousedown",
 startDrag
@@ -747,7 +745,257 @@ passive:true
 }
 
 // ======================================================
-// AUTO CENTER FIRST CARD
+// AI SYSTEM
+// ======================================================
+
+function initializeAI(){
+
+if(!aiPanel) return;
+
+const openAI = ()=>{
+
+aiPanel.classList.add("active");
+
+document.body.style.overflow = "hidden";
+
+setTimeout(()=>{
+
+aiInput?.focus();
+
+},120);
+
+};
+
+const closeAI = ()=>{
+
+aiPanel.classList.remove("active");
+
+document.body.style.overflow = "";
+
+};
+
+aiButton?.addEventListener(
+"click",
+openAI
+);
+
+floatingAi?.addEventListener(
+"click",
+openAI
+);
+
+closeAi?.addEventListener(
+"click",
+closeAI
+);
+
+document.addEventListener(
+"click",
+(event)=>{
+
+const clickedInside =
+aiPanel.contains(event.target)
+||
+floatingAi.contains(event.target)
+||
+aiButton.contains(event.target);
+
+if(
+!clickedInside
+&&
+aiPanel.classList.contains("active")
+){
+
+closeAI();
+
+}
+
+}
+);
+
+window.addEventListener(
+"keydown",
+(event)=>{
+
+if(
+event.key === "Escape"
+&&
+aiPanel.classList.contains("active")
+){
+
+closeAI();
+
+}
+
+}
+);
+
+sendAi?.addEventListener(
+"click",
+sendMessage
+);
+
+aiInput?.addEventListener(
+"keydown",
+(event)=>{
+
+if(event.key === "Enter"){
+
+sendMessage();
+
+}
+
+}
+);
+
+}
+
+// ======================================================
+// SIMPLE AI MESSAGE
+// ======================================================
+
+function sendMessage(){
+
+const text =
+aiInput.value.trim();
+
+if(!text) return;
+
+addMessage(text,"user");
+
+aiInput.value = "";
+
+setTimeout(()=>{
+
+addMessage(
+"LGU PORTAL 16 AI Assistant is active.",
+"ai"
+);
+
+},300);
+
+}
+
+function addMessage(text,type){
+
+const div =
+document.createElement("div");
+
+div.className =
+`ai-message ${
+type === "user"
+? "ai-user"
+: ""
+}`;
+
+div.innerHTML = text;
+
+aiMessages.appendChild(div);
+
+requestAnimationFrame(()=>{
+
+aiMessages.scrollTop =
+aiMessages.scrollHeight;
+
+});
+
+}
+
+// ======================================================
+// SUGGESTIONS
+// ======================================================
+
+function initializeSuggestions(){
+
+document
+.querySelectorAll(".suggestion-chip")
+.forEach((chip)=>{
+
+chip.addEventListener(
+"click",
+()=>{
+
+aiInput.value =
+chip.textContent.trim();
+
+sendMessage();
+
+}
+);
+
+});
+
+}
+
+// ======================================================
+// REVEAL
+// ======================================================
+
+function initializeRevealAnimations(){
+
+revealObserver =
+new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach((entry)=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},
+{
+threshold:0.12
+}
+
+);
+
+reinitializeRevealObserver();
+
+}
+
+function reinitializeRevealObserver(){
+
+if(!revealObserver) return;
+
+document
+.querySelectorAll(
+".contacts-card, .chapter-card"
+)
+.forEach((element)=>{
+
+revealObserver.observe(element);
+
+});
+
+}
+
+// ======================================================
+// RESIZE
+// ======================================================
+
+function initializeResizeHandler(){
+
+window.addEventListener(
+"resize",
+debounce(()=>{
+
+updateCarouselMetrics();
+
+goToCard(activeIndex);
+
+},160)
+);
+
+}
+
+// ======================================================
+// AUTO CENTER
 // ======================================================
 
 window.addEventListener(
@@ -766,6 +1014,67 @@ goToCard(0);
 );
 
 // ======================================================
+// PERFORMANCE
+// ======================================================
+
+function preloadCriticalImages(){
+
+const images = [
+
+"./phts/balayili.png",
+"./phts/coverphoto.png",
+"./phts/logo.png"
+
+];
+
+images.forEach((src)=>{
+
+const image =
+new Image();
+
+image.src = src;
+
+});
+
+}
+
+preloadCriticalImages();
+
+// ======================================================
+// SMOOTH LINKS
+// ======================================================
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach((anchor)=>{
+
+anchor.addEventListener(
+"click",
+(event)=>{
+
+const targetId =
+anchor.getAttribute("href");
+
+const target =
+document.querySelector(targetId);
+
+if(!target) return;
+
+event.preventDefault();
+
+target.scrollIntoView({
+
+behavior:"smooth",
+block:"start"
+
+});
+
+}
+);
+
+});
+
+// ======================================================
 // SYSTEM LOG
 // ======================================================
 
@@ -780,3 +1089,7 @@ COVERPHOTO SYSTEM ACTIVE
 ========================================
 
 `);
+
+// ======================================================
+// END SYSTEM
+// ======================================================
