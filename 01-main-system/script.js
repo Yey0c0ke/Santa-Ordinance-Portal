@@ -161,10 +161,14 @@ initializeAI();
 
 initializeSuggestions();
 
+initializeMobileStabilizer();
+
 }
 );
 
+// ======================================================
 // RENDER CHAPTERS
+// ======================================================
 
 function renderChapters(chapters){
 
@@ -223,7 +227,9 @@ chaptersTrack.appendChild(card);
 
 }
 
+// ======================================================
 // SEARCH
+// ======================================================
 
 function initializeSearch(){
 
@@ -278,7 +284,9 @@ renderChapters(filtered);
 
 }
 
+// ======================================================
 // LOADING
+// ======================================================
 
 function initializeLoading(){
 
@@ -290,7 +298,9 @@ loadingScreen.classList.add("hide");
 
 }
 
+// ======================================================
 // YEAR
+// ======================================================
 
 function initializeYear(){
 
@@ -299,16 +309,26 @@ new Date().getFullYear();
 
 }
 
+// ======================================================
 // CAROUSEL
+// ======================================================
 
 function initializeCarousel(){
+
+const getScrollAmount = ()=>{
+
+return window.innerWidth < 768
+? window.innerWidth * 0.82
+: 320;
+
+};
 
 scrollRight.addEventListener(
 "click",
 ()=>{
 
 chaptersTrack.scrollBy({
-left:320,
+left:getScrollAmount(),
 behavior:"smooth"
 });
 
@@ -320,7 +340,7 @@ scrollLeft.addEventListener(
 ()=>{
 
 chaptersTrack.scrollBy({
-left:-320,
+left:-getScrollAmount(),
 behavior:"smooth"
 });
 
@@ -329,7 +349,9 @@ behavior:"smooth"
 
 }
 
+// ======================================================
 // NAVBAR
+// ======================================================
 
 function initializeNavbar(){
 
@@ -352,7 +374,9 @@ navbar.classList.remove("scrolled");
 
 }
 
+// ======================================================
 // AI
+// ======================================================
 
 function initializeAI(){
 
@@ -407,7 +431,9 @@ sendMessage();
 
 }
 
+// ======================================================
 // OPEN AI
+// ======================================================
 
 function openAI(){
 
@@ -415,7 +441,9 @@ aiPanel.classList.add("active");
 
 }
 
+// ======================================================
 // SUGGESTIONS
+// ======================================================
 
 function initializeSuggestions(){
 
@@ -440,7 +468,9 @@ sendMessage();
 
 }
 
-// SEND
+// ======================================================
+// SEND MESSAGE
+// ======================================================
 
 function sendMessage(){
 
@@ -464,7 +494,9 @@ generateResponse(text);
 
 }
 
+// ======================================================
 // ADD MESSAGE
+// ======================================================
 
 function addMessage(
 text,
@@ -490,7 +522,9 @@ aiMessages.scrollHeight;
 
 }
 
+// ======================================================
 // AI RESPONSE
+// ======================================================
 
 function generateResponse(input){
 
@@ -584,9 +618,53 @@ response,
 
 }
 
+// ======================================================
+// MOBILE STABILIZER
+// ======================================================
+
+function initializeMobileStabilizer(){
+
+document.body.style.overflowX =
+"hidden";
+
+chaptersTrack.style.webkitOverflowScrolling =
+"touch";
+
+document
+.querySelectorAll(".nav-arrow")
+.forEach((button)=>{
+
+button.addEventListener(
+"mousedown",
+(e)=>{
+
+e.preventDefault();
+
+}
+);
+
+});
+
+window.addEventListener(
+"resize",
+()=>{
+
+document.body.style.overflowX =
+"hidden";
+
+}
+);
+
+}
+
+// ======================================================
+// SYSTEM LOG
+// ======================================================
+
 console.log(`
 ========================================
 LGU PORTAL 14 💎
 MUNICIPAL LEGAL OPERATING SYSTEM
+PRESERVED + MOBILE STABILIZED
 ========================================
 `);

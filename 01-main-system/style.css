@@ -414,6 +414,9 @@ margin:auto;
 display:flex;
 align-items:center;
 gap:15px;
+
+position:relative;
+overflow:hidden;
 }
 
 .nav-arrow{
@@ -432,11 +435,22 @@ cursor:pointer;
 
 flex-shrink:0;
 
-transition:0.3s;
+display:flex;
+align-items:center;
+justify-content:center;
+
+transition:
+opacity 0.3s ease,
+background 0.3s ease,
+transform 0.2s ease;
 }
 
 .nav-arrow:hover{
-transform:scale(1.08);
+transform:scale(1.05);
+}
+
+.nav-arrow:active{
+transform:scale(0.94);
 }
 
 .chapters-track{
@@ -448,6 +462,10 @@ overflow-x:auto;
 scrollbar-width:none;
 
 padding:10px 0;
+
+scroll-snap-type:x mandatory;
+
+-webkit-overflow-scrolling:touch;
 }
 
 .chapters-track::-webkit-scrollbar{
@@ -471,6 +489,8 @@ text-decoration:none;
 color:white;
 
 transition:0.35s;
+
+scroll-snap-align:center;
 }
 
 .chapter-card:hover{
@@ -777,466 +797,285 @@ font-size:0.82rem;
 opacity:0.8;
 }
 
-/* MOBILE */
+/* ========================================
+   FINAL MOBILE SYSTEM
+======================================== */
 
-@media(max-width:900px){
+@media screen and (max-width:768px){
+
+body{
+overflow-x:hidden;
+}
 
 .navbar{
 
+width:calc(100% - 20px);
+
+margin:10px auto;
+
 padding:16px 18px;
 
-gap:14px;
+border-radius:28px;
 
+flex-direction:row;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:14px;
+}
+
+.nav-left{
+gap:12px;
+min-width:0;
+flex:1;
+}
+
+.logo{
+width:48px;
+height:48px;
+}
+
+.nav-left h1{
+font-size:0.92rem;
+}
+
+.nav-left p{
+font-size:0.66rem;
 }
 
 .nav-center{
-
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:18px;
-
+display:none;
 }
 
-.nav-center a{
-font-size:0.9rem;
+.ai-button{
+
+padding:12px 16px;
+
+border-radius:18px;
+
+font-size:0.78rem;
+
+flex-shrink:0;
 }
+
+/* HERO */
 
 .hero{
 
-min-height:88vh;
+width:calc(100% - 20px);
 
+min-height:82vh;
+
+border-radius:32px;
 }
 
 .hero-content{
 
-left:24px;
-right:24px;
-bottom:34px;
+left:22px;
+right:22px;
+bottom:28px;
 
 max-width:none;
-
 }
 
 .hero-content h1{
 
-font-size:3.4rem;
-line-height:0.95;
+font-size:2.7rem;
 
+line-height:0.94;
 }
 
 .hero-content p{
 
-font-size:1rem;
+font-size:0.95rem;
+}
 
+.hero-badge{
+
+font-size:0.6rem;
+
+letter-spacing:1.5px;
 }
 
 .hero-stats{
 
-gap:12px;
+gap:10px;
 
+flex-wrap:wrap;
 }
 
 .hero-stat{
 
-padding:16px 18px;
+padding:14px 16px;
 
+border-radius:20px;
+}
+
+.hero-search{
+
+max-width:100%;
+}
+
+.hero-search input{
+
+font-size:0.92rem;
+}
+
+/* CHAPTERS */
+
+.section-header{
+
+width:calc(100% - 20px);
+}
+
+.chapters-wrapper{
+
+width:100%;
+}
+
+.chapters-track{
+
+gap:14px;
+
+padding-left:12px;
+padding-right:12px;
 }
 
 .chapter-card{
 
-min-width:270px;
-height:180px;
+min-width:78vw;
+width:78vw;
+max-width:78vw;
 
+height:220px;
+
+border-radius:28px;
+}
+
+.chapter-card:hover{
+
+transform:none;
+}
+
+.chapter-content{
+
+left:18px;
+bottom:18px;
 }
 
 .chapter-title{
 
-font-size:1.2rem;
+font-size:1.1rem;
 
+max-width:180px;
+}
+
+/* ARROWS */
+
+.nav-arrow{
+
+position:absolute;
+
+top:50%;
+
+transform:translateY(-50%) !important;
+
+width:52px;
+height:52px;
+
+z-index:50;
+}
+
+.nav-arrow:hover{
+
+transform:
+translateY(-50%)
+scale(1.04);
+}
+
+.nav-arrow:active{
+
+transform:
+translateY(-50%)
+scale(0.94) !important;
+}
+
+#scrollLeft{
+left:4px;
+}
+
+#scrollRight{
+right:4px;
+}
+
+/* ABOUT */
+
+.about-section{
+
+width:calc(100% - 20px);
+}
+
+.about-card{
+
+padding:28px;
+}
+
+/* AI */
+
+.floating-ai{
+
+width:66px;
+height:66px;
+
+right:18px;
+bottom:18px;
 }
 
 .ai-panel{
 
-width:92%;
-height:82vh;
+width:94%;
 
-right:4%;
-bottom:95px;
+height:80vh;
 
+right:3%;
+bottom:92px;
+
+border-radius:28px;
+}
+
+/* FOOTER */
+
+.footer{
+
+width:calc(100% - 20px);
 }
 
 }
 
-/* ========================================
-   CLEAN MOBILE FIX
-   PRESERVE LGU PORTAL DESIGN
-======================================== */
+/* SMALL DEVICES */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:480px){
 
-    .navbar{
-        width: calc(100% - 24px);
-        left: 12px;
-        right: 12px;
+.hero-content h1{
 
-        padding: 18px 20px;
-
-        border-radius: 32px;
-
-        gap: 18px;
-    }
-
-    .nav-left{
-        gap: 12px;
-    }
-
-    .logo{
-        width: 52px;
-        height: 52px;
-    }
-
-    .nav-left h1{
-        font-size: 1.9rem;
-        line-height: 1;
-    }
-
-    .nav-left p{
-        font-size: 0.85rem;
-    }
-
-    .nav-center{
-        gap: 16px;
-    }
-
-    .nav-center a{
-        font-size: 0.95rem;
-    }
-
-    .ai-button{
-        width: 92px;
-        height: 92px;
-
-        border-radius: 26px;
-
-        font-size: 1rem;
-    }
-
-    .hero{
-        min-height: auto;
-        padding-top: 190px;
-    }
-
-    .hero-content{
-        padding: 0 22px;
-    }
-
-    .hero h1{
-        font-size: clamp(3.5rem, 13vw, 5rem);
-        line-height: 0.92;
-    }
-
-    .hero p{
-        font-size: 1.1rem;
-    }
-
-    .hero-stats{
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-    }
-
-    .hero-stat{
-        width: 220px;
-    }
-
-    .hero-search{
-        width: 100%;
-    }
-
-    .hero-search input{
-        font-size: 1rem;
-    }
-
-    .chapters-section{
-        padding: 70px 0;
-        overflow: hidden;
-    }
-
-    .section-header{
-        padding: 0 22px;
-        margin-bottom: 24px;
-    }
-
-    .chapters-wrapper{
-        position: relative;
-        overflow: hidden;
-    }
-
-    .chapters-track{
-        gap: 18px;
-
-        padding-left: 18vw;
-        padding-right: 18vw;
-
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-
-        scrollbar-width: none;
-    }
-
-    .chapters-track::-webkit-scrollbar{
-        display: none;
-    }
-
-    .chapter-card{
-        min-width: 64vw;
-        width: 64vw;
-        max-width: 64vw;
-
-        height: 430px;
-
-        scroll-snap-align: center;
-
-        padding: 24px;
-
-        border-radius: 34px;
-    }
-
-    .chapter-number{
-        font-size: 0.85rem;
-        letter-spacing: 6px;
-    }
-
-    .chapter-card h2{
-        font-size: clamp(2rem, 6vw, 2.8rem);
-
-        line-height: 0.95;
-
-        word-break: break-word;
-    }
-
-    .nav-arrow{
-        width: 64px;
-        height: 64px;
-
-        font-size: 1.6rem;
-
-        position: absolute;
-        top: 50%;
-
-        transform: translateY(-50%);
-
-        z-index: 20;
-    }
-
-    #scrollLeft{
-        left: 6px;
-    }
-
-    #scrollRight{
-        right: 6px;
-    }
-
-    .about-section{
-        padding: 70px 22px;
-    }
-
-    .about-card{
-        padding: 36px 28px;
-        border-radius: 34px;
-    }
-
-    .floating-ai{
-        width: 84px;
-        height: 84px;
-
-        bottom: 24px;
-        right: 24px;
-    }
-
+font-size:2.2rem;
 }
 
-/* =========================================
-   LGU PORTAL MOBILE RESPONSIVE FIX
-========================================= */
+.chapter-card{
 
-@media (max-width: 768px) {
+min-width:82vw;
+width:82vw;
+max-width:82vw;
 
-    body {
-        overflow-x: hidden;
-    }
-
-    /* MAIN CONTAINER */
-
-    .container,
-    .hero,
-    .main-system,
-    .topbar,
-    .navbar {
-        width: 100%;
-        max-width: 100%;
-        padding-left: 18px;
-        padding-right: 18px;
-        box-sizing: border-box;
-    }
-
-    /* FLOATING NAVBAR */
-
-    .topbar,
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-        border-radius: 28px;
-        padding: 22px;
-    }
-
-    /* LOGO + TITLE */
-
-    .logo-section {
-        width: 100%;
-    }
-
-    .logo-section h1 {
-        font-size: 2rem;
-        line-height: 1;
-    }
-
-    .logo-section p {
-        font-size: 0.95rem;
-    }
-
-    /* NAV LINKS */
-
-    .nav-links {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
-
-    .nav-links a {
-        font-size: 1rem;
-    }
-
-    /* LEGAL AI BUTTON */
-
-    .legal-ai-btn,
-    .ai-button {
-        position: relative;
-        right: auto;
-        top: auto;
-        width: 100%;
-        border-radius: 22px;
-        justify-content: center;
-        padding: 18px;
-        margin-top: 5px;
-    }
-
-    /* HERO SECTION */
-
-    .hero {
-        padding-top: 40px;
-    }
-
-    .hero h1 {
-        font-size: 2.2rem;
-        line-height: 1.05;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    /* SEARCH BAR */
-
-    .search-box,
-    .search-container {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .search-box input,
-    .search-container input {
-        width: 100%;
-        font-size: 1rem;
-        padding: 18px;
-    }
-
-    /* STATS CARDS */
-
-    .stats-grid,
-    .cards-grid,
-    .chapter-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    /* CHAPTER CARDS */
-
-    .chapter-card,
-    .glass-card {
-        width: 100%;
-        min-height: auto;
-    }
-
-    .chapter-card img {
-        height: 180px;
-        object-fit: cover;
-    }
-
-    /* FLOATING ELEMENTS */
-
-    .floating-orb,
-    .glow-orb,
-    .floating-ai {
-        display: none;
-    }
-
-    /* SECTION TITLES */
-
-    .section-title h2,
-    .section-header h2 {
-        font-size: 2rem;
-    }
-
-    /* FOOTER */
-
-    footer {
-        padding: 40px 20px;
-    }
-
+height:210px;
 }
 
-/* =========================================
-   EXTRA SMALL DEVICES
-========================================= */
+.nav-arrow{
 
-@media (max-width: 480px) {
-
-    .logo-section h1 {
-        font-size: 1.7rem;
-    }
-
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-
-    .topbar,
-    .navbar {
-        padding: 18px;
-    }
-
-    .search-box input,
-    .search-container input {
-        padding: 16px;
-        font-size: 0.95rem;
-    }
-
-    .chapter-card {
-        border-radius: 24px;
-    }
+width:48px;
+height:48px;
+}
 
 }
