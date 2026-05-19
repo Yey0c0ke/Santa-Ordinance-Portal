@@ -7,6 +7,11 @@ document.querySelectorAll(".legal-modal");
 const closeButtons =
 document.querySelectorAll(".close-modal");
 
+const accordions =
+document.querySelectorAll(".accordion");
+
+// OPEN MODALS
+
 legalCards.forEach((card)=>{
 
 card.addEventListener(
@@ -29,6 +34,8 @@ document.body.style.overflow =
 
 });
 
+// CLOSE BUTTONS
+
 closeButtons.forEach((button)=>{
 
 button.addEventListener(
@@ -48,6 +55,8 @@ document.body.style.overflow =
 );
 
 });
+
+// CLOSE OUTSIDE
 
 modals.forEach((modal)=>{
 
@@ -69,10 +78,28 @@ document.body.style.overflow =
 
 });
 
+// ACCORDIONS
+
+accordions.forEach((accordion)=>{
+
+const header =
+accordion.querySelector(".accordion-header");
+
+header.addEventListener(
+"click",
+()=>{
+
+accordion.classList.toggle("active");
+
+}
+);
+
+});
+
 console.log(`
 ========================================
 CHAPTER I
 GENERAL PROVISIONS
-POPUP LEGAL SYSTEM ACTIVE
+LEGAL ACCORDION SYSTEM ACTIVE
 ========================================
 `);
