@@ -1,6 +1,6 @@
 // ======================================================
 // LGU PORTAL 15 💎
-// PRESERVED + OPTIMIZED MAIN SYSTEM
+// PRESERVED + STABILIZED MAIN SYSTEM
 // ======================================================
 
 const chaptersData = [
@@ -220,7 +220,7 @@ const card =
 document.createElement("a");
 
 card.className =
-"chapter-card glass";
+"chapter-card glass semantic-card";
 
 card.href =
 chapter.file;
@@ -258,92 +258,21 @@ chaptersTrack.appendChild(card);
 }
 
 // ======================================================
-// TRUE CENTER CAROUSEL
+// STABILIZED CAROUSEL
 // ======================================================
 
 function initializeCarousel(){
 
-const scrollToCard = (direction)=>{
+const scrollAmount = ()=>{
 
-const cards =
-document.querySelectorAll(".chapter-card");
+const firstCard =
+document.querySelector(".chapter-card");
 
-if(cards.length === 0) return;
+if(!firstCard) return 320;
 
-const trackRect =
-chaptersTrack.getBoundingClientRect();
+const gap = 18;
 
-const trackCenter =
-trackRect.left + (trackRect.width / 2);
-
-let closestCard = null;
-let closestDistance = Infinity;
-
-cards.forEach((card)=>{
-
-const rect =
-card.getBoundingClientRect();
-
-const cardCenter =
-rect.left + (rect.width / 2);
-
-const distance =
-Math.abs(trackCenter - cardCenter);
-
-if(distance < closestDistance){
-
-closestDistance = distance;
-closestCard = card;
-
-}
-
-});
-
-if(!closestCard) return;
-
-const currentIndex =
-Array.from(cards)
-.indexOf(closestCard);
-
-let targetCard;
-
-if(direction === "right"){
-
-targetCard =
-cards[
-Math.min(
-currentIndex + 1,
-cards.length - 1
-)
-];
-
-}else{
-
-targetCard =
-cards[
-Math.max(
-currentIndex - 1,
-0
-)
-];
-
-}
-
-const targetRect =
-targetCard.getBoundingClientRect();
-
-const targetCenter =
-targetRect.left + (targetRect.width / 2);
-
-const offset =
-targetCenter - trackCenter;
-
-chaptersTrack.scrollBy({
-
-left:offset,
-behavior:"smooth"
-
-});
+return firstCard.offsetWidth + gap;
 
 };
 
@@ -351,7 +280,12 @@ scrollRight.addEventListener(
 "click",
 ()=>{
 
-scrollToCard("right");
+chaptersTrack.scrollBy({
+
+left:scrollAmount(),
+behavior:"smooth"
+
+});
 
 }
 );
@@ -360,7 +294,68 @@ scrollLeft.addEventListener(
 "click",
 ()=>{
 
-scrollToCard("left");
+chaptersTrack.scrollBy({
+
+left:-scrollAmount(),
+behavior:"smooth"
+
+});
+
+}
+);
+
+let isDown = false;
+let startX;
+let scrollLeftStart;
+
+chaptersTrack.addEventListener(
+"touchstart",
+()=>{
+
+chaptersTrack.style.scrollBehavior = "smooth";
+
+},
+{
+passive:true
+}
+);
+
+chaptersTrack.addEventListener(
+"mousedown",
+(e)=>{
+
+isDown = true;
+
+startX = e.pageX;
+
+scrollLeftStart =
+chaptersTrack.scrollLeft;
+
+}
+);
+
+window.addEventListener(
+"mouseup",
+()=>{
+
+isDown = false;
+
+}
+);
+
+chaptersTrack.addEventListener(
+"mousemove",
+(e)=>{
+
+if(!isDown) return;
+
+e.preventDefault();
+
+const walk =
+(startX - e.pageX) * 1.1;
+
+chaptersTrack.scrollLeft =
+scrollLeftStart + walk;
 
 }
 );
@@ -664,6 +659,18 @@ This chapter governs municipal traffic management and transportation regulation.
 
 }
 
+if(
+lower.includes("definitions")
+){
+
+response = `
+<b>Chapter I — General Provisions</b><br><br>
+
+Article C contains foundational legal definitions used throughout the Code of General Ordinances.
+`;
+
+}
+
 addMessage(response,"ai");
 
 }
@@ -671,6 +678,6 @@ addMessage(response,"ai");
 console.log(`
 ========================================
 LGU PORTAL 15 💎
-MAIN SYSTEM ACTIVE
+PRESERVED SYSTEM ACTIVE
 ========================================
 `);
