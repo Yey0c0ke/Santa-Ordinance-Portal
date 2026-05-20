@@ -1,7 +1,7 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 YEYO 💎
         LGU PORTAL 16 • MAIN CSS
-     MOBILE STABILITY PATCH VERSION
+      PUBLIC MOBILE UX PATCH VERSION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 
@@ -561,8 +561,6 @@ a{
         0
         60px;
 
-    cursor:grab;
-
     overscroll-behavior-x:contain;
 
     touch-action:auto;
@@ -615,6 +613,8 @@ a{
 
     transform:
         translateZ(0);
+
+    touch-action:pan-y;
 
 }
 
@@ -1391,7 +1391,7 @@ a{
 
         -webkit-overflow-scrolling:touch;
 
-        touch-action:pan-x;
+        touch-action:auto;
 
     }
 
@@ -1413,6 +1413,8 @@ a{
 
         transform:
             translateZ(0);
+
+        touch-action:pan-y;
 
     }
 
@@ -1572,6 +1574,7 @@ a{
     }
 
 }
+
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             EXTRA MOBILE SMOOTHNESS
