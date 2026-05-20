@@ -42,6 +42,7 @@ const floatingNav =
 
 let sliderTicking = false;
 let navTicking = false;
+let isScrolling = false;
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -66,7 +67,9 @@ function getScrollAmount(){
 
     if(!firstCard) return 320;
 
-    return firstCard.offsetWidth + 24;
+    const gap = 24;
+
+    return firstCard.getBoundingClientRect().width + gap;
 
 }
 
@@ -77,25 +80,51 @@ function getScrollAmount(){
 
 function scrollNext(){
 
-    chaptersTrack.scrollBy({
+    if(isScrolling) return;
 
-        left:getScrollAmount(),
+    isScrolling = true;
+
+    const amount = getScrollAmount();
+
+    chaptersTrack.scrollTo({
+
+        left:
+            chaptersTrack.scrollLeft + amount,
 
         behavior:'smooth'
 
     });
+
+    setTimeout(()=>{
+
+        isScrolling = false;
+
+    },420);
 
 }
 
 function scrollPrev(){
 
-    chaptersTrack.scrollBy({
+    if(isScrolling) return;
 
-        left:-getScrollAmount(),
+    isScrolling = true;
+
+    const amount = getScrollAmount();
+
+    chaptersTrack.scrollTo({
+
+        left:
+            chaptersTrack.scrollLeft - amount,
 
         behavior:'smooth'
 
     });
+
+    setTimeout(()=>{
+
+        isScrolling = false;
+
+    },420);
 
 }
 
@@ -114,42 +143,16 @@ prevBtn?.addEventListener(
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            CENTER STABILIZER
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function stabilizeSliderPosition(){
-
-    const firstCard =
-        document.querySelector('.chapter-card');
-
-    if(!firstCard) return;
-
-    const cardWidth =
-        firstCard.offsetWidth;
-
-    const dynamicPadding =
-        Math.max(
-            (window.innerWidth - cardWidth) / 2,
-            20
-        );
-
-    chaptersTrack.style.paddingLeft =
-        `${dynamicPadding}px`;
-
-    chaptersTrack.style.paddingRight =
-        `${dynamicPadding}px`;
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             ACTIVE CENTER CARD
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 function updateCenteredCard(){
 
+    const trackRect =
+        chaptersTrack.getBoundingClientRect();
+
     const center =
-        window.innerWidth / 2;
+        trackRect.left + (trackRect.width / 2);
 
     chapterCards.forEach((card)=>{
 
@@ -172,7 +175,7 @@ function updateCenteredCard(){
             'active-card'
         );
 
-        if(normalized < 0.18){
+        if(normalized < 0.22){
 
             card.classList.add(
                 'active-card'
@@ -180,17 +183,8 @@ function updateCenteredCard(){
 
         }
 
-        const scale =
-            1 - (normalized * 0.05);
-
-        const translateY =
-            normalized * 10;
-
         const opacity =
-            1 - (normalized * 0.12);
-
-        card.style.transform =
-            `translateY(${translateY}px) scale(${scale})`;
+            1 - (normalized * 0.16);
 
         card.style.opacity =
             opacity;
@@ -210,8 +204,6 @@ window.addEventListener(
 
     ()=>{
 
-        stabilizeSliderPosition();
-
         updateCenteredCard();
 
     }
@@ -219,15 +211,15 @@ window.addEventListener(
 );
 
 
-/* RESIZE */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                RESIZE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 window.addEventListener(
 
     'resize',
 
     ()=>{
-
-        stabilizeSliderPosition();
 
         updateCenteredCard();
 
@@ -265,6 +257,7 @@ chaptersTrack?.addEventListener(
     { passive:true }
 
 );
+
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 AI MODAL
@@ -493,8 +486,6 @@ window.addEventListener(
 
         setTimeout(()=>{
 
-            stabilizeSliderPosition();
-
             updateCenteredCard();
 
         },120);
@@ -512,8 +503,9 @@ console.log(
 
 `
 LGU PORTAL 16 💎
-PREMIUM RAIL PATCH READY
-SMOOTHNESS SYSTEM ACTIVE
+PREMIUM RAIL ENGINE READY
+APP STORE CAROUSEL ACTIVE
+PS5 CINEMATIC MOTION ENABLED
 `
 
 );
