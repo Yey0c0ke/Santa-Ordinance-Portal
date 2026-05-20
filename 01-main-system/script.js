@@ -1,7 +1,7 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 YEYO 💎
         LGU PORTAL 16 • MAIN JS
-      MOBILE STABILITY PATCH VERSION
+     CINEMATIC SMOOTHNESS PATCH VERSION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 
@@ -88,7 +88,7 @@ function scrollNext(){
 
     chaptersTrack.scrollBy({
 
-        left:scrollAmount,
+        left:scrollAmount * 0.92,
 
         behavior:'smooth'
 
@@ -104,7 +104,7 @@ function scrollPrev(){
 
     chaptersTrack.scrollBy({
 
-        left:-scrollAmount,
+        left:-(scrollAmount * 0.92),
 
         behavior:'smooth'
 
@@ -411,7 +411,7 @@ if(chaptersTrack){
 
                 }
 
-            },100);
+            },120);
 
         },
 
@@ -707,7 +707,7 @@ console.log(
 
 `
 LGU PORTAL 16 💎
-MOBILE STABILITY PATCH READY
+CINEMATIC SMOOTHNESS PATCH READY
 `
 
 );
@@ -715,4 +715,4 @@ MOBILE STABILITY PATCH READY
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 END OF JS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */

@@ -550,6 +550,10 @@ a{
 
     scroll-padding-inline:50%;
 
+    scroll-padding-left:50%;
+
+    scroll-padding-right:50%;
+
     -webkit-overflow-scrolling:touch;
 
     scrollbar-width:none;
@@ -754,6 +758,7 @@ a{
 
 }
 
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 NAVIGATION ARROWS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -916,7 +921,6 @@ a{
     line-height:1.7;
 
 }
-
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 SYSTEM INFO
