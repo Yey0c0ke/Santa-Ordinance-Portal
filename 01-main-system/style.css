@@ -1,7 +1,6 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                YEYO 💎
-        LGU PORTAL 16 • MAIN CSS
-      PUBLIC MOBILE UX PATCH VERSION
+                LGU PORTAL 16 💎
+        PREMIUM RAIL STABILITY PATCH
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 
@@ -15,33 +14,20 @@
     --bg-secondary:#071126;
 
     --text-primary:#ffffff;
-    --text-secondary:rgba(255,255,255,0.76);
-
-    --glass-bg:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,0.08),
-            rgba(255,255,255,0.03)
-        );
-
-    --glass-border:
-        1px solid rgba(255,255,255,0.08);
+    --text-secondary:rgba(255,255,255,0.74);
 
     --blue-glow:#2563eb;
     --purple-glow:#7c3aed;
 
-    --shadow-soft:
-        0 12px 40px rgba(0,0,0,0.28);
-
     --transition:
-        0.30s cubic-bezier(.4,0,.2,1);
+        0.30s cubic-bezier(.22,1,.36,1);
 
 }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 RESET
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 *{
     margin:0;
@@ -67,8 +53,6 @@ body{
 
     min-height:100svh;
 
-    position:relative;
-
     text-rendering:optimizeLegibility;
 
     -webkit-font-smoothing:antialiased;
@@ -78,7 +62,7 @@ body{
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 GLOBAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 img{
     display:block;
@@ -96,7 +80,7 @@ a{
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 BACKGROUND
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .bg-grid{
 
@@ -105,12 +89,12 @@ a{
 
     background-image:
         linear-gradient(
-            rgba(255,255,255,0.03) 1px,
+            rgba(255,255,255,0.02) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(255,255,255,0.03) 1px,
+            rgba(255,255,255,0.02) 1px,
             transparent 1px
         );
 
@@ -126,13 +110,13 @@ a{
 
     border-radius:50%;
 
-    filter:blur(60px);
+    filter:blur(42px);
 
-    z-index:-2;
-
-    opacity:0.35;
+    opacity:0.20;
 
     pointer-events:none;
+
+    z-index:-2;
 
 }
 
@@ -143,19 +127,19 @@ a{
 
     background:var(--blue-glow);
 
-    top:-140px;
-    left:-100px;
+    top:-160px;
+    left:-120px;
 
 }
 
 .glow-2{
 
-    width:360px;
-    height:360px;
+    width:340px;
+    height:340px;
 
     background:var(--purple-glow);
 
-    bottom:-100px;
+    bottom:-120px;
     right:-100px;
 
 }
@@ -163,13 +147,14 @@ a{
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 HERO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .hero{
 
     position:relative;
 
-    min-height:760px;
+    min-height:100dvh;
+    min-height:100svh;
 
     overflow:hidden;
 
@@ -177,27 +162,6 @@ a{
 
     align-items:center;
     justify-content:center;
-
-}
-
-.hero::after{
-
-    content:'';
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-        radial-gradient(
-            circle at center,
-            transparent 40%,
-            rgba(2,6,23,0.38)
-        );
-
-    pointer-events:none;
-
-    z-index:1;
 
 }
 
@@ -211,13 +175,13 @@ a{
 
     object-fit:cover;
 
-    opacity:0.48;
+    opacity:0.40;
 
-    transform:scale(1.02);
+    transform:scale(1.01);
 
     filter:
-        saturate(1.02)
-        contrast(1.01);
+        saturate(0.96)
+        contrast(1.02);
 
 }
 
@@ -231,7 +195,7 @@ a{
             to bottom,
             rgba(2,6,23,0.18),
             rgba(2,6,23,0.34),
-            rgba(2,6,23,0.92)
+            rgba(2,6,23,0.94)
         );
 
 }
@@ -239,7 +203,7 @@ a{
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 FLOATING NAV
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .floating-nav{
 
@@ -250,10 +214,12 @@ a{
 
     transform:translateX(-50%);
 
-    width:min(92%, 1000px);
+    width:min(92%,1000px);
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     gap:20px;
@@ -264,19 +230,18 @@ a{
 
     background:rgba(10,15,28,0.82);
 
-    border:var(--glass-border);
+    border:1px solid rgba(255,255,255,0.08);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(12px);
 
-    -webkit-backdrop-filter:blur(10px);
-
-    box-shadow:var(--shadow-soft);
+    -webkit-backdrop-filter:blur(12px);
 
     z-index:999;
 
-    overflow:hidden;
-
-    isolation:isolate;
+    transition:
+        background 0.28s ease,
+        border 0.28s ease,
+        transform 0.28s ease;
 
 }
 
@@ -290,6 +255,7 @@ a{
 .nav-left{
 
     display:flex;
+
     align-items:center;
 
     gap:16px;
@@ -298,8 +264,8 @@ a{
 
 .nav-logo{
 
-    width:58px;
-    height:58px;
+    width:62px;
+    height:62px;
 
     object-fit:contain;
 
@@ -331,7 +297,7 @@ a{
 
     color:#111827;
 
-    padding:14px 24px;
+    padding:13px 22px;
 
     border-radius:999px;
 
@@ -343,10 +309,17 @@ a{
 
 }
 
+.legal-ai-btn:hover{
+
+    transform:
+        translateY(-2px);
+
+}
+
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 HERO CONTENT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .hero-content{
 
@@ -364,31 +337,22 @@ a{
 
     justify-content:center;
 
-    padding-top:170px;
+    padding-top:138px;
 
 }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        PLAYSTATION HERO RAIL SYSTEM
+                HERO HEADER
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .hero-rail-header{
 
-    width:min(94%, 1350px);
+    width:min(94%,1350px);
 
     margin-inline:auto;
 
-    margin-bottom:28px;
-
-    padding:
-        18px
-        8px
-        0;
-
-    position:relative;
-
-    z-index:5;
+    margin-bottom:26px;
 
 }
 
@@ -411,8 +375,6 @@ a{
     letter-spacing:6px;
 
     color:rgba(255,255,255,0.70);
-
-    white-space:nowrap;
 
 }
 
@@ -445,28 +407,28 @@ a{
 
 .hero-rail-text h2{
 
-    font-size:clamp(2.6rem, 5vw, 5rem);
+    font-size:
+        clamp(2.8rem,5vw,5.4rem);
 
     font-weight:800;
 
-    line-height:0.92;
+    line-height:0.90;
 
-    letter-spacing:-3px;
+    letter-spacing:-4px;
 
-    text-shadow:
-        0 10px 40px rgba(0,0,0,0.30);
+    max-width:920px;
 
 }
 
 .hero-rail-text p{
 
-    margin-top:18px;
+    margin-top:20px;
 
-    max-width:760px;
+    max-width:640px;
 
-    color:rgba(255,255,255,0.82);
+    color:rgba(255,255,255,0.78);
 
-    line-height:1.7;
+    line-height:1.75;
 
     font-size:0.96rem;
 
@@ -480,23 +442,15 @@ a{
 
     gap:10px;
 
-    padding:
-        12px
-        18px;
+    padding:12px 18px;
 
     border-radius:999px;
 
-    background:
-        rgba(255,255,255,0.06);
+    background:rgba(255,255,255,0.06);
 
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    color:white;
+    border:1px solid rgba(255,255,255,0.08);
 
     font-size:0.84rem;
-
-    white-space:nowrap;
 
 }
 
@@ -511,24 +465,28 @@ a{
 
 }
 
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                CHAPTER SLIDER
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+            PREMIUM CHAPTER RAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .chapters-wrapper{
 
     position:relative;
 
-    width:min(100%, 1700px);
+    width:min(100%,1700px);
 
     margin-inline:auto;
 
     overflow:hidden;
 
-    padding-top:8px;
+    padding-top:10px;
 
 }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                CHAPTER TRACK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .chapters-track{
 
@@ -536,7 +494,7 @@ a{
 
     align-items:stretch;
 
-    gap:22px;
+    gap:24px;
 
     overflow-x:auto;
 
@@ -546,14 +504,6 @@ a{
 
     scroll-snap-type:x mandatory;
 
-    scroll-snap-stop:always;
-
-    scroll-padding-inline:50%;
-
-    scroll-padding-left:50%;
-
-    scroll-padding-right:50%;
-
     -webkit-overflow-scrolling:touch;
 
     scrollbar-width:none;
@@ -561,32 +511,32 @@ a{
     -ms-overflow-style:none;
 
     padding:
-        28px
+        24px
         0
-        60px;
+        58px;
 
     overscroll-behavior-x:contain;
 
-    touch-action:auto;
-
-    will-change:scroll-position;
+    touch-action:pan-x;
 
 }
 
 .chapters-track::-webkit-scrollbar{
+
     display:none;
+
 }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 CHAPTER CARD
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .chapter-card{
 
     isolation:isolate;
 
-    flex:0 0 min(60vw, 290px);
+    flex:0 0 min(60vw,292px);
 
     scroll-snap-align:center;
 
@@ -597,63 +547,67 @@ a{
     background:#0b1220;
 
     border:
-        1px solid rgba(255,255,255,0.06);
+        1px solid rgba(255,255,255,0.05);
 
     box-shadow:
-        0 12px 26px rgba(0,0,0,0.24);
+        0 10px 26px rgba(0,0,0,0.22);
 
     transform-origin:center center;
 
-    will-change:
-        transform,
-        opacity;
-
     transition:
-        transform 0.32s cubic-bezier(.22,1,.36,1),
-        opacity 0.25s ease,
-        box-shadow 0.32s cubic-bezier(.22,1,.36,1);
+        transform 0.34s cubic-bezier(.22,1,.36,1),
+        opacity 0.28s ease,
+        box-shadow 0.34s cubic-bezier(.22,1,.36,1),
+        border 0.34s ease;
 
     backface-visibility:hidden;
 
     transform:
         translateZ(0);
 
-    touch-action:pan-y;
-
 }
 
 .chapter-card:hover{
 
     transform:
-        translateY(-6px);
-
-    box-shadow:
-        0 20px 40px rgba(0,0,0,0.28);
+        translateY(-4px);
 
 }
 
-.chapter-card::after{
+.chapter-card.active-card{
 
-    content:'';
+    transform:
+        translateY(-10px) scale(1.02);
 
-    position:absolute;
+    opacity:1 !important;
 
-    inset:0;
-
-    border-radius:inherit;
-
-    pointer-events:none;
+    border:
+        1px solid rgba(96,165,250,0.34);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.04);
+        0 30px 70px rgba(0,0,0,0.36),
+        0 0 40px rgba(37,99,235,0.12);
+
+    z-index:30;
 
 }
+
+.chapter-card:not(.active-card){
+
+    opacity:0.88;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CHAPTER IMAGE SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .chapter-image-wrap{
 
     position:relative;
 
-    height:168px;
+    height:172px;
 
     overflow:hidden;
 
@@ -662,8 +616,6 @@ a{
 }
 
 .chapter-image{
-
-    display:block;
 
     width:100%;
     height:100%;
@@ -675,12 +627,17 @@ a{
 
 }
 
-.chapter-card:hover .chapter-image{
+.chapter-card.active-card .chapter-image{
 
     transform:
-        scale(1.04);
+        scale(1.03);
 
 }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CHAPTER CONTENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .chapter-content{
 
@@ -704,15 +661,24 @@ a{
 
 }
 
+.chapter-card.active-card .chapter-number{
+
+    color:
+        rgba(147,197,253,0.92);
+
+}
+
 .chapter-content h3{
 
-    margin-top:12px;
+    margin-top:14px;
 
-    font-size:1rem;
+    font-size:1.08rem;
 
     font-weight:800;
 
-    line-height:1.14;
+    line-height:1.18;
+
+    letter-spacing:-0.4px;
 
 }
 
@@ -720,13 +686,20 @@ a{
 
     margin-top:14px;
 
-    color:var(--text-secondary);
+    color:rgba(255,255,255,0.72);
 
-    line-height:1.5;
+    line-height:1.65;
 
-    font-size:0.76rem;
+    font-size:0.78rem;
+
+    max-width:95%;
 
 }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                BUTTONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .chapter-btn{
 
@@ -750,18 +723,34 @@ a{
 
 }
 
-.chapter-btn:hover,
-.legal-ai-btn:hover{
+.chapter-btn:hover{
 
     transform:
         translateY(-2px);
 
 }
 
+.chapter-btn:active,
+.legal-ai-btn:active,
+.nav-arrow:active{
+
+    transform:
+        scale(0.98);
+
+}
+
+.disabled-btn{
+
+    opacity:0.68;
+
+    cursor:not-allowed;
+
+}
+
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                NAVIGATION ARROWS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+            NAVIGATION ARROWS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .nav-arrow{
 
@@ -771,8 +760,8 @@ a{
 
     transform:translateY(-50%);
 
-    width:58px;
-    height:58px;
+    width:56px;
+    height:56px;
 
     border:none;
 
@@ -783,7 +772,7 @@ a{
 
     color:white;
 
-    font-size:1.6rem;
+    font-size:1.5rem;
 
     cursor:pointer;
 
@@ -808,17 +797,70 @@ a{
 }
 
 .prev-btn{
-    left:-4px;
+
+    left:8px;
+
 }
 
 .next-btn{
-    right:-4px;
+
+    right:8px;
+
 }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CINEMATIC DEPTH
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.chapters-wrapper::before,
+.chapters-wrapper::after{
+
+    content:'';
+
+    position:absolute;
+
+    top:0;
+
+    width:120px;
+
+    height:100%;
+
+    z-index:10;
+
+    pointer-events:none;
+
+}
+
+.chapters-wrapper::before{
+
+    left:0;
+
+    background:
+        linear-gradient(
+            to right,
+            rgba(2,6,23,0.96),
+            transparent
+        );
+
+}
+
+.chapters-wrapper::after{
+
+    right:0;
+
+    background:
+        linear-gradient(
+            to left,
+            rgba(2,6,23,0.96),
+            transparent
+        );
+
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 MAIN CONTENT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .main-content{
 
@@ -826,7 +868,7 @@ a{
 
     z-index:10;
 
-    margin-top:-20px;
+    margin-top:-10px;
 
     padding-bottom:100px;
 
@@ -835,13 +877,13 @@ a{
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 AI PANEL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .ai-panel{
 
     position:relative;
 
-    width:min(92%, 1200px);
+    width:min(92%,1200px);
 
     margin-inline:auto;
 
@@ -896,11 +938,22 @@ a{
 
 }
 
+.section-label{
+
+    font-size:0.74rem;
+
+    letter-spacing:5px;
+
+    color:rgba(255,255,255,0.62);
+
+}
+
 .ai-content h2{
 
-    margin-top:14px;
+    margin-top:16px;
 
-    font-size:clamp(2rem, 4vw, 3.6rem);
+    font-size:
+        clamp(2rem,4vw,3.6rem);
 
     font-weight:800;
 
@@ -914,28 +967,29 @@ a{
 
     margin-top:20px;
 
-    max-width:700px;
+    max-width:720px;
 
     color:rgba(255,255,255,0.80);
 
-    line-height:1.7;
+    line-height:1.75;
 
 }
 
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 SYSTEM INFO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .system-info{
 
-    width:min(92%, 1300px);
+    width:min(92%,1300px);
 
     margin-inline:auto;
 
     display:grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
     gap:24px;
 
@@ -960,8 +1014,8 @@ a{
         0 12px 24px rgba(0,0,0,0.18);
 
     transition:
-        transform 0.35s ease,
-        border 0.35s ease;
+        transform 0.30s ease,
+        border 0.30s ease;
 
 }
 
@@ -977,7 +1031,7 @@ a{
 
 .info-card h3{
 
-    font-size:1.2rem;
+    font-size:1.18rem;
 
     font-weight:800;
 
@@ -1000,7 +1054,7 @@ a{
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 AI MODAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .ai-modal{
 
@@ -1045,7 +1099,7 @@ a{
 
     z-index:2;
 
-    width:min(92%, 760px);
+    width:min(92%,760px);
 
     padding:34px;
 
@@ -1172,7 +1226,7 @@ a{
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 FOOTER
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .footer{
 
@@ -1190,58 +1244,8 @@ a{
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            PLAYSTATION DEPTH
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-.chapters-wrapper::before,
-.chapters-wrapper::after{
-
-    content:'';
-
-    position:absolute;
-
-    top:0;
-
-    width:120px;
-
-    height:100%;
-
-    z-index:10;
-
-    pointer-events:none;
-
-}
-
-.chapters-wrapper::before{
-
-    left:0;
-
-    background:
-        linear-gradient(
-            to right,
-            rgba(2,6,23,0.96),
-            transparent
-        );
-
-}
-
-.chapters-wrapper::after{
-
-    right:0;
-
-    background:
-        linear-gradient(
-            to left,
-            rgba(2,6,23,0.96),
-            transparent
-        );
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             NAVBAR LIGHTING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .floating-nav::before{
 
@@ -1264,7 +1268,7 @@ a{
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 RESPONSIVE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 @media(min-width:1400px){
 
@@ -1291,6 +1295,10 @@ a{
 }
 
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                TABLET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 @media(max-width:1100px){
 
     .system-info{
@@ -1301,6 +1309,10 @@ a{
 
 }
 
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MEDIUM DEVICES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 @media(max-width:900px){
 
@@ -1314,24 +1326,28 @@ a{
 
     .chapter-card{
 
-        flex:0 0 min(70vw, 275px);
+        flex:0 0 min(72vw,280px);
 
     }
 
     .prev-btn{
+
         left:10px;
+
     }
 
     .next-btn{
+
         right:10px;
+
     }
 
 }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            MOBILE STABILITY SYSTEM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+            MOBILE RHYTHM SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 @media(max-width:768px){
 
@@ -1343,7 +1359,7 @@ a{
 
     .hero-content{
 
-        padding-top:150px;
+        padding-top:126px;
 
     }
 
@@ -1357,7 +1373,7 @@ a{
 
         letter-spacing:-2px;
 
-        line-height:0.95;
+        line-height:0.94;
 
     }
 
@@ -1389,43 +1405,13 @@ a{
 
         scroll-padding-inline:18px;
 
-        scroll-snap-type:x mandatory;
-
-        overscroll-behavior-x:contain;
-
-        -webkit-overflow-scrolling:touch;
-
-        touch-action:auto;
-
     }
 
     .chapter-card{
 
-        flex:0 0 78vw;
+        flex:0 0 80vw;
 
-        max-width:320px;
-
-        opacity:1 !important;
-
-        filter:none !important;
-
-        transform-origin:center center;
-
-        backface-visibility:hidden;
-
-        -webkit-backface-visibility:hidden;
-
-        transform:
-            translateZ(0);
-
-        touch-action:pan-y;
-
-    }
-
-    .chapter-image{
-
-        transform:
-            translateZ(0);
+        max-width:312px;
 
     }
 
@@ -1447,14 +1433,14 @@ a{
 
         font-size:0.74rem;
 
-        line-height:1.5;
+        line-height:1.55;
 
     }
 
     .nav-arrow{
 
-        width:52px;
-        height:52px;
+        width:50px;
+        height:50px;
 
         font-size:1.3rem;
 
@@ -1478,8 +1464,8 @@ a{
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            SMALL PHONE OPTIMIZATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+            SMALL PHONE SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 @media(max-width:520px){
 
@@ -1501,14 +1487,14 @@ a{
 
     .nav-logo{
 
-        width:48px;
-        height:48px;
+        width:50px;
+        height:50px;
 
     }
 
     .nav-text h1{
 
-        font-size:1.1rem;
+        font-size:1.08rem;
 
     }
 
@@ -1567,7 +1553,9 @@ a{
     }
 
     .nav-arrow{
+
         display:none;
+
     }
 
     .chapters-wrapper::before,
@@ -1581,8 +1569,8 @@ a{
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            EXTRA MOBILE SMOOTHNESS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+            PREMIUM MOTION SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 @media(max-width:768px){
 
@@ -1602,16 +1590,6 @@ a{
     .chapters-track{
 
         scroll-behavior:smooth;
-
-        scrollbar-width:none;
-
-        -ms-overflow-style:none;
-
-    }
-
-    .chapters-track::-webkit-scrollbar{
-
-        display:none;
 
     }
 
@@ -1639,48 +1617,12 @@ a{
 
     }
 
-    .hero-image{
-
-        will-change:transform;
-
-    }
-
-    .floating-nav{
-
-        backdrop-filter:blur(14px);
-
-        -webkit-backdrop-filter:blur(14px);
-
-    }
-
 }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            PERFORMANCE OPTIMIZATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-.chapter-card,
-.chapter-image,
-.floating-nav,
-.ai-panel,
-.info-card{
-
-    will-change:
-        transform;
-
-}
-
-.chapter-image{
-
-    image-rendering:auto;
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            SAFE RENDERING SYSTEM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+            SAFE RENDERING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .chapter-card,
 .chapter-image,
@@ -1702,4 +1644,4 @@ a{
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 END OF CSS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */

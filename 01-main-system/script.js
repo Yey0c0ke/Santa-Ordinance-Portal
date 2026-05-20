@@ -1,7 +1,6 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                YEYO 💎
-        LGU PORTAL 16 • MAIN JS
-     CINEMATIC SMOOTHNESS PATCH VERSION
+                LGU PORTAL 16 💎
+            PREMIUM RAIL ENGINE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 
@@ -38,6 +37,14 @@ const floatingNav =
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                ENGINE FLAGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+let sliderTicking = false;
+let navTicking = false;
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 DEVICE DETECTION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
@@ -59,20 +66,7 @@ function getScrollAmount(){
 
     if(!firstCard) return 320;
 
-    const cardWidth =
-        firstCard.offsetWidth;
-
-    const computedStyle =
-        window.getComputedStyle(chaptersTrack);
-
-    const gap =
-        parseInt(
-            computedStyle.columnGap ||
-            computedStyle.gap ||
-            24
-        );
-
-    return cardWidth + gap;
+    return firstCard.offsetWidth + 24;
 
 }
 
@@ -83,12 +77,9 @@ function getScrollAmount(){
 
 function scrollNext(){
 
-    const scrollAmount =
-        getScrollAmount();
-
     chaptersTrack.scrollBy({
 
-        left:scrollAmount * 0.92,
+        left:getScrollAmount(),
 
         behavior:'smooth'
 
@@ -96,15 +87,11 @@ function scrollNext(){
 
 }
 
-
 function scrollPrev(){
-
-    const scrollAmount =
-        getScrollAmount();
 
     chaptersTrack.scrollBy({
 
-        left:-(scrollAmount * 0.92),
+        left:-getScrollAmount(),
 
         behavior:'smooth'
 
@@ -115,38 +102,22 @@ function scrollPrev(){
 
 /* BUTTON EVENTS */
 
-if(nextBtn){
+nextBtn?.addEventListener(
+    'click',
+    scrollNext
+);
 
-    nextBtn.addEventListener(
-
-        'click',
-
-        scrollNext
-
-    );
-
-}
-
-if(prevBtn){
-
-    prevBtn.addEventListener(
-
-        'click',
-
-        scrollPrev
-
-    );
-
-}
+prevBtn?.addEventListener(
+    'click',
+    scrollPrev
+);
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                CENTER STABILIZER
+            CENTER STABILIZER
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 function stabilizeSliderPosition(){
-
-    if(!chaptersTrack) return;
 
     const firstCard =
         document.querySelector('.chapter-card');
@@ -156,22 +127,11 @@ function stabilizeSliderPosition(){
     const cardWidth =
         firstCard.offsetWidth;
 
-    let dynamicPadding;
-
-    if(isMobileView()){
-
-        dynamicPadding =
-            16;
-
-    }else{
-
-        dynamicPadding =
-            Math.max(
-                (window.innerWidth - cardWidth) / 2,
-                22
-            );
-
-    }
+    const dynamicPadding =
+        Math.max(
+            (window.innerWidth - cardWidth) / 2,
+            20
+        );
 
     chaptersTrack.style.paddingLeft =
         `${dynamicPadding}px`;
@@ -183,12 +143,10 @@ function stabilizeSliderPosition(){
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                ACTIVE CENTER CARD
+            ACTIVE CENTER CARD
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 function updateCenteredCard(){
-
-    if(!chaptersTrack) return;
 
     const center =
         window.innerWidth / 2;
@@ -210,82 +168,32 @@ function updateCenteredCard(){
                 1
             );
 
-        /* MOBILE ENGINE */
+        card.classList.remove(
+            'active-card'
+        );
 
-        if(isMobileView()){
+        if(normalized < 0.18){
 
-            const scale =
-                1 - (normalized * 0.04);
-
-            const translateY =
-                normalized * 8;
-
-            const opacity =
-                1 - (normalized * 0.10);
-
-            card.style.transform =
-                `translateY(${translateY}px) scale(${scale})`;
-
-            card.style.opacity =
-                opacity;
-
-            card.style.filter =
-                `blur(0px)`;
-
-            card.style.zIndex =
-                Math.round(100 - distance);
-
-            card.style.boxShadow =
-                `
-                0 12px 28px rgba(0,0,0,0.24)
-                `;
-
-            return;
+            card.classList.add(
+                'active-card'
+            );
 
         }
 
-        /* DESKTOP ENGINE */
-
         const scale =
-            1 - (normalized * 0.12);
+            1 - (normalized * 0.05);
 
         const translateY =
-            normalized * 30;
-
-        const blur =
-            normalized * 1.4;
+            normalized * 10;
 
         const opacity =
-            1 - (normalized * 0.40);
+            1 - (normalized * 0.12);
 
         card.style.transform =
             `translateY(${translateY}px) scale(${scale})`;
 
         card.style.opacity =
             opacity;
-
-        card.style.filter =
-            `blur(${blur}px)`;
-
-        card.style.zIndex =
-            Math.round(100 - distance);
-
-        if(normalized < 0.18){
-
-            card.style.boxShadow =
-                `
-                0 34px 80px rgba(0,0,0,0.46),
-                0 0 50px rgba(37,99,235,0.16)
-                `;
-
-        }else{
-
-            card.style.boxShadow =
-                `
-                0 16px 38px rgba(0,0,0,0.30)
-                `;
-
-        }
 
     });
 
@@ -332,95 +240,31 @@ window.addEventListener(
                 TRACK SCROLL
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-let ticking = false;
-let snapTimeout;
+chaptersTrack?.addEventListener(
 
-if(chaptersTrack){
+    'scroll',
 
-    chaptersTrack.addEventListener(
+    ()=>{
 
-        'scroll',
+        if(!sliderTicking){
 
-        ()=>{
+            requestAnimationFrame(()=>{
 
-            if(!ticking){
+                updateCenteredCard();
 
-                window.requestAnimationFrame(()=>{
+                sliderTicking = false;
 
-                    updateCenteredCard();
+            });
 
-                    ticking = false;
+            sliderTicking = true;
 
-                });
+        }
 
-                ticking = true;
+    },
 
-            }
+    { passive:true }
 
-            /* MOBILE:
-               NO FORCED SNAP
-            */
-
-            if(isMobileView()) return;
-
-            clearTimeout(snapTimeout);
-
-            snapTimeout = setTimeout(()=>{
-
-                const center =
-                    window.innerWidth / 2;
-
-                let closestCard = null;
-
-                let closestDistance = Infinity;
-
-                chapterCards.forEach((card)=>{
-
-                    const rect =
-                        card.getBoundingClientRect();
-
-                    const cardCenter =
-                        rect.left + rect.width / 2;
-
-                    const distance =
-                        Math.abs(center - cardCenter);
-
-                    if(distance < closestDistance){
-
-                        closestDistance =
-                            distance;
-
-                        closestCard =
-                            card;
-
-                    }
-
-                });
-
-                if(closestCard){
-
-                    closestCard.scrollIntoView({
-
-                        behavior:'smooth',
-
-                        inline:'center',
-
-                        block:'nearest'
-
-                    });
-
-                }
-
-            },120);
-
-        },
-
-        { passive:true }
-
-    );
-
-}
-
+);
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 AI MODAL
@@ -435,7 +279,6 @@ function openAIModal(){
 
 }
 
-
 function closeAIModal(){
 
     aiModal.classList.remove('active');
@@ -448,47 +291,35 @@ function closeAIModal(){
 
 /* OPEN */
 
-if(openAI){
+openAI?.addEventListener(
 
-    openAI.addEventListener(
+    'click',
 
-        'click',
+    openAIModal
 
-        openAIModal
-
-    );
-
-}
+);
 
 
 /* CLOSE BACKDROP */
 
-if(closeAI){
+closeAI?.addEventListener(
 
-    closeAI.addEventListener(
+    'click',
 
-        'click',
+    closeAIModal
 
-        closeAIModal
-
-    );
-
-}
+);
 
 
 /* CLOSE BUTTON */
 
-if(closeModalBtn){
+closeModalBtn?.addEventListener(
 
-    closeModalBtn.addEventListener(
+    'click',
 
-        'click',
+    closeAIModal
 
-        closeAIModal
-
-    );
-
-}
+);
 
 
 /* ESC KEY */
@@ -511,15 +342,14 @@ document.addEventListener(
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                FADE ANIMATIONS
+            FADE ANIMATION SYSTEM
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 const observerOptions = {
 
-    threshold:0.15
+    threshold:0.14
 
 };
-
 
 const fadeObserver = new IntersectionObserver(
 
@@ -588,15 +418,12 @@ if(aiPanel){
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                NAVBAR EFFECT
+            NAVBAR SCROLL EFFECT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 function handleNavbarScroll(){
 
-    const currentScroll =
-        window.scrollY;
-
-    if(currentScroll > 40){
+    if(window.scrollY > 40){
 
         floatingNav.classList.add(
             'nav-scrolled'
@@ -613,7 +440,7 @@ function handleNavbarScroll(){
 }
 
 
-/* OPTIMIZED SCROLL */
+/* OPTIMIZED NAVBAR SCROLL */
 
 window.addEventListener(
 
@@ -621,17 +448,17 @@ window.addEventListener(
 
     ()=>{
 
-        if(!ticking){
+        if(!navTicking){
 
-            window.requestAnimationFrame(()=>{
+            requestAnimationFrame(()=>{
 
                 handleNavbarScroll();
 
-                ticking = false;
+                navTicking = false;
 
             });
 
-            ticking = true;
+            navTicking = true;
 
         }
 
@@ -643,71 +470,50 @@ window.addEventListener(
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                BUTTON FEEDBACK
+            MOBILE STABILIZATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-document.querySelectorAll('button')
-.forEach((button)=>{
+if(isMobileView()){
 
-    button.addEventListener(
+    chaptersTrack.style.scrollBehavior =
+        'smooth';
 
-        'mousedown',
-
-        ()=>{
-
-            if(
-                !button.classList.contains(
-                    'disabled-btn'
-                )
-            ){
-
-                button.style.transform =
-                    'scale(0.97)';
-
-            }
-
-        }
-
-    );
-
-    button.addEventListener(
-
-        'mouseup',
-
-        ()=>{
-
-            button.style.transform =
-                '';
-
-        }
-
-    );
-
-    button.addEventListener(
-
-        'mouseleave',
-
-        ()=>{
-
-            button.style.transform =
-                '';
-
-        }
-
-    );
-
-});
+}
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                PERFORMANCE INIT
+            PERFORMANCE CLEANUP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+window.addEventListener(
+
+    'orientationchange',
+
+    ()=>{
+
+        setTimeout(()=>{
+
+            stabilizeSliderPosition();
+
+            updateCenteredCard();
+
+        },120);
+
+    }
+
+);
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                FINAL INIT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 console.log(
 
 `
 LGU PORTAL 16 💎
-CINEMATIC SMOOTHNESS PATCH READY
+PREMIUM RAIL PATCH READY
+SMOOTHNESS SYSTEM ACTIVE
 `
 
 );
@@ -715,4 +521,4 @@ CINEMATIC SMOOTHNESS PATCH READY
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 END OF JS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
