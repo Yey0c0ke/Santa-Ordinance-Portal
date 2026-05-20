@@ -1,434 +1,741 @@
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                 YEYO 💎
-      TEMPORARILY CLOSED • IOS STYLE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
 
-<title>Temporarily Closed</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>
+        LGU PORTAL • Municipality of Santa
+    </title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
 
-<style>
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                 YEYO 💎
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-
-    font-family:'Inter',sans-serif;
-
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    overflow:hidden;
-
-    background:#050816;
-
-    position:relative;
-
-    color:white;
-
-}
-
-/* BACKGROUND */
-
-.bg{
-
-    position:absolute;
-    border-radius:50%;
-
-    filter:blur(100px);
-
-    opacity:.5;
-
-}
-
-.bg1{
-
-    width:320px;
-    height:320px;
-
-    background:#2563eb;
-
-    top:-100px;
-    left:-100px;
-
-}
-
-.bg2{
-
-    width:300px;
-    height:300px;
-
-    background:#7c3aed;
-
-    bottom:-100px;
-    right:-100px;
-
-}
-
-.bg3{
-
-    width:250px;
-    height:250px;
-
-    background:#06b6d4;
-
-    top:50%;
-    left:50%;
-
-    transform:translate(-50%,-50%);
-
-}
-
-/* CARD */
-
-.card{
-
-    width:92%;
-    max-width:430px;
-
-    padding:40px 30px;
-
-    border-radius:35px;
-
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(30px);
-    -webkit-backdrop-filter:blur(30px);
-
-    border:1px solid rgba(255,255,255,.12);
-
-    box-shadow:
-    0 20px 60px rgba(0,0,0,.45),
-    inset 0 1px 0 rgba(255,255,255,.08);
-
-    text-align:center;
-
-    position:relative;
-    z-index:5;
-
-}
-
-/* ORB */
-
-.orb-wrap{
-
-    width:100px;
-    height:100px;
-
-    margin:0 auto 25px;
-
-    position:relative;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-}
-
-.orb{
-
-    width:32px;
-    height:32px;
-
-    border-radius:50%;
-
-    background:#ff2d55;
-
-    box-shadow:
-    0 0 25px rgba(255,45,85,.8),
-    0 0 70px rgba(255,45,85,.4);
-
-    z-index:5;
-
-}
-
-.ring{
-
-    position:absolute;
-
-    width:50px;
-    height:50px;
-
-    border-radius:50%;
-
-    border:2px solid rgba(255,45,85,.4);
-
-    animation:pulse 2s infinite;
-
-}
-
-.ring2{
-    animation-delay:1s;
-}
-
-@keyframes pulse{
-
-    0%{
-        transform:scale(1);
-        opacity:1;
-    }
-
-    100%{
-        transform:scale(2.5);
-        opacity:0;
-    }
-
-}
-
-/* TEXT */
-
-.label{
-
-    color:#7db3ff;
-
-    font-size:.75rem;
-    font-weight:700;
-
-    letter-spacing:4px;
-
-    margin-bottom:14px;
-
-}
-
-h1{
-
-    font-size:3rem;
-    line-height:1;
-
-    font-weight:800;
-
-    letter-spacing:-2px;
-
-    margin-bottom:20px;
-
-}
-
-.desc{
-
-    color:#b6c0da;
-
-    line-height:1.8;
-
-    margin-bottom:30px;
-
-}
-
-/* INFO BOX */
-
-.info{
-
-    background:rgba(255,255,255,.04);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:22px;
-
-    padding:18px;
-
-    margin-bottom:28px;
-
-}
-
-.row{
-
-    display:flex;
-    justify-content:space-between;
-
-    padding:14px 0;
-
-    border-bottom:1px solid rgba(255,255,255,.06);
-
-}
-
-.row:last-child{
-    border:none;
-}
-
-.left{
-
-    color:#8e9bb8;
-
-    font-size:.8rem;
-
-    font-weight:600;
-
-}
-
-.right{
-
-    font-weight:600;
-
-}
-
-.red{
-    color:#ff6b81;
-}
-
-/* BUTTON */
-
-button{
-
-    width:100%;
-
-    padding:16px;
-
-    border:none;
-    outline:none;
-
-    border-radius:20px;
-
-    font-size:1rem;
-    font-weight:700;
-
-    cursor:pointer;
-
-    color:white;
-
-    background:linear-gradient(
-        135deg,
-        #3b82f6,
-        #2563eb
-    );
-
-    box-shadow:
-    0 10px 30px rgba(37,99,235,.35);
-
-    transition:.35s;
-
-}
-
-button:hover{
-
-    transform:translateY(-2px);
-
-}
-
-button:active{
-
-    transform:scale(.98);
-
-}
-
-/* MOBILE */
-
-@media(max-width:600px){
-
-    h1{
-        font-size:2.3rem;
-    }
-
-    .card{
-        padding:34px 22px;
-    }
-
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                 YEYO 💎
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-</style>
+    <link rel="stylesheet"
+        href="style.css">
 
 </head>
 
 <body>
 
-<div class="bg bg1"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>
+    <div class="bg-grid"></div>
 
-<div class="card">
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
 
-    <div class="orb-wrap">
+    <header class="hero">
 
-        <div class="ring"></div>
-        <div class="ring ring2"></div>
+        <img
+            src="phts/balayili.png"
+            alt="Municipality Hero"
+            class="hero-image">
 
-        <div class="orb"></div>
+        <div class="hero-overlay"></div>
+
+        <!-- NAV -->
+
+        <nav class="floating-nav">
+
+            <div class="nav-left">
+
+                <img
+                    src="phts/logo.png"
+                    alt="Municipal Logo"
+                    class="nav-logo">
+
+                <div class="nav-text">
+
+                    <h1>
+                        LGU PORTAL
+                    </h1>
+
+                    <p>
+                        Municipality of Santa
+                    </p>
+
+                </div>
+
+            </div>
+
+            <button
+                class="legal-ai-btn"
+                id="openAI">
+
+                AI Assistant
+
+            </button>
+
+        </nav>
+
+        <!-- HERO -->
+
+        <div class="hero-content">
+
+            <section class="hero-rail-header">
+
+                <div class="hero-rail-top">
+
+                    <span class="hero-rail-label">
+                        MUNICIPALITY OF SANTA
+                    </span>
+
+                    <div class="hero-rail-line"></div>
+
+                </div>
+
+                <div class="hero-rail-content">
+
+                    <div class="hero-rail-text">
+
+                        <h2>
+                            Municipal Chapters
+                        </h2>
+
+                        <p>
+                            Explore codified municipal ordinances and legal systems.
+                        </p>
+
+                    </div>
+
+                    <div class="hero-rail-status">
+
+                        <span class="hero-status-dot"></span>
+
+                        <span>
+                            12 Municipal Chapters
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- CHAPTERS -->
+
+            <section class="chapters-wrapper">
+
+                <button
+                    class="nav-arrow prev-btn"
+                    id="prevBtn">
+
+                    &#10094;
+
+                </button>
+
+                <div
+                    class="chapters-track"
+                    id="chaptersTrack">
+
+                    <!-- CHAPTER I -->
+
+                    <article class="chapter-card">
+
+                        <div class="chapter-image-wrap">
+
+                            <img
+                                src="phts/coverphoto.png"
+                                alt="Chapter I"
+                                class="chapter-image">
+
+                        </div>
+
+                        <div class="chapter-content">
+
+                            <span class="chapter-number">
+                                CHAPTER I
+                            </span>
+
+                            <h3>
+                                General Provisions and Administrative Matters
+                            </h3>
+
+                            <p>
+                                Governance systems, permits,
+                                offices, and administrative structures.
+                            </p>
+
+                            <a href="chapters/chapter1/index.html">
+
+                                <button class="chapter-btn">
+                                    Open Chapter
+                                </button>
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CHAPTER II -->
+
+                    <article class="chapter-card">
+
+                        <div class="chapter-image-wrap">
+
+                            <img
+                                src="phts/coverphoto.png"
+                                alt="Chapter II"
+                                class="chapter-image">
+
+                        </div>
+
+                        <div class="chapter-content">
+
+                            <span class="chapter-number">
+                                CHAPTER II
+                            </span>
+
+                            <h3>
+                                Revenue and Fiscal Administration
+                            </h3>
+
+                            <p>
+                                Taxes, appropriations,
+                                budgeting, and fiscal systems.
+                            </p>
+
+                            <button class="chapter-btn disabled-btn">
+                                Under Development
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CHAPTER III -->
+
+                    <article class="chapter-card">
+
+                        <div class="chapter-image-wrap">
+
+                            <img
+                                src="phts/coverphoto.png"
+                                alt="Chapter III"
+                                class="chapter-image">
+
+                        </div>
+
+                        <div class="chapter-content">
+
+                            <span class="chapter-number">
+                                CHAPTER III
+                            </span>
+
+                            <h3>
+                                Public Services, Social Welfare and Basic Services
+                            </h3>
+
+                            <p>
+                                Welfare programs,
+                                assistance systems,
+                                and public services.
+                            </p>
+
+                            <button class="chapter-btn disabled-btn">
+                                Under Development
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CHAPTER IV -->
+
+                    <article class="chapter-card">
+
+                        <div class="chapter-image-wrap">
+
+                            <img
+                                src="phts/coverphoto.png"
+                                alt="Chapter IV"
+                                class="chapter-image">
+
+                        </div>
+
+                        <div class="chapter-content">
+
+                            <span class="chapter-number">
+                                CHAPTER IV
+                            </span>
+
+                            <h3>
+                                Health, Sanitation, Public Safety and Environmental Protection
+                            </h3>
+
+                            <p>
+                                Health systems, sanitation,
+                                environmental safety,
+                                and protection measures.
+                            </p>
+
+                            <button class="chapter-btn disabled-btn">
+                                Under Development
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CHAPTER V -->
+
+                    <article class="chapter-card">
+
+                        <div class="chapter-image-wrap">
+
+                            <img
+                                src="phts/coverphoto.png"
+                                alt="Chapter V"
+                                class="chapter-image">
+
+                        </div>
+
+                        <div class="chapter-content">
+
+                            <span class="chapter-number">
+                                CHAPTER V
+                            </span>
+
+                            <h3>
+                                Peace and Order, Traffic and Public Safety
+                            </h3>
+
+                            <p>
+                                Traffic systems,
+                                enforcement operations,
+                                and public order management.
+                            </p>
+
+                            <button class="chapter-btn disabled-btn">
+                                Under Development
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CHAPTER VI -->
+
+                    <article class="chapter-card">
+
+                        <div class="chapter-image-wrap">
+
+                            <img
+                                src="phts/coverphoto.png"
+                                alt="Chapter VI"
+                                class="chapter-image">
+
+                        </div>
+
+                        <div class="chapter-content">
+
+                            <span class="chapter-number">
+                                CHAPTER VI
+                            </span>
+
+                            <h3>
+                                Business, Trade and Commerce
+                            </h3>
+
+                            <p>
+                                Business permits,
+                                commercial regulation,
+                                and market operations.
+                            </p>
+
+                            <button class="chapter-btn disabled-btn">
+                                Under Development
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CHAPTER VII -->
+
+                    <article class="chapter-card">
+
+                        <div class="chapter-image-wrap">
+
+                            <img
+                                src="phts/coverphoto.png"
+                                alt="Chapter VII"
+                                class="chapter-image">
+
+                        </div>
+
+                        <div class="chapter-content">
+
+                            <span class="chapter-number">
+                                CHAPTER VII
+                            </span>
+
+                            <h3>
+                                Agriculture, Fisheries and Natural Resources
+                            </h3>
+
+                            <p>
+                                Agriculture systems,
+                                fisheries programs,
+                                and resource protection.
+                            </p>
+
+                            <button class="chapter-btn disabled-btn">
+                                Under Development
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CHAPTER VIII -->
+
+                    <article class="chapter-card">
+
+                        <div class="chapter-image-wrap">
+
+                            <img
+                                src="phts/coverphoto.png"
+                                alt="Chapter VIII"
+                                class="chapter-image">
+
+                        </div>
+
+                        <div class="chapter-content">
+
+                            <span class="chapter-number">
+                                CHAPTER VIII
+                            </span>
+
+                            <h3>
+                                Infrastructure, Public Utilities and Transportation
+                            </h3>
+
+                            <p>
+                                Roads, utilities,
+                                transportation systems,
+                                and infrastructure management.
+                            </p>
+
+                            <button class="chapter-btn disabled-btn">
+                                Under Development
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CHAPTER IX -->
+
+                    <article class="chapter-card">
+
+                        <div class="chapter-image-wrap">
+
+                            <img
+                                src="phts/coverphoto.png"
+                                alt="Chapter IX"
+                                class="chapter-image">
+
+                        </div>
+
+                        <div class="chapter-content">
+
+                            <span class="chapter-number">
+                                CHAPTER IX
+                            </span>
+
+                            <h3>
+                                Education, Youth, Sports and Culture
+                            </h3>
+
+                            <p>
+                                Educational assistance,
+                                youth programs,
+                                sports, and cultural systems.
+                            </p>
+
+                            <button class="chapter-btn disabled-btn">
+                                Under Development
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CHAPTER X -->
+
+                    <article class="chapter-card">
+
+                        <div class="chapter-image-wrap">
+
+                            <img
+                                src="phts/coverphoto.png"
+                                alt="Chapter X"
+                                class="chapter-image">
+
+                        </div>
+
+                        <div class="chapter-content">
+
+                            <span class="chapter-number">
+                                CHAPTER X
+                            </span>
+
+                            <h3>
+                                Labor, Employment and Human Resources
+                            </h3>
+
+                            <p>
+                                Employment systems,
+                                plantilla structures,
+                                and human resource operations.
+                            </p>
+
+                            <button class="chapter-btn disabled-btn">
+                                Under Development
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CHAPTER XI -->
+
+                    <article class="chapter-card">
+
+                        <div class="chapter-image-wrap">
+
+                            <img
+                                src="phts/coverphoto.png"
+                                alt="Chapter XI"
+                                class="chapter-image">
+
+                        </div>
+
+                        <div class="chapter-content">
+
+                            <span class="chapter-number">
+                                CHAPTER XI
+                            </span>
+
+                            <h3>
+                                Miscellaneous Provisions
+                            </h3>
+
+                            <p>
+                                Residual ordinances,
+                                uncategorized provisions,
+                                and special regulations.
+                            </p>
+
+                            <button class="chapter-btn disabled-btn">
+                                Under Development
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- CHAPTER XII -->
+
+                    <article class="chapter-card">
+
+                        <div class="chapter-image-wrap">
+
+                            <img
+                                src="phts/coverphoto.png"
+                                alt="Chapter XII"
+                                class="chapter-image">
+
+                        </div>
+
+                        <div class="chapter-content">
+
+                            <span class="chapter-number">
+                                CHAPTER XII
+                            </span>
+
+                            <h3>
+                                Final Provisions
+                            </h3>
+
+                            <p>
+                                Effectivity clauses,
+                                separability provisions,
+                                and transitory systems.
+                            </p>
+
+                            <button class="chapter-btn disabled-btn">
+                                Under Development
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <button
+                    class="nav-arrow next-btn"
+                    id="nextBtn">
+
+                    &#10095;
+
+                </button>
+
+            </section>
+
+        </div>
+
+    </header>
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <section class="ai-panel">
+
+            <div class="ai-content">
+
+                <p class="section-label">
+                    MUNICIPAL LEGAL INTELLIGENCE
+                </p>
+
+                <h2>
+                    AI Ordinance Navigation
+                </h2>
+
+                <p>
+                    Explore ordinance navigation,
+                    codification systems,
+                    chapter intelligence,
+                    and future municipal legal AI integration.
+                </p>
+
+                <button class="chapter-btn">
+                    Launch AI Assistant
+                </button>
+
+            </div>
+
+        </section>
+
+        <section class="system-info">
+
+            <div class="info-card">
+
+                <h3>
+                    Codified Chapter Structure
+                </h3>
+
+                <p>
+                    Organized municipal chapters aligned
+                    with codification and ordinance systems.
+                </p>
+
+            </div>
+
+            <div class="info-card">
+
+                <h3>
+                    Responsive Municipal Portal
+                </h3>
+
+                <p>
+                    Optimized cinematic layouts
+                    for phones, tablets,
+                    laptops, and large displays.
+                </p>
+
+            </div>
+
+            <div class="info-card">
+
+                <h3>
+                    Preserved Legal Foundations
+                </h3>
+
+                <p>
+                    Municipal ordinance structures
+                    and legal classifications remain protected.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <div class="ai-modal" id="aiModal">
+
+        <div
+            class="ai-modal-backdrop"
+            id="closeAI"></div>
+
+        <div class="ai-modal-content">
+
+            <div class="ai-modal-top">
+
+                <h2>
+                    Municipal AI Assistant
+                </h2>
+
+                <button
+                    class="close-modal-btn"
+                    id="closeModalBtn">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+            <div class="ai-search-box">
+
+                <input
+                    type="text"
+                    placeholder="Search ordinances, chapters, articles...">
+
+                <button>
+                    Search
+                </button>
+
+            </div>
+
+            <div class="ai-placeholder">
+
+                <p>
+                    AI ordinance intelligence framework initialized.
+                </p>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <div class="label">
-        SYSTEM STATUS
-    </div>
+    <footer class="footer">
 
-    <h1>
-        TEMPORARILY<br>
-        CLOSED
-    </h1>
+        <p>
+            LGU PORTAL 16 • Municipality of Santa
+        </p>
 
-    <p class="desc">
-        This portal is currently unavailable due to maintenance or ongoing upgrades.
-    </p>
+    </footer>
 
-    <div class="info">
-
-        <div class="row">
-            <div class="left">STATUS</div>
-            <div class="right red">Offline</div>
-        </div>
-
-        <div class="row">
-            <div class="left">SERVER</div>
-            <div class="right">Maintenance</div>
-        </div>
-
-        <div class="row">
-            <div class="left">RETURN</div>
-            <div class="right">Soon</div>
-        </div>
-
-    </div>
-
-    <button id="reloadBtn">
-        Refresh Page
-    </button>
-
-</div>
-
-<script>
-
-const reloadBtn = document.getElementById('reloadBtn');
-
-reloadBtn.addEventListener('click', () => {
-
-    reloadBtn.innerHTML = 'Refreshing...';
-
-    setTimeout(() => {
-
-        location.reload();
-
-    }, 700);
-
-});
-
-</script>
+    <script src="script.js"></script>
 
 </body>
-</html>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                 YEYO 💎
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+</html>
