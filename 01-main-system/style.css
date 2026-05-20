@@ -1,7 +1,7 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 YEYO 💎
         LGU PORTAL 16 • MAIN CSS
-     OPTIMIZED PS5 CINEMATIC VERSION
+     MOBILE STABILITY PATCH VERSION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 
@@ -64,6 +64,8 @@ body{
     overflow-x:hidden;
 
     min-height:100vh;
+
+    min-height:100svh;
 
     position:relative;
 
@@ -565,6 +567,8 @@ a{
 
     touch-action:pan-x;
 
+    will-change:scroll-position;
+
 }
 
 .chapters-track::-webkit-scrollbar{
@@ -603,11 +607,14 @@ a{
         opacity;
 
     transition:
-        transform 0.45s cubic-bezier(.22,1,.36,1),
-        opacity 0.35s ease,
-        box-shadow 0.45s cubic-bezier(.22,1,.36,1);
+        transform 0.32s cubic-bezier(.22,1,.36,1),
+        opacity 0.25s ease,
+        box-shadow 0.32s cubic-bezier(.22,1,.36,1);
 
     backface-visibility:hidden;
+
+    transform:
+        translateZ(0);
 
 }
 
@@ -747,7 +754,6 @@ a{
 
 }
 
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 NAVIGATION ARROWS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -780,6 +786,20 @@ a{
 
     transition:var(--transition);
 
+    backdrop-filter:blur(10px);
+
+    -webkit-backdrop-filter:blur(10px);
+
+}
+
+.nav-arrow:hover{
+
+    background:
+        rgba(255,255,255,0.16);
+
+    transform:
+        translateY(-50%) scale(1.04);
+
 }
 
 .prev-btn{
@@ -789,6 +809,7 @@ a{
 .next-btn{
     right:-4px;
 }
+
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 MAIN CONTENT
@@ -1237,7 +1258,6 @@ a{
 
 }
 
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 RESPONSIVE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -1266,6 +1286,7 @@ a{
 
 }
 
+
 @media(max-width:1100px){
 
     .system-info{
@@ -1275,6 +1296,7 @@ a{
     }
 
 }
+
 
 @media(max-width:900px){
 
@@ -1302,7 +1324,24 @@ a{
 
 }
 
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MOBILE STABILITY SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 @media(max-width:768px){
+
+    .hero{
+
+        min-height:100svh;
+
+    }
+
+    .hero-content{
+
+        padding-top:150px;
+
+    }
 
     .hero-rail-header{
 
@@ -1314,6 +1353,14 @@ a{
 
         letter-spacing:-2px;
 
+        line-height:0.95;
+
+    }
+
+    .hero-rail-text p{
+
+        font-size:0.90rem;
+
     }
 
     .hero-rail-status{
@@ -1322,11 +1369,79 @@ a{
 
     }
 
+    .chapters-wrapper{
+
+        overflow:visible;
+
+    }
+
+    .chapters-track{
+
+        gap:18px;
+
+        padding-top:18px;
+
+        padding-bottom:48px;
+
+        scroll-padding-inline:18px;
+
+        scroll-snap-type:x mandatory;
+
+        overscroll-behavior-x:contain;
+
+        -webkit-overflow-scrolling:touch;
+
+        touch-action:pan-x;
+
+    }
+
     .chapter-card{
 
-        flex:0 0 74vw;
+        flex:0 0 78vw;
+
+        max-width:320px;
 
         opacity:1 !important;
+
+        filter:none !important;
+
+        transform-origin:center center;
+
+        backface-visibility:hidden;
+
+        -webkit-backface-visibility:hidden;
+
+        transform:
+            translateZ(0);
+
+    }
+
+    .chapter-image{
+
+        transform:
+            translateZ(0);
+
+    }
+
+    .chapter-content{
+
+        padding:20px 18px 22px;
+
+    }
+
+    .chapter-content h3{
+
+        font-size:0.96rem;
+
+        line-height:1.18;
+
+    }
+
+    .chapter-content p{
+
+        font-size:0.74rem;
+
+        line-height:1.5;
 
     }
 
@@ -1355,13 +1470,93 @@ a{
 
 }
 
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SMALL PHONE OPTIMIZATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 @media(max-width:520px){
+
+    .floating-nav{
+
+        width:94%;
+
+        padding:14px 16px;
+
+        border-radius:28px;
+
+    }
+
+    .nav-left{
+
+        gap:12px;
+
+    }
+
+    .nav-logo{
+
+        width:48px;
+        height:48px;
+
+    }
+
+    .nav-text h1{
+
+        font-size:1.1rem;
+
+    }
+
+    .nav-text p{
+
+        font-size:0.72rem;
+
+    }
+
+    .legal-ai-btn{
+
+        padding:12px 18px;
+
+        font-size:0.76rem;
+
+    }
+
+    .hero-rail-header{
+
+        margin-bottom:18px;
+
+    }
+
+    .hero-rail-top{
+
+        gap:10px;
+
+    }
+
+    .hero-rail-label{
+
+        letter-spacing:4px;
+
+        font-size:0.64rem;
+
+    }
+
+    .hero-rail-text h2{
+
+        font-size:2.5rem;
+
+    }
 
     .chapter-card{
 
-        flex:0 0 80vw;
+        flex:0 0 82vw;
 
         border-radius:30px;
+
+    }
+
+    .chapter-image-wrap{
+
+        height:160px;
 
     }
 
@@ -1377,3 +1572,127 @@ a{
     }
 
 }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            EXTRA MOBILE SMOOTHNESS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:768px){
+
+    *{
+
+        -webkit-tap-highlight-color:
+            transparent;
+
+    }
+
+    body{
+
+        overflow-x:hidden;
+
+    }
+
+    .chapters-track{
+
+        scroll-behavior:smooth;
+
+        scrollbar-width:none;
+
+        -ms-overflow-style:none;
+
+    }
+
+    .chapters-track::-webkit-scrollbar{
+
+        display:none;
+
+    }
+
+    .chapter-card{
+
+        transition:
+            transform 0.22s ease,
+            opacity 0.22s ease,
+            box-shadow 0.22s ease;
+
+    }
+
+    .chapter-card:active{
+
+        transform:
+            scale(0.985);
+
+    }
+
+    .chapter-btn,
+    .legal-ai-btn,
+    .nav-arrow{
+
+        touch-action:manipulation;
+
+    }
+
+    .hero-image{
+
+        will-change:transform;
+
+    }
+
+    .floating-nav{
+
+        backdrop-filter:blur(14px);
+
+        -webkit-backdrop-filter:blur(14px);
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            PERFORMANCE OPTIMIZATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.chapter-card,
+.chapter-image,
+.floating-nav,
+.ai-panel,
+.info-card{
+
+    will-change:
+        transform;
+
+}
+
+.chapter-image{
+
+    image-rendering:auto;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SAFE RENDERING SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.chapter-card,
+.chapter-image,
+.chapter-content{
+
+    transform-style:
+        preserve-3d;
+
+}
+
+.chapter-card *{
+
+    backface-visibility:hidden;
+
+    -webkit-backface-visibility:hidden;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                END OF CSS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */

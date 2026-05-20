@@ -1,7 +1,7 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 YEYO 💎
         LGU PORTAL 16 • MAIN JS
-      FINAL CHAPTER XII VERSION
+      MOBILE STABILITY PATCH VERSION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 
@@ -35,6 +35,17 @@ const chapterCards =
 
 const floatingNav =
     document.querySelector('.floating-nav');
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                DEVICE DETECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+function isMobileView(){
+
+    return window.innerWidth <= 768;
+
+}
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -145,14 +156,22 @@ function stabilizeSliderPosition(){
     const cardWidth =
         firstCard.offsetWidth;
 
-    const viewportWidth =
-        window.innerWidth;
+    let dynamicPadding;
 
-    const dynamicPadding =
-        Math.max(
-            (viewportWidth - cardWidth) / 2,
-            22
-        );
+    if(isMobileView()){
+
+        dynamicPadding =
+            16;
+
+    }else{
+
+        dynamicPadding =
+            Math.max(
+                (window.innerWidth - cardWidth) / 2,
+                22
+            );
+
+    }
 
     chaptersTrack.style.paddingLeft =
         `${dynamicPadding}px`;
@@ -190,6 +209,42 @@ function updateCenteredCard(){
                 distance / (window.innerWidth * 0.5),
                 1
             );
+
+        /* MOBILE ENGINE */
+
+        if(isMobileView()){
+
+            const scale =
+                1 - (normalized * 0.04);
+
+            const translateY =
+                normalized * 8;
+
+            const opacity =
+                1 - (normalized * 0.10);
+
+            card.style.transform =
+                `translateY(${translateY}px) scale(${scale})`;
+
+            card.style.opacity =
+                opacity;
+
+            card.style.filter =
+                `blur(0px)`;
+
+            card.style.zIndex =
+                Math.round(100 - distance);
+
+            card.style.boxShadow =
+                `
+                0 12px 28px rgba(0,0,0,0.24)
+                `;
+
+            return;
+
+        }
+
+        /* DESKTOP ENGINE */
 
         const scale =
             1 - (normalized * 0.12);
@@ -277,6 +332,7 @@ window.addEventListener(
                 TRACK SCROLL
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
+let ticking = false;
 let snapTimeout;
 
 if(chaptersTrack){
@@ -287,11 +343,25 @@ if(chaptersTrack){
 
         ()=>{
 
-            window.requestAnimationFrame(()=>{
+            if(!ticking){
 
-                updateCenteredCard();
+                window.requestAnimationFrame(()=>{
 
-            });
+                    updateCenteredCard();
+
+                    ticking = false;
+
+                });
+
+                ticking = true;
+
+            }
+
+            /* MOBILE:
+               NO FORCED SNAP
+            */
+
+            if(isMobileView()) return;
 
             clearTimeout(snapTimeout);
 
@@ -545,8 +615,6 @@ function handleNavbarScroll(){
 
 /* OPTIMIZED SCROLL */
 
-let ticking = false;
-
 window.addEventListener(
 
     'scroll',
@@ -639,7 +707,7 @@ console.log(
 
 `
 LGU PORTAL 16 💎
-FINAL CHAPTER XII FOUNDATION READY
+MOBILE STABILITY PATCH READY
 `
 
 );
