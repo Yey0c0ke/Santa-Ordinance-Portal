@@ -1,7 +1,67 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                CHAPTER I
+        LGU PORTAL 17 FOUNDATION
+        CINEMATIC LEGAL SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                ROOT SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+:root{
+
+    --bg-primary:#020617;
+    --bg-secondary:#071122;
+
+    --glass-bg:
+    rgba(255,255,255,0.06);
+
+    --glass-border:
+    rgba(255,255,255,0.08);
+
+    --glass-hover:
+    rgba(255,255,255,0.10);
+
+    --text-primary:#ffffff;
+
+    --text-secondary:
+    rgba(255,255,255,0.72);
+
+    --blue:#2563eb;
+    --violet:#7c3aed;
+    --cyan:#06b6d4;
+
+    --shadow-soft:
+    0 10px 40px rgba(0,0,0,0.22);
+
+    --shadow-heavy:
+    0 25px 80px rgba(0,0,0,0.38);
+
+    --blur:20px;
+
+    --radius-lg:30px;
+    --radius-md:24px;
+    --radius-sm:18px;
+
+    --transition:
+    cubic-bezier(.22,.61,.36,1);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                RESET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 html,
@@ -11,685 +71,3517 @@ overflow-x:hidden;
 }
 
 body{
-font-family:'Inter',sans-serif;
-background:#020617;
-color:white;
-overflow-x:hidden;
+
+    font-family:'Inter',sans-serif;
+
+    background:var(--bg-primary);
+
+    color:var(--text-primary);
+
+    overflow-x:hidden;
+
+    position:relative;
+
+    min-height:100vh;
+
+    -webkit-font-smoothing:
+    antialiased;
+
+    text-rendering:
+    optimizeLegibility;
+
 }
 
-/* =========================================
-BACKGROUND
-========================================= */
 
-.bg-gradient{
-position:fixed;
-inset:0;
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            GLOBAL SCROLLBAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+::-webkit-scrollbar{
+width:8px;
+height:8px;
+}
+
+::-webkit-scrollbar-track{
+background:transparent;
+}
+
+::-webkit-scrollbar-thumb{
 
 background:
-radial-gradient(circle at top left,#2563eb,transparent 28%),
-radial-gradient(circle at bottom right,#7c3aed,transparent 28%),
-#020617;
-
-z-index:-5;
-}
-
-.grid-overlay{
-position:fixed;
-inset:0;
-
-background-image:
-linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);
-
-background-size:60px 60px;
-
-z-index:-4;
-}
-
-.orb{
-position:fixed;
-border-radius:50%;
-filter:blur(80px);
-opacity:0.2;
-z-index:-3;
-}
-
-.orb1{
-width:220px;
-height:220px;
-background:#2563eb;
-top:-40px;
-left:-40px;
-}
-
-.orb2{
-width:220px;
-height:220px;
-background:#7c3aed;
-right:0;
-bottom:0;
-}
-
-/* =========================================
-GLOBAL IMAGE FIX
-========================================= */
-
-img{
-max-width:100%;
-display:block;
-}
-
-/* =========================================
-GLASS
-========================================= */
-
-.glass{
-background:rgba(255,255,255,0.08);
-
-backdrop-filter:blur(16px);
--webkit-backdrop-filter:blur(16px);
-
-border:1px solid rgba(255,255,255,0.08);
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.25);
-}
-
-/* =========================================
-NAVBAR
-========================================= */
-
-.navbar{
-width:94%;
-max-width:1400px;
-
-margin:16px auto;
-
-padding:16px 20px;
-
-border-radius:26px;
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:18px;
-
-overflow:hidden;
-}
-
-.nav-left{
-display:flex;
-align-items:center;
-gap:12px;
-
-min-width:0;
-}
-
-.logo{
-width:52px !important;
-height:52px !important;
-
-min-width:52px;
-min-height:52px;
-
-max-width:52px;
-max-height:52px;
-
-object-fit:contain;
-
-flex-shrink:0;
-}
-
-.nav-left h1{
-font-size:1.8rem;
-
-word-break:break-word;
-overflow-wrap:break-word;
-}
-
-.nav-left p{
-opacity:0.7;
-font-size:0.95rem;
-
-word-break:break-word;
-overflow-wrap:break-word;
-}
-
-.back-button{
-text-decoration:none;
-color:white;
-
-padding:14px 18px;
-
-border-radius:22px;
-
-background:rgba(255,255,255,0.08);
-
-transition:.3s;
-}
-
-.back-button:hover{
-background:rgba(255,255,255,0.12);
-}
-
-/* =========================================
-HERO
-========================================= */
-
-.hero{
-width:94%;
-max-width:1400px;
-
-margin:auto;
-
-padding:70px 40px;
-
-border-radius:34px;
-
-overflow:hidden;
-}
-
-.hero h1{
-font-size:4rem;
-
-margin-top:18px;
-margin-bottom:18px;
-
-line-height:.95;
-
-word-break:break-word;
-overflow-wrap:break-word;
-}
-
-.hero p{
-max-width:800px;
-
-opacity:0.82;
-
-line-height:1.8;
-}
-
-.hero-badge{
-display:inline-block;
-
-padding:10px 16px;
+rgba(255,255,255,0.14);
 
 border-radius:999px;
 
-background:rgba(255,255,255,0.08);
-
-font-size:0.72rem;
-
-letter-spacing:2px;
 }
 
-/* =========================================
-CARDS
-========================================= */
 
-.cards-section{
-width:94%;
-max-width:1400px;
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CINEMATIC BACKGROUND
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-margin:28px auto;
+.bg-gradient{
 
-display:grid;
+    position:fixed;
+    inset:0;
 
-grid-template-columns:
-repeat(auto-fit,minmax(260px,1fr));
+    background:
 
-gap:18px;
+    radial-gradient(
+    circle at top left,
+    rgba(37,99,235,0.35),
+    transparent 28%
+    ),
 
-align-items:stretch;
+    radial-gradient(
+    circle at bottom right,
+    rgba(124,58,237,0.28),
+    transparent 28%
+    ),
+
+    radial-gradient(
+    circle at center,
+    rgba(6,182,212,0.08),
+    transparent 40%
+    ),
+
+    linear-gradient(
+    180deg,
+    #020617 0%,
+    #040b16 100%
+    );
+
+    z-index:-8;
+
 }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                GRID OVERLAY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.grid-overlay{
+
+    position:fixed;
+    inset:0;
+
+    background-image:
+
+    linear-gradient(
+    rgba(255,255,255,0.03) 1px,
+    transparent 1px
+    ),
+
+    linear-gradient(
+    90deg,
+    rgba(255,255,255,0.03) 1px,
+    transparent 1px
+    );
+
+    background-size:
+    60px 60px;
+
+    mask-image:
+    radial-gradient(
+    circle at center,
+    black 40%,
+    transparent 100%
+    );
+
+    z-index:-7;
+
+    opacity:.7;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                NOISE OVERLAY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.noise-overlay{
+
+    position:fixed;
+    inset:0;
+
+    background-image:
+    url("https://grainy-gradients.vercel.app/noise.svg");
+
+    opacity:.05;
+
+    mix-blend-mode:soft-light;
+
+    z-index:-6;
+
+    pointer-events:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                FLOATING ORBS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.orb{
+
+    position:fixed;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    opacity:.18;
+
+    z-index:-5;
+
+    animation:
+    orbFloat 16s ease-in-out infinite;
+
+}
+
+.orb1{
+
+    width:320px;
+    height:320px;
+
+    background:var(--blue);
+
+    top:-100px;
+    left:-100px;
+
+}
+
+.orb2{
+
+    width:300px;
+    height:300px;
+
+    background:var(--violet);
+
+    right:-80px;
+    bottom:-80px;
+
+    animation-delay:3s;
+
+}
+
+.orb3{
+
+    width:220px;
+    height:220px;
+
+    background:var(--cyan);
+
+    left:40%;
+    top:35%;
+
+    animation-delay:6s;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                TOP LIGHT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.top-light{
+
+    position:fixed;
+
+    top:-240px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:900px;
+    height:500px;
+
+    background:
+    radial-gradient(
+    circle,
+    rgba(255,255,255,0.08),
+    transparent 70%
+    );
+
+    filter:blur(40px);
+
+    z-index:-4;
+
+    pointer-events:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                GLASS SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.glass{
+
+    background:
+    var(--glass-bg);
+
+    backdrop-filter:
+    blur(var(--blur));
+
+    -webkit-backdrop-filter:
+    blur(var(--blur));
+
+    border:
+    1px solid var(--glass-border);
+
+    box-shadow:
+    var(--shadow-soft);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ======================================
+GLASS HIGHLIGHT
+====================================== */
+
+.glass::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(255,255,255,0.10),
+    transparent 40%
+    );
+
+    pointer-events:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                GLOBAL IMAGE FIX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+img{
+display:block;
+max-width:100%;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                BUTTON RESET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+button{
+
+    border:none;
+
+    outline:none;
+
+    font-family:inherit;
+
+    cursor:pointer;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                LINKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                SELECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+::selection{
+
+background:
+rgba(37,99,235,0.45);
+
+color:white;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                ANIMATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@keyframes orbFloat{
+
+    0%{
+        transform:
+        translateY(0px)
+        translateX(0px);
+    }
+
+    50%{
+        transform:
+        translateY(-30px)
+        translateX(20px);
+    }
+
+    100%{
+        transform:
+        translateY(0px)
+        translateX(0px);
+    }
+
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                NAVBAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.navbar{
+
+    width:94%;
+    max-width:1500px;
+
+    margin:18px auto 0;
+
+    padding:18px 22px;
+
+    border-radius:32px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+
+    position:sticky;
+    top:14px;
+
+    z-index:100;
+
+}
+
+
+/* ======================================
+NAV LEFT
+====================================== */
+
+.nav-left{
+
+    display:flex;
+    align-items:center;
+
+    gap:16px;
+
+    min-width:0;
+
+}
+
+
+/* ======================================
+LOGO
+====================================== */
+
+.logo-wrapper{
+
+    width:64px;
+    height:64px;
+
+    border-radius:22px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    flex-shrink:0;
+
+}
+
+.logo{
+
+    width:52px !important;
+    height:52px !important;
+
+    object-fit:contain;
+
+}
+
+
+/* ======================================
+NAV TEXT
+====================================== */
+
+.nav-text{
+min-width:0;
+}
+
+.nav-label{
+
+    display:inline-block;
+
+    font-size:.66rem;
+
+    letter-spacing:2px;
+
+    opacity:.6;
+
+    margin-bottom:6px;
+
+}
+
+.nav-text h1{
+
+    font-size:1.7rem;
+
+    line-height:1;
+
+    margin-bottom:6px;
+
+    word-break:break-word;
+
+}
+
+.nav-text p{
+
+    font-size:.92rem;
+
+    opacity:.72;
+
+}
+
+
+/* ======================================
+NAV RIGHT
+====================================== */
+
+.nav-right{
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+}
+
+
+/* ======================================
+SYSTEM STATUS
+====================================== */
+
+.system-status{
+
+    padding:12px 16px;
+
+    border-radius:999px;
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    font-size:.82rem;
+
+    color:
+    rgba(255,255,255,0.82);
+
+}
+
+
+/* ======================================
+STATUS DOT
+====================================== */
+
+.status-dot{
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    box-shadow:
+    0 0 18px #22c55e;
+
+    animation:
+    pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:.4;
+    }
+
+    100%{
+        opacity:1;
+    }
+
+}
+
+
+/* ======================================
+BACK BUTTON
+====================================== */
+
+.back-button{
+
+    padding:14px 18px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    transition:
+    .35s var(--transition);
+
+    font-size:.92rem;
+
+    white-space:nowrap;
+
+}
+
+.back-button:hover{
+
+    background:
+    rgba(255,255,255,0.14);
+
+    transform:
+    translateY(-2px);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                HERO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.hero{
+
+    width:94%;
+    max-width:1500px;
+
+    margin:28px auto 0;
+
+    min-height:640px;
+
+    border-radius:42px;
+
+    padding:70px 56px;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ======================================
+HERO GLOW
+====================================== */
+
+.hero-glow{
+
+    position:absolute;
+
+    width:620px;
+    height:620px;
+
+    right:-180px;
+    top:-180px;
+
+    background:
+    radial-gradient(
+    circle,
+    rgba(37,99,235,0.25),
+    transparent 70%
+    );
+
+    filter:blur(20px);
+
+}
+
+
+/* ======================================
+HERO GRID
+====================================== */
+
+.hero-grid{
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+
+    linear-gradient(
+    rgba(255,255,255,0.03) 1px,
+    transparent 1px
+    ),
+
+    linear-gradient(
+    90deg,
+    rgba(255,255,255,0.03) 1px,
+    transparent 1px
+    );
+
+    background-size:
+    50px 50px;
+
+    mask-image:
+    radial-gradient(
+    circle at center,
+    black 40%,
+    transparent 100%
+    );
+
+    opacity:.6;
+
+}
+
+
+/* ======================================
+HERO CONTENT
+====================================== */
+
+.hero-content{
+
+    position:relative;
+    z-index:2;
+
+}
+
+
+/* ======================================
+HERO TOP
+====================================== */
+
+.hero-top{
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:30px;
+
+}
+
+
+/* ======================================
+HERO BADGE
+====================================== */
+
+.hero-badge{
+
+    display:inline-flex;
+    align-items:center;
+
+    padding:12px 18px;
+
+    border-radius:999px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    font-size:.72rem;
+
+    letter-spacing:2px;
+
+    backdrop-filter:
+    blur(12px);
+
+}
+
+.hero-badge.secondary{
+
+    opacity:.78;
+
+}
+
+
+/* ======================================
+HERO TITLE
+====================================== */
+
+.hero h1{
+
+    font-size:6rem;
+
+    line-height:.88;
+
+    letter-spacing:-3px;
+
+    margin-bottom:26px;
+
+    max-width:900px;
+
+}
+
+
+/* ======================================
+HERO DESCRIPTION
+====================================== */
+
+.hero-description{
+
+    max-width:840px;
+
+    line-height:1.9;
+
+    font-size:1.08rem;
+
+    color:
+    rgba(255,255,255,0.78);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                META STRIP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.meta-strip{
+
+    margin-top:48px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:18px;
+
+}
+
+
+/* ======================================
+META CARD
+====================================== */
+
+.meta-card{
+
+    padding:24px;
+
+    border-radius:28px;
+
+    transition:
+    .35s var(--transition);
+
+}
+
+.meta-card:hover{
+
+    transform:
+    translateY(-4px);
+
+}
+
+
+/* ======================================
+META LABEL
+====================================== */
+
+.meta-label{
+
+    display:inline-block;
+
+    font-size:.7rem;
+
+    letter-spacing:2px;
+
+    opacity:.6;
+
+    margin-bottom:12px;
+
+}
+
+
+/* ======================================
+META TITLE
+====================================== */
+
+.meta-card h3{
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+
+    line-height:1;
+
+}
+
+
+/* ======================================
+META TEXT
+====================================== */
+
+.meta-card p{
+
+    opacity:.72;
+
+    line-height:1.7;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            OVERVIEW STRIP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.overview-strip{
+
+    width:94%;
+    max-width:1500px;
+
+    margin:26px auto 0;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:18px;
+
+}
+
+
+/* ======================================
+OVERVIEW CARD
+====================================== */
+
+.overview-card{
+
+    padding:26px;
+
+    border-radius:28px;
+
+    transition:
+    .35s var(--transition);
+
+}
+
+.overview-card:hover{
+
+    transform:
+    translateY(-4px);
+
+}
+
+
+/* ======================================
+OVERVIEW LABEL
+====================================== */
+
+.overview-card span{
+
+    display:inline-block;
+
+    margin-bottom:14px;
+
+    font-size:.72rem;
+
+    letter-spacing:2px;
+
+    opacity:.6;
+
+}
+
+
+/* ======================================
+OVERVIEW TITLE
+====================================== */
+
+.overview-card h3{
+
+    font-size:1.5rem;
+
+    line-height:1.1;
+
+    margin-bottom:14px;
+
+}
+
+
+/* ======================================
+OVERVIEW TEXT
+====================================== */
+
+.overview-card p{
+
+    line-height:1.8;
+
+    color:
+    rgba(255,255,255,0.74);
+
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            RAIL WRAPPER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.rail-wrapper{
+
+    width:94%;
+    max-width:1500px;
+
+    margin:36px auto 80px;
+
+    position:relative;
+
+}
+
+
+/* ======================================
+RAIL TOP
+====================================== */
+
+.rail-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+
+    margin-bottom:24px;
+
+}
+
+
+/* ======================================
+SECTION LABEL
+====================================== */
+
+.section-label{
+
+    display:inline-block;
+
+    margin-bottom:10px;
+
+    font-size:.72rem;
+
+    letter-spacing:2px;
+
+    opacity:.6;
+
+}
+
+
+/* ======================================
+RAIL TITLE
+====================================== */
+
+.rail-top h2{
+
+    font-size:2.8rem;
+
+    line-height:1;
+
+    letter-spacing:-1px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                RAIL CONTROLS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.rail-controls{
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+/* ======================================
+RAIL BUTTON
+====================================== */
+
+.rail-btn{
+
+    width:56px;
+    height:56px;
+
+    border-radius:18px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    color:white;
+
+    font-size:1.1rem;
+
+    transition:
+    .35s var(--transition);
+
+    backdrop-filter:
+    blur(12px);
+
+}
+
+.rail-btn:hover{
+
+    transform:
+    translateY(-3px);
+
+    background:
+    rgba(255,255,255,0.14);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                CARDS RAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.cards-rail{
+
+    display:flex;
+
+    gap:22px;
+
+    overflow-x:auto;
+
+    scroll-snap-type:x mandatory;
+
+    scroll-behavior:smooth;
+
+    padding:10px 6px 18px;
+
+    scrollbar-width:none;
+
+    -ms-overflow-style:none;
+
+}
+
+.cards-rail::-webkit-scrollbar{
+display:none;
+}
+
+
+/* ======================================
+EDGE FADE
+====================================== */
+
+.rail-wrapper::before,
+.rail-wrapper::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:120px;
+    bottom:0;
+
+    width:100px;
+
+    z-index:5;
+
+    pointer-events:none;
+
+}
+
+.rail-wrapper::before{
+
+    left:-2px;
+
+    background:
+    linear-gradient(
+    90deg,
+    var(--bg-primary),
+    transparent
+    );
+
+}
+
+.rail-wrapper::after{
+
+    right:-2px;
+
+    background:
+    linear-gradient(
+    270deg,
+    var(--bg-primary),
+    transparent
+    );
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                LEGAL CARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .legal-card{
-padding:28px;
 
-border-radius:28px;
+    min-width:420px;
+    max-width:420px;
 
-cursor:pointer;
+    min-height:520px;
 
-transition:0.3s;
+    border-radius:36px;
 
-overflow:hidden;
+    padding:30px;
 
-min-height:240px;
+    position:relative;
 
-display:flex;
-flex-direction:column;
-justify-content:space-between;
+    overflow:hidden;
+
+    scroll-snap-align:center;
+
+    flex-shrink:0;
+
+    cursor:pointer;
+
+    transition:
+    transform .45s var(--transition),
+    opacity .45s var(--transition),
+    border .45s var(--transition);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
 }
+
+
+/* ======================================
+CARD GLOW
+====================================== */
+
+.card-glow{
+
+    position:absolute;
+
+    width:240px;
+    height:240px;
+
+    border-radius:50%;
+
+    top:-80px;
+    right:-80px;
+
+    background:
+    radial-gradient(
+    circle,
+    rgba(37,99,235,0.24),
+    transparent 70%
+    );
+
+    filter:blur(10px);
+
+    opacity:.8;
+
+}
+
+
+/* ======================================
+ACTIVE CARD
+====================================== */
+
+.legal-card.active-card{
+
+    transform:
+    scale(1.02)
+    translateY(-6px);
+
+    border:
+    1px solid rgba(255,255,255,0.16);
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,0.42);
+
+}
+
+
+/* ======================================
+CARD HOVER
+====================================== */
 
 .legal-card:hover{
-transform:translateY(-4px);
+
+    transform:
+    translateY(-8px);
+
 }
 
-.legal-card p{
-font-size:0.72rem;
-letter-spacing:2px;
 
-opacity:0.7;
+/* ======================================
+CARD TOP
+====================================== */
 
-margin-bottom:12px;
+.card-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:12px;
+
+    position:relative;
+    z-index:2;
+
 }
 
-.legal-card h2{
-margin-bottom:18px;
 
-line-height:1;
+/* ======================================
+CARD TAG
+====================================== */
 
-word-break:break-word;
-overflow-wrap:break-word;
+.card-tag{
+
+    display:inline-flex;
+    align-items:center;
+
+    padding:10px 14px;
+
+    border-radius:999px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    font-size:.68rem;
+
+    letter-spacing:2px;
+
 }
 
-.legal-card span{
-opacity:0.7;
-font-size:0.88rem;
+
+/* ======================================
+CARD STATUS
+====================================== */
+
+.card-status{
+
+    font-size:.68rem;
+
+    letter-spacing:2px;
+
+    opacity:.6;
+
 }
 
-/* =========================================
-MODAL
-========================================= */
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                CARD CONTENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.card-content{
+
+    position:relative;
+    z-index:2;
+
+    margin-top:36px;
+
+}
+
+
+/* ======================================
+CARD TITLE
+====================================== */
+
+.card-content h2{
+
+    font-size:3rem;
+
+    line-height:.95;
+
+    letter-spacing:-2px;
+
+    margin-bottom:24px;
+
+}
+
+
+/* ======================================
+CARD DESCRIPTION
+====================================== */
+
+.card-description{
+
+    line-height:1.9;
+
+    font-size:1rem;
+
+    color:
+    rgba(255,255,255,0.76);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                CARD META
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.card-meta{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:14px;
+
+    margin-top:34px;
+
+    position:relative;
+    z-index:2;
+
+}
+
+
+/* ======================================
+META ITEM
+====================================== */
+
+.meta-item{
+
+    padding:18px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,0.05);
+
+    border:
+    1px solid rgba(255,255,255,0.06);
+
+}
+
+
+/* ======================================
+META ITEM LABEL
+====================================== */
+
+.meta-item span{
+
+    display:block;
+
+    font-size:.66rem;
+
+    letter-spacing:2px;
+
+    opacity:.55;
+
+    margin-bottom:10px;
+
+}
+
+
+/* ======================================
+META ITEM VALUE
+====================================== */
+
+.meta-item strong{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                CARD FOOTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.card-footer{
+
+    margin-top:34px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding-top:20px;
+
+    border-top:
+    1px solid rgba(255,255,255,0.08);
+
+    color:
+    rgba(255,255,255,0.74);
+
+    position:relative;
+    z-index:2;
+
+}
+
+
+/* ======================================
+CARD FOOTER TEXT
+====================================== */
+
+.card-footer span{
+
+    font-size:.92rem;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CARD DEPTH EFFECT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    background:
+    linear-gradient(
+    180deg,
+    rgba(255,255,255,0.04),
+    transparent 40%
+    );
+
+    pointer-events:none;
+
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                LEGAL MODAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .legal-modal{
-position:fixed;
-inset:0;
 
-background:rgba(2,6,23,0.82);
+    position:fixed;
+    inset:0;
 
-display:flex;
-justify-content:center;
-align-items:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-padding:16px;
+    padding:18px;
 
-opacity:0;
-pointer-events:none;
+    opacity:0;
+    pointer-events:none;
 
-transition:
-opacity 0.3s ease,
-transform 0.3s ease;
+    transition:
+    opacity .45s ease,
+    transform .45s ease;
 
-transform:scale(0.96);
+    transform:
+    scale(.96);
 
-z-index:999;
+    z-index:999;
 
-overflow-y:auto;
 }
+
+
+/* ======================================
+ACTIVE MODAL
+====================================== */
 
 .legal-modal.active{
-opacity:1;
-pointer-events:auto;
-transform:scale(1);
+
+    opacity:1;
+    pointer-events:auto;
+
+    transform:
+    scale(1);
+
 }
 
-.modal-content{
-width:100%;
-max-width:950px;
 
-max-height:90vh;
+/* ======================================
+MODAL BACKDROP
+====================================== */
 
-padding:26px;
+.modal-backdrop{
 
-border-radius:32px;
+    position:absolute;
+    inset:0;
 
-position:relative;
+    background:
+    rgba(2,6,23,0.82);
 
-overflow:hidden;
+    backdrop-filter:
+    blur(12px);
+
+    -webkit-backdrop-filter:
+    blur(12px);
+
 }
 
-.modal-content h2{
-padding-right:60px;
 
-font-size:2.3rem;
-line-height:1.2;
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            FULLSCREEN READER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.fullscreen-reader{
+
+    position:relative;
+
+    width:100%;
+    max-width:1450px;
+
+    height:92vh;
+
+    border-radius:40px;
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:hidden;
+
+    z-index:2;
+
 }
 
-.modal-scroll{
-overflow-y:auto;
-overflow-x:hidden;
 
-max-height:74vh;
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                READER HEADER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-padding-right:6px;
+.reader-header{
 
-margin-top:20px;
+    padding:28px 34px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+    gap:20px;
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.06);
+
+    position:sticky;
+    top:0;
+
+    z-index:30;
+
+    backdrop-filter:
+    blur(20px);
+
 }
+
+
+/* ======================================
+HEADER LEFT
+====================================== */
+
+.reader-header-left{
+max-width:760px;
+}
+
+
+/* ======================================
+READER LABEL
+====================================== */
+
+.reader-label{
+
+    display:inline-block;
+
+    margin-bottom:14px;
+
+    font-size:.68rem;
+
+    letter-spacing:2px;
+
+    opacity:.6;
+
+}
+
+
+/* ======================================
+READER TITLE
+====================================== */
+
+.reader-header h2{
+
+    font-size:2.7rem;
+
+    line-height:1;
+
+    letter-spacing:-1px;
+
+    margin-bottom:16px;
+
+}
+
+
+/* ======================================
+READER DESCRIPTION
+====================================== */
+
+.reader-header p{
+
+    line-height:1.8;
+
+    color:
+    rgba(255,255,255,0.72);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            READER RIGHT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.reader-header-right{
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+}
+
+
+/* ======================================
+READER STATUS
+====================================== */
+
+.reader-status{
+
+    padding:12px 16px;
+
+    border-radius:999px;
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    white-space:nowrap;
+
+    font-size:.82rem;
+
+}
+
+
+/* ======================================
+CLOSE BUTTON
+====================================== */
 
 .close-modal{
-position:absolute;
-top:18px;
-right:18px;
 
-width:46px;
-height:46px;
+    width:56px;
+    height:56px;
 
-border:none;
+    border-radius:20px;
 
-border-radius:50%;
+    background:
+    rgba(255,255,255,0.08);
 
-background:rgba(255,255,255,0.08);
+    border:
+    1px solid rgba(255,255,255,0.08);
 
-color:white;
+    color:white;
 
-cursor:pointer;
-font-size:1rem;
+    font-size:1rem;
+
+    transition:
+    .35s var(--transition);
+
 }
 
-/* =========================================
-INTRO
-========================================= */
+.close-modal:hover{
 
-.intro-box{
-padding:20px;
+    background:
+    rgba(255,255,255,0.14);
 
-border-radius:22px;
+    transform:
+    rotate(90deg);
 
-background:rgba(255,255,255,0.05);
-
-margin-bottom:18px;
-
-line-height:1.8;
-opacity:0.86;
 }
 
-/* =========================================
-ACCORDION
-========================================= */
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            READING PROGRESS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.reader-progress{
+
+    width:100%;
+    height:4px;
+
+    background:
+    rgba(255,255,255,0.05);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ======================================
+PROGRESS BAR
+====================================== */
+
+.reader-progress-bar{
+
+    width:18%;
+
+    height:100%;
+
+    background:
+    linear-gradient(
+    90deg,
+    var(--blue),
+    var(--cyan)
+    );
+
+    border-radius:999px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                MODAL SCROLL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.modal-scroll{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    padding:34px;
+
+    scroll-behavior:smooth;
+
+}
+
+
+/* ======================================
+MODAL SCROLLBAR
+====================================== */
+
+.modal-scroll::-webkit-scrollbar{
+width:8px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb{
+
+background:
+rgba(255,255,255,0.12);
+
+border-radius:999px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            LEGAL INTRO PANEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-intro-panel{
+
+    padding:34px;
+
+    border-radius:32px;
+
+    margin-bottom:30px;
+
+}
+
+
+/* ======================================
+INTRO TOP
+====================================== */
+
+.intro-top{
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:22px;
+
+}
+
+
+/* ======================================
+INTRO CHIP
+====================================== */
+
+.intro-top span{
+
+    display:inline-flex;
+    align-items:center;
+
+    padding:10px 14px;
+
+    border-radius:999px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    font-size:.68rem;
+
+    letter-spacing:2px;
+
+}
+
+
+/* ======================================
+INTRO TITLE
+====================================== */
+
+.legal-intro-panel h3{
+
+    font-size:2.2rem;
+
+    line-height:1;
+
+    margin-bottom:20px;
+
+}
+
+
+/* ======================================
+INTRO TEXT
+====================================== */
+
+.legal-intro-panel p{
+
+    max-width:920px;
+
+    line-height:1.9;
+
+    color:
+    rgba(255,255,255,0.76);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                ACCORDION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .accordion{
-margin-bottom:16px;
 
-overflow:hidden;
+    margin-bottom:22px;
 
-border-radius:22px;
+    border-radius:30px;
+
+    overflow:hidden;
+
 }
 
+
+/* ======================================
+ACCORDION HEADER
+====================================== */
+
 .accordion-header{
-width:100%;
 
-padding:20px;
+    width:100%;
 
-border:none;
+    padding:24px 26px;
 
-border-radius:22px;
+    background:
+    rgba(255,255,255,0.06);
 
-background:rgba(255,255,255,0.08);
+    border:
+    1px solid rgba(255,255,255,0.06);
 
-color:white;
+    color:white;
 
-text-align:left;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-font-weight:700;
+    gap:18px;
 
-font-size:1rem;
+    transition:
+    .35s var(--transition);
 
-cursor:pointer;
+    text-align:left;
 
-transition:0.3s;
-
-line-height:1.5;
-
-word-break:break-word;
-overflow-wrap:break-word;
 }
 
 .accordion-header:hover{
-background:rgba(255,255,255,0.12);
+
+    background:
+    rgba(255,255,255,0.10);
+
 }
+
+
+/* ======================================
+HEADER LEFT
+====================================== */
+
+.accordion-header-left{
+
+    display:flex;
+    align-items:center;
+
+    gap:16px;
+
+    min-width:0;
+
+}
+
+
+/* ======================================
+SECTION CHIP
+====================================== */
+
+.section-chip{
+
+    display:inline-flex;
+    align-items:center;
+
+    padding:10px 14px;
+
+    border-radius:999px;
+
+    background:
+    rgba(37,99,235,0.18);
+
+    border:
+    1px solid rgba(37,99,235,0.28);
+
+    font-size:.68rem;
+
+    letter-spacing:1px;
+
+    white-space:nowrap;
+
+}
+
+
+/* ======================================
+HEADER TITLE
+====================================== */
+
+.accordion-header-left span:last-child{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    line-height:1.5;
+
+}
+
+
+/* ======================================
+ACCORDION ICON
+====================================== */
+
+.accordion-icon{
+
+    font-size:1.2rem;
+
+    opacity:.7;
+
+    transition:
+    .35s var(--transition);
+
+}
+
+
+/* ======================================
+ACTIVE ICON
+====================================== */
+
+.accordion.active
+.accordion-icon{
+
+    transform:
+    rotate(45deg);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            ACCORDION CONTENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .accordion-content{
-max-height:0;
 
-overflow:hidden;
+    max-height:0;
 
-opacity:0;
+    overflow:hidden;
 
-padding:0 20px;
+    opacity:0;
 
-transition:
-max-height 0.45s ease,
-opacity 0.3s ease,
-padding 0.3s ease;
+    transition:
+    max-height .45s ease,
+    opacity .35s ease,
+    padding .35s ease;
 
-background:rgba(255,255,255,0.04);
+    padding:0 26px;
+
 }
 
-.accordion.active .accordion-content{
-max-height:2500px;
 
-opacity:1;
+/* ======================================
+ACTIVE CONTENT
+====================================== */
 
-padding:20px;
+.accordion.active
+.accordion-content{
+
+    max-height:4000px;
+
+    opacity:1;
+
+    padding:26px;
+
 }
 
-/* =========================================
-ORDINANCE
-========================================= */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                LEGAL BLOCK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-block{
+
+    padding:26px;
+
+    border-radius:28px;
+
+    background:
+    rgba(255,255,255,0.04);
+
+    border:
+    1px solid rgba(255,255,255,0.06);
+
+    margin-bottom:22px;
+
+}
+
+
+/* ======================================
+LEGAL BLOCK LABEL
+====================================== */
+
+.legal-block-label{
+
+    display:inline-block;
+
+    margin-bottom:18px;
+
+    font-size:.68rem;
+
+    letter-spacing:2px;
+
+    opacity:.6;
+
+}
+
+
+/* ======================================
+ORDINANCE TEXT
+====================================== */
 
 .ordinance-text{
-line-height:1.9;
-opacity:0.9;
-font-size:1rem;
+
+    font-size:1.08rem;
+
+    line-height:2;
+
+    color:
+    rgba(255,255,255,0.92);
+
 }
 
-.explanation{
-margin-top:18px;
 
-padding:18px;
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            AI EXPLANATION CARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-border-radius:20px;
+.ai-explanation-card{
 
-background:rgba(255,255,255,0.05);
+    padding:28px;
+
+    border-radius:30px;
+
+    margin-bottom:22px;
+
+    background:
+    linear-gradient(
+    180deg,
+    rgba(37,99,235,0.10),
+    rgba(255,255,255,0.04)
+    );
+
 }
 
-.explanation h4{
-margin-bottom:10px;
+
+/* ======================================
+EXPLANATION TOP
+====================================== */
+
+.explanation-top{
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:20px;
+
 }
 
-.explanation p{
-line-height:1.8;
-opacity:0.84;
-margin-bottom:12px;
+
+/* ======================================
+EXPLANATION CHIPS
+====================================== */
+
+.explanation-top span{
+
+    display:inline-flex;
+    align-items:center;
+
+    padding:10px 14px;
+
+    border-radius:999px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    font-size:.68rem;
+
+    letter-spacing:2px;
+
 }
 
-.legal-list{
-padding-left:18px;
-line-height:1.8;
-margin-top:12px;
+
+/* ======================================
+EXPLANATION TITLE
+====================================== */
+
+.ai-explanation-card h4{
+
+    font-size:1.6rem;
+
+    margin-bottom:16px;
+
+    line-height:1.1;
+
 }
 
-/* =========================================
-DEFINITIONS
-========================================= */
+
+/* ======================================
+EXPLANATION TEXT
+====================================== */
+
+.ai-explanation-card p{
+
+    line-height:1.9;
+
+    color:
+    rgba(255,255,255,0.76);
+
+    margin-bottom:14px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            LEGAL META GRID
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-meta-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+
+/* ======================================
+LEGAL META CARD
+====================================== */
+
+.legal-meta-card{
+
+    padding:22px;
+
+    border-radius:24px;
+
+}
+
+
+/* ======================================
+META CARD LABEL
+====================================== */
+
+.legal-meta-card span{
+
+    display:inline-block;
+
+    margin-bottom:12px;
+
+    font-size:.68rem;
+
+    letter-spacing:2px;
+
+    opacity:.58;
+
+}
+
+
+/* ======================================
+META CARD TITLE
+====================================== */
+
+.legal-meta-card h5{
+
+    font-size:1rem;
+
+    line-height:1.5;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            INTERPRETATION GRID
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.interpretation-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:18px;
+
+    margin-bottom:28px;
+
+}
+
+
+/* ======================================
+INTERPRETATION CARD
+====================================== */
+
+.interpretation-card{
+
+    padding:26px;
+
+    border-radius:28px;
+
+}
+
+
+/* ======================================
+INTERPRETATION LABEL
+====================================== */
+
+.interpretation-card span{
+
+    display:inline-block;
+
+    margin-bottom:16px;
+
+    font-size:.68rem;
+
+    letter-spacing:2px;
+
+    opacity:.58;
+
+}
+
+
+/* ======================================
+INTERPRETATION TITLE
+====================================== */
+
+.interpretation-card h4{
+
+    font-size:1.4rem;
+
+    line-height:1.1;
+
+    margin-bottom:14px;
+
+}
+
+
+/* ======================================
+INTERPRETATION TEXT
+====================================== */
+
+.interpretation-card p{
+
+    line-height:1.8;
+
+    color:
+    rgba(255,255,255,0.74);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                FRAMEWORK PANEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.framework-panel{
+
+    padding:30px;
+
+    border-radius:32px;
+
+    margin-bottom:24px;
+
+}
+
+
+/* ======================================
+FRAMEWORK TOP
+====================================== */
+
+.framework-top{
+
+    margin-bottom:26px;
+
+}
+
+
+/* ======================================
+FRAMEWORK LABEL
+====================================== */
+
+.framework-top span{
+
+    display:inline-block;
+
+    font-size:.7rem;
+
+    letter-spacing:2px;
+
+    opacity:.6;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                FRAMEWORK LIST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.framework-list{
+
+    display:grid;
+
+    gap:18px;
+
+}
+
+
+/* ======================================
+FRAMEWORK ITEM
+====================================== */
+
+.framework-item{
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:
+    rgba(255,255,255,0.05);
+
+    border:
+    1px solid rgba(255,255,255,0.06);
+
+}
+
+
+/* ======================================
+FRAMEWORK ITEM TITLE
+====================================== */
+
+.framework-item h5{
+
+    font-size:1.08rem;
+
+    margin-bottom:12px;
+
+}
+
+
+/* ======================================
+FRAMEWORK ITEM TEXT
+====================================== */
+
+.framework-item p{
+
+    line-height:1.8;
+
+    color:
+    rgba(255,255,255,0.74);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CATEGORY STRIP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-category-strip{
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:14px;
+
+    margin-bottom:30px;
+
+}
+
+
+/* ======================================
+CATEGORY CHIP
+====================================== */
+
+.definition-category{
+
+    padding:14px 18px;
+
+    border-radius:999px;
+
+}
+
+.definition-category span{
+
+    font-size:.72rem;
+
+    letter-spacing:2px;
+
+    opacity:.76;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                DEFINITION GRID
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .definition-grid{
-display:grid;
 
-grid-template-columns:
-repeat(auto-fit,minmax(280px,1fr));
+    display:grid;
 
-gap:20px;
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:22px;
+
 }
+
+
+/* ======================================
+DEFINITION CARD
+====================================== */
 
 .definition-card{
-overflow:hidden;
+
+    padding:30px;
+
+    border-radius:34px;
+
+    min-height:340px;
+
+    transition:
+    .35s var(--transition);
+
 }
 
-/* =========================================
-TABLET
-========================================= */
+.definition-card:hover{
+
+    transform:
+    translateY(-6px);
+
+}
+
+
+/* ======================================
+DEFINITION TOP
+====================================== */
+
+.definition-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:24px;
+
+    flex-wrap:wrap;
+
+}
+
+
+/* ======================================
+DEFINITION LABELS
+====================================== */
+
+.definition-top span{
+
+    font-size:.68rem;
+
+    letter-spacing:2px;
+
+    opacity:.58;
+
+}
+
+
+/* ======================================
+DEFINITION TITLE
+====================================== */
+
+.definition-card h4{
+
+    font-size:2rem;
+
+    line-height:1;
+
+    margin-bottom:20px;
+
+}
+
+
+/* ======================================
+DEFINITION TEXT
+====================================== */
+
+.definition-text{
+
+    line-height:1.9;
+
+    color:
+    rgba(255,255,255,0.82);
+
+    margin-bottom:24px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        DEFINITION EXPLANATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-explanation{
+
+    padding:22px;
+
+    border-radius:24px;
+
+    background:
+    rgba(255,255,255,0.05);
+
+    border:
+    1px solid rgba(255,255,255,0.06);
+
+}
+
+
+/* ======================================
+EXPLANATION TITLE
+====================================== */
+
+.definition-explanation h5{
+
+    margin-bottom:12px;
+
+    font-size:1rem;
+
+}
+
+
+/* ======================================
+EXPLANATION TEXT
+====================================== */
+
+.definition-explanation p{
+
+    line-height:1.8;
+
+    color:
+    rgba(255,255,255,0.74);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            LEGAL FOOTER PANEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-footer-panel{
+
+    padding:34px;
+
+    border-radius:34px;
+
+    margin-top:34px;
+
+}
+
+
+/* ======================================
+FOOTER TOP
+====================================== */
+
+.footer-panel-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:24px;
+
+}
+
+
+/* ======================================
+FOOTER LABELS
+====================================== */
+
+.footer-panel-top span{
+
+    font-size:.68rem;
+
+    letter-spacing:2px;
+
+    opacity:.58;
+
+}
+
+
+/* ======================================
+FOOTER TITLE
+====================================== */
+
+.legal-footer-panel h3{
+
+    font-size:2rem;
+
+    line-height:1;
+
+    margin-bottom:20px;
+
+}
+
+
+/* ======================================
+FOOTER TEXT
+====================================== */
+
+.legal-footer-panel p{
+
+    max-width:920px;
+
+    line-height:1.9;
+
+    color:
+    rgba(255,255,255,0.76);
+
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            LARGE TABLET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media screen and (max-width:1200px){
+
+    .hero h1{
+        font-size:5rem;
+    }
+
+    .meta-strip{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .overview-strip{
+        grid-template-columns:1fr;
+    }
+
+    .interpretation-grid{
+        grid-template-columns:1fr;
+    }
+
+    .definition-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                TABLET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media screen and (max-width:992px){
+
+    .navbar{
+
+        padding:18px;
+
+        border-radius:28px;
+
+        flex-direction:column;
+        align-items:flex-start;
+
+    }
+
+    .nav-right{
+
+        width:100%;
+
+        justify-content:space-between;
+
+    }
+
+    .hero{
+
+        padding:56px 34px;
+
+        min-height:auto;
+
+        border-radius:34px;
+
+    }
+
+    .hero h1{
+
+        font-size:4.4rem;
+
+        letter-spacing:-2px;
+
+    }
+
+    .hero-description{
+
+        font-size:1rem;
+
+    }
+
+    .meta-strip{
+        grid-template-columns:1fr;
+    }
+
+    .legal-card{
+
+        min-width:360px;
+        max-width:360px;
+
+        min-height:500px;
+
+    }
+
+    .card-content h2{
+        font-size:2.5rem;
+    }
+
+    .fullscreen-reader{
+
+        height:94vh;
+
+        border-radius:30px;
+
+    }
+
+    .reader-header{
+
+        padding:24px;
+
+        flex-direction:column;
+        align-items:flex-start;
+
+    }
+
+    .reader-header-right{
+
+        width:100%;
+
+        justify-content:space-between;
+
+    }
+
+    .reader-header h2{
+
+        font-size:2.2rem;
+
+    }
+
+    .modal-scroll{
+
+        padding:24px;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                MOBILE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 @media screen and (max-width:768px){
 
-.navbar{
-padding:14px 16px;
-border-radius:24px;
+    body{
+
+        overflow-x:hidden;
+
+        touch-action:manipulation;
+
+    }
+
+    .navbar{
+
+        width:calc(100% - 18px);
+
+        margin-top:10px;
+
+        padding:16px;
+
+        border-radius:24px;
+
+        position:relative;
+        top:0;
+
+    }
+
+    .nav-left{
+        width:100%;
+    }
+
+    .logo-wrapper{
+
+        width:56px;
+        height:56px;
+
+        border-radius:18px;
+
+    }
+
+    .logo{
+
+        width:44px !important;
+        height:44px !important;
+
+    }
+
+    .nav-label{
+
+        font-size:.58rem;
+
+        letter-spacing:1.5px;
+
+    }
+
+    .nav-text h1{
+
+        font-size:1.3rem;
+
+    }
+
+    .nav-text p{
+
+        font-size:.82rem;
+
+    }
+
+    .nav-right{
+
+        flex-direction:column;
+        align-items:stretch;
+
+        gap:10px;
+
+    }
+
+    .system-status{
+
+        justify-content:center;
+
+    }
+
+    .back-button{
+
+        text-align:center;
+
+    }
+
+    .hero{
+
+        width:calc(100% - 18px);
+
+        margin-top:18px;
+
+        padding:42px 22px;
+
+        border-radius:28px;
+
+    }
+
+    .hero-top{
+
+        gap:10px;
+
+        margin-bottom:24px;
+
+    }
+
+    .hero-badge{
+
+        padding:10px 14px;
+
+        font-size:.62rem;
+
+    }
+
+    .hero h1{
+
+        font-size:3.1rem;
+
+        line-height:.92;
+
+        letter-spacing:-1px;
+
+        margin-bottom:20px;
+
+    }
+
+    .hero-description{
+
+        font-size:.95rem;
+
+        line-height:1.8;
+
+    }
+
+    .meta-strip{
+
+        margin-top:34px;
+
+        gap:14px;
+
+    }
+
+    .meta-card{
+
+        padding:20px;
+
+        border-radius:22px;
+
+    }
+
+    .meta-card h3{
+
+        font-size:1.7rem;
+
+    }
+
+    .overview-strip{
+
+        width:calc(100% - 18px);
+
+        gap:14px;
+
+    }
+
+    .overview-card{
+
+        padding:22px;
+
+        border-radius:22px;
+
+    }
+
+    .overview-card h3{
+
+        font-size:1.3rem;
+
+    }
+
+    .rail-wrapper{
+
+        width:calc(100% - 18px);
+
+        margin-top:28px;
+
+    }
+
+    .rail-top{
+
+        flex-direction:column;
+        align-items:flex-start;
+
+        gap:18px;
+
+    }
+
+    .rail-top h2{
+
+        font-size:2rem;
+
+    }
+
+    .rail-controls{
+
+        width:100%;
+
+    }
+
+    .rail-btn{
+
+        flex:1;
+
+        height:52px;
+
+        border-radius:16px;
+
+    }
+
+    .cards-rail{
+
+        gap:16px;
+
+        padding-bottom:10px;
+
+    }
+
+    .legal-card{
+
+        min-width:88vw;
+        max-width:88vw;
+
+        min-height:480px;
+
+        padding:24px;
+
+        border-radius:28px;
+
+    }
+
+    .card-content{
+
+        margin-top:26px;
+
+    }
+
+    .card-content h2{
+
+        font-size:2.2rem;
+
+        margin-bottom:18px;
+
+    }
+
+    .card-description{
+
+        font-size:.95rem;
+
+        line-height:1.8;
+
+    }
+
+    .card-meta{
+
+        grid-template-columns:1fr;
+
+        gap:12px;
+
+    }
+
+    .meta-item{
+
+        padding:16px;
+
+        border-radius:18px;
+
+    }
+
+    .card-footer{
+
+        margin-top:24px;
+
+        padding-top:16px;
+
+    }
+
+    .rail-wrapper::before,
+    .rail-wrapper::after{
+        display:none;
+    }
+
+    .legal-modal{
+
+        padding:10px;
+
+    }
+
+    .fullscreen-reader{
+
+        height:96vh;
+
+        border-radius:24px;
+
+    }
+
+    .reader-header{
+
+        padding:18px;
+
+    }
+
+    .reader-label{
+
+        margin-bottom:10px;
+
+    }
+
+    .reader-header h2{
+
+        font-size:1.7rem;
+
+        line-height:1.1;
+
+        margin-bottom:14px;
+
+    }
+
+    .reader-header p{
+
+        font-size:.92rem;
+
+        line-height:1.7;
+
+    }
+
+    .reader-status{
+
+        padding:10px 14px;
+
+        font-size:.74rem;
+
+    }
+
+    .close-modal{
+
+        width:50px;
+        height:50px;
+
+        border-radius:16px;
+
+    }
+
+    .modal-scroll{
+
+        padding:18px;
+
+    }
+
+    .legal-intro-panel{
+
+        padding:22px;
+
+        border-radius:24px;
+
+    }
+
+    .legal-intro-panel h3{
+
+        font-size:1.7rem;
+
+        line-height:1.1;
+
+    }
+
+    .accordion{
+
+        border-radius:24px;
+
+    }
+
+    .accordion-header{
+
+        padding:18px;
+
+        align-items:flex-start;
+
+    }
+
+    .accordion-header-left{
+
+        flex-direction:column;
+        align-items:flex-start;
+
+        gap:12px;
+
+    }
+
+    .accordion.active
+    .accordion-content{
+
+        padding:18px;
+
+    }
+
+    .legal-block{
+
+        padding:20px;
+
+        border-radius:22px;
+
+    }
+
+    .ordinance-text{
+
+        font-size:.95rem;
+
+        line-height:1.9;
+
+    }
+
+    .ai-explanation-card{
+
+        padding:22px;
+
+        border-radius:24px;
+
+    }
+
+    .ai-explanation-card h4{
+
+        font-size:1.35rem;
+
+    }
+
+    .legal-meta-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .framework-panel{
+
+        padding:22px;
+
+        border-radius:24px;
+
+    }
+
+    .framework-item{
+
+        padding:18px;
+
+        border-radius:18px;
+
+    }
+
+    .definition-category-strip{
+
+        gap:10px;
+
+    }
+
+    .definition-category{
+
+        padding:12px 16px;
+
+    }
+
+    .definition-card{
+
+        padding:22px;
+
+        border-radius:26px;
+
+        min-height:auto;
+
+    }
+
+    .definition-card h4{
+
+        font-size:1.6rem;
+
+    }
+
+    .definition-explanation{
+
+        padding:18px;
+
+        border-radius:18px;
+
+    }
+
+    .legal-footer-panel{
+
+        padding:24px;
+
+        border-radius:26px;
+
+    }
+
+    .legal-footer-panel h3{
+
+        font-size:1.7rem;
+
+        line-height:1.1;
+
+    }
+
 }
 
-.logo{
-width:44px !important;
-height:44px !important;
-}
 
-.nav-left h1{
-font-size:1.1rem;
-}
-
-.nav-left p{
-font-size:0.72rem;
-}
-
-.back-button{
-padding:12px 16px;
-font-size:0.9rem;
-border-radius:18px;
-}
-
-.hero{
-padding:50px 22px;
-border-radius:28px;
-}
-
-.hero h1{
-font-size:2.8rem;
-}
-
-.hero p{
-font-size:0.95rem;
-line-height:1.7;
-}
-
-.cards-section{
-grid-template-columns:1fr;
-}
-
-.legal-card{
-padding:22px;
-}
-
-.modal-content{
-padding:20px;
-border-radius:28px;
-}
-
-.modal-content h2{
-font-size:1.9rem;
-padding-right:52px;
-line-height:1.1;
-}
-
-.accordion-header{
-padding:16px;
-font-size:0.95rem;
-}
-
-.accordion.active .accordion-content{
-padding:16px;
-}
-
-.ordinance-text{
-font-size:0.95rem;
-line-height:1.8;
-}
-
-.explanation{
-padding:16px;
-}
-
-}
-
-/* =========================================
-SMALL IPHONE
-========================================= */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SMALL IPHONE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 @media screen and (max-width:430px){
 
-.navbar{
-width:calc(100% - 18px);
+    .hero h1{
 
-padding:14px;
+        font-size:2.5rem;
+
+    }
+
+    .hero-description{
+
+        font-size:.9rem;
+
+    }
+
+    .legal-card{
+
+        min-width:92vw;
+        max-width:92vw;
+
+        min-height:450px;
+
+    }
+
+    .card-content h2{
+
+        font-size:2rem;
+
+    }
+
+    .reader-header h2{
+
+        font-size:1.5rem;
+
+    }
+
+    .legal-intro-panel h3{
+
+        font-size:1.5rem;
+
+    }
+
+    .definition-card h4{
+
+        font-size:1.4rem;
+
+    }
+
 }
 
-.logo{
-width:42px !important;
-height:42px !important;
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            PERFORMANCE FIXES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card,
+.meta-card,
+.overview-card,
+.definition-card,
+.interpretation-card{
+
+    will-change:
+    transform;
+
+    transform:
+    translateZ(0);
+
 }
 
-.nav-left{
-gap:10px;
+
+/* ======================================
+TOUCH OPTIMIZATION
+====================================== */
+
+.cards-rail{
+
+    -webkit-overflow-scrolling:
+    touch;
+
 }
 
-.nav-left h1{
-font-size:1rem;
-}
 
-.nav-left p{
-font-size:.7rem;
-}
+/* ======================================
+PREVENT IOS ZOOM
+====================================== */
 
-.back-button{
-padding:10px 14px;
-font-size:.8rem;
-}
+input,
+select,
+textarea,
+button{
 
-.hero{
-width:calc(100% - 18px);
-
-padding:34px 18px;
-}
-
-.hero h1{
-font-size:2.2rem;
-line-height:1;
-}
-
-.hero p{
-font-size:.92rem;
-line-height:1.7;
-}
-
-.cards-section{
-width:calc(100% - 18px);
-
-gap:16px;
-}
-
-.legal-card{
-padding:20px;
-border-radius:24px;
-}
-
-.legal-card h2{
-font-size:1.45rem;
-}
-
-.modal-content{
-padding:18px;
-border-radius:24px;
-}
-
-.modal-content h2{
-font-size:1.5rem;
-}
-
-.accordion-header{
-padding:16px;
-font-size:.9rem;
-}
-
-.accordion.active .accordion-content{
-padding:16px;
-}
-
-.ordinance-text{
-font-size:.92rem;
-line-height:1.8;
-}
-
-.explanation{
-padding:16px;
-}
+    font-size:16px;
 
 }
