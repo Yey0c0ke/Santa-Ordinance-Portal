@@ -1,0 +1,2881 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        CHAPTER II • STYLE.CSS
+        PART 1 — FOUNDATION
+        LGU PORTAL 💎
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                ROOT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+:root{
+
+    --bg-primary:#020617;
+    --bg-secondary:#071126;
+
+    --glass-bg:
+        rgba(255,255,255,0.08);
+
+    --glass-border:
+        rgba(255,255,255,0.08);
+
+    --text-primary:#ffffff;
+
+    --text-secondary:
+        rgba(255,255,255,0.72);
+
+    --blue-glow:#2563eb;
+    --purple-glow:#7c3aed;
+
+    --card-radius:28px;
+
+    --transition:
+        0.30s cubic-bezier(.22,1,.36,1);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                RESET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+*{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    width:100%;
+
+    overflow-x:hidden;
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    width:100%;
+
+    overflow-x:hidden;
+
+    font-family:'Inter',sans-serif;
+
+    background:var(--bg-primary);
+
+    color:var(--text-primary);
+
+    min-height:100vh;
+
+    text-rendering:
+        optimizeLegibility;
+
+    -webkit-font-smoothing:
+        antialiased;
+
+    overscroll-behavior-y:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                GLOBAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+    -webkit-user-drag:none;
+
+    user-select:none;
+
+    -webkit-user-select:none;
+
+}
+
+button{
+
+    font-family:inherit;
+
+}
+
+a{
+
+    text-decoration:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                BACKGROUND
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.bg-gradient{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+            circle at top left,
+            rgba(37,99,235,0.26),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at bottom right,
+            rgba(124,58,237,0.22),
+            transparent 28%
+        ),
+
+        #020617;
+
+    z-index:-5;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                GRID OVERLAY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.grid-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,0.03) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.03) 1px,
+            transparent 1px
+        );
+
+    background-size:60px 60px;
+
+    z-index:-4;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                ORBS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.orb{
+
+    position:fixed;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    opacity:0.20;
+
+    pointer-events:none;
+
+    z-index:-3;
+
+}
+
+.orb1{
+
+    width:240px;
+    height:240px;
+
+    background:var(--blue-glow);
+
+    top:-50px;
+    left:-50px;
+
+}
+
+.orb2{
+
+    width:260px;
+    height:260px;
+
+    background:var(--purple-glow);
+
+    right:-40px;
+    bottom:-40px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                GLASS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.glass{
+
+    background:var(--glass-bg);
+
+    border:
+        1px solid var(--glass-border);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                NAVBAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.navbar{
+
+    width:94%;
+
+    max-width:1400px;
+
+    margin:
+        18px auto;
+
+    padding:
+        16px 22px;
+
+    border-radius:28px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    z-index:50;
+
+}
+
+.navbar::before{
+
+    content:'';
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,0.05),
+            transparent 60%
+        );
+
+    pointer-events:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                NAV LEFT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.nav-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    min-width:0;
+
+}
+
+.logo{
+
+    width:56px;
+    height:56px;
+
+    object-fit:contain;
+
+    flex-shrink:0;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                NAV TEXT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.nav-left h1{
+
+    font-size:1.5rem;
+
+    font-weight:800;
+
+    line-height:1;
+
+    letter-spacing:-0.5px;
+
+}
+
+.nav-left p{
+
+    margin-top:4px;
+
+    font-size:0.86rem;
+
+    color:var(--text-secondary);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                BACK BUTTON
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.back-button{
+
+    color:white;
+
+    padding:
+        14px 20px;
+
+    border-radius:22px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    transition:var(--transition);
+
+    font-weight:600;
+
+    touch-action:manipulation;
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+}
+
+.back-button:hover{
+
+    background:
+        rgba(255,255,255,0.14);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                HERO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.hero{
+
+    width:94%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:
+        78px 48px;
+
+    border-radius:38px;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            HERO OVERLAY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.hero::before{
+
+    content:'';
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.02),
+            transparent
+        );
+
+    pointer-events:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            HERO CONTENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            HERO BADGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:
+        10px 18px;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    font-size:0.72rem;
+
+    letter-spacing:2px;
+
+    color:
+        rgba(255,255,255,0.82);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            HERO TITLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.hero h1{
+
+    margin-top:24px;
+
+    margin-bottom:22px;
+
+    font-size:
+        clamp(3rem,6vw,5rem);
+
+    font-weight:900;
+
+    line-height:0.92;
+
+    letter-spacing:-4px;
+
+    max-width:900px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            HERO PARAGRAPH
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.hero p{
+
+    max-width:860px;
+
+    color:var(--text-secondary);
+
+    line-height:1.9;
+
+    font-size:1rem;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SAFE RENDERING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.hero,
+.navbar,
+.glass{
+
+    transform:
+        translateZ(0);
+
+    backface-visibility:hidden;
+
+    -webkit-backface-visibility:hidden;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                END PART 1
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        PART 2 — CARD SYSTEM
+        CHAPTER II 💎
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CARDS SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.cards-section{
+
+    width:94%;
+
+    max-width:1400px;
+
+    margin:
+        30px auto
+        100px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px,1fr)
+        );
+
+    gap:20px;
+
+    align-items:stretch;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                LEGAL CARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:
+        28px;
+
+    border-radius:
+        var(--card-radius);
+
+    cursor:pointer;
+
+    transition:
+
+        transform 0.34s cubic-bezier(.22,1,.36,1),
+
+        border 0.30s ease,
+
+        box-shadow 0.30s ease,
+
+        background 0.30s ease;
+
+    min-height:250px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    isolation:isolate;
+
+    transform:
+        translateZ(0);
+
+    will-change:
+        transform;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CARD LIGHT OVERLAY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card::before{
+
+    content:'';
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.05),
+            transparent 60%
+        );
+
+    opacity:0.8;
+
+    pointer-events:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CARD GLOW EFFECT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card::after{
+
+    content:'';
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        rgba(37,99,235,0.08);
+
+    filter:blur(60px);
+
+    top:-70px;
+    right:-70px;
+
+    opacity:0;
+
+    transition:
+        opacity 0.34s ease;
+
+    pointer-events:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CARD HOVER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card:hover{
+
+    transform:
+        translateY(-6px);
+
+    border:
+        1px solid rgba(255,255,255,0.14);
+
+    box-shadow:
+
+        0 24px 50px rgba(0,0,0,0.30),
+
+        0 0 30px rgba(37,99,235,0.08);
+
+}
+
+.legal-card:hover::after{
+
+    opacity:1;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CARD ACTIVE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card:active{
+
+    transform:
+        scale(0.985);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CARD ARTICLE LABEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card p{
+
+    font-size:0.72rem;
+
+    letter-spacing:3px;
+
+    color:
+        rgba(255,255,255,0.62);
+
+    margin-bottom:16px;
+
+    font-weight:600;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CARD TITLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card h2{
+
+    font-size:1.65rem;
+
+    font-weight:800;
+
+    line-height:1.05;
+
+    letter-spacing:-1px;
+
+    margin-bottom:22px;
+
+    word-break:break-word;
+
+    overflow-wrap:break-word;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CARD DESCRIPTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card span{
+
+    color:
+        rgba(255,255,255,0.72);
+
+    line-height:1.7;
+
+    font-size:0.90rem;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            LEGAL HIERARCHY COLORS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card:nth-child(3n)::after{
+
+    background:
+        rgba(124,58,237,0.10);
+
+}
+
+.legal-card:nth-child(2n)::after{
+
+    background:
+        rgba(59,130,246,0.08);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            COMMITTEE GRID
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(260px,1fr)
+        );
+
+    gap:18px;
+
+    margin-top:12px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            DEFINITION CARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:
+        22px;
+
+    border-radius:24px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    transition:
+        transform 0.28s ease,
+        border 0.28s ease;
+
+}
+
+.definition-card:hover{
+
+    transform:
+        translateY(-3px);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        DEFINITION CARD HEADINGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-card h4{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+    margin-bottom:14px;
+
+    letter-spacing:-0.3px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        DEFINITION CARD TEXT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-card p{
+
+    color:
+        rgba(255,255,255,0.74);
+
+    line-height:1.8;
+
+    font-size:0.92rem;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SECTION DIVIDERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.section-divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:
+
+        linear-gradient(
+            to right,
+            rgba(255,255,255,0.12),
+            transparent
+        );
+
+    margin:
+        28px 0;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CONTENT SPACING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.content-spacing{
+
+    margin-top:20px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            GLASS DEPTH FIX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card,
+.definition-card{
+
+    backface-visibility:hidden;
+
+    -webkit-backface-visibility:hidden;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            TOUCH STABILIZATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card{
+
+    touch-action:
+        manipulation;
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MOBILE CARD SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:768px){
+
+    .cards-section{
+
+        grid-template-columns:
+            1fr;
+
+        gap:18px;
+
+    }
+
+    .legal-card{
+
+        min-height:220px;
+
+        padding:24px;
+
+        border-radius:26px;
+
+    }
+
+    .legal-card h2{
+
+        font-size:1.45rem;
+
+    }
+
+    .definition-grid{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SMALL PHONE SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:430px){
+
+    .cards-section{
+
+        width:
+            calc(100% - 18px);
+
+        gap:16px;
+
+    }
+
+    .legal-card{
+
+        padding:22px;
+
+        border-radius:24px;
+
+        min-height:200px;
+
+    }
+
+    .legal-card h2{
+
+        font-size:1.30rem;
+
+        line-height:1.08;
+
+    }
+
+    .legal-card span{
+
+        font-size:0.84rem;
+
+    }
+
+    .definition-card{
+
+        padding:20px;
+
+        border-radius:22px;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                END PART 2
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        PART 3 — MODAL SYSTEM
+        CHAPTER II 💎
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                LEGAL MODAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+        rgba(2,6,23,0.84);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:18px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+
+        opacity 0.34s ease,
+
+        transform 0.34s ease;
+
+    transform:
+        scale(0.96);
+
+    z-index:999;
+
+    overflow-y:auto;
+
+    overscroll-behavior:
+        contain;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            ACTIVE MODAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-modal.active{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+    transform:
+        scale(1);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MODAL CONTAINER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.modal-content{
+
+    width:100%;
+
+    max-width:980px;
+
+    max-height:92vh;
+
+    padding:30px;
+
+    border-radius:34px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    isolation:isolate;
+
+    transform:
+        translateZ(0);
+
+    animation:
+        modalReveal 0.30s ease;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MODAL ANIMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@keyframes modalReveal{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(18px)
+            scale(0.98);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MODAL LIGHT FX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.modal-content::before{
+
+    content:'';
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.04),
+            transparent 60%
+        );
+
+    pointer-events:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MODAL TITLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.modal-content h2{
+
+    position:relative;
+
+    z-index:2;
+
+    padding-right:64px;
+
+    font-size:
+        clamp(1.9rem,4vw,2.8rem);
+
+    line-height:1.1;
+
+    letter-spacing:-2px;
+
+    font-weight:900;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MODAL SCROLL AREA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.modal-scroll{
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    max-height:74vh;
+
+    margin-top:24px;
+
+    padding-right:8px;
+
+    scroll-behavior:smooth;
+
+    overscroll-behavior:
+        contain;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SCROLLBAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.modal-scroll::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.modal-scroll::-webkit-scrollbar-thumb{
+
+    background:
+        rgba(255,255,255,0.18);
+
+    border-radius:999px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CLOSE BUTTON
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.close-modal{
+
+    position:absolute;
+
+    top:18px;
+    right:18px;
+
+    width:48px;
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color:white;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    z-index:20;
+
+    transition:
+
+        transform 0.24s ease,
+
+        background 0.24s ease;
+
+    touch-action:
+        manipulation;
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+}
+
+.close-modal:hover{
+
+    background:
+        rgba(255,255,255,0.14);
+
+    transform:
+        scale(1.05);
+
+}
+
+.close-modal:active{
+
+    transform:
+        scale(0.96);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                INTRO BOX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.intro-box{
+
+    padding:
+        22px;
+
+    border-radius:24px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    margin-bottom:22px;
+
+    line-height:1.9;
+
+    color:
+        rgba(255,255,255,0.84);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                ACCORDION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.accordion{
+
+    margin-bottom:18px;
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    background:
+        rgba(255,255,255,0.03);
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    transition:
+        border 0.26s ease;
+
+}
+
+.accordion.active{
+
+    border:
+        1px solid rgba(255,255,255,0.10);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            ACCORDION HEADER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.accordion-header{
+
+    width:100%;
+
+    padding:
+        22px;
+
+    border:none;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    color:white;
+
+    text-align:left;
+
+    font-weight:700;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:
+
+        background 0.28s ease,
+
+        transform 0.22s ease;
+
+    line-height:1.6;
+
+    position:relative;
+
+    word-break:break-word;
+
+    overflow-wrap:break-word;
+
+    touch-action:
+        manipulation;
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        ACCORDION HEADER HOVER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.accordion-header:hover{
+
+    background:
+        rgba(255,255,255,0.10);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        ACCORDION ACTIVE HEADER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.accordion.active
+.accordion-header{
+
+    background:
+        rgba(255,255,255,0.12);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            ACCORDION CONTENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.accordion-content{
+
+    max-height:0;
+
+    overflow:hidden;
+
+    opacity:0;
+
+    padding:
+        0 22px;
+
+    transition:
+
+        max-height 0.45s ease,
+
+        opacity 0.30s ease,
+
+        padding 0.30s ease;
+
+    background:
+        rgba(255,255,255,0.03);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            ACTIVE CONTENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.accordion.active
+.accordion-content{
+
+    max-height:4000px;
+
+    opacity:1;
+
+    padding:
+        22px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            ORDINANCE TEXT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.ordinance-text{
+
+    line-height:2;
+
+    color:
+        rgba(255,255,255,0.90);
+
+    font-size:1rem;
+
+    word-break:break-word;
+
+    overflow-wrap:break-word;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            LEGAL EXPLANATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.explanation{
+
+    margin-top:24px;
+
+    padding:
+        20px;
+
+    border-radius:22px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        EXPLANATION HEADING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.explanation h4{
+
+    margin-bottom:12px;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    letter-spacing:-0.3px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        EXPLANATION TEXT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.explanation p{
+
+    line-height:1.9;
+
+    color:
+        rgba(255,255,255,0.82);
+
+    margin-bottom:12px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            LEGAL LISTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-list{
+
+    padding-left:22px;
+
+    line-height:2;
+
+    color:
+        rgba(255,255,255,0.88);
+
+}
+
+.legal-list li{
+
+    margin-bottom:10px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            FOOTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.footer{
+
+    padding:
+        60px 20px;
+
+    text-align:center;
+
+    color:
+        rgba(255,255,255,0.58);
+
+    line-height:1.9;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MOBILE MODAL SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:768px){
+
+    .legal-modal{
+
+        padding:12px;
+
+        align-items:flex-end;
+
+    }
+
+    .modal-content{
+
+        max-height:94vh;
+
+        padding:22px;
+
+        border-radius:28px;
+
+    }
+
+    .modal-content h2{
+
+        font-size:1.7rem;
+
+        padding-right:56px;
+
+        line-height:1.1;
+
+    }
+
+    .modal-scroll{
+
+        max-height:72vh;
+
+    }
+
+    .accordion-header{
+
+        padding:18px;
+
+        font-size:0.95rem;
+
+    }
+
+    .accordion.active
+    .accordion-content{
+
+        padding:18px;
+
+    }
+
+    .ordinance-text{
+
+        font-size:0.95rem;
+
+        line-height:1.9;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SMALL PHONE SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:430px){
+
+    .modal-content{
+
+        padding:18px;
+
+        border-radius:24px;
+
+    }
+
+    .modal-content h2{
+
+        font-size:1.45rem;
+
+        letter-spacing:-1px;
+
+    }
+
+    .accordion-header{
+
+        padding:16px;
+
+        font-size:0.90rem;
+
+        line-height:1.5;
+
+    }
+
+    .accordion.active
+    .accordion-content{
+
+        padding:16px;
+
+    }
+
+    .intro-box{
+
+        padding:18px;
+
+        border-radius:22px;
+
+    }
+
+    .ordinance-text{
+
+        font-size:0.92rem;
+
+        line-height:1.85;
+
+    }
+
+    .legal-list{
+
+        padding-left:18px;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                END PART 3
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        PART 4 — LEGAL COMPONENTS
+        CHAPTER II 💎
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            DEFINITION GRID
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(260px,1fr)
+        );
+
+    gap:18px;
+
+    margin-top:10px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            DEFINITION CARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:
+        22px;
+
+    border-radius:24px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    transition:
+
+        transform 0.30s ease,
+
+        border 0.30s ease,
+
+        background 0.30s ease;
+
+    isolation:isolate;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        DEFINITION CARD OVERLAY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-card::before{
+
+    content:'';
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.04),
+            transparent 65%
+        );
+
+    pointer-events:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        DEFINITION CARD HOVER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-card:hover{
+
+    transform:
+        translateY(-4px);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    background:
+        rgba(255,255,255,0.07);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        DEFINITION CARD TITLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-card h4{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:1rem;
+
+    font-weight:800;
+
+    line-height:1.5;
+
+    letter-spacing:-0.3px;
+
+    margin-bottom:14px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        DEFINITION CARD TEXT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-card p{
+
+    position:relative;
+
+    z-index:2;
+
+    color:
+        rgba(255,255,255,0.76);
+
+    line-height:1.9;
+
+    font-size:0.92rem;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            EXPLANATION BOX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.explanation{
+
+    position:relative;
+
+    overflow:hidden;
+
+    margin-top:26px;
+
+    padding:
+        22px;
+
+    border-radius:24px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        EXPLANATION LIGHT FX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.explanation::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        rgba(37,99,235,0.08);
+
+    filter:blur(60px);
+
+    top:-70px;
+    right:-70px;
+
+    pointer-events:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        EXPLANATION HEADING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.explanation h4{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    letter-spacing:-0.2px;
+
+    margin-bottom:12px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        EXPLANATION PARAGRAPH
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.explanation p{
+
+    position:relative;
+
+    z-index:2;
+
+    color:
+        rgba(255,255,255,0.84);
+
+    line-height:1.9;
+
+    margin-bottom:14px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            LEGAL LIST SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-list{
+
+    padding-left:22px;
+
+    color:
+        rgba(255,255,255,0.90);
+
+    line-height:2;
+
+}
+
+.legal-list li{
+
+    margin-bottom:10px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            LEGAL HIGHLIGHT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-highlight{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:16px;
+
+    padding:
+        12px 18px;
+
+    border-radius:999px;
+
+    background:
+        rgba(37,99,235,0.12);
+
+    border:
+        1px solid rgba(59,130,246,0.18);
+
+    font-size:0.82rem;
+
+    color:
+        rgba(255,255,255,0.92);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            WARNING BOX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.warning-box{
+
+    margin-top:20px;
+
+    padding:
+        20px;
+
+    border-radius:22px;
+
+    background:
+        rgba(239,68,68,0.08);
+
+    border:
+        1px solid rgba(239,68,68,0.16);
+
+    color:
+        rgba(255,255,255,0.90);
+
+    line-height:1.9;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            INFO BOX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.info-box{
+
+    margin-top:20px;
+
+    padding:
+        20px;
+
+    border-radius:22px;
+
+    background:
+        rgba(59,130,246,0.08);
+
+    border:
+        1px solid rgba(59,130,246,0.16);
+
+    line-height:1.9;
+
+    color:
+        rgba(255,255,255,0.90);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SUCCESS BOX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.success-box{
+
+    margin-top:20px;
+
+    padding:
+        20px;
+
+    border-radius:22px;
+
+    background:
+        rgba(34,197,94,0.08);
+
+    border:
+        1px solid rgba(34,197,94,0.16);
+
+    line-height:1.9;
+
+    color:
+        rgba(255,255,255,0.90);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            LEGISLATIVE BADGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-badge{
+
+    display:inline-block;
+
+    margin-top:16px;
+
+    padding:
+        8px 14px;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    font-size:0.72rem;
+
+    letter-spacing:1px;
+
+    color:
+        rgba(255,255,255,0.80);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SECTION DIVIDER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.section-divider{
+
+    width:100%;
+
+    height:1px;
+
+    margin:
+        28px 0;
+
+    background:
+
+        linear-gradient(
+            to right,
+            rgba(255,255,255,0.12),
+            transparent
+        );
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CONTENT SPACING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.content-spacing{
+
+    margin-top:24px;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SAFE RENDERING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-card,
+.explanation{
+
+    transform:
+        translateZ(0);
+
+    backface-visibility:hidden;
+
+    -webkit-backface-visibility:hidden;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            TOUCH STABILIZATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.definition-card{
+
+    touch-action:
+        manipulation;
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MOBILE COMPONENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:768px){
+
+    .definition-grid{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .definition-card{
+
+        padding:20px;
+
+        border-radius:22px;
+
+    }
+
+    .explanation{
+
+        padding:20px;
+
+        border-radius:22px;
+
+    }
+
+    .warning-box,
+    .info-box,
+    .success-box{
+
+        padding:18px;
+
+        border-radius:20px;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SMALL PHONE SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:430px){
+
+    .definition-card{
+
+        padding:18px;
+
+        border-radius:20px;
+
+    }
+
+    .definition-card h4{
+
+        font-size:0.94rem;
+
+    }
+
+    .definition-card p{
+
+        font-size:0.88rem;
+
+    }
+
+    .explanation{
+
+        padding:18px;
+
+        border-radius:20px;
+
+    }
+
+    .legal-list{
+
+        padding-left:18px;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                END PART 4
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        PART 5 — MOBILE SYSTEM
+        CHAPTER II 💎
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            LARGE DESKTOP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(min-width:1600px){
+
+    .hero,
+    .navbar,
+    .cards-section{
+
+        max-width:1500px;
+
+    }
+
+    .cards-section{
+
+        grid-template-columns:
+            repeat(
+                auto-fit,
+                minmax(320px,1fr)
+            );
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MEDIUM DEVICES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:1100px){
+
+    .hero{
+
+        padding:
+            64px 36px;
+
+    }
+
+    .hero h1{
+
+        max-width:760px;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            TABLET SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:900px){
+
+    .navbar{
+
+        padding:
+            16px 18px;
+
+    }
+
+    .hero{
+
+        padding:
+            56px 30px;
+
+    }
+
+    .hero h1{
+
+        font-size:3.4rem;
+
+        letter-spacing:-3px;
+
+    }
+
+    .hero p{
+
+        font-size:0.96rem;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MOBILE SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:768px){
+
+    *{
+
+        -webkit-tap-highlight-color:
+            transparent;
+
+    }
+
+    body{
+
+        overflow-x:hidden;
+
+        overscroll-behavior-y:auto;
+
+    }
+
+    .navbar{
+
+        width:94%;
+
+        padding:
+            14px 16px;
+
+        border-radius:24px;
+
+        gap:14px;
+
+    }
+
+    .nav-left{
+
+        gap:12px;
+
+        min-width:0;
+
+    }
+
+    .logo{
+
+        width:48px;
+        height:48px;
+
+    }
+
+    .nav-left h1{
+
+        font-size:1.1rem;
+
+    }
+
+    .nav-left p{
+
+        font-size:0.74rem;
+
+    }
+
+    .back-button{
+
+        padding:
+            12px 16px;
+
+        font-size:0.82rem;
+
+        border-radius:18px;
+
+        white-space:nowrap;
+
+    }
+
+    .hero{
+
+        width:94%;
+
+        padding:
+            50px 24px;
+
+        border-radius:30px;
+
+    }
+
+    .hero h1{
+
+        font-size:2.8rem;
+
+        letter-spacing:-2px;
+
+        line-height:0.96;
+
+    }
+
+    .hero p{
+
+        font-size:0.92rem;
+
+        line-height:1.85;
+
+    }
+
+    .hero-badge{
+
+        font-size:0.66rem;
+
+        padding:
+            9px 14px;
+
+    }
+
+    .cards-section{
+
+        width:94%;
+
+        gap:18px;
+
+        margin:
+            24px auto
+            80px;
+
+    }
+
+    .legal-card{
+
+        min-height:210px;
+
+        border-radius:26px;
+
+        padding:24px;
+
+    }
+
+    .legal-card h2{
+
+        font-size:1.42rem;
+
+    }
+
+    .legal-card span{
+
+        font-size:0.86rem;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SMALL PHONE SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:520px){
+
+    .navbar{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .back-button{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+    .hero{
+
+        padding:
+            42px 20px;
+
+        border-radius:26px;
+
+    }
+
+    .hero h1{
+
+        font-size:2.3rem;
+
+        line-height:1;
+
+    }
+
+    .hero p{
+
+        font-size:0.88rem;
+
+        line-height:1.8;
+
+    }
+
+    .cards-section{
+
+        width:
+            calc(100% - 18px);
+
+        gap:16px;
+
+    }
+
+    .legal-card{
+
+        padding:22px;
+
+        min-height:190px;
+
+        border-radius:24px;
+
+    }
+
+    .legal-card h2{
+
+        font-size:1.25rem;
+
+        line-height:1.08;
+
+    }
+
+    .legal-card span{
+
+        font-size:0.82rem;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            EXTRA SMALL DEVICES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:380px){
+
+    .hero h1{
+
+        font-size:2rem;
+
+    }
+
+    .hero p{
+
+        font-size:0.84rem;
+
+    }
+
+    .legal-card{
+
+        padding:20px;
+
+    }
+
+    .legal-card h2{
+
+        font-size:1.14rem;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MODAL MOBILE FIX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:768px){
+
+    .legal-modal{
+
+        align-items:flex-end;
+
+        padding:10px;
+
+    }
+
+    .modal-content{
+
+        width:100%;
+
+        max-height:95vh;
+
+        border-radius:28px 28px 0 0;
+
+        padding:20px;
+
+    }
+
+    .modal-scroll{
+
+        max-height:74vh;
+
+        padding-right:2px;
+
+        -webkit-overflow-scrolling:
+            touch;
+
+        overscroll-behavior:
+            contain;
+
+    }
+
+    .close-modal{
+
+        width:44px;
+        height:44px;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            IOS STABILIZATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@supports (-webkit-touch-callout:none){
+
+    body{
+
+        -webkit-text-size-adjust:
+            100%;
+
+    }
+
+    .modal-scroll{
+
+        -webkit-overflow-scrolling:
+            touch;
+
+    }
+
+    .legal-modal{
+
+        backdrop-filter:
+            blur(10px);
+
+        -webkit-backdrop-filter:
+            blur(10px);
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            ANDROID STABILIZATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(pointer:coarse){
+
+    .legal-card,
+    .accordion-header,
+    .close-modal,
+    .back-button{
+
+        touch-action:
+            manipulation;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SAFE RENDERING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.hero,
+.navbar,
+.legal-card,
+.modal-content,
+.definition-card,
+.explanation{
+
+    transform:
+        translateZ(0);
+
+    will-change:
+        transform;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            GPU OPTIMIZATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.legal-card,
+.definition-card,
+.accordion,
+.modal-content{
+
+    backface-visibility:hidden;
+
+    -webkit-backface-visibility:hidden;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SMOOTH ANIMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.fade-in{
+
+    opacity:0;
+
+    transform:
+        translateY(24px);
+
+    transition:
+
+        opacity 0.8s ease,
+
+        transform 0.8s ease;
+
+}
+
+.fade-in.show{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            FINAL TOUCH PATCH
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+html{
+
+    scroll-padding-top:20px;
+
+}
+
+body.modal-open{
+
+    overflow:hidden;
+
+    touch-action:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                END OF CSS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
