@@ -519,6 +519,10 @@ a{
 
     font-size:0.84rem;
 
+    backdrop-filter:blur(10px);
+
+    -webkit-backdrop-filter:blur(10px);
+
 }
 
 .hero-status-dot{
@@ -529,6 +533,9 @@ a{
     border-radius:50%;
 
     background:#22c55e;
+
+    box-shadow:
+        0 0 14px rgba(34,197,94,0.72);
 
 }
 
@@ -584,7 +591,11 @@ a{
 
     overscroll-behavior-x:contain;
 
-    touch-action:pan-x;
+    overscroll-behavior-y:auto;
+
+    touch-action:
+        pan-x
+        pan-y;
 
     padding-top:24px;
 
@@ -602,7 +613,20 @@ a{
             18px
         );
 
+    will-change:
+        scroll-position;
+
+    contain:
+        layout
+        paint
+        style;
+
 }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            SCROLLBAR HIDE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .chapters-track::-webkit-scrollbar{
 
@@ -617,9 +641,27 @@ a{
 
 .chapters-track{
 
-    will-change:scroll-position;
+    scroll-snap-type:
+        x mandatory;
 
-    contain:layout paint style;
+    scroll-padding-inline:
+        center;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        MOBILE SCROLL STABILIZER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@supports (-webkit-touch-callout:none){
+
+    .chapters-track{
+
+        -webkit-overflow-scrolling:
+            touch;
+
+    }
 
 }
 
@@ -674,11 +716,38 @@ a{
 }
 
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        PREMIUM MOBILE SWIPE FEEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:768px){
+
+    .chapters-track{
+
+        scroll-snap-type:
+            x mandatory;
+
+        overscroll-behavior-x:
+            contain;
+
+        overscroll-behavior-y:
+            auto;
+
+        touch-action:
+            pan-x
+            pan-y;
+
+    }
+
+}
+
+
 /* END PART 2 */
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     PART 3 — CARDS + BUTTONS + ARROWS
             LGU PORTAL 16 💎
+            MOBILE SWIPE PATCHED
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 
@@ -732,7 +801,11 @@ a{
 
     opacity:0.88;
 
-    touch-action:pan-y;
+    /* ━━━━━━━━━━━
+        MOBILE FIX
+    ━━━━━━━━━━━ */
+
+    touch-action:auto;
 
     -webkit-user-drag:none;
 
@@ -746,12 +819,22 @@ a{
 
 }
 
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                CARD HOVER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 .chapter-card:hover{
 
     transform:
         translateY(-4px);
 
 }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            ACTIVE CENTER CARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .chapter-card.active-card{
 
@@ -789,6 +872,35 @@ a{
 
 }
 
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            IMAGE OVERLAY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.chapter-image-wrap::after{
+
+    content:'';
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(2,6,23,0.78),
+            rgba(2,6,23,0.10)
+        );
+
+    pointer-events:none;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                CHAPTER IMAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 .chapter-image{
 
     width:100%;
@@ -806,6 +918,11 @@ a{
         transform;
 
 }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            ACTIVE IMAGE MOTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .chapter-card.active-card .chapter-image{
 
@@ -1014,6 +1131,24 @@ a{
 }
 
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        MOBILE CARD STABILIZATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:768px){
+
+    .chapter-card{
+
+        touch-action:auto;
+
+        overscroll-behavior:
+            contain;
+
+    }
+
+}
+
+
 /* END PART 3 */
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1186,6 +1321,9 @@ a{
     transform:
         translateZ(0);
 
+    will-change:
+        transform;
+
 }
 
 .info-card:hover{
@@ -1240,6 +1378,8 @@ a{
 
     justify-content:center;
 
+    padding:20px;
+
 }
 
 .ai-modal.active{
@@ -1247,6 +1387,11 @@ a{
     display:flex;
 
 }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MODAL BACKDROP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .ai-modal-backdrop{
 
@@ -1257,11 +1402,16 @@ a{
     background:
         rgba(2,6,23,0.74);
 
-    backdrop-filter:blur(6px);
+    backdrop-filter:blur(8px);
 
-    -webkit-backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(8px);
 
 }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MODAL CONTAINER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .ai-modal-content{
 
@@ -1286,7 +1436,47 @@ a{
     transform:
         translateZ(0);
 
+    will-change:
+        transform;
+
+    animation:
+        modalReveal 0.28s ease;
+
 }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MODAL ANIMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@keyframes modalReveal{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(18px)
+            scale(0.98);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                MODAL TOP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .ai-modal-top{
 
@@ -1307,6 +1497,11 @@ a{
     font-weight:800;
 
 }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                CLOSE BUTTON
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .close-modal-btn{
 
@@ -1330,7 +1525,30 @@ a{
 
     -webkit-tap-highlight-color:transparent;
 
+    transition:
+        background 0.22s ease,
+        transform 0.22s ease;
+
 }
+
+.close-modal-btn:hover{
+
+    background:
+        rgba(255,255,255,0.14);
+
+}
+
+.close-modal-btn:active{
+
+    transform:
+        scale(0.96);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                SEARCH BOX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .ai-search-box{
 
@@ -1363,6 +1581,17 @@ a{
 
     font-size:0.95rem;
 
+    transition:
+        border 0.22s ease,
+        background 0.22s ease;
+
+}
+
+.ai-search-box input:focus{
+
+    background:
+        rgba(255,255,255,0.08);
+
 }
 
 .ai-search-box button{
@@ -1387,7 +1616,22 @@ a{
 
     -webkit-tap-highlight-color:transparent;
 
+    transition:
+        transform 0.22s ease;
+
 }
+
+.ai-search-box button:active{
+
+    transform:
+        scale(0.98);
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                AI PLACEHOLDER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .ai-placeholder{
 
@@ -1402,6 +1646,8 @@ a{
 
     color:
         rgba(255,255,255,0.74);
+
+    line-height:1.7;
 
 }
 
@@ -1426,11 +1672,63 @@ a{
 }
 
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            MOBILE MODAL SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media(max-width:768px){
+
+    .ai-panel{
+
+        padding:
+            42px
+            28px;
+
+        border-radius:34px;
+
+    }
+
+    .system-info{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .ai-modal-content{
+
+        padding:24px;
+
+        border-radius:28px;
+
+    }
+
+    .ai-modal-top h2{
+
+        font-size:1.3rem;
+
+    }
+
+    .ai-search-box{
+
+        flex-direction:column;
+
+    }
+
+    .info-card{
+
+        border-radius:28px;
+
+    }
+
+}
+
+
 /* END PART 4 */
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  PART 5 — RESPONSIVE + MOBILE + RENDERING
-            LGU PORTAL 16 💎
+        LGU PORTAL 16 💎 UPDATED
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 
@@ -1594,6 +1892,26 @@ a{
                 18px
             );
 
+        /* ━━━━━━━━━━━
+            MOBILE FIXES
+        ━━━━━━━━━━━ */
+
+        touch-action:
+            pan-x
+            pan-y;
+
+        overscroll-behavior-x:
+            contain;
+
+        overscroll-behavior-y:
+            auto;
+
+        -webkit-overflow-scrolling:
+            touch;
+
+        scroll-snap-type:
+            x mandatory;
+
     }
 
     .chapter-card{
@@ -1610,6 +1928,15 @@ a{
             transform 0.22s ease,
             opacity 0.22s ease,
             box-shadow 0.22s ease;
+
+        /* ━━━━━━━━━━━
+            MOBILE FIX
+        ━━━━━━━━━━━ */
+
+        touch-action:auto;
+
+        overscroll-behavior:
+            contain;
 
     }
 
@@ -1840,6 +2167,22 @@ a{
 
     will-change:
         transform;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        IOS / ANDROID STABILIZATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@supports (-webkit-touch-callout:none){
+
+    .chapters-track{
+
+        -webkit-overflow-scrolling:
+            touch;
+
+    }
 
 }
 
