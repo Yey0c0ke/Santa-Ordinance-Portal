@@ -1,13 +1,13 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         CHAPTER III • SCRIPT.JS
-        PART 1 — FOUNDATION
+        STABLE PERFORMANCE VERSION
         LGU PORTAL 💎
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 SELECTORS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 const legalCards =
     document.querySelectorAll('.legal-card');
@@ -18,48 +18,166 @@ const legalModals =
 const closeButtons =
     document.querySelectorAll('.close-modal');
 
+const accordions =
+    document.querySelectorAll('.accordion');
+
 const body =
     document.body;
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             ACTIVE MODAL STATE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 let activeModal = null;
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            OPEN MODAL FUNCTION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+            SAFE VIEWPORT HEIGHT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-function openModal(modalId){
+function setViewportHeight(){
 
-    const modal =
-        document.getElementById(modalId);
+    const vh =
+        window.innerHeight * 0.01;
 
-    if(!modal) return;
+    document.documentElement
+        .style
+        .setProperty(
+            '--vh',
+            `${vh}px`
+        );
 
-    modal.classList.add('active');
+}
 
-    body.classList.add('modal-open');
+setViewportHeight();
 
-    activeModal = modal;
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            RESIZE ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+window.addEventListener(
+    'resize',
+    ()=>{
+
+        requestAnimationFrame(()=>{
+
+            setViewportHeight();
+
+        });
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            IOS ORIENTATION FIX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+window.addEventListener(
+    'orientationchange',
+    ()=>{
+
+        setTimeout(()=>{
+
+            setViewportHeight();
+
+        },250);
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            IOS DEVICE DETECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+function isiOS(){
+
+    return /iPhone|iPad|iPod/i.test(
+        navigator.userAgent
+    );
+
+}
+
+if(isiOS()){
+
+    document.body.classList.add(
+        'ios-device'
+    );
 
 }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            CLOSE MODAL FUNCTION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+            BODY SCROLL LOCK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-function closeModal(modal){
+function lockBodyScroll(){
 
-    if(!modal) return;
+    body.classList.add(
+        'modal-open'
+    );
 
-    modal.classList.remove('active');
+    body.style.overflow =
+        'hidden';
 
-    body.classList.remove('modal-open');
+}
+
+function unlockBodyScroll(){
+
+    body.classList.remove(
+        'modal-open'
+    );
+
+    body.style.overflow =
+        '';
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            RESET MODAL SCROLL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+function resetModalScroll(modal){
+
+    const scrollContainer =
+        modal.querySelector(
+            '.modal-scroll'
+        );
+
+    if(scrollContainer){
+
+        scrollContainer.scrollTop = 0;
+
+    }
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                CLOSE ALL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+function closeAllModals(){
+
+    legalModals.forEach(modal=>{
+
+        modal.classList.remove(
+            'active'
+        );
+
+    });
+
+    unlockBodyScroll();
 
     activeModal = null;
 
@@ -67,71 +185,71 @@ function closeModal(modal){
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            CARD CLICK EVENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+                OPEN MODAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+function openModal(modalId){
+
+    const modal =
+        document.getElementById(
+            modalId
+        );
+
+    if(!modal) return;
+
+    closeAllModals();
+
+    resetModalScroll(modal);
+
+    modal.classList.add(
+        'active'
+    );
+
+    lockBodyScroll();
+
+    activeModal = modal;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                CLOSE MODAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+function closeModal(modal){
+
+    if(!modal) return;
+
+    modal.classList.remove(
+        'active'
+    );
+
+    unlockBodyScroll();
+
+    activeModal = null;
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            CARD CLICK ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 legalCards.forEach(card=>{
 
-    card.addEventListener('click',()=>{
+    card.addEventListener(
+        'click',
+        ()=>{
 
-        const modalId =
-            card.dataset.modal;
+            const modalId =
+                card.dataset.modal;
 
-        openModal(modalId);
+            if(!modalId) return;
 
-    });
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            CLOSE BUTTON EVENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-closeButtons.forEach(button=>{
-
-    button.addEventListener('click',()=>{
-
-        const modal =
-            button.closest('.legal-modal');
-
-        closeModal(modal);
-
-    });
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            BACKDROP CLOSE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-legalModals.forEach(modal=>{
-
-    modal.addEventListener('click',(e)=>{
-
-        if(e.target === modal){
-
-            closeModal(modal);
+            openModal(modalId);
 
         }
-
-    });
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            ESCAPE KEY SUPPORT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-document.addEventListener('keydown',(e)=>{
-
-    if(e.key === 'Escape' && activeModal){
-
-        closeModal(activeModal);
-
-    }
+    );
 
 });
 
@@ -145,192 +263,171 @@ legalCards.forEach(card=>{
     card.addEventListener(
         'touchstart',
         ()=>{},
-        { passive:true }
+        {
+            passive:true
+        }
     );
 
 });
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            MODAL SCROLL RESET
+            CLOSE BUTTON ENGINE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-function resetModalScroll(modal){
+closeButtons.forEach(button=>{
 
-    const scrollContainer =
-        modal.querySelector('.modal-scroll');
+    button.addEventListener(
+        'click',
+        ()=>{
 
-    if(scrollContainer){
+            const modal =
+                button.closest(
+                    '.legal-modal'
+                );
 
-        scrollContainer.scrollTop = 0;
+            closeModal(modal);
 
-    }
+        }
+    );
 
-}
+});
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        RESET SCROLL ON OPEN
+            OUTSIDE CLICK CLOSE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-legalCards.forEach(card=>{
+legalModals.forEach(modal=>{
 
-    card.addEventListener('click',()=>{
+    modal.addEventListener(
+        'click',
+        (event)=>{
 
-        const modalId =
-            card.dataset.modal;
+            if(event.target === modal){
 
-        const modal =
-            document.getElementById(modalId);
+                closeModal(modal);
 
-        if(modal){
+            }
 
-            resetModalScroll(modal);
+        }
+    );
+
+});
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                ESC CLOSE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+document.addEventListener(
+    'keydown',
+    (event)=>{
+
+        if(
+            event.key === 'Escape'
+            &&
+            activeModal
+        ){
+
+            closeModal(activeModal);
 
         }
 
-    });
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            SAFE VIEWPORT HEIGHT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function setViewportHeight(){
-
-    const vh =
-        window.innerHeight * 0.01;
-
-    document.documentElement
-        .style
-        .setProperty('--vh',`${vh}px`);
-
-}
-
-setViewportHeight();
-
-window.addEventListener(
-    'resize',
-    setViewportHeight
-);
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            IOS SAFE FIX
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-window.addEventListener(
-    'orientationchange',
-    ()=>{
-
-        setTimeout(()=>{
-
-            setViewportHeight();
-
-        },300);
-
     }
 );
 
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            GPU RENDER BOOST
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-document.querySelectorAll(
-    '.glass'
-).forEach(el=>{
-
-    el.style.transform =
-        'translateZ(0)';
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            END PART 1
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        PART 2 — ACCORDION ENGINE
-        CHAPTER III 💎
+            ACCORDION ENGINE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            ACCORDION SELECTORS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+            CLOSE ACCORDION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-const accordions =
-    document.querySelectorAll('.accordion');
+function closeAccordion(accordion){
 
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            TOGGLE ACCORDION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function toggleAccordion(accordion){
+    if(!accordion) return;
 
     const content =
         accordion.querySelector(
             '.accordion-content'
         );
 
-    const isActive =
-        accordion.classList.contains(
-            'active'
-        );
+    accordion.classList.remove(
+        'active'
+    );
 
-    if(isActive){
-
-        closeAccordion(
-            accordion,
-            content
-        );
-
-    }else{
-
-        openAccordion(
-            accordion,
-            content
-        );
-
-    }
+    content.style.maxHeight =
+        null;
 
 }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             OPEN ACCORDION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-function openAccordion(
-    accordion,
-    content
-){
+function openAccordion(accordion){
 
-    accordion.classList.add('active');
+    if(!accordion) return;
 
-    content.style.maxHeight =
-        content.scrollHeight + 'px';
+    const content =
+        accordion.querySelector(
+            '.accordion-content'
+        );
+
+    accordion.classList.add(
+        'active'
+    );
+
+    requestAnimationFrame(()=>{
+
+        content.style.maxHeight =
+            content.scrollHeight + 'px';
+
+    });
 
 }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            CLOSE ACCORDION
+        CLOSE SIBLING ACCORDIONS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-function closeAccordion(
-    accordion,
-    content
+function closeSiblingAccordions(
+    currentAccordion
 ){
 
-    accordion.classList.remove('active');
+    const parentModal =
+        currentAccordion.closest(
+            '.modal-scroll'
+        );
 
-    content.style.maxHeight = null;
+    if(!parentModal) return;
+
+    const siblingAccordions =
+        parentModal.querySelectorAll(
+            '.accordion'
+        );
+
+    siblingAccordions.forEach(
+        accordion=>{
+
+            if(
+                accordion !==
+                currentAccordion
+            ){
+
+                closeAccordion(
+                    accordion
+                );
+
+            }
+
+        }
+    );
 
 }
 
@@ -346,75 +443,37 @@ accordions.forEach(accordion=>{
             '.accordion-header'
         );
 
-    const content =
-        accordion.querySelector(
-            '.accordion-content'
-        );
+    header.addEventListener(
+        'click',
+        ()=>{
 
-    header.addEventListener('click',()=>{
-
-        toggleAccordion(accordion);
-
-    });
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        AUTO RECALCULATE HEIGHT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function refreshAccordionHeights(){
-
-    accordions.forEach(accordion=>{
-
-        if(
-            accordion.classList.contains(
-                'active'
-            )
-        ){
-
-            const content =
-                accordion.querySelector(
-                    '.accordion-content'
+            const isActive =
+                accordion.classList.contains(
+                    'active'
                 );
 
-            content.style.maxHeight =
-                content.scrollHeight + 'px';
+            closeSiblingAccordions(
+                accordion
+            );
+
+            if(isActive){
+
+                closeAccordion(
+                    accordion
+                );
+
+            }else{
+
+                openAccordion(
+                    accordion
+                );
+
+            }
 
         }
+    );
 
-    });
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            WINDOW RESIZE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-window.addEventListener(
-    'resize',
-    refreshAccordionHeights
-);
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        ORIENTATION CHANGE SUPPORT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-window.addEventListener(
-    'orientationchange',
-    ()=>{
-
-        setTimeout(()=>{
-
-            refreshAccordionHeights();
-
-        },400);
-
-    }
-);
+});
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -431,24 +490,8 @@ accordions.forEach(accordion=>{
     header.addEventListener(
         'touchstart',
         ()=>{},
-        { passive:true }
-    );
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            SMOOTH OPEN EFFECT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-accordions.forEach(accordion=>{
-
-    accordion.addEventListener(
-        'transitionend',
-        ()=>{
-
-            refreshAccordionHeights();
-
+        {
+            passive:true
         }
     );
 
@@ -456,679 +499,88 @@ accordions.forEach(accordion=>{
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            SAFE OVERFLOW FIX
+            GPU RENDER BOOST
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-accordions.forEach(accordion=>{
+document.querySelectorAll(
+    '.glass'
+).forEach(el=>{
 
-    const content =
-        accordion.querySelector(
-            '.accordion-content'
-        );
+    el.style.transform =
+        'translateZ(0)';
 
-    content.style.willChange =
-        'max-height';
+    el.style.backfaceVisibility =
+        'hidden';
 
 });
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        PREVENT DOUBLE TAP ISSUES
+            SAFE MODAL CHECK
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-let accordionLock = false;
+function hasActiveModal(){
 
-accordions.forEach(accordion=>{
-
-    const header =
-        accordion.querySelector(
-            '.accordion-header'
-        );
-
-    header.addEventListener('click',()=>{
-
-        if(accordionLock) return;
-
-        accordionLock = true;
-
-        setTimeout(()=>{
-
-            accordionLock = false;
-
-        },180);
-
-    });
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            END PART 2
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    PART 3 — ADVANCED UX SYSTEM
-    CHAPTER III 💎
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            PREVENT BODY SHIFT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function getScrollbarWidth(){
-
-    return window.innerWidth -
-        document.documentElement.clientWidth;
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            LOCK BODY SCROLL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function lockBodyScroll(){
-
-    const scrollbarWidth =
-        getScrollbarWidth();
-
-    body.style.overflow = 'hidden';
-
-    body.style.paddingRight =
-        `${scrollbarWidth}px`;
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            UNLOCK BODY SCROLL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function unlockBodyScroll(){
-
-    body.style.overflow = '';
-
-    body.style.paddingRight = '';
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        ENHANCED OPEN MODAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function enhancedOpenModal(modalId){
-
-    const modal =
-        document.getElementById(modalId);
-
-    if(!modal) return;
-
-    lockBodyScroll();
-
-    modal.classList.add('active');
-
-    body.classList.add('modal-open');
-
-    activeModal = modal;
-
-    requestAnimationFrame(()=>{
-
-        refreshAccordionHeights();
-
-    });
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        ENHANCED CLOSE MODAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function enhancedCloseModal(modal){
-
-    if(!modal) return;
-
-    modal.classList.remove('active');
-
-    unlockBodyScroll();
-
-    body.classList.remove('modal-open');
-
-    activeModal = null;
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            REBIND CARD EVENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-legalCards.forEach(card=>{
-
-    card.replaceWith(card.cloneNode(true));
-
-});
-
-const refreshedCards =
-    document.querySelectorAll('.legal-card');
-
-refreshedCards.forEach(card=>{
-
-    card.addEventListener('click',()=>{
-
-        const modalId =
-            card.dataset.modal;
-
-        enhancedOpenModal(modalId);
-
-    });
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        REBIND CLOSE BUTTON EVENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-document
-.querySelectorAll('.close-modal')
-.forEach(button=>{
-
-    button.addEventListener('click',()=>{
-
-        const modal =
-            button.closest('.legal-modal');
-
-        enhancedCloseModal(modal);
-
-    });
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            REBIND BACKDROP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-legalModals.forEach(modal=>{
-
-    modal.addEventListener('click',(e)=>{
-
-        if(e.target === modal){
-
-            enhancedCloseModal(modal);
-
-        }
-
-    });
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            ESCAPE KEY UPDATE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-document.addEventListener('keydown',(e)=>{
-
-    if(
-        e.key === 'Escape' &&
-        activeModal
-    ){
-
-        enhancedCloseModal(activeModal);
-
-    }
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            AUTO CLOSE ON RESIZE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-let previousWidth =
-    window.innerWidth;
-
-window.addEventListener('resize',()=>{
-
-    const currentWidth =
-        window.innerWidth;
-
-    const difference =
-        Math.abs(
-            currentWidth -
-            previousWidth
-        );
-
-    if(difference > 140){
-
-        refreshAccordionHeights();
-
-    }
-
-    previousWidth =
-        currentWidth;
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            FOCUS TRAP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-document.addEventListener('keydown',(e)=>{
-
-    if(
-        e.key !== 'Tab' ||
-        !activeModal
-    ) return;
-
-    const focusable =
-        activeModal.querySelectorAll(
-            'button,[href],input,textarea,select'
-        );
-
-    if(!focusable.length) return;
-
-    const first =
-        focusable[0];
-
-    const last =
-        focusable[
-            focusable.length - 1
-        ];
-
-    if(
-        e.shiftKey &&
-        document.activeElement === first
-    ){
-
-        e.preventDefault();
-
-        last.focus();
-
-    }else if(
-        !e.shiftKey &&
-        document.activeElement === last
-    ){
-
-        e.preventDefault();
-
-        first.focus();
-
-    }
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            SCROLL SHADOW
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-document
-.querySelectorAll('.modal-scroll')
-.forEach(scrollArea=>{
-
-    scrollArea.addEventListener(
-        'scroll',
-        ()=>{
-
-            const modal =
-                scrollArea.closest(
-                    '.modal-content'
-                );
-
-            if(scrollArea.scrollTop > 8){
-
-                modal.classList.add(
-                    'scrolled'
-                );
-
-            }else{
-
-                modal.classList.remove(
-                    'scrolled'
-                );
-
-            }
-
-        },
-        { passive:true }
+    return document.querySelector(
+        '.legal-modal.active'
     );
 
-});
+}
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            RAF PERFORMANCE
+            RESIZE STABILITY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-let ticking = false;
-
-function optimizedResize(){
-
-    if(!ticking){
-
-        window.requestAnimationFrame(()=>{
-
-            refreshAccordionHeights();
-
-            ticking = false;
-
-        });
-
-        ticking = true;
-
-    }
-
-}
 
 window.addEventListener(
     'resize',
-    optimizedResize
-);
+    ()=>{
 
+        const activeModal =
+            hasActiveModal();
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            SAFE PASSIVE EVENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        if(activeModal){
 
-window.addEventListener(
-    'touchstart',
-    ()=>{},
-    { passive:true }
-);
+            lockBodyScroll();
 
-window.addEventListener(
-    'touchmove',
-    ()=>{},
-    { passive:true }
-);
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            IOS MODAL FIX
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-document
-.querySelectorAll('.modal-scroll')
-.forEach(scrollArea=>{
-
-    scrollArea.style.webkitOverflowScrolling =
-        'touch';
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            SAFE CLICK DELAY FIX
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-document
-.querySelectorAll('button')
-.forEach(button=>{
-
-    button.style.touchAction =
-        'manipulation';
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            END PART 3
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    PART 4 — CINEMATIC INTERACTIONS
-    CHAPTER III 💎
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            CARD PARALLAX
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-const motionCards =
-    document.querySelectorAll('.legal-card');
-
-motionCards.forEach(card=>{
-
-    card.addEventListener('mousemove',(e)=>{
-
-        if(window.innerWidth < 769) return;
-
-        const rect =
-            card.getBoundingClientRect();
-
-        const x =
-            e.clientX - rect.left;
-
-        const y =
-            e.clientY - rect.top;
-
-        const centerX =
-            rect.width / 2;
-
-        const centerY =
-            rect.height / 2;
-
-        const rotateX =
-            ((y - centerY) / 18) * -1;
-
-        const rotateY =
-            (x - centerX) / 18;
-
-        card.style.transform =
-
-            `
-            perspective(1000px)
-            rotateX(${rotateX}deg)
-            rotateY(${rotateY}deg)
-            translateY(-6px)
-            `;
-
-    });
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            RESET CARD TRANSFORM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-motionCards.forEach(card=>{
-
-    card.addEventListener('mouseleave',()=>{
-
-        card.style.transform = '';
-
-    });
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            CARD FOCUS GLOW
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-motionCards.forEach(card=>{
-
-    card.addEventListener('mouseenter',()=>{
-
-        card.style.zIndex = '2';
-
-    });
-
-    card.addEventListener('mouseleave',()=>{
-
-        card.style.zIndex = '';
-
-    });
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            HERO REVEAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-const hero =
-    document.querySelector('.hero');
-
-if(hero){
-
-    hero.animate(
-
-        [
-
-            {
-                opacity:0,
-                transform:
-                    'translateY(20px)'
-            },
-
-            {
-                opacity:1,
-                transform:
-                    'translateY(0)'
-            }
-
-        ],
-
-        {
-            duration:700,
-            easing:
-                'cubic-bezier(.22,1,.36,1)',
-            fill:'forwards'
         }
 
-    );
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            CARD REVEAL SYSTEM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-const revealObserver =
-    new IntersectionObserver(
-
-    entries=>{
-
-        entries.forEach(entry=>{
-
-            if(entry.isIntersecting){
-
-                entry.target.classList.add(
-                    'card-visible'
-                );
-
-            }
-
-        });
-
     },
-
     {
-        threshold:0.08
+        passive:true
     }
-
-);
-
-motionCards.forEach(card=>{
-
-    revealObserver.observe(card);
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            INJECT REVEAL STYLES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-const revealStyle =
-document.createElement('style');
-
-revealStyle.innerHTML = `
-
-.legal-card{
-
-    opacity:0;
-
-    transform:
-        translateY(30px);
-
-}
-
-.legal-card.card-visible{
-
-    opacity:1;
-
-    transform:
-        translateY(0);
-
-    transition:
-
-        opacity 0.6s ease,
-
-        transform 0.6s
-        cubic-bezier(.22,1,.36,1);
-
-}
-
-`;
-
-document.head.appendChild(
-    revealStyle
 );
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            STAGGER REVEAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-motionCards.forEach((card,index)=>{
-
-    card.style.transitionDelay =
-        `${index * 40}ms`;
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            MODAL OPEN ANIMATION
+            MOBILE STABILIZATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 legalModals.forEach(modal=>{
 
     modal.addEventListener(
-        'transitionend',
-        ()=>{
+        'touchmove',
+        event=>{
+
+            const modalScroll =
+                modal.querySelector(
+                    '.modal-scroll'
+                );
+
+            if(!modalScroll) return;
 
             if(
-                modal.classList.contains(
-                    'active'
-                )
+                modalScroll.scrollHeight >
+                modalScroll.clientHeight
             ){
 
-                const firstAccordion =
-                    modal.querySelector(
-                        '.accordion'
-                    );
-
-                if(firstAccordion){
-
-                    firstAccordion.style.opacity =
-                        '1';
-
-                }
+                event.stopPropagation();
 
             }
 
+        },
+        {
+            passive:true
         }
     );
 
@@ -1136,165 +588,34 @@ legalModals.forEach(modal=>{
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            SCROLL PROGRESS
+            SAFE CLICK PREVENTION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-document
-.querySelectorAll('.modal-scroll')
-.forEach(scrollArea=>{
+document.addEventListener(
+    'dragstart',
+    event=>{
 
-    const progress =
-        document.createElement('div');
-
-    progress.className =
-        'scroll-progress';
-
-    scrollArea.appendChild(progress);
-
-    scrollArea.addEventListener(
-        'scroll',
-        ()=>{
-
-            const scrollTop =
-                scrollArea.scrollTop;
-
-            const scrollHeight =
-                scrollArea.scrollHeight -
-                scrollArea.clientHeight;
-
-            const percent =
-                (scrollTop / scrollHeight) * 100;
-
-            progress.style.width =
-                `${percent}%`;
-
-        },
-        { passive:true }
-    );
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            PROGRESS STYLE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-const progressStyle =
-document.createElement('style');
-
-progressStyle.innerHTML = `
-
-.scroll-progress{
-
-    position:sticky;
-
-    top:0;
-
-    left:0;
-
-    width:0;
-
-    height:2px;
-
-    background:
-
-        linear-gradient(
-            to right,
-            #3b82f6,
-            #7c3aed
-        );
-
-    z-index:5;
-
-    border-radius:999px;
-
-}
-
-`;
-
-document.head.appendChild(
-    progressStyle
-);
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            MEMORY CLEANUP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-window.addEventListener(
-    'beforeunload',
-    ()=>{
-
-        revealObserver.disconnect();
+        event.preventDefault();
 
     }
 );
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            PERFORMANCE MODE
+            PERFORMANCE READY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-const isLowEndDevice =
+console.log(`
 
-    navigator.hardwareConcurrency &&
-    navigator.hardwareConcurrency <= 4;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CHAPTER III INITIALIZED
+STABLE PERFORMANCE BUILD
+LGU PORTAL 💎
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-if(isLowEndDevice){
-
-    document.body.classList.add(
-        'reduced-effects'
-    );
-
-}
+`);
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            REDUCED EFFECTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-const reducedStyle =
-document.createElement('style');
-
-reducedStyle.innerHTML = `
-
-.reduced-effects .legal-card{
-
-    backdrop-filter:none !important;
-
-    -webkit-backdrop-filter:none !important;
-
-}
-
-.reduced-effects .orb{
-
-    display:none !important;
-
-}
-
-`;
-
-document.head.appendChild(
-    reducedStyle
-);
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            FINAL READY LOG
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-console.log(
-
-    `
-    ━━━━━━━━━━━━━━━━━━━━━━━
-        CHAPTER III READY
-           LGU PORTAL 💎
-    ━━━━━━━━━━━━━━━━━━━━━━━
-    `
-);
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                END PART 4
-        CHAPTER III JS COMPLETE 💎
+            END OF FILE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
