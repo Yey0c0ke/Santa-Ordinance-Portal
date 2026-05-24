@@ -147,11 +147,65 @@ CARD EVENTS
 
 legalCards.forEach(card=>{
 
+    let startY = 0;
+
+    let moved = false;
+
+    card.addEventListener(
+
+        'touchstart',
+
+        event=>{
+
+            startY =
+                event.touches[0].clientY;
+
+            moved = false;
+
+        },
+
+        {
+            passive:true
+        }
+
+    );
+
+    card.addEventListener(
+
+        'touchmove',
+
+        event=>{
+
+            const currentY =
+                event.touches[0].clientY;
+
+            if(
+
+                Math.abs(
+                    currentY - startY
+                ) > 10
+
+            ){
+
+                moved = true;
+
+            }
+
+        },
+
+        {
+            passive:true
+        }
+
+    );
+
     card.addEventListener(
 
         'click',
 
         ()=>{
+
+            if(moved) return;
 
             const modalId =
                 card.dataset.modal;
