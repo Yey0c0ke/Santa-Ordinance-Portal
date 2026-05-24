@@ -7,12 +7,22 @@
 
 <meta
 name="viewport"
-content="width=device-width, initial-scale=1.0"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 />
 
 <meta
 name="theme-color"
 content="#eef5f0"
+/>
+
+<meta
+name="apple-mobile-web-app-capable"
+content="yes"
+/>
+
+<meta
+name="apple-mobile-web-app-status-bar-style"
+content="default"
 />
 
 <title>
@@ -44,6 +54,10 @@ href="./style.css"
 
 <body>
 
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AMBIENT SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
 <div class="bg-gradient"></div>
 
 <div class="noise-overlay"></div>
@@ -51,6 +65,10 @@ href="./style.css"
 <div class="ambient ambient-1"></div>
 
 <div class="ambient ambient-2"></div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STATUS BAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
 <div class="municipal-status-bar">
 
@@ -73,6 +91,10 @@ Chapter I Active
 </div>
 
 </div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NAVIGATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
 <nav class="navbar glass">
 
@@ -110,19 +132,13 @@ Back To Portal
 
 </button>
 
-<button
-class="chapter-ai-btn"
-id="openChapterAI"
-type="button"
->
-
-Municipal Assistant
-
-</button>
-
 </div>
 
 </nav>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HERO SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
 <section class="hero glass">
 
@@ -163,15 +179,25 @@ Ilocos Sur.
 
 </section>
 
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LEGAL CARDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
 <section
 class="cards-section"
 id="cardsSection"
 >
 
+<!-- ARTICLE A -->
+
 <article
 class="legal-card glass"
 data-modal="articleAModal"
+role="button"
+tabindex="0"
 >
+
+<div class="card-sheen"></div>
 
 <div class="card-top">
 
@@ -205,10 +231,16 @@ of Santa, Ilocos Sur.
 
 </article>
 
+<!-- ARTICLE B -->
+
 <article
 class="legal-card glass"
 data-modal="articleBModal"
+role="button"
+tabindex="0"
 >
+
+<div class="card-sheen"></div>
 
 <div class="card-top">
 
@@ -243,10 +275,16 @@ governing municipal ordinances.
 
 </article>
 
+<!-- ARTICLE C -->
+
 <article
 class="legal-card glass"
 data-modal="articleCModal"
+role="button"
+tabindex="0"
 >
+
+<div class="card-sheen"></div>
 
 <div class="card-top">
 
@@ -288,7 +326,10 @@ ARTICLE A MODAL
 <div
 class="legal-modal"
 id="articleAModal"
+aria-hidden="true"
 >
+
+<div class="modal-backdrop"></div>
 
 <div class="modal-content">
 
@@ -309,6 +350,7 @@ Article A
 <button
 class="close-modal"
 type="button"
+aria-label="Close Modal"
 >
 
 ✕
@@ -323,7 +365,9 @@ Short Title and Scope
 
 <div class="modal-scroll">
 
-    <div class="accordion">
+<!-- SECTION 1A.01 -->
+
+<div class="accordion">
 
 <button
 class="accordion-header"
@@ -357,6 +401,8 @@ OF SANTA, ILOCOS SUR.
 </div>
 
 </div>
+
+<!-- SECTION 1A.02 -->
 
 <div class="accordion">
 
@@ -407,7 +453,10 @@ ARTICLE B MODAL
 <div
 class="legal-modal"
 id="articleBModal"
+aria-hidden="true"
 >
+
+<div class="modal-backdrop"></div>
 
 <div class="modal-content">
 
@@ -428,6 +477,7 @@ Article B
 <button
 class="close-modal"
 type="button"
+aria-label="Close Modal"
 >
 
 ✕
@@ -441,6 +491,8 @@ Rules of Construction
 </h2>
 
 <div class="modal-scroll">
+
+<!-- SECTION 1B.01 -->
 
 <div class="accordion">
 
@@ -478,6 +530,8 @@ dictionaries as well as in existing laws.
 
 </div>
 
+<!-- SECTION 1B.02 -->
+
 <div class="accordion">
 
 <button
@@ -501,7 +555,7 @@ Section 1B.02 • Construction of Codal Provisions
 
 <div class="ordinance-text">
 
-    In construing the provisions of this Code,
+In construing the provisions of this Code,
 the following rules of construction
 and words in this Code,
 which may have acquired a peculiar
@@ -521,6 +575,7 @@ shall be construed
 and understood according
 to the common
 and approved usage of language;
+
 but technical words and phrases
 shall be construed
 and understood according
@@ -644,11 +699,17 @@ corrected and deleted words,
 phrases and paragraphs.
 
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -658,7 +719,10 @@ ARTICLE C MODAL
 <div
 class="legal-modal"
 id="articleCModal"
+aria-hidden="true"
 >
+
+<div class="modal-backdrop"></div>
 
 <div class="modal-content">
 
@@ -679,6 +743,7 @@ Article C
 <button
 class="close-modal"
 type="button"
+aria-label="Close Modal"
 >
 
 ✕
@@ -716,7 +781,7 @@ Section 1C.01 • Municipal Legal Definitions
 
 <div class="ordinance-text">
 
-    <b>Amusement</b>
+<b>Amusement</b>
 is a pleasurable diversion
 and entertainment.
 
@@ -913,122 +978,66 @@ through zoning ordinances.
 
 </div>
 
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-AI PANEL
+FOOTER
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
-<div
-class="chapter-ai-modal"
-id="chapterAIModal"
->
+<footer class="legal-footer">
 
-<div class="chapter-ai-panel">
+<div class="footer-inner">
 
-<div class="chapter-ai-top">
-
-<div>
+<div class="footer-left">
 
 <h3>
-Municipal Assistant
+Municipality of Santa
 </h3>
 
 <p>
-AI-Powered Municipal Legal Intelligence
+Code of General Ordinances
+• Chapter I
 </p>
 
 </div>
 
-<button
-class="close-ai"
-id="closeChapterAI"
-type="button"
->
+<div class="footer-right">
 
-✕
-
-</button>
-
-</div>
-
-<div
-class="chapter-ai-conversation"
-id="chapterAIConversation"
->
-
-<div class="ai-message ai-message-ai">
-
-<p>
-
-Municipal Legal Assistant initialized.
-
-Chapter I semantic ordinance framework loaded.
-
-Capabilities:
-
-• Ordinance Interpretation
-• Municipal Definitions
-• Legal Construction
-• Ordinance Relationships
-• Governance Concepts
-
-</p>
+<span>
+Municipal Legal Operating Environment
+</span>
 
 </div>
 
 </div>
 
-<div class="chapter-ai-suggestions">
+</footer>
 
-<button
-class="suggestion-chip"
-type="button"
->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LOADING SHIELD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
-Explain shall vs may
+<div class="page-loader">
 
-</button>
-
-<button
-class="suggestion-chip"
-type="button"
->
-
-Define municipal waters
-
-</button>
-
-<button
-class="suggestion-chip"
-type="button"
->
-
-Explain tax ordinance
-
-</button>
+<div class="loader-orb"></div>
 
 </div>
 
-<div class="chapter-ai-input-area">
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MOBILE SAFE AREA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
-<textarea
-id="chapterAIInput"
-placeholder="Ask Municipal Assistant..."
-></textarea>
+<div class="safe-area-bottom"></div>
 
-<button
-id="chapterAISend"
-type="button"
->
-
-Send
-
-</button>
-
-</div>
-
-</div>
-
-</div>
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCRIPT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
 <script src="./script.js"></script>
 

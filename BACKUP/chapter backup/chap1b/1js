@@ -30,49 +30,23 @@ document.querySelectorAll(
     '.accordion-header'
 );
 
+const pageLoader =
+document.querySelector(
+    '.page-loader'
+);
+
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-AI SELECTORS
+SYSTEM STATE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-const chapterAIModal =
-document.getElementById(
-    'chapterAIModal'
-);
+let activeModal = null;
 
-const openChapterAI =
-document.getElementById(
-    'openChapterAI'
-);
-
-const closeChapterAI =
-document.getElementById(
-    'closeChapterAI'
-);
-
-const chapterAIConversation =
-document.getElementById(
-    'chapterAIConversation'
-);
-
-const chapterAIInput =
-document.getElementById(
-    'chapterAIInput'
-);
-
-const chapterAISend =
-document.getElementById(
-    'chapterAISend'
-);
-
-const suggestionChips =
-document.querySelectorAll(
-    '.suggestion-chip'
-);
+let bodyLocked = false;
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VIEWPORT FIX
+VIEWPORT ENGINE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 function setViewportHeight(){
@@ -111,21 +85,27 @@ window.addEventListener(
 
 );
 
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-BODY LOCK SYSTEM
+BODY LOCK ENGINE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 function lockBody(){
 
+    if(bodyLocked) return;
+
     body.style.overflow =
         'hidden';
+
+    bodyLocked = true;
 
 }
 
 function unlockBody(){
 
-    body.style.overflow =
-        '';
+    body.style.overflow = '';
+
+    bodyLocked = false;
 
 }
 
@@ -142,7 +122,14 @@ function closeAllModals(){
             'active'
         );
 
+        modal.setAttribute(
+            'aria-hidden',
+            'true'
+        );
+
     });
+
+    activeModal = null;
 
     unlockBody();
 
@@ -163,6 +150,13 @@ function openModal(modalId){
         'active'
     );
 
+    modal.setAttribute(
+        'aria-hidden',
+        'false'
+    );
+
+    activeModal = modal;
+
     lockBody();
 
 }
@@ -175,22 +169,139 @@ function closeModal(modal){
         'active'
     );
 
+    modal.setAttribute(
+        'aria-hidden',
+        'true'
+    );
+
+    activeModal = null;
+
     unlockBody();
 
 }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CARD EVENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+CARD INTERACTION ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 legalCards.forEach(card=>{
+
+    let startX = 0;
+
+    let startY = 0;
+
+    let moved = false;
+
+    let touchStarted = false;
+
+    /* MOBILE / TOUCH */
+
+    card.addEventListener(
+
+        'touchstart',
+
+        event=>{
+
+            const touch =
+                event.touches[0];
+
+            startX = touch.clientX;
+
+            startY = touch.clientY;
+
+            moved = false;
+
+            touchStarted = true;
+
+        },
+
+        {
+            passive:true
+        }
+
+    );
+
+    card.addEventListener(
+
+        'touchmove',
+
+        event=>{
+
+            if(!touchStarted) return;
+
+            const touch =
+                event.touches[0];
+
+            const deltaX =
+                Math.abs(
+                    touch.clientX - startX
+                );
+
+            const deltaY =
+                Math.abs(
+                    touch.clientY - startY
+                );
+
+            if(
+                deltaY > 10 ||
+                deltaX > 10
+            ){
+
+                moved = true;
+
+            }
+
+        },
+
+        {
+            passive:true
+        }
+
+    );
+
+    card.addEventListener(
+
+        'touchend',
+
+        ()=>{
+
+            if(moved){
+
+                touchStarted = false;
+
+                return;
+
+            }
+
+            const modalId =
+                card.dataset.modal;
+
+            openModal(modalId);
+
+            touchStarted = false;
+
+        },
+
+        {
+            passive:true
+        }
+
+    );
+
+    /* DESKTOP */
 
     card.addEventListener(
 
         'click',
 
         ()=>{
+
+            if(window.innerWidth <= 768){
+
+                return;
+
+            }
 
             const modalId =
                 card.dataset.modal;
@@ -203,9 +314,8 @@ legalCards.forEach(card=>{
 
 });
 
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CLOSE BUTTON EVENTS
+MODAL CLOSE EVENTS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 closeButtons.forEach(button=>{
@@ -231,7 +341,7 @@ closeButtons.forEach(button=>{
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-OUTSIDE MODAL CLOSE
+BACKDROP CLOSE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 legalModals.forEach(modal=>{
@@ -242,7 +352,9 @@ legalModals.forEach(modal=>{
 
         event=>{
 
-            if(event.target === modal){
+            if(
+                event.target === modal
+            ){
 
                 closeModal(modal);
 
@@ -254,8 +366,9 @@ legalModals.forEach(modal=>{
 
 });
 
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ESCAPE KEY SUPPORT
+ESCAPE KEY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 document.addEventListener(
@@ -264,11 +377,11 @@ document.addEventListener(
 
     event=>{
 
-        if(event.key === 'Escape'){
+        if(
+            event.key === 'Escape'
+        ){
 
             closeAllModals();
-
-            closeChapterAIPanel();
 
         }
 
@@ -281,7 +394,9 @@ document.addEventListener(
 ACCORDION ENGINE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-function closeAccordion(accordion){
+function closeAccordion(
+    accordion
+){
 
     accordion.classList.remove(
         'active'
@@ -289,7 +404,9 @@ function closeAccordion(accordion){
 
 }
 
-function openAccordion(accordion){
+function openAccordion(
+    accordion
+){
 
     accordion.classList.add(
         'active'
@@ -328,6 +445,7 @@ function closeSiblingAccordions(
     });
 
 }
+
 
 accordionHeaders.forEach(header=>{
 
@@ -372,316 +490,7 @@ accordionHeaders.forEach(header=>{
 });
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-AI PANEL ENGINE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function openChapterAIPanel(){
-
-    if(!chapterAIModal) return;
-
-    chapterAIModal.classList.add(
-        'active'
-    );
-
-    lockBody();
-
-    setTimeout(()=>{
-
-        chapterAIInput?.focus();
-
-    },180);
-
-}
-
-function closeChapterAIPanel(){
-
-    if(!chapterAIModal) return;
-
-    chapterAIModal.classList.remove(
-        'active'
-    );
-
-    if(openChapterAI){
-
-        openChapterAI.classList.remove(
-            'active'
-        );
-
-        openChapterAI.blur();
-
-    }
-
-    document.activeElement?.blur();
-
-    unlockBody();
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-AI BUTTON EVENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-openChapterAI?.addEventListener(
-
-    'click',
-
-    openChapterAIPanel
-
-);
-
-closeChapterAI?.addEventListener(
-
-    'click',
-
-    closeChapterAIPanel
-
-);
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-AI OUTSIDE CLICK CLOSE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-chapterAIModal?.addEventListener(
-
-    'click',
-
-    event=>{
-
-        if(
-            event.target === chapterAIModal
-        ){
-
-            closeChapterAIPanel();
-
-        }
-
-    }
-
-);
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CONVERSATION SCROLL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function scrollConversation(){
-
-    if(!chapterAIConversation) return;
-
-    requestAnimationFrame(()=>{
-
-        chapterAIConversation.scrollTop =
-
-        chapterAIConversation.scrollHeight;
-
-    });
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SANITIZE HTML
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function sanitizeHTML(text){
-
-    const div =
-        document.createElement(
-            'div'
-        );
-
-    div.textContent = text;
-
-    return div.innerHTML;
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ADD USER MESSAGE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function addUserMessage(message){
-
-    const msg =
-        document.createElement(
-            'div'
-        );
-
-    msg.className =
-        'ai-message ai-message-user';
-
-    msg.innerHTML =
-        `<p>${sanitizeHTML(message)}</p>`;
-
-    chapterAIConversation.appendChild(
-        msg
-    );
-
-    scrollConversation();
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ADD AI MESSAGE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function addAIMessage(message){
-
-    const msg =
-        document.createElement(
-            'div'
-        );
-
-    msg.className =
-        'ai-message ai-message-ai';
-
-    msg.innerHTML =
-        `<p>${sanitizeHTML(message)}</p>`;
-
-    chapterAIConversation.appendChild(
-        msg
-    );
-
-    scrollConversation();
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PROCESS USER MESSAGE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-function processUserMessage(message){
-
-    if(!message.trim()) return;
-
-    addUserMessage(message);
-
-    chapterAIInput.value = '';
-
-    /* TYPING INDICATOR */
-
-    const typing =
-        document.createElement('div');
-
-    typing.className =
-        'ai-message ai-message-ai typing-message';
-
-    typing.innerHTML = `
-
-        <div class="typing-wave">
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-    `;
-
-    chapterAIConversation.appendChild(
-        typing
-    );
-
-    scrollConversation();
-
-    setTimeout(()=>{
-
-        typing.remove();
-
-        addAIMessage(
-
-`Chapter I establishes the foundational
-municipal legal framework governing
-codification,
-interpretation,
-definitions,
-and ordinance construction.`
-
-        );
-
-    },3000);
-
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SEND BUTTON
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-chapterAISend?.addEventListener(
-
-    'click',
-
-    ()=>{
-
-        processUserMessage(
-            chapterAIInput.value
-        );
-
-    }
-
-);
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ENTER SEND
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-chapterAIInput?.addEventListener(
-
-    'keydown',
-
-    event=>{
-
-        if(
-            event.key === 'Enter'
-            &&
-            !event.shiftKey
-        ){
-
-            event.preventDefault();
-
-            processUserMessage(
-                chapterAIInput.value
-            );
-
-        }
-
-    }
-
-);
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SUGGESTION CHIPS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-suggestionChips.forEach(chip=>{
-
-    chip.addEventListener(
-
-        'click',
-
-        ()=>{
-
-            processUserMessage(
-                chip.textContent.trim()
-            );
-
-        }
-
-    );
-
-});
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-RESET STATES
+FOCUS STABILITY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 window.addEventListener(
@@ -692,9 +501,95 @@ window.addEventListener(
 
         closeAllModals();
 
-        closeChapterAIPanel();
-
         unlockBody();
+
+    }
+
+);
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SAFE VIEWPORT RECALC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+window.addEventListener(
+
+    'orientationchange',
+
+    ()=>{
+
+        requestAnimationFrame(()=>{
+
+            setViewportHeight();
+
+        });
+
+    },
+
+    {
+        passive:true
+    }
+
+);
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE LOADER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+window.addEventListener(
+
+    'load',
+
+    ()=>{
+
+        if(!pageLoader) return;
+
+        requestAnimationFrame(()=>{
+
+            pageLoader.style.opacity =
+                '0';
+
+            pageLoader.style.visibility =
+                'hidden';
+
+        });
+
+    }
+
+);
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCROLL RESTORATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+if(
+    'scrollRestoration'
+    in history
+){
+
+    history.scrollRestoration =
+        'manual';
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SAFETY RESET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+window.addEventListener(
+
+    'blur',
+
+    ()=>{
+
+        legalCards.forEach(card=>{
+
+            card.style.transform = '';
+
+        });
 
     }
 
@@ -708,8 +603,10 @@ SYSTEM READY
 console.log(
 
 `
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Municipal Legal Operating System
 Chapter I Initialized
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 `
 
 );

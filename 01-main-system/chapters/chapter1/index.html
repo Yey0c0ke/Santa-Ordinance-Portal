@@ -7,12 +7,22 @@
 
 <meta
 name="viewport"
-content="width=device-width, initial-scale=1.0"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 />
 
 <meta
 name="theme-color"
 content="#eef5f0"
+/>
+
+<meta
+name="apple-mobile-web-app-capable"
+content="yes"
+/>
+
+<meta
+name="apple-mobile-web-app-status-bar-style"
+content="default"
 />
 
 <title>
@@ -44,6 +54,10 @@ href="./style.css"
 
 <body>
 
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AMBIENT SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
 <div class="bg-gradient"></div>
 
 <div class="noise-overlay"></div>
@@ -51,6 +65,10 @@ href="./style.css"
 <div class="ambient ambient-1"></div>
 
 <div class="ambient ambient-2"></div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STATUS BAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
 <div class="municipal-status-bar">
 
@@ -73,6 +91,10 @@ Chapter I Active
 </div>
 
 </div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NAVIGATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
 <nav class="navbar glass">
 
@@ -114,6 +136,10 @@ Back To Portal
 
 </nav>
 
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HERO SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
 <section class="hero glass">
 
 <div class="hero-overlay"></div>
@@ -153,15 +179,25 @@ Ilocos Sur.
 
 </section>
 
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LEGAL CARDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
 <section
 class="cards-section"
 id="cardsSection"
 >
 
+<!-- ARTICLE A -->
+
 <article
 class="legal-card glass"
 data-modal="articleAModal"
+role="button"
+tabindex="0"
 >
+
+<div class="card-sheen"></div>
 
 <div class="card-top">
 
@@ -195,10 +231,16 @@ of Santa, Ilocos Sur.
 
 </article>
 
+<!-- ARTICLE B -->
+
 <article
 class="legal-card glass"
 data-modal="articleBModal"
+role="button"
+tabindex="0"
 >
+
+<div class="card-sheen"></div>
 
 <div class="card-top">
 
@@ -233,10 +275,16 @@ governing municipal ordinances.
 
 </article>
 
+<!-- ARTICLE C -->
+
 <article
 class="legal-card glass"
 data-modal="articleCModal"
+role="button"
+tabindex="0"
 >
+
+<div class="card-sheen"></div>
 
 <div class="card-top">
 
@@ -278,7 +326,10 @@ ARTICLE A MODAL
 <div
 class="legal-modal"
 id="articleAModal"
+aria-hidden="true"
 >
+
+<div class="modal-backdrop"></div>
 
 <div class="modal-content">
 
@@ -299,6 +350,7 @@ Article A
 <button
 class="close-modal"
 type="button"
+aria-label="Close Modal"
 >
 
 ✕
@@ -312,6 +364,8 @@ Short Title and Scope
 </h2>
 
 <div class="modal-scroll">
+
+<!-- SECTION 1A.01 -->
 
 <div class="accordion">
 
@@ -347,6 +401,8 @@ OF SANTA, ILOCOS SUR.
 </div>
 
 </div>
+
+<!-- SECTION 1A.02 -->
 
 <div class="accordion">
 
@@ -397,7 +453,10 @@ ARTICLE B MODAL
 <div
 class="legal-modal"
 id="articleBModal"
+aria-hidden="true"
 >
+
+<div class="modal-backdrop"></div>
 
 <div class="modal-content">
 
@@ -418,6 +477,7 @@ Article B
 <button
 class="close-modal"
 type="button"
+aria-label="Close Modal"
 >
 
 ✕
@@ -431,6 +491,8 @@ Rules of Construction
 </h2>
 
 <div class="modal-scroll">
+
+<!-- SECTION 1B.01 -->
 
 <div class="accordion">
 
@@ -467,6 +529,8 @@ dictionaries as well as in existing laws.
 </div>
 
 </div>
+
+<!-- SECTION 1B.02 -->
 
 <div class="accordion">
 
@@ -511,6 +575,7 @@ shall be construed
 and understood according
 to the common
 and approved usage of language;
+
 but technical words and phrases
 shall be construed
 and understood according
@@ -654,7 +719,10 @@ ARTICLE C MODAL
 <div
 class="legal-modal"
 id="articleCModal"
+aria-hidden="true"
 >
+
+<div class="modal-backdrop"></div>
 
 <div class="modal-content">
 
@@ -675,6 +743,7 @@ Article C
 <button
 class="close-modal"
 type="button"
+aria-label="Close Modal"
 >
 
 ✕
@@ -712,7 +781,7 @@ Section 1C.01 • Municipal Legal Definitions
 
 <div class="ordinance-text">
 
-    <b>Amusement</b>
+<b>Amusement</b>
 is a pleasurable diversion
 and entertainment.
 
@@ -908,6 +977,67 @@ through zoning ordinances.
 </div>
 
 </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FOOTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
+<footer class="legal-footer">
+
+<div class="footer-inner">
+
+<div class="footer-left">
+
+<h3>
+Municipality of Santa
+</h3>
+
+<p>
+Code of General Ordinances
+• Chapter I
+</p>
+
+</div>
+
+<div class="footer-right">
+
+<span>
+Municipal Legal Operating Environment
+</span>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LOADING SHIELD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
+<div class="page-loader">
+
+<div class="loader-orb"></div>
+
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MOBILE SAFE AREA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
+<div class="safe-area-bottom"></div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCRIPT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
 <script src="./script.js"></script>
 

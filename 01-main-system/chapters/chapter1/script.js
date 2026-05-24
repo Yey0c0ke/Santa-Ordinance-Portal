@@ -30,9 +30,23 @@ document.querySelectorAll(
     '.accordion-header'
 );
 
+const pageLoader =
+document.querySelector(
+    '.page-loader'
+);
+
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VIEWPORT FIX
+SYSTEM STATE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+let activeModal = null;
+
+let bodyLocked = false;
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VIEWPORT ENGINE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 function setViewportHeight(){
@@ -73,20 +87,25 @@ window.addEventListener(
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-BODY LOCK SYSTEM
+BODY LOCK ENGINE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 function lockBody(){
 
+    if(bodyLocked) return;
+
     body.style.overflow =
         'hidden';
+
+    bodyLocked = true;
 
 }
 
 function unlockBody(){
 
-    body.style.overflow =
-        '';
+    body.style.overflow = '';
+
+    bodyLocked = false;
 
 }
 
@@ -103,7 +122,14 @@ function closeAllModals(){
             'active'
         );
 
+        modal.setAttribute(
+            'aria-hidden',
+            'true'
+        );
+
     });
+
+    activeModal = null;
 
     unlockBody();
 
@@ -124,6 +150,13 @@ function openModal(modalId){
         'active'
     );
 
+    modal.setAttribute(
+        'aria-hidden',
+        'false'
+    );
+
+    activeModal = modal;
+
     lockBody();
 
 }
@@ -136,20 +169,33 @@ function closeModal(modal){
         'active'
     );
 
+    modal.setAttribute(
+        'aria-hidden',
+        'true'
+    );
+
+    activeModal = null;
+
     unlockBody();
 
 }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CARD EVENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+CARD INTERACTION ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 legalCards.forEach(card=>{
 
     let startX = 0;
+
     let startY = 0;
+
     let moved = false;
+
+    let touchStarted = false;
+
+    /* MOBILE / TOUCH */
 
     card.addEventListener(
 
@@ -157,13 +203,16 @@ legalCards.forEach(card=>{
 
         event=>{
 
-            startX =
-                event.touches[0].clientX;
+            const touch =
+                event.touches[0];
 
-            startY =
-                event.touches[0].clientY;
+            startX = touch.clientX;
+
+            startY = touch.clientY;
 
             moved = false;
+
+            touchStarted = true;
 
         },
 
@@ -179,28 +228,24 @@ legalCards.forEach(card=>{
 
         event=>{
 
-            const moveX =
+            if(!touchStarted) return;
+
+            const touch =
+                event.touches[0];
+
+            const deltaX =
                 Math.abs(
-
-                    event.touches[0].clientX
-                    - startX
-
+                    touch.clientX - startX
                 );
 
-            const moveY =
+            const deltaY =
                 Math.abs(
-
-                    event.touches[0].clientY
-                    - startY
-
+                    touch.clientY - startY
                 );
 
             if(
-
-                moveX > 8
-                ||
-                moveY > 8
-
+                deltaY > 10 ||
+                deltaX > 10
             ){
 
                 moved = true;
@@ -221,7 +266,42 @@ legalCards.forEach(card=>{
 
         ()=>{
 
-            if(moved) return;
+            if(moved){
+
+                touchStarted = false;
+
+                return;
+
+            }
+
+            const modalId =
+                card.dataset.modal;
+
+            openModal(modalId);
+
+            touchStarted = false;
+
+        },
+
+        {
+            passive:true
+        }
+
+    );
+
+    /* DESKTOP */
+
+    card.addEventListener(
+
+        'click',
+
+        ()=>{
+
+            if(window.innerWidth <= 768){
+
+                return;
+
+            }
 
             const modalId =
                 card.dataset.modal;
@@ -234,9 +314,8 @@ legalCards.forEach(card=>{
 
 });
 
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CLOSE BUTTON EVENTS
+MODAL CLOSE EVENTS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 closeButtons.forEach(button=>{
@@ -260,8 +339,9 @@ closeButtons.forEach(button=>{
 
 });
 
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-OUTSIDE MODAL CLOSE
+BACKDROP CLOSE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 legalModals.forEach(modal=>{
@@ -272,7 +352,9 @@ legalModals.forEach(modal=>{
 
         event=>{
 
-            if(event.target === modal){
+            if(
+                event.target === modal
+            ){
 
                 closeModal(modal);
 
@@ -286,7 +368,7 @@ legalModals.forEach(modal=>{
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ESCAPE KEY SUPPORT
+ESCAPE KEY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 document.addEventListener(
@@ -295,7 +377,9 @@ document.addEventListener(
 
     event=>{
 
-        if(event.key === 'Escape'){
+        if(
+            event.key === 'Escape'
+        ){
 
             closeAllModals();
 
@@ -310,7 +394,9 @@ document.addEventListener(
 ACCORDION ENGINE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-function closeAccordion(accordion){
+function closeAccordion(
+    accordion
+){
 
     accordion.classList.remove(
         'active'
@@ -318,7 +404,9 @@ function closeAccordion(accordion){
 
 }
 
-function openAccordion(accordion){
+function openAccordion(
+    accordion
+){
 
     accordion.classList.add(
         'active'
@@ -357,6 +445,7 @@ function closeSiblingAccordions(
     });
 
 }
+
 
 accordionHeaders.forEach(header=>{
 
@@ -400,9 +489,8 @@ accordionHeaders.forEach(header=>{
 
 });
 
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-RESET STATES
+FOCUS STABILITY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 window.addEventListener(
@@ -421,14 +509,104 @@ window.addEventListener(
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SAFE VIEWPORT RECALC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+window.addEventListener(
+
+    'orientationchange',
+
+    ()=>{
+
+        requestAnimationFrame(()=>{
+
+            setViewportHeight();
+
+        });
+
+    },
+
+    {
+        passive:true
+    }
+
+);
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE LOADER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+window.addEventListener(
+
+    'load',
+
+    ()=>{
+
+        if(!pageLoader) return;
+
+        requestAnimationFrame(()=>{
+
+            pageLoader.style.opacity =
+                '0';
+
+            pageLoader.style.visibility =
+                'hidden';
+
+        });
+
+    }
+
+);
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCROLL RESTORATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+if(
+    'scrollRestoration'
+    in history
+){
+
+    history.scrollRestoration =
+        'manual';
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SAFETY RESET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+window.addEventListener(
+
+    'blur',
+
+    ()=>{
+
+        legalCards.forEach(card=>{
+
+            card.style.transform = '';
+
+        });
+
+    }
+
+);
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM READY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 console.log(
 
 `
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Municipal Legal Operating System
 Chapter I Initialized
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 `
 
 );
