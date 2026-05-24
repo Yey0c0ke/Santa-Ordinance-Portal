@@ -110,6 +110,16 @@ Back To Portal
 
 </button>
 
+<button
+class="chapter-ai-btn"
+id="openChapterAI"
+type="button"
+>
+
+Municipal Assistant
+
+</button>
+
 </div>
 
 </nav>
@@ -313,7 +323,7 @@ Short Title and Scope
 
 <div class="modal-scroll">
 
-<div class="accordion">
+    <div class="accordion">
 
 <button
 class="accordion-header"
@@ -491,7 +501,7 @@ Section 1B.02 • Construction of Codal Provisions
 
 <div class="ordinance-text">
 
-In construing the provisions of this Code,
+    In construing the provisions of this Code,
 the following rules of construction
 and words in this Code,
 which may have acquired a peculiar
@@ -634,17 +644,11 @@ corrected and deleted words,
 phrases and paragraphs.
 
 </div>
-
 </div>
-
 </div>
-
 </div>
-
 </div>
-
 </div>
-
 </div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -902,6 +906,123 @@ through zoning ordinances.
 </div>
 
 </div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AI PANEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
+<div
+class="chapter-ai-modal"
+id="chapterAIModal"
+>
+
+<div class="chapter-ai-panel">
+
+<div class="chapter-ai-top">
+
+<div>
+
+<h3>
+Municipal Assistant
+</h3>
+
+<p>
+AI-Powered Municipal Legal Intelligence
+</p>
+
+</div>
+
+<button
+class="close-ai"
+id="closeChapterAI"
+type="button"
+>
+
+✕
+
+</button>
+
+</div>
+
+<div
+class="chapter-ai-conversation"
+id="chapterAIConversation"
+>
+
+<div class="ai-message ai-message-ai">
+
+<p>
+
+Municipal Legal Assistant initialized.
+
+Chapter I semantic ordinance framework loaded.
+
+Capabilities:
+
+• Ordinance Interpretation
+• Municipal Definitions
+• Legal Construction
+• Ordinance Relationships
+• Governance Concepts
+
+</p>
+
+</div>
+
+</div>
+
+<div class="chapter-ai-suggestions">
+
+<button
+class="suggestion-chip"
+type="button"
+>
+
+Explain shall vs may
+
+</button>
+
+<button
+class="suggestion-chip"
+type="button"
+>
+
+Define municipal waters
+
+</button>
+
+<button
+class="suggestion-chip"
+type="button"
+>
+
+Explain tax ordinance
+
+</button>
+
+</div>
+
+<div class="chapter-ai-input-area">
+
+<textarea
+id="chapterAIInput"
+placeholder="Ask Municipal Assistant..."
+></textarea>
+
+<button
+id="chapterAISend"
+type="button"
+>
+
+Send
+
+</button>
 
 </div>
 

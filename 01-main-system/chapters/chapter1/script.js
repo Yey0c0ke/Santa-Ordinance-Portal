@@ -1,152 +1,364 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CHAPTER I • MUNICIPAL LEGAL OS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SELECTORS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+const body =
+document.body;
+
 const legalCards =
-document.querySelectorAll(".legal-card");
+document.querySelectorAll(
+    '.legal-card'
+);
 
 const legalModals =
-document.querySelectorAll(".legal-modal");
+document.querySelectorAll(
+    '.legal-modal'
+);
 
 const closeButtons =
-document.querySelectorAll(".close-modal");
+document.querySelectorAll(
+    '.close-modal'
+);
 
-function lockBodyScroll(){
+const accordionHeaders =
+document.querySelectorAll(
+    '.accordion-header'
+);
 
-document.body.style.overflow =
-"hidden";
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VIEWPORT FIX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+function setViewportHeight(){
+
+    const vh =
+        window.innerHeight * 0.01;
+
+    document.documentElement
+        .style
+        .setProperty(
+            '--vh',
+            `${vh}px`
+        );
 
 }
 
-function unlockBodyScroll(){
+setViewportHeight();
 
-document.body.style.overflow =
-"auto";
+window.addEventListener(
+
+    'resize',
+
+    ()=>{
+
+        requestAnimationFrame(()=>{
+
+            setViewportHeight();
+
+        });
+
+    },
+
+    {
+        passive:true
+    }
+
+);
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BODY LOCK SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+function lockBody(){
+
+    body.style.overflow =
+        'hidden';
 
 }
+
+function unlockBody(){
+
+    body.style.overflow =
+        '';
+
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MODAL ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 function closeAllModals(){
 
-legalModals.forEach((modal)=>{
+    legalModals.forEach(modal=>{
 
-modal.classList.remove("active");
+        modal.classList.remove(
+            'active'
+        );
 
-});
+    });
 
-unlockBodyScroll();
+    unlockBody();
 
 }
 
 function openModal(modalId){
 
-const modal =
-document.getElementById(modalId);
+    const modal =
+        document.getElementById(
+            modalId
+        );
 
-if(!modal) return;
+    if(!modal) return;
 
-closeAllModals();
+    closeAllModals();
 
-modal.classList.add("active");
+    modal.classList.add(
+        'active'
+    );
 
-lockBodyScroll();
+    lockBody();
+
+}
+
+function closeModal(modal){
+
+    if(!modal) return;
+
+    modal.classList.remove(
+        'active'
+    );
+
+    unlockBody();
 
 }
 
-legalCards.forEach((card)=>{
 
-card.addEventListener(
-"click",
-()=>{
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CARD EVENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-const modalId =
-card.dataset.modal;
+legalCards.forEach(card=>{
 
-openModal(modalId);
+    card.addEventListener(
 
-}
-);
+        'click',
+
+        ()=>{
+
+            const modalId =
+                card.dataset.modal;
+
+            openModal(modalId);
+
+        }
+
+    );
 
 });
 
-closeButtons.forEach((button)=>{
 
-button.addEventListener(
-"click",
-closeAllModals
-);
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CLOSE BUTTON EVENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+closeButtons.forEach(button=>{
+
+    button.addEventListener(
+
+        'click',
+
+        ()=>{
+
+            const modal =
+                button.closest(
+                    '.legal-modal'
+                );
+
+            closeModal(modal);
+
+        }
+
+    );
 
 });
 
-legalModals.forEach((modal)=>{
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OUTSIDE MODAL CLOSE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-modal.addEventListener(
-"click",
-(event)=>{
+legalModals.forEach(modal=>{
 
-if(event.target === modal){
+    modal.addEventListener(
 
-closeAllModals();
+        'click',
 
-}
+        event=>{
 
-}
-);
+            if(event.target === modal){
+
+                closeModal(modal);
+
+            }
+
+        }
+
+    );
 
 });
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ESCAPE KEY SUPPORT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 document.addEventListener(
-"keydown",
-(event)=>{
 
-if(event.key === "Escape"){
+    'keydown',
 
-closeAllModals();
+    event=>{
 
-}
+        if(event.key === 'Escape'){
 
-}
+            closeAllModals();
+
+        }
+
+    }
+
 );
 
-const accordionHeaders =
-document.querySelectorAll(
-".accordion-header"
-);
 
-accordionHeaders.forEach((header)=>{
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ACCORDION ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-header.addEventListener(
-"click",
-()=>{
+function closeAccordion(accordion){
 
-const accordion =
-header.parentElement;
-
-const parent =
-accordion.closest(".modal-scroll");
-
-const siblings =
-parent.querySelectorAll(".accordion");
-
-siblings.forEach((item)=>{
-
-if(item !== accordion){
-
-item.classList.remove("active");
+    accordion.classList.remove(
+        'active'
+    );
 
 }
+
+function openAccordion(accordion){
+
+    accordion.classList.add(
+        'active'
+    );
+
+}
+
+function closeSiblingAccordions(
+    currentAccordion
+){
+
+    const parent =
+        currentAccordion.closest(
+            '.modal-scroll'
+        );
+
+    if(!parent) return;
+
+    const accordions =
+        parent.querySelectorAll(
+            '.accordion'
+        );
+
+    accordions.forEach(accordion=>{
+
+        if(
+            accordion !== currentAccordion
+        ){
+
+            closeAccordion(
+                accordion
+            );
+
+        }
+
+    });
+
+}
+
+accordionHeaders.forEach(header=>{
+
+    header.addEventListener(
+
+        'click',
+
+        ()=>{
+
+            const accordion =
+                header.parentElement;
+
+            const isActive =
+                accordion.classList.contains(
+                    'active'
+                );
+
+            closeSiblingAccordions(
+                accordion
+            );
+
+            if(isActive){
+
+                closeAccordion(
+                    accordion
+                );
+
+            }
+
+            else{
+
+                openAccordion(
+                    accordion
+                );
+
+            }
+
+        }
+
+    );
 
 });
 
-accordion.classList.toggle(
-"active"
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RESET STATES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+window.addEventListener(
+
+    'pageshow',
+
+    ()=>{
+
+        closeAllModals();
+
+        unlockBody();
+
+    }
+
 );
 
-}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM READY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+console.log(
+
+`
+Municipal Legal Operating System
+Chapter I Initialized
+`
+
 );
-
-});
-
-console.log(`
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-CHAPTER I INITIALIZED
-LGU PORTAL 💎
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-`);
