@@ -147,8 +147,8 @@ CARD EVENTS
 
 legalCards.forEach(card=>{
 
+    let startX = 0;
     let startY = 0;
-
     let moved = false;
 
     card.addEventListener(
@@ -156,6 +156,9 @@ legalCards.forEach(card=>{
         'touchstart',
 
         event=>{
+
+            startX =
+                event.touches[0].clientX;
 
             startY =
                 event.touches[0].clientY;
@@ -176,14 +179,27 @@ legalCards.forEach(card=>{
 
         event=>{
 
-            const currentY =
-                event.touches[0].clientY;
+            const moveX =
+                Math.abs(
+
+                    event.touches[0].clientX
+                    - startX
+
+                );
+
+            const moveY =
+                Math.abs(
+
+                    event.touches[0].clientY
+                    - startY
+
+                );
 
             if(
 
-                Math.abs(
-                    currentY - startY
-                ) > 10
+                moveX > 8
+                ||
+                moveY > 8
 
             ){
 
@@ -201,7 +217,7 @@ legalCards.forEach(card=>{
 
     card.addEventListener(
 
-        'click',
+        'touchend',
 
         ()=>{
 
