@@ -670,17 +670,13 @@ CARDS
         border-color .34s var(--motion),
         background .34s var(--motion);
 
-    touch-action:
-        pan-y pinch-zoom;
+    touch-action:auto;
 
     user-select:none;
 
     -webkit-user-select:none;
 
     -webkit-touch-callout:none;
-
-    will-change:
-        transform;
 
 }
 
@@ -1859,36 +1855,16 @@ MOTION DISCIPLINE
 PERFORMANCE OPTIMIZATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-.legal-card{
+.accordion{
 
-    backface-visibility:hidden;
+    content-visibility:auto;
 
-}
-
-@media(min-width:1025px){
-
-    .modal-scroll{
-
-        scroll-padding-top:120px;
-
-        overscroll-behavior-y:none;
-
-    }
+    contain-intrinsic-size:1px 500px;
 
 }
 
-@media(min-width:1025px){
+.accordion-content{
 
-    .modal-scroll{
-
-        scroll-snap-type:y proximity;
-
-    }
-
-    .accordion{
-
-        scroll-snap-align:start;
-
-    }
+    contain:layout paint;
 
 }

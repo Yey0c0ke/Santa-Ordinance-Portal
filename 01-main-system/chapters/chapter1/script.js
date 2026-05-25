@@ -224,41 +224,46 @@ legalCards.forEach(card=>{
 
     card.addEventListener(
 
-        'touchmove',
+    'touchmove',
 
-        event=>{
+    event=>{
 
-            if(!touchStarted) return;
+        if(!touchStarted) return;
 
-            const touch =
-                event.touches[0];
+        const touch =
+            event.touches[0];
 
-            const deltaX =
-                Math.abs(
-                    touch.clientX - startX
-                );
+        const deltaX =
+            Math.abs(
+                touch.clientX - startX
+            );
 
-            const deltaY =
-                Math.abs(
-                    touch.clientY - startY
-                );
+        const deltaY =
+            Math.abs(
+                touch.clientY - startY
+            );
 
-            if(
-                deltaY > 10 ||
-                deltaX > 10
-            ){
+        if(deltaY > 6){
 
-                moved = true;
+            moved = true;
 
-            }
+            return;
 
-        },
-
-        {
-            passive:true
         }
 
-    );
+        if(deltaX > 12){
+
+            moved = true;
+
+        }
+
+    },
+
+    {
+        passive:true
+    }
+
+);
 
     card.addEventListener(
 
