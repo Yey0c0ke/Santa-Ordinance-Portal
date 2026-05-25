@@ -293,12 +293,12 @@ GLASS SYSTEM
         1px solid rgba(255,255,255,.10);
 
     backdrop-filter:
-        blur(18px)
-        saturate(140%);
+        blur(10px)
+        saturate(120%);
 
     -webkit-backdrop-filter:
-        blur(18px)
-        saturate(140%);
+        blur(10px)
+        saturate(120%);
 
     box-shadow:
         0 10px 40px rgba(0,0,0,.22);
@@ -336,6 +336,12 @@ NAVBAR
 
     z-index:200;
 
+    transform:none !important;
+
+    backdrop-filter:none !important;
+
+    -webkit-backdrop-filter:none !important;
+
 }
 
 .nav-left{
@@ -350,16 +356,43 @@ NAVBAR
 
 .logo{
 
-    width:58px;
+    width:72px;
 
-    height:58px;
+    height:72px;
 
-    object-fit:cover;
+    object-fit:contain;
 
-    border-radius:18px;
+    border-radius:22px;
 
     box-shadow:
         0 8px 18px rgba(0,0,0,.24);
+
+    image-rendering:
+        crisp-edges;
+
+    image-rendering:
+        -webkit-optimize-contrast;
+
+    backface-visibility:
+        hidden;
+
+    -webkit-backface-visibility:
+        hidden;
+
+    isolation:
+        isolate;
+
+    transform:
+        none !important;
+
+    filter:
+        none !important;
+
+    backdrop-filter:
+        none !important;
+
+    -webkit-backdrop-filter:
+        none !important;
 
 }
 
@@ -2271,7 +2304,6 @@ GPU PERFORMANCE ENGINE
 .accordion,
 .accordion-content,
 .definition-card,
-.navbar,
 .hero{
 
     transform:
@@ -2357,5 +2389,12 @@ RESPONSIVE SYSTEM
         grid-template-columns:1fr;
 
     }
+
+}
+
+img{
+
+    image-rendering:
+        -webkit-optimize-contrast;
 
 }

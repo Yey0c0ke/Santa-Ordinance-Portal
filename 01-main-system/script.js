@@ -1297,3 +1297,73 @@ console.log(
     'LGU legal intelligence online'
 
 );
+
+/* =========================
+PAGE TRANSITION ENGINE
+========================= */
+
+document.body.classList.add(
+    'page-enter'
+);
+
+window.addEventListener(
+
+    'load',
+
+    ()=>{
+
+        requestAnimationFrame(()=>{
+
+            document.body.classList.add(
+                'system-ready'
+            );
+
+        });
+
+    }
+
+);
+
+const transitionLinks =
+
+    document.querySelectorAll(
+        '.page-transition'
+    );
+
+transitionLinks.forEach(link=>{
+
+    link.addEventListener(
+
+        'click',
+
+        event=>{
+
+            const href =
+
+                link.getAttribute(
+                    'href'
+                );
+
+            if(
+                !href ||
+                href.startsWith('#')
+            ) return;
+
+            event.preventDefault();
+
+            document.body.classList.add(
+                'page-exit'
+            );
+
+            setTimeout(()=>{
+
+                window.location.href =
+                    href;
+
+            },380);
+
+        }
+
+    );
+
+});
