@@ -391,12 +391,27 @@ document.addEventListener(
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ACCORDION ENGINE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+SMOOTH ACCORDION ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-function closeAccordion(
-    accordion
-){
+function collapseAccordion(accordion){
+
+    const content =
+        accordion.querySelector(
+            '.accordion-content'
+        );
+
+    if(!content) return;
+
+    content.style.height =
+        `${content.scrollHeight}px`;
+
+    requestAnimationFrame(()=>{
+
+        content.style.height =
+            '0px';
+
+    });
 
     accordion.classList.remove(
         'active'
@@ -404,12 +419,59 @@ function closeAccordion(
 
 }
 
-function openAccordion(
-    accordion
-){
+function expandAccordion(accordion){
+
+    const content =
+        accordion.querySelector(
+            '.accordion-content'
+        );
+
+    if(!content) return;
 
     accordion.classList.add(
         'active'
+    );
+
+    content.style.height =
+        'auto';
+
+    const fullHeight =
+        content.scrollHeight;
+
+    content.style.height =
+        '0px';
+
+    requestAnimationFrame(()=>{
+
+        content.style.height =
+            `${fullHeight}px`;
+
+    });
+
+    content.addEventListener(
+
+        'transitionend',
+
+        function handler(){
+
+            if(
+                accordion.classList.contains(
+                    'active'
+                )
+            ){
+
+                content.style.height =
+                    'auto';
+
+            }
+
+            content.removeEventListener(
+                'transitionend',
+                handler
+            );
+
+        }
+
     );
 
 }
@@ -433,10 +495,13 @@ function closeSiblingAccordions(
     accordions.forEach(accordion=>{
 
         if(
-            accordion !== currentAccordion
+            accordion !== currentAccordion &&
+            accordion.classList.contains(
+                'active'
+            )
         ){
 
-            closeAccordion(
+            collapseAccordion(
                 accordion
             );
 
@@ -445,7 +510,6 @@ function closeSiblingAccordions(
     });
 
 }
-
 
 accordionHeaders.forEach(header=>{
 
@@ -469,7 +533,7 @@ accordionHeaders.forEach(header=>{
 
             if(isActive){
 
-                closeAccordion(
+                collapseAccordion(
                     accordion
                 );
 
@@ -477,7 +541,7 @@ accordionHeaders.forEach(header=>{
 
             else{
 
-                openAccordion(
+                expandAccordion(
                     accordion
                 );
 
@@ -594,6 +658,61 @@ window.addEventListener(
     }
 
 );
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IOS MOMENTUM REFINEMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+const modalScrolls =
+document.querySelectorAll(
+    '.modal-scroll'
+);
+
+modalScrolls.forEach(scroll=>{
+
+    let isTicking = false;
+
+    scroll.addEventListener(
+
+        'scroll',
+
+        ()=>{
+
+            if(isTicking) return;
+
+            isTicking = true;
+
+            requestAnimationFrame(()=>{
+
+                scroll.style.willChange =
+                    'scroll-position';
+
+                clearTimeout(
+                    scroll._scrollTimeout
+                );
+
+                scroll._scrollTimeout =
+                    setTimeout(()=>{
+
+                        scroll.style.willChange =
+                            'auto';
+
+                    },120);
+
+                isTicking = false;
+
+            });
+
+        },
+
+        {
+            passive:true
+        }
+
+    );
+
+});
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
