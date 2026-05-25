@@ -632,7 +632,7 @@ TRACK
 
     overscroll-behavior-x:none;
 
-    touch-action:pan-x;
+    touch-action:pan-y pan-x;
 
     padding-top:54px;
 
