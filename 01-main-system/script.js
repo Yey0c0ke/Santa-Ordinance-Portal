@@ -1127,13 +1127,17 @@ chaptersTrack?.addEventListener(
             touchStartX -
             touchEndX;
 
+        const verticalMovement =
+
+            Math.abs(
+
+                e.changedTouches[0].clientY
+
+            );
+
         if(
             Math.abs(diff) < 40
         ){
-
-            scrollToIndex(
-                railState.activeIndex
-            );
 
             return;
 
