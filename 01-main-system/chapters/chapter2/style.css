@@ -2279,6 +2279,8 @@ APPLE MOTION ENGINE
         scale(.94)
         translateY(24px);
 
+    opacity:0;
+
     transition:
 
         opacity .45s var(--motion),
@@ -2293,6 +2295,8 @@ APPLE MOTION ENGINE
         scale(1)
         translateY(0);
 
+    opacity:1;
+
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -2300,7 +2304,6 @@ GPU PERFORMANCE ENGINE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .legal-card,
-.modal-content,
 .accordion,
 .accordion-content,
 .definition-card,
@@ -2320,9 +2323,6 @@ GPU PERFORMANCE ENGINE
 .glass{
 
     isolation:isolate;
-
-    transform:
-        translateZ(0);
 
 }
 
