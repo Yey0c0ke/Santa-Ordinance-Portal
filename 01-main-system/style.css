@@ -354,57 +354,47 @@ NAV
 
     justify-content:center;
 
-    gap:10px;
-
     border:none;
 
     cursor:pointer;
 
     padding:
-        12px 20px;
+        9px 16px;
 
-    min-height:54px;
+    min-height:42px;
 
     border-radius:999px;
 
     background:
-
-        linear-gradient(
-
-            180deg,
-
-            rgba(255,255,255,.96),
-
-            rgba(242,242,242,.92)
-
-        );
+        rgba(255,255,255,.94);
 
     color:#08110d;
 
-    font-size:.92rem;
+    font-size:.78rem;
 
-    font-weight:700;
+    font-weight:650;
 
-    letter-spacing:-.2px;
+    letter-spacing:-.1px;
+
+    line-height:1;
 
     box-shadow:
 
-        0 8px 24px rgba(0,0,0,.10),
+        0 4px 14px rgba(0,0,0,.10),
 
-        inset 0 1px 0 rgba(255,255,255,.92);
+        inset 0 1px 0 rgba(255,255,255,.82);
 
     backdrop-filter:
-        blur(12px);
+        blur(10px);
 
     -webkit-backdrop-filter:
-        blur(12px);
+        blur(10px);
 
     transition:
 
-        transform .38s cubic-bezier(.22,.61,.36,1),
-        box-shadow .38s cubic-bezier(.22,.61,.36,1),
-        background .38s cubic-bezier(.22,.61,.36,1),
-        opacity .38s cubic-bezier(.22,.61,.36,1);
+        transform .28s cubic-bezier(.22,.61,.36,1),
+        box-shadow .28s cubic-bezier(.22,.61,.36,1),
+        opacity .28s cubic-bezier(.22,.61,.36,1);
 
     -webkit-tap-highlight-color:
         transparent;
@@ -418,14 +408,13 @@ NAV
 .legal-ai-btn:hover{
 
     transform:
-        translateY(-1px)
-        scale(1.01);
+        translateY(-1px);
 
     box-shadow:
 
-        0 14px 34px rgba(0,0,0,.14),
+        0 8px 18px rgba(0,0,0,.12),
 
-        inset 0 1px 0 rgba(255,255,255,.96);
+        inset 0 1px 0 rgba(255,255,255,.92);
 
 }
 
