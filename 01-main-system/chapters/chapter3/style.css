@@ -77,15 +77,6 @@ position:relative;
 -webkit-font-smoothing:
 antialiased;
 
-opacity:0;
-
-transition:
-opacity .7s ease;
-
-}
-
-body.loaded{
-
 opacity:1;
 
 }
@@ -919,5 +910,46 @@ padding:
 22px;
 
 }
+
+}
+
+@media(max-width:768px){
+
+.glass{
+
+backdrop-filter:blur(6px);
+
+-webkit-backdrop-filter:blur(6px);
+
+background:
+rgba(12,18,15,.82);
+
+}
+
+.orb{
+
+opacity:.10;
+
+filter:blur(40px);
+
+}
+
+.hero::before{
+
+opacity:.4;
+
+}
+
+}
+
+.hero,
+.legal-card,
+.modal-content,
+.navbar{
+
+transform:
+translateZ(0);
+
+backface-visibility:hidden;
 
 }
