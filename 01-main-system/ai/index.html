@@ -1,14 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>LGU Legal Intelligence</title>
-<link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8"/>
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0"
+/>
+
+<meta
+name="theme-color"
+content="#06110b"
+/>
+
+<meta
+name="color-scheme"
+content="dark"
+/>
+
+<title>
+LGU Legal Intelligence
+</title>
+
+<link
+rel="preconnect"
+href="https://fonts.googleapis.com"
+>
+
+<link
+rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin
+>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+rel="stylesheet"
+/>
+
+<link
+rel="stylesheet"
+href="style.css"
+/>
+
 </head>
 
 <body>
 
-<h1>LGU Legal Intelligence</h1>
+<!-- =========================
+BACKGROUND
+========================= -->
+
+<div class="ai-bg"></div>
+
+<div class="ai-grid"></div>
+
+<div class="ai-orb ai-orb-1"></div>
+
+<div class="ai-orb ai-orb-2"></div>
+
+<!-- =========================
+TOPBAR
+========================= -->
+
+<header class="ai-topbar">
+
+<div class="ai-topbar-left">
+
+<a
+href="../index.html"
+class="ai-back-btn"
+>
+
+← Portal
+
+</a>
+
+<div>
+
+<h1>
+LGU Legal Intelligence
+</h1>
+
+<p>
+Municipal Legal Operating System
+</p>
+
+</div>
+
+</div>
+
+<div class="ai-status">
+
+<div class="ai-status-dot"></div>
+
+<span>
+Semantic Legal Intelligence
+</span>
+
+</div>
+
+</header>
+
+<!-- =========================
+AI LAYOUT
+========================= -->
+
+<main class="ai-layout">
+
+<section class="ai-sidebar">
+
+<div class="ai-sidebar-card">
+
+<span class="sidebar-label">
+ACTIVE MODULE
+</span>
+
+<h3>
+Municipal Ordinance Intelligence
+</h3>
+
+<p>
+
+Semantic ordinance assistance,
+chapter-aware responses,
+municipal legal context,
+and governance support systems.
+
+</p>
+
+</div>
+
+<div class="ai-sidebar-card">
+
+<span class="sidebar-label">
+CONNECTED CHAPTERS
+</span>
+
+<ul class="chapter-list">
+
+<li>Administrative Matters</li>
+
+<li>Revenue and Taxation</li>
+
+<li>Public Services</li>
+
+<li>Business Regulations</li>
+
+<li>Infrastructure Systems</li>
+
+<li>Municipal Governance</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<section class="ai-chat-panel">
+
+<div
+class="ai-chat-conversation"
+id="aiConversation"
+>
+
+<div class="ai-message ai-message-ai">
+
+<p>
+
+Welcome to LGU Legal Intelligence.
+
+Ask about:
+municipal ordinances,
+governance systems,
+permits,
+taxation,
+business regulation,
+or chapter-related concerns.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="ai-chat-suggestions">
+
+<button class="suggestion-chip">
+Permit requirements
+</button>
+
+<button class="suggestion-chip">
+Business taxation
+</button>
+
+<button class="suggestion-chip">
+Municipal governance
+</button>
+
+<button class="suggestion-chip">
+Public services
+</button>
+
+<button class="suggestion-chip">
+Infrastructure regulations
+</button>
+
+</div>
+
+<div class="ai-chat-input-area">
+
+<input
+type="text"
+class="ai-chat-input"
+id="aiInput"
+placeholder="Ask LGU Legal Intelligence..."
+/>
+
+<button
+class="ai-chat-send"
+id="sendAI"
+>
+
+Send
+
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+<script src="ai-core.js"></script>
 
 <script src="script.js"></script>
 
