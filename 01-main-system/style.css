@@ -58,6 +58,8 @@ html{
 
     scroll-behavior:smooth;
 
+    overflow-x:hidden;
+
 }
 
 body{
@@ -72,15 +74,20 @@ body{
     color:
         var(--text-primary);
 
-    overflow-x:hidden;
-
     min-height:100vh;
+
+    width:100%;
+
+    overflow-y:auto;
 
     -webkit-font-smoothing:
         antialiased;
 
     text-rendering:
         optimizeLegibility;
+
+    transition:
+        transform .42s cubic-bezier(.16,1,.3,1);
 
 }
 
@@ -204,8 +211,6 @@ HERO
 
     min-height:100vh;
 
-    overflow:hidden;
-
 }
 
 .hero-image{
@@ -261,14 +266,11 @@ NAV
 
 .floating-nav{
 
-    position:fixed;
+    position:sticky;
 
-    top:18px;
+    top:12px;
 
-    left:50%;
-
-    transform:
-        translateX(-50%);
+    margin:14px auto;
 
     width:min(92%,1180px);
 
@@ -435,9 +437,7 @@ HERO CONTENT
 
     z-index:10;
 
-    width:100%;
-
-    padding-top:150px;
+    padding-top:20px;
 
 }
 
@@ -664,7 +664,7 @@ TRACK
 
     overflow-x:auto;
 
-    overflow-y:hidden;
+    overflow-y:auto;
 
     scrollbar-width:none;
 
@@ -678,7 +678,7 @@ TRACK
 
     padding-top:54px;
 
-    padding-bottom:140px;
+    padding-bottom:60px;
 
     padding-left:clamp(420px,34vw,620px);
 
@@ -1130,10 +1130,9 @@ CARDS
 
 }
 
-/* CONTINUE NEXT PART */
-
 /* =========================
-MUNICIPAL ASSISTANT — FLOATING PANEL
+
+MUNICIPAL ASSISTANT ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â FLOATING PANEL
 ========================= */
 
 .ai-modal{
@@ -1680,13 +1679,42 @@ MUNICIPAL ASSISTANT — FLOATING PANEL
     line-height:1.55;
 }
 
+/* PAGE TRANSITION OVERLAY
+========================= */
+
+body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:var(--bg-primary);
+    z-index:9998;
+    pointer-events:none;
+    opacity:0;
+    transition:
+        opacity .42s cubic-bezier(.16,1,.3,1);
+}
+
+body.page-exit::after{
+    opacity:1;
+}
+
+body.page-enter::after{
+    opacity:1;
+}
+
+body.system-ready.page-enter::after{
+    opacity:0;
+}
+
 /* === RESPONSIVE === */
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-RESPONSIVE SYSTEM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-/* 1600px and above — Large Desktop */
+
+/* ÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚Â
+RESPONSIVE SYSTEM
+ÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚Â */
+
+/* 1600px and above ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Large Desktop */
 @media(min-width:1600px){
     .hero-rail-text h2{
         font-size:clamp(5rem,5.6vw,6.8rem);
@@ -1705,7 +1733,7 @@ RESPONSIVE SYSTEM
     }
 }
 
-/* 1440px — Desktop */
+/* 1440px ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Desktop */
 @media(min-width:1440px) and (max-width:1599px){
     .hero-rail-text h2{
         font-size:clamp(4.2rem,5.2vw,5.8rem);
@@ -1719,7 +1747,7 @@ RESPONSIVE SYSTEM
     }
 }
 
-/* 1366px — Laptop */
+/* 1366px ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Laptop */
 @media(min-width:1281px) and (max-width:1439px){
     .hero-rail-text h2{
         font-size:clamp(3.8rem,5vw,5.4rem);
@@ -1730,7 +1758,7 @@ RESPONSIVE SYSTEM
     }
 }
 
-/* 1280px — Laptop */
+/* 1280px ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Laptop */
 @media(min-width:1025px) and (max-width:1280px){
     .hero-rail-text h2{
         font-size:clamp(3.2rem,4.8vw,4.8rem);
@@ -1748,7 +1776,7 @@ RESPONSIVE SYSTEM
     }
 }
 
-/* 1024px — Tablet Landscape / Small Laptop */
+/* 1024px ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Tablet Landscape / Small Laptop */
 @media(max-width:1024px){
     .hero-rail-text h2{
         font-size:clamp(2.8rem,5.5vw,4.2rem);
@@ -1794,7 +1822,7 @@ RESPONSIVE SYSTEM
     }
 }
 
-/* 820px — iPad Air / Tablet Portrait */
+/* 820px ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â iPad Air / Tablet Portrait */
 @media(max-width:820px){
     .hero-rail-text h2{
         font-size:clamp(2.6rem,6vw,3.8rem);
@@ -1817,7 +1845,7 @@ RESPONSIVE SYSTEM
     }
 }
 
-/* 768px — Tablet Portrait / Large Phone */
+/* 768px ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Tablet Portrait / Large Phone */
 @media(max-width:768px){
     .ai-modal{
         align-items:flex-end;
@@ -1850,6 +1878,69 @@ RESPONSIVE SYSTEM
     .ai-conversation{
         padding:16px 16px 10px;
     }
+}
+
+@media(max-width:1200px){
+
+    .chapters-track{
+
+        padding-left:10vw;
+
+        padding-right:10vw;
+
+    }
+
+}
+
+@media(max-width:520px){
+
+    .hero-rail-text h2{
+
+        font-size:2.8rem;
+
+        letter-spacing:-2px;
+
+    }
+
+    .hero-rail-text p{
+
+        font-size:.94rem;
+
+    }
+
+    .chapter-card.active{
+
+        transform:
+            translateY(-2px)
+            scale(1.01);
+
+    }
+
+
+
+
+}
+
+/* ÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚Â
+ÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚Â */
+
+/* ÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚Â
+RESPONSIVE AUDIT ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ALL BREAKPOINTS
+ÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚Â */
+
+@media(max-width:1024px){
+    .chapters-track{
+        padding-left:6vw;
+        padding-right:6vw;
+    }
+    .chapter-card{
+        flex:0 0 260px;
+        width:260px;
+        min-width:260px;
+
+    }
+}
+
 
     .ai-input-shell{
         padding:0 12px 12px;
@@ -1902,6 +1993,73 @@ RESPONSIVE SYSTEM
         font-size:clamp(2.5rem,10vw,4rem);
     }
 
+@media(max-width:820px){
+    .chapters-track{
+        padding-left:4vw;
+        padding-right:4vw;
+        gap:20px;
+    }
+    .chapter-card{
+        flex:0 0 240px;
+        width:240px;
+        min-width:240px;
+    }
+    .hero-rail-text h2{
+        font-size:clamp(2.4rem,5vw,4rem);
+    }
+}
+
+@media(max-width:768px){
+    .chapter-card{
+        flex:0 0 88vw;
+        width:88vw;
+        min-width:88vw;
+        border-radius:34px;
+    }
+    .floating-nav{
+        width:94%;
+        padding:14px 18px;
+    }
+    .nav-logo{
+        width:52px;
+        height:52px;
+    }
+    .hero-content{
+        padding-top:12px;
+    }
+    .hero-rail-content{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+    .hero-rail-text h2{
+        line-height:.96;
+
+    }
+    .chapters-track{
+        gap:18px;
+        padding-bottom:50px;
+        padding-left:5vw;
+        padding-right:5vw;
+    }
+    .chapter-content{
+        min-height:auto;
+    }
+    .chapter-content h3{
+        min-height:auto;
+    }
+    .rail-btn{
+        width:50px;
+        height:50px;
+    }
+    .prev-btn{
+        left:14px;
+    }
+    .next-btn{
+        right:14px;
+    }
+}
+
+
     .rail-btn{
         display:none;
     }
@@ -1939,9 +2097,8 @@ RESPONSIVE SYSTEM
         padding:6px 10px;
         min-height:30px;
     }
-}
 
-/* 600px — Small Tablet / Large Phone */
+/* 600px ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Small Tablet / Large Phone */
 @media(max-width:600px){
     .floating-nav{
         padding:10px 14px;
@@ -2008,7 +2165,7 @@ RESPONSIVE SYSTEM
     }
 }
 
-/* 480px — Existing small phone overrides */
+/* 480px ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Existing small phone overrides */
 @media(max-width:480px){
     .ai-panel{
         height:82vh;
@@ -2037,7 +2194,7 @@ RESPONSIVE SYSTEM
     }
 }
 
-/* 412px — Larger Phones (e.g. Pixel, Samsung) */
+/* 412px ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Larger Phones (e.g. Pixel, Samsung) */
 @media(max-width:412px){
     .floating-nav{
         padding:8px 12px;
@@ -2096,7 +2253,7 @@ RESPONSIVE SYSTEM
     }
 }
 
-/* 390px — iPhone 12 / 13 / 14 / 15 */
+/* 390px ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â iPhone 12 / 13 / 14 / 15 */
 @media(max-width:390px){
     .floating-nav{
         padding:8px 10px;
@@ -2173,7 +2330,7 @@ RESPONSIVE SYSTEM
     }
 }
 
-/* 360px — iPhone SE (smallest) */
+/* 360px ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â iPhone SE (smallest) */
 @media(max-width:360px){
     .floating-nav{
         padding:6px 8px;
@@ -2265,7 +2422,7 @@ RESPONSIVE SYSTEM
     }
 }
 
-/* 320px — Absolute minimum */
+/* 320px ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Absolute minimum */
 @media(max-width:320px){
     .floating-nav{
         padding:5px 6px;
@@ -2347,16 +2504,275 @@ body{
 
 body.page-exit{
     opacity:0;
+=======
+@media(max-width:600px){
+    .chapter-card{
+        flex:0 0 92vw;
+        width:92vw;
+        min-width:92vw;
+        border-radius:30px;
+    }
+    .chapter-image-wrap{
+        height:160px;
+    }
+    .chapter-content{
+        padding:18px 18px 20px;
+    }
+    .chapter-content h3{
+        font-size:1.06rem;
+        min-height:auto;
+    }
+    .hero-rail-header{
+        margin-bottom:24px;
+    }
+    .hero-rail-text h2{
+        font-size:2.6rem;
+        letter-spacing:-1.5px;
+    }
+    .hero-rail-text p{
+        font-size:.92rem;
+    }
+}
+
+@media(max-width:480px){
+    .hero-rail-text h2{
+        font-size:2.2rem;
+        letter-spacing:-1px;
+    }
+    .chapter-card.active{
+        transform:translateY(-2px) scale(1.01);
+    }
+    .rail-btn{
+        width:44px;
+        height:44px;
+    }
+}
+
+@media(max-width:430px){
+    .hero-rail-text h2{
+        font-size:2.1rem;
+        letter-spacing:-1px;
+    }
+    .hero-rail-label{
+        font-size:.68rem;
+        letter-spacing:4px;
+    }
+    .hero-rail-status{
+        padding:12px 16px;
+        font-size:.82rem;
+    }
+}
+
+@media(max-width:412px){
+    .hero-rail-text h2{
+        font-size:2rem;
+    }
+    .hero-rail-label{
+        font-size:.64rem;
+        letter-spacing:3px;
+    }
+    .chapter-card{
+        flex:0 0 94vw;
+        width:94vw;
+        min-width:94vw;
+        border-radius:26px;
+    }
+    .chapter-image-wrap{
+        height:140px;
+        border-radius:22px;
+    }
+    .chapter-content h3{
+        font-size:.98rem;
+    }
+    .chapter-content p{
+        font-size:.82rem;
+        min-height:auto;
+    }
+    .chapter-btn{
+        padding:10px 16px;
+        font-size:.84rem;
+    }
+    .nav-text{
+        display:none;
+    }
+    .nav-logo{
+        width:44px;
+        height:44px;
+    }
+}
+
+@media(max-width:390px){
+    .hero-rail-text h2{
+        font-size:1.8rem;
+    }
+    .chapter-card{
+        flex:0 0 96vw;
+        width:96vw;
+        min-width:96vw;
+    }
+    .chapter-image-wrap{
+        height:130px;
+    }
+    .chapter-content h3{
+        font-size:.92rem;
+    }
+    .hero-rail-content{
+        gap:16px;
+    }
+    .hero-rail-status{
+        padding:10px 14px;
+        font-size:.78rem;
+    }
+}
+
+@media(max-width:375px){
+    .hero-rail-text h2{
+        font-size:1.7rem;
+        letter-spacing:-.5px;
+    }
+    .chapter-card{
+        flex:0 0 95vw;
+        width:95vw;
+        min-width:95vw;
+    }
+    .chapter-image-wrap{
+        height:125px;
+    }
+    .chapter-content h3{
+        font-size:.95rem;
+    }
+}
+
+@media(max-width:360px){
+    .hero-rail-text h2{
+        font-size:1.6rem;
+    }
+    .chapters-track{
+        padding-left:3vw;
+        padding-right:3vw;
+    }
+    .chapter-card{
+        flex:0 0 94vw;
+        width:94vw;
+        min-width:94vw;
+        border-radius:24px;
+    }
+    .chapter-image-wrap{
+        height:120px;
+    }
+}
+
+@media(max-width:320px){
+    .hero-rail-text h2{
+        font-size:1.4rem;
+        letter-spacing:0;
+    }
+    .hero-rail-text p{
+        font-size:.84rem;
+    }
+    .chapter-card{
+        flex:0 0 92vw;
+        width:92vw;
+        min-width:92vw;
+    }
+    .chapter-image-wrap{
+        height:110px;
+    }
+    .chapter-content{
+        padding:14px 14px 16px;
+    }
+    .chapter-content h3{
+        font-size:.86rem;
+    }
+    .chapter-content p{
+        font-size:.78rem;
+    }
+    .chapter-btn{
+        padding:8px 14px;
+        font-size:.78rem;
+    }
+    .legal-ai-btn{
+        padding:5px 10px;
+        font-size:.64rem;
+        min-height:28px;
+    }
+}
+
+/* ÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚Â
+LAPTOP / DESKTOP SPACING OPTIMIZATION
+ÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚ÂÃƒÂ¢Ã¢â‚¬ÂÃ‚Â */
+
+@media(min-width:1025px) and (max-width:1366px){
+    .chapters-track{
+        padding-left:clamp(320px,28vw,520px);
+        padding-right:clamp(240px,20vw,400px);
+    }
+    .hero-rail-header{
+        margin-bottom:28px;
+    }
+    .chapter-card{
+        flex:0 0 270px;
+        width:270px;
+        min-width:270px;
+    }
+    .chapter-image-wrap{
+        height:170px;
+    }
+}
+
+@media(min-width:1367px) and (max-width:1600px){
+    .chapters-track{
+        padding-left:clamp(400px,32vw,580px);
+        padding-right:clamp(300px,24vw,460px);
+    }
+    .hero-rail-text h2{
+        font-size:clamp(4rem,5.4vw,5.6rem);
+    }
+    .chapter-card{
+        flex:0 0 280px;
+        width:280px;
+        min-width:280px;
+    }
+}
+
+@media(min-width:1601px){
+    .chapters-track{
+        padding-left:clamp(480px,34vw,680px);
+        padding-right:clamp(360px,26vw,520px);
+    }
+    .hero-rail-text h2{
+        font-size:clamp(5rem,5vw,6.4rem);
+    }
+    .hero-rail-text p{
+        max-width:860px;
+    }
+}
+
+/* =========================
+PAGE TRANSITION ENGINE
+OVERLAY HANDLED BY body::after
+========================= */
+
+body.page-exit{
+
     transform:scale(1.01);
 }
 
 body.page-enter{
+
     opacity:0;
+=======
+
     transform:scale(.985);
 }
 
 body.system-ready.page-enter{
+
     opacity:1;
+    transform:scale(1);
+}
+
+=======
     transform:scale(1);
 }
 

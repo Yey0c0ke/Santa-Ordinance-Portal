@@ -2207,3 +2207,136 @@ KOS.initialize = function() {
    ========================= */
 
 window.KOS = KOS;
+
+/* =========================
+   AI BACKEND API
+   ========================= */
+
+const AI_API_BASE = '/api';
+
+let conversationHistory = [];
+let abortController = null;
+
+function addToHistory(role, text) {
+  conversationHistory.push({ role, parts: [{ text }] });
+}
+
+function clearHistory() {
+  conversationHistory = [];
+}
+
+function getHistory() {
+  return conversationHistory;
+}
+
+function sendChatMessage(message, { onChunk, onComplete, onError }) {
+  abortController = new AbortController();
+
+  const payload = {
+    message,
+    history: conversationHistory
+  };
+
+  fetch(`${AI_API_BASE}/chat/stream`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+    signal: abortController.signal
+  })
+  .then(async (response) => {
+    if (!response.ok) {
+      const text = await response.text().catch(() => '');
+      throw new Error(text || `Server error: ${response.status}`);
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    let fullText = '';
+
+    function processResult({ done, value }) {
+      if (done) {
+        return;
+      }
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (trimmed.startsWith('data: ')) {
+          try {
+            const data = JSON.parse(trimmed.slice(6));
+            if (data.chunk) {
+              fullText += data.chunk;
+              onChunk(data.chunk, fullText);
+            }
+            if (data.done) {
+              addToHistory('user', message);
+              addToHistory('model', data.fullText || fullText);
+              onComplete(data.fullText || fullText);
+            }
+            if (data.error) {
+              onError(new Error(data.error));
+            }
+          } catch (e) {
+            /* skip malformed chunk */
+          }
+        }
+      }
+
+      return reader.read().then(processResult);
+    }
+
+    return reader.read().then(processResult);
+  })
+  .catch(err => {
+    if (err.name === 'AbortError') {
+      onComplete('');
+    } else {
+      onError(err);
+    }
+  });
+
+  return abortController;
+}
+
+function cancelChat() {
+  if (abortController) {
+    abortController.abort();
+    abortController = null;
+  }
+}
+
+async function generateResponse(message) {
+  try {
+    const response = await fetch(`${AI_API_BASE}/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message,
+        history: conversationHistory
+      })
+    });
+    const data = await response.json();
+    if (data.response) {
+      addToHistory('user', message);
+      addToHistory('model', data.response);
+      return data.response;
+    }
+    throw new Error(data.error || 'Unknown error');
+  } catch (err) {
+    if (err.message === 'Failed to fetch') {
+      return 'I\'m having trouble connecting to my systems. Please make sure the server is running.\n\nRun: npm start';
+    }
+    return `I apologize, but I encountered an error. Please try again.`;
+  }
+}
+
+console.log(`
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+LGU MUNICIPAL AI READY
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+`);
+console.log("AI engine connected to backend API");

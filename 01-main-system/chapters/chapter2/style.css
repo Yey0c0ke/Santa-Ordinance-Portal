@@ -89,8 +89,6 @@ html{
 
     scroll-behavior:smooth;
 
-    overflow-x:hidden;
-
     -webkit-font-smoothing:
         antialiased;
 
@@ -119,8 +117,6 @@ body{
 
     color:
         var(--text);
-
-    overflow-x:hidden;
 
     overflow-y:auto;
 
@@ -856,9 +852,9 @@ MODAL SCROLL
 
 .modal-scroll{
 
-    overflow-y:auto;
+overflow-y:auto;
 
-    overflow-x:hidden;
+overflow-x:auto;
 
     max-height:
         92vh;

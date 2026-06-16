@@ -48,8 +48,6 @@ html{
 
 scroll-behavior:smooth;
 
-overflow-x:hidden;
-
 }
 
 body{
@@ -68,9 +66,11 @@ linear-gradient(
 
 color:var(--text);
 
-overflow-x:hidden;
-
 min-height:100vh;
+
+overflow-y:auto;
+
+width:100%;
 
 position:relative;
 
@@ -653,6 +653,8 @@ opacity:1;
 
 overflow-y:auto;
 
+overflow-x:auto;
+
 max-height:90vh;
 
 padding:40px;
@@ -663,6 +665,8 @@ overscroll-behavior:contain;
 
 -webkit-overflow-scrolling:
 touch;
+
+touch-action:pan-y;
 
 }
 
@@ -968,10 +972,13 @@ RESPONSIVE SYSTEM
     .legal-card span{font-size:.88rem;}
     .legal-card p{font-size:.72rem;}
 
-    .modal-scroll{padding:26px;}
+    .modal-scroll{padding:28px;}
     .modal-content{border-radius:30px;}
     .close-modal{width:40px;height:40px;top:14px;right:14px;}
-
+    .orb{opacity:.12;filter:blur(40px);}
+    .navbar{flex-direction:column;gap:12px;}
+    .hero{padding:38px 28px;}
+    .hero h1{font-size:3rem;}
     .footer-brand{gap:14px;}
     .footer-logo{width:56px;height:56px;}
     .footer-content{gap:20px;}
