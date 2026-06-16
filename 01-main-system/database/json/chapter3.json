@@ -1,0 +1,200 @@
+{
+  "chapter": 3,
+  "title": "Public Officials / Governance and Administrative Framework",
+  "description": "Municipal governance and administrative framework, covering departmental functions, ethical standards, penalties, transparency and accountability systems, PESO and PLEB operations, official municipal ordinances and symbols and other governance related provisions promoting responsible public service and institutional integrity.",
+  "articles": [
+    {
+      "letter": "A",
+      "title": "Declaration of Policy",
+      "summary": "Public accountability, professionalism, transparency, ethics, and public trust.",
+      "sections": [
+        {
+          "id": "3A.01",
+          "title": "Declaration of Policy",
+          "content": "Public office is a public trust. Officials shall serve with integrity, accountability, loyalty, efficiency, and professionalism."
+        }
+      ]
+    },
+    {
+      "letter": "B",
+      "title": "Norms of Conduct",
+      "summary": "Commitment to public interest, professionalism, political neutrality, and responsiveness.",
+      "sections": [
+        {
+          "id": "3B.01",
+          "title": "Commitment to Public Interest",
+          "content": "Officials shall prioritize public welfare over personal interest."
+        },
+        {
+          "id": "3B.02",
+          "title": "Professionalism",
+          "content": "Public officials shall demonstrate competence, dedication, and fairness."
+        }
+      ]
+    },
+    {
+      "letter": "C",
+      "title": "Duties and Responsibilities",
+      "summary": "Functions, responsibilities, service standards, and accountability systems.",
+      "sections": [
+        {
+          "id": "3C.01",
+          "title": "Functions and Responsibilities",
+          "content": "Municipal officials shall perform their duties with accountability, efficiency, and dedication to public service."
+        }
+      ]
+    },
+    {
+      "letter": "D",
+      "title": "Ethical Standards",
+      "summary": "Conflict of interest, gifts, confidentiality, and prohibited acts.",
+      "sections": [
+        {
+          "id": "3D.01",
+          "title": "Conflict of Interest",
+          "content": "Public officials shall avoid financial and personal interests that conflict with public duties."
+        },
+        {
+          "id": "3D.02",
+          "title": "Gifts and Benefits",
+          "content": "Acceptance of gifts, favors, or benefits that may influence official acts is prohibited."
+        },
+        {
+          "id": "3D.03",
+          "title": "Confidential Information",
+          "content": "Confidential government information shall not be used for private advantage or unauthorized disclosure."
+        }
+      ]
+    },
+    {
+      "letter": "E",
+      "title": "Transparency",
+      "summary": "SALN, financial disclosure, public records, and accountability.",
+      "sections": [
+        {
+          "id": "3E.01",
+          "title": "Statement of Assets",
+          "content": "Officials shall file declarations of assets, liabilities, and financial interests in accordance with law."
+        },
+        {
+          "id": "3E.02",
+          "title": "Public Access to Records",
+          "content": "Records and official transactions shall remain accessible subject to lawful confidentiality."
+        },
+        {
+          "id": "3E.03",
+          "title": "Transparency Measures",
+          "content": "Municipal offices shall promote open, transparent, and accountable governance."
+        }
+      ]
+    },
+    {
+      "letter": "F",
+      "title": "Conflict of Interest",
+      "summary": "Divestment, private interests, business restrictions, and ethical compliance.",
+      "sections": [
+        {
+          "id": "3F.01",
+          "title": "Conflict of Interest",
+          "content": "Officials shall divest from private interests that conflict with public duties and shall comply with business restriction requirements."
+        }
+      ]
+    },
+    {
+      "letter": "G",
+      "title": "Penalties",
+      "summary": "Administrative, civil, and criminal liabilities.",
+      "sections": [
+        {
+          "id": "3G.01",
+          "title": "Penalties",
+          "content": "Violations of ethical standards and conduct rules may result in administrative, civil, and criminal liabilities as provided by law."
+        }
+      ]
+    },
+    {
+      "letter": "H",
+      "title": "Department Heads",
+      "summary": "Municipal Treasurer, Assessor, MPDC, Engineer, Health Officer, MSWDO and others.",
+      "sections": [
+        {
+          "id": "3H.01",
+          "title": "Department Heads",
+          "content": "The municipality shall have department heads including the Municipal Treasurer, Municipal Assessor, Municipal Planning and Development Coordinator, Municipal Engineer, Municipal Health Officer, Municipal Social Welfare and Development Officer, and other department heads as may be provided by law."
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "title": "Travel Orders",
+      "summary": "Official travel authorization, procedures, and accountability.",
+      "sections": [
+        {
+          "id": "3I.01",
+          "title": "Travel Orders",
+          "content": "Official travel of municipal officials and employees shall be covered by travel orders duly approved by the competent authority."
+        }
+      ]
+    },
+    {
+      "letter": "J",
+      "title": "Drug Testing",
+      "summary": "Mandatory testing, rehabilitation, penalties, and confidentiality.",
+      "sections": [
+        {
+          "id": "3J.01",
+          "title": "Drug Testing",
+          "content": "Mandatory drug testing shall be conducted for municipal officials and employees. Rehabilitation programs and penalties shall be provided for those found positive."
+        }
+      ]
+    },
+    {
+      "letter": "K",
+      "title": "Legal Assistance Fund",
+      "summary": "Funding, coverage, legal support, and implementation.",
+      "sections": [
+        {
+          "id": "3K.01",
+          "title": "Legal Assistance Fund",
+          "content": "A legal assistance fund shall be established to provide legal support to municipal officials and employees in connection with the performance of their official duties."
+        }
+      ]
+    },
+    {
+      "letter": "L",
+      "title": "PESO (Public Employment Service Office)",
+      "summary": "Employment facilitation, labor market information, and youth employment.",
+      "sections": [
+        {
+          "id": "3L.01",
+          "title": "PESO",
+          "content": "The Public Employment Service Office (PESO) shall facilitate employment, provide labor market information, and implement youth employment programs."
+        }
+      ]
+    },
+    {
+      "letter": "M",
+      "title": "PLEB (People's Law Enforcement Board)",
+      "summary": "People's Law Enforcement Board, citizen complaints, jurisdiction and funding.",
+      "sections": [
+        {
+          "id": "3M.01",
+          "title": "PLEB",
+          "content": "The People's Law Enforcement Board (PLEB) shall hear citizen complaints against law enforcement officers within its jurisdiction."
+        }
+      ]
+    },
+    {
+      "letter": "N",
+      "title": "Official Seal",
+      "summary": "Seal usage, custody, prohibited acts, and penalties.",
+      "sections": [
+        {
+          "id": "3N.01",
+          "title": "Official Seal",
+          "content": "The official seal of the Municipality of Santa, Ilocos Sur shall be used only for official purposes. Unauthorized use or reproduction is prohibited and subject to penalties."
+        }
+      ]
+    }
+  ]
+}

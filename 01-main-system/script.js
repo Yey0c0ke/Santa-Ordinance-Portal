@@ -33,11 +33,6 @@ document.getElementById(
     'aiModal'
 );
 
-const aiBackdrop =
-document.getElementById(
-    'aiBackdrop'
-);
-
 const openAI =
 document.getElementById(
     'openAI'
@@ -550,13 +545,11 @@ openAI?.addEventListener(
 );
 
 closeAI?.addEventListener(
-    'click',
-    closeAIModal
-);
 
-aiBackdrop?.addEventListener(
     'click',
+
     closeAIModal
+
 );
 
 /* CONTINUE NEXT PART */
@@ -993,33 +986,14 @@ async function sendMessage(){
 SEND EVENTS
 ========================= */
 
-sendAI?.addEventListener(
+sendAI?.addEventListener('click', () => window.sendMessage());
 
-    'click',
-
-    sendMessage
-
-);
-
-aiInput?.addEventListener(
-
-    'keydown',
-
-    (e)=>{
-
-        if(
-            e.key === 'Enter'
-        ){
-
-            e.preventDefault();
-
-            sendMessage();
-
-        }
-
+aiInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        window.sendMessage();
     }
-
-);
+});
 
 /* =========================
 SUGGESTION CHIPS
@@ -1043,10 +1017,8 @@ suggestionChips.forEach(
 
                     chip.textContent.trim();
 
-                aiInput.value =
-                    text;
-
-                sendMessage();
+                aiInput.value = text;
+                window.sendMessage();
 
             }
 

@@ -57,6 +57,11 @@ rel="stylesheet"
 href="style.css"
 />
 
+<link
+rel="stylesheet"
+href="ai/ai-styles.css"
+/>
+
 </head>
 
 <body>
@@ -940,7 +945,7 @@ Codification In Progress
 </header>
 
 <!-- =========================
-AI MODAL
+MUNICIPAL ASSISTANT — FLOATING PANEL
 ========================= -->
 
 <div
@@ -949,205 +954,69 @@ id="aiModal"
 aria-hidden="true"
 >
 
-<div
-class="ai-modal-backdrop"
-id="aiBackdrop"
-></div>
+<div class="ai-panel" role="dialog" aria-modal="true" aria-labelledby="aiTitle">
 
-<div
-class="ai-panel"
-role="dialog"
-aria-modal="true"
-aria-labelledby="aiTitle"
->
+  <!-- HEADER -->
 
-<!-- =========================
-AI TOP
-========================= -->
+  <div class="ai-panel-top">
 
-<div class="ai-panel-top">
+    <div class="ai-panel-title">
 
-<div class="ai-panel-title">
+      <div class="ai-status-wrap">
+        <div class="ai-status-dot"></div>
+        <div class="ai-status-pulse"></div>
+      </div>
 
-<div class="ai-status-wrap">
+      <div>
+        <h3 id="aiTitle">Municipal Assistant</h3>
+        <p>Powered by KOS</p>
+      </div>
 
-<div class="ai-status-dot"></div>
+    </div>
 
-<div class="ai-status-pulse"></div>
+    <div class="ai-header-actions">
+      <button class="ai-min-btn" id="minAI" type="button" aria-label="Minimize">&minus;</button>
+      <button class="ai-close-btn" id="closeAI" type="button" aria-label="Close">&times;</button>
+    </div>
 
-</div>
+  </div>
 
-<div>
+  <!-- BODY -->
 
-<h3 id="aiTitle">
-Municipal Assistant
-</h3>
+  <div class="ai-body">
 
-<p>
-Municipal Legal Intelligence
-</p>
+    <div class="ai-conversation" id="aiConversation">
+      <div class="ai-conversation-fade"></div>
+    </div>
 
-</div>
+    <div class="ai-suggestions"></div>
 
-</div>
+    <!-- INPUT BAR -->
 
-<button
-class="ai-close-btn"
-id="closeAI"
-type="button"
-aria-label="Close AI"
->
+    <div class="ai-input-shell">
+      <div class="ai-input-bar">
+        <input type="text" class="ai-input" id="aiInput" placeholder="Ask Municipal Assistant..." autocomplete="off" spellcheck="false" />
+        <button class="ai-send-btn" id="sendAI" type="button" aria-label="Send Message">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
 
-✕
-
-</button>
+  </div>
 
 </div>
 
-<!-- =========================
-AI BODY
-========================= -->
-
-<div class="ai-body">
-
-<!-- =========================
-AI CONVERSATION
-========================= -->
-
-<div
-class="ai-conversation"
-id="aiConversation"
->
-
-<div class="ai-conversation-fade"></div>
-
-<div
-class="ai-message ai-message-ai ai-intro-message"
->
-
-<div class="ai-avatar">
-
-AI
-
-</div>
-
-<div class="ai-bubble">
-
-<p>
-
-Hi. I'm your Municipal Assistant.
-
-I can assist with:
-
-• Municipal ordinances  
-• Permits and licensing  
-• Revenue and taxation  
-• Governance systems  
-• Public services  
-• Chapter interpretation  
-• Municipal legal concerns
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- =========================
-AI QUICK ACTIONS
-========================= -->
-
-<div class="ai-suggestions">
-
-<button
-class="suggestion-chip"
-type="button"
->
-
-Permit requirements
-
-</button>
-
-<button
-class="suggestion-chip"
-type="button"
->
-
-Municipal taxation
-
-</button>
-
-<button
-class="suggestion-chip"
-type="button"
->
-
-Business regulations
-
-</button>
-
-<button
-class="suggestion-chip"
-type="button"
->
-
-Public services
-
-</button>
-
-</div>
-
-<!-- =========================
-AI INPUT
-========================= -->
-
-<div class="ai-input-shell">
-
-<div class="ai-input-wrap">
-
-<input
-type="text"
-class="ai-input"
-id="aiInput"
-placeholder="Ask Municipal Assistant..."
-autocomplete="off"
-spellcheck="false"
-/>
-
-<button
-class="ai-send-btn"
-id="sendAI"
-type="button"
-aria-label="Send Message"
->
-
-<span class="send-label">
-Send
-</span>
-
-<span class="send-glow"></span>
-
-</button>
-
-</div>
-
-<div class="ai-footer-note">
-
-Municipal legal informational assistant
-
-</div>
-
-</div>
-
-</div>
-
+<div class="kos-bubble" id="kosBubble" aria-label="Open Municipal Assistant" role="button" tabindex="0">
+  <div class="kos-bubble-orb"></div>
 </div>
 
 <script src="ai/ai-core.js"></script>
 
+<script src="ai/ai-provider.js"></script>
+
 <script src="script.js"></script>
+
+<script src="ai/kos-chat.js"></script>
 
 </body>
 </html>

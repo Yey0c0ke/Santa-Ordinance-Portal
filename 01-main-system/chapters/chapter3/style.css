@@ -896,98 +896,191 @@ flex-wrap:wrap;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-RESPONSIVE
+RESPONSIVE SYSTEM
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
+/* 1600px — Large Desktop */
+@media(min-width:1600px){
+    .hero{padding:60px 54px;}
+    .hero h1{font-size:clamp(3.2rem,4.5vw,5.4rem);}
+    .cards-section{width:min(1180px,88%);}
+    .legal-card{min-height:260px;padding:32px;}
+}
+
+/* 1440px — Desktop */
+@media(min-width:1440px) and (max-width:1599px){
+    .hero h1{font-size:clamp(2.8rem,4vw,4.8rem);}
+    .cards-section{width:min(1180px,90%);}
+}
+
+/* 1366px — Laptop */
+@media(min-width:1281px) and (max-width:1439px){
+    .hero{padding:48px 40px;}
+    .hero h1{font-size:clamp(2.6rem,3.8vw,4.4rem);}
+}
+
+/* 1280px — Laptop */
+@media(min-width:1025px) and (max-width:1280px){
+    .hero{padding:44px 36px;}
+    .hero h1{font-size:clamp(2.4rem,3.5vw,4rem);}
+    .hero p{font-size:.96rem;}
+}
+
+/* 1024px — Tablet Landscape */
+@media(max-width:1024px){
+    .hero{padding:40px 32px;}
+    .hero h1{font-size:clamp(2.2rem,5vw,3.8rem);}
+    .hero p{font-size:.92rem;}
+    .modal-content{width:100%;max-height:94vh;}
+    .navbar{padding:16px 20px;}
+    .logo{width:56px;height:56px;}
+    .nav-left h1{font-size:.92rem;}
+    .nav-left p{font-size:.76rem;}
+}
+
+/* 820px — iPad Air */
+@media(max-width:820px){
+    .hero{padding:36px 28px;border-radius:36px;}
+    .hero h1{font-size:clamp(2rem,5.5vw,3.4rem);}
+    .hero p{font-size:.9rem;}
+    .cards-section{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+}
+
+/* 768px — Tablet Portrait / Large Phone */
 @media(max-width:768px){
+    .glass{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);background:rgba(12,18,15,.82);}
+    .orb{opacity:.12;filter:blur(40px);}
 
-.glass{
+    .navbar{padding:16px;flex-direction:column;gap:16px;align-items:flex-start;}
+    .logo{width:56px;height:56px;}
+    .nav-left{gap:12px;}
+    .nav-left h1{font-size:.92rem;}
+    .nav-left p{font-size:.76rem;}
+    .back-button{padding:12px 18px;font-size:.88rem;width:100%;text-align:center;}
 
-backdrop-filter:blur(6px);
+    .hero{padding:34px 24px;}
+    .hero h1{font-size:2.8rem;}
+    .hero p{font-size:.92rem;line-height:1.8;}
 
--webkit-backdrop-filter:blur(6px);
+    .cards-section{grid-template-columns:1fr;gap:18px;}
+    .legal-card{min-height:200px;padding:24px;}
+    .legal-card h2{font-size:1.4rem;}
+    .legal-card span{font-size:.88rem;}
+    .legal-card p{font-size:.72rem;}
 
-background:
-rgba(12,18,15,.82);
+    .modal-scroll{padding:26px;}
+    .modal-content{border-radius:30px;}
+    .close-modal{width:40px;height:40px;top:14px;right:14px;}
 
+    .footer-brand{gap:14px;}
+    .footer-logo{width:56px;height:56px;}
+    .footer-content{gap:20px;}
 }
 
-.orb{
-
-opacity:.12;
-
-filter:blur(40px);
-
+/* 600px — Small Tablet */
+@media(max-width:600px){
+    .navbar{padding:14px;gap:14px;}
+    .logo{width:48px;height:48px;}
+    .nav-left h1{font-size:.86rem;}
+    .nav-left p{font-size:.72rem;}
+    .back-button{font-size:.82rem;padding:10px 16px;}
+    .hero{padding:28px 20px;}
+    .hero h1{font-size:2.3rem;}
+    .hero p{font-size:.88rem;margin-top:18px;}
+    .hero-badge{padding:8px 14px;margin-bottom:18px;}
+    .hero-badge span{font-size:.7rem;}
+    .legal-card{padding:20px;min-height:180px;border-radius:28px;}
+    .legal-card h2{font-size:1.3rem;}
+    .legal-card span{font-size:.86rem;margin-top:16px;}
+    .modal-scroll{padding:22px;}
+    .portal-footer{padding:24px;margin-bottom:50px;}
+    .footer-logo{width:48px;height:48px;}
+    .footer-bottom{flex-direction:column;text-align:center;}
 }
 
-.hero{
-
-padding:38px 28px;
-
-}
-
-.hero h1{
-
-font-size:3rem;
-
-}
-
-.modal-scroll{
-
-padding:28px;
-
-}
-
-}
-
+/* 480px — Phone */
 @media(max-width:480px){
-
-.hero{
-
-padding:
-30px 24px;
-
+    .hero{padding:28px 20px;}
+    .hero h1{font-size:2.2rem;}
+    .hero p{font-size:.84rem;}
+    .legal-card{min-height:170px;padding:20px;border-radius:26px;}
+    .legal-card h2{font-size:1.2rem;}
+    .legal-card span{font-size:.84rem;}
+    .modal-scroll{padding:20px;}
+    .navbar{padding:14px;}
+    .logo{width:50px;height:50px;}
+    .nav-left h1{font-size:.88rem;}
+    .accordion-header{padding:18px;font-size:.92rem;}
+    .accordion-content p{padding:0 18px 18px;font-size:.88rem;}
+    .modal-content{border-radius:26px;}
+    .close-modal{width:36px;height:36px;font-size:1rem;}
 }
 
-.hero h1{
-
-font-size:
-2.5rem;
-
+/* 412px — Larger Phones */
+@media(max-width:412px){
+    .navbar{padding:12px 14px;gap:12px;}
+    .logo{width:42px;height:42px;border-radius:16px;}
+    .nav-left h1{font-size:.8rem;}
+    .nav-left p{font-size:.66rem;}
+    .back-button{font-size:.76rem;padding:8px 14px;min-height:38px;}
+    .hero{padding:24px 16px;}
+    .hero h1{font-size:1.8rem;}
+    .hero p{font-size:.8rem;margin-top:14px;}
+    .hero-badge{padding:6px 12px;margin-bottom:14px;}
+    .hero-badge span{font-size:.62rem;}
+    .legal-card{padding:18px;min-height:160px;}
+    .legal-card h2{font-size:1.1rem;}
+    .legal-card span{font-size:.8rem;margin-top:12px;}
+    .legal-card p{font-size:.66rem;margin-bottom:8px;}
+    .portal-footer{padding:20px;}
+    .footer-logo{width:42px;height:42px;}
 }
 
-.legal-card{
-
-min-height:
-200px;
-
-padding:
-24px;
-
+/* 390px — iPhone 12/13/14/15 */
+@media(max-width:390px){
+    .navbar{padding:10px 12px;}
+    .logo{width:36px;height:36px;border-radius:14px;}
+    .nav-left h1{font-size:.74rem;}
+    .nav-left p{font-size:.62rem;}
+    .back-button{font-size:.72rem;padding:7px 12px;min-height:34px;}
+    .hero{padding:20px 14px;}
+    .hero h1{font-size:1.6rem;}
+    .hero p{font-size:.76rem;}
+    .hero-badge span{font-size:.58rem;}
+    .legal-card{padding:16px;min-height:150px;border-radius:24px;}
+    .legal-card h2{font-size:1rem;}
+    .legal-card span{font-size:.76rem;}
+    .accordion-header{padding:16px;font-size:.86rem;}
+    .modal-scroll{padding:16px;}
 }
 
-.modal-scroll{
-
-padding:
-22px;
-
+/* 360px — iPhone SE */
+@media(max-width:360px){
+    .navbar{padding:8px 10px;}
+    .logo{width:32px;height:32px;}
+    .nav-left h1{font-size:.68rem;}
+    .nav-left p{font-size:.56rem;}
+    .back-button{font-size:.68rem;padding:6px 10px;min-height:30px;}
+    .hero{padding:18px 12px;border-radius:30px;}
+    .hero h1{font-size:1.4rem;}
+    .hero p{font-size:.72rem;}
+    .hero-badge span{font-size:.54rem;}
+    .legal-card{padding:14px;min-height:140px;border-radius:22px;}
+    .legal-card h2{font-size:.92rem;}
+    .legal-card span{font-size:.72rem;}
+    .portal-footer{padding:16px;margin-bottom:30px;}
 }
 
-.navbar{
-
-padding:
-16px;
-
-}
-
-.logo{
-
-width:
-58px;
-
-height:
-58px;
-
-}
-
+/* 320px — Absolute minimum */
+@media(max-width:320px){
+    .navbar{padding:6px 8px;width:96%;}
+    .logo{width:28px;height:28px;}
+    .nav-left h1{font-size:.62rem;}
+    .nav-left p{font-size:.5rem;}
+    .hero{padding:14px 10px;}
+    .hero h1{font-size:1.2rem;}
+    .hero p{font-size:.68rem;}
+    .legal-card{padding:12px;min-height:130px;}
+    .legal-card h2{font-size:.84rem;}
+    .legal-card span{font-size:.68rem;}
 }

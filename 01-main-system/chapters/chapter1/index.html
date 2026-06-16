@@ -50,6 +50,11 @@ rel="stylesheet"
 href="./style.css"
 />
 
+<link
+rel="stylesheet"
+href="../../ai/ai-styles.css"
+/>
+
 </head>
 
 <body>
@@ -1040,6 +1045,70 @@ SCRIPT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
 <script src="./script.js"></script>
+
+<!-- MUNICIPAL ASSISTANT -->
+
+<div
+class="ai-modal"
+id="aiModal"
+aria-hidden="true"
+>
+
+<div class="ai-panel" role="dialog" aria-modal="true" aria-labelledby="aiTitle">
+
+  <div class="ai-panel-top">
+
+    <div class="ai-panel-title">
+
+      <div class="ai-status-wrap">
+        <div class="ai-status-dot"></div>
+        <div class="ai-status-pulse"></div>
+      </div>
+
+      <div>
+        <h3 id="aiTitle">Municipal Assistant</h3>
+        <p>Powered by KOS</p>
+      </div>
+
+    </div>
+
+    <div class="ai-header-actions">
+      <button class="ai-min-btn" id="minAI" type="button" aria-label="Minimize">&minus;</button>
+      <button class="ai-close-btn" id="closeAI" type="button" aria-label="Close">&times;</button>
+    </div>
+
+  </div>
+
+  <div class="ai-body">
+
+    <div class="ai-conversation" id="aiConversation">
+      <div class="ai-conversation-fade"></div>
+    </div>
+
+    <div class="ai-suggestions"></div>
+
+    <div class="ai-input-shell">
+      <div class="ai-input-bar">
+        <input type="text" class="ai-input" id="aiInput" placeholder="Ask Municipal Assistant..." autocomplete="off" spellcheck="false" />
+        <button class="ai-send-btn" id="sendAI" type="button" aria-label="Send Message">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<div class="kos-bubble" id="kosBubble" aria-label="Open Municipal Assistant" role="button" tabindex="0">
+  <div class="kos-bubble-orb"></div>
+</div>
+
+<script src="../../ai/ai-core.js"></script>
+<script src="../../ai/ai-provider.js"></script>
+<script src="../../ai/kos-chat.js"></script>
 
 </body>
 </html>

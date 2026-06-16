@@ -1,0 +1,353 @@
+[
+  {
+    "chapter": 1,
+    "title": "General Provisions / Administrative Matters",
+    "description": "LGU administration, governance systems, offices, committees, permits administration, and organizational structures.",
+    "articles": [
+      {
+        "letter": "A",
+        "title": "Short Title and Scope",
+        "summary": "Establishes the official title, coverage, and legal applicability of the Code of General Ordinances of Santa, Ilocos Sur.",
+        "sections": [
+          {
+            "id": "1A.01",
+            "title": "Title",
+            "content": "This Ordinance shall be known as the CODE OF GENERAL ORDINANCES OF SANTA, ILOCOS SUR."
+          },
+          {
+            "id": "1A.02",
+            "title": "Scope",
+            "content": "This Code covers all general and special ordinances enacted over the years by the Municipality of Santa, Ilocos Sur."
+          }
+        ]
+      },
+      {
+        "letter": "B",
+        "title": "Rules of Construction",
+        "summary": "Defines the legal construction, interpretation, time computation, references, and codal application rules governing municipal ordinances.",
+        "sections": [
+          {
+            "id": "1B.01",
+            "title": "Words and Phrases",
+            "content": "Words and phrases embodied in this Code but not specifically defined shall have the same meaning as found in legal dictionaries as well as in existing laws."
+          },
+          {
+            "id": "1B.02",
+            "title": "Construction of Codal Provisions",
+            "content": "In construing the provisions of this Code, the following rules of construction and words in this Code, which may have acquired a peculiar or appropriate meaning, shall be observed unless otherwise inconsistent with the manifest intent of the provisions or when applied would lead to absurd or highly improbable result. (a) General Rule. All words and phrases shall be construed and understood according to the common and approved usage of language; but technical words and phrases shall be construed and understood according to such technical, peculiar or appropriate meaning. (b) Gender and Number. Every word in this Code importing the masculine gender shall extend to both male and female. Every word importing the singular number shall extend and apply to several persons or things as well. (c) Computation of Time. The time within which an act is to be done shall be computed by excluding the first day and including the last day. (d) Tenses. The use of any verb in the present tense shall include the future whenever applicable. The words 'shall have been' shall include past and future cases. The use of the word 'shall' in this Code means mandatory whereas the word 'may' is permissive. (e) References. All references to Chapters, Articles or Sections are to Chapters, Articles or Sections in this Code unless otherwise specified. (f) Conflicting Provisions of Chapters. If the provisions of different chapters are in conflict with or contravene each other, the provisions of each chapter shall prevail as to all specific matter and questions involved therein. (g) Conflicting Provisions of Sections. If the provisions of different sections in the same chapter conflict with each other, the provisions of the section which is last in point of sequence shall prevail. (h) Existing Rights. No rights accrued, action or proceeding commenced before the effectivity of this Code shall be adversely affected by any provisions hereof. (i) Effect of Heading. The chapter, article and section headings do not in any manner affect the scope, meaning or intent of the provisions contained in this Code. (j) Relation to Prior Ordinance. The provisions of this Code which are substantially the same as that of previous or existing ordinances particularly when dealing with the same subject matter shall be construed as 'restatements' and not as 'new enactments' except for the amended, corrected and deleted words, phrases and paragraphs."
+          }
+        ]
+      },
+      {
+        "letter": "C",
+        "title": "Definitions",
+        "summary": "Contains official legal definitions, technical terminology, and municipal codal meanings used throughout the ordinance system.",
+        "isDefinitions": true,
+        "sections": [
+          {
+            "id": "1C.01",
+            "title": "Municipal Legal Definitions",
+            "content": "Definitions of terms used throughout the Code of General Ordinances.",
+            "definitions": {
+              "Amusement": "a pleasurable diversion and entertainment.",
+              "Amusement Places": "include theaters, cinemas, concert halls, circuses and other places of amusement.",
+              "Agricultural Product": "includes the yield of the soil, corn, rice, vegetables, fruits, flowers, fish, livestock and their by-products.",
+              "Assessment": "means the act or process of determining the value of property, business or privileges for taxation purposes.",
+              "Barangay": "means the basic political unit which serves as the primary planning and implementing unit of government policies, plans, programs, projects and activities.",
+              "Business": "means a trade or commercial activity regularly engaged in as means of livelihood.",
+              "Capital Investment": "means capital consisting of money or property invested in business operations.",
+              "Commercial Establishment": "means any establishment engaged in trade, services or commercial activity.",
+              "Fee": "means a charge fixed by law or ordinance for regulation or inspection of business activity.",
+              "Franchise": "is a right or privilege conferred upon persons or corporations.",
+              "License or Permit": "is a right or permission granted by competent authority.",
+              "Municipal Waters": "include streams, tidal waters and marine waters within municipal jurisdiction.",
+              "Operator": "includes the owner, manager, administrator or any person responsible for operation of a business establishment.",
+              "Police Power": "means the authority of the Municipality to enact measures to promote public welfare, health, safety, peace and order.",
+              "Public Place": "includes streets, parks, plazas, markets, sidewalks and public buildings.",
+              "Public Utility": "means private business entities engaged in public service operations.",
+              "Revenue": "includes taxes, fees, charges and all municipal income.",
+              "Tax": "means an enforced monetary contribution levied by lawmaking authority for governmental purposes.",
+              "Tax Ordinance": "means a local law enacted by the Sangguniang Bayan imposing taxes, fees or charges.",
+              "Taxpayer": "means any person liable for payment of taxes, fees or charges.",
+              "Violation": "means any act or omission contrary to municipal ordinances, rules or regulations.",
+              "Zoning": "means the regulation of land use within territorial jurisdiction through zoning ordinances."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "chapter": 2,
+    "title": "Legislative Rules and Procedures",
+    "description": "Internal legislative structure, parliamentary procedures, committee systems, ordinance enactment process, quorum requirements, session protocols, and governance mechanisms of the Sangguniang Bayan of Santa, Ilocos Sur.",
+    "articles": [
+      {
+        "letter": "A",
+        "title": "The Legislative Body",
+        "summary": "Composition, legislative authority, oath of office, and organizational foundations of the Sangguniang Bayan.",
+        "sections": [
+          { "id": "2A.01", "title": "The Legislative Body", "content": "The local legislative power shall be exercised by the Sangguniang Bayan of this municipality." },
+          { "id": "2A.02", "title": "Composition", "content": "The Sangguniang Bayan shall be composed of: Municipal Vice-Mayor serving as the Presiding Officer, Regular Members duly elected Sangguniang Bayan Members exercising legislative authority, Liga President serving as member of the body, SK Federation President of the Pambayang Pederasyon ng Sangguniang Kabataan." },
+          { "id": "2A.03", "title": "Term of Office", "content": "The term of office of the Members of the Sangguniang Bayan of Santa, Ilocos Sur shall be three (3) years which shall commence on such date as may be provided by law." },
+          { "id": "2A.04", "title": "Oath or Affirmation", "content": "All members of the Sangguniang Bayan of Santa, Ilocos Sur shall, upon assumption to office, take an oath of office or affirmation in the prescribed form, duly subscribed before a person authorized to administer oath. Copies of the oath shall be filed and preserved in the Office of the Municipal Mayor and the Office of the Sangguniang Bayan of Santa, Ilocos Sur." }
+        ]
+      },
+      {
+        "letter": "B",
+        "title": "Presiding Officer",
+        "summary": "Powers, authority, procedural duties, tie-breaking powers, and session leadership responsibilities.",
+        "sections": [
+          { "id": "2B.01", "title": "Powers and Duties", "content": "The Municipal Vice-Mayor as Presiding Officer of the Sangguniang Bayan shall: (a) Preside over all sessions of the Sangguniang Bayan; (b) Sign all ordinances and resolutions enacted or adopted by the body; (c) Maintain order and decorum during sessions; (d) Decide all questions of order; (e) Appoint committee chairs and members; (f) Perform such other duties as may be prescribed by law or these Rules." },
+          { "id": "2B.02", "title": "Tie-Breaking Vote", "content": "The Presiding Officer shall vote only to break a tie. In such case, the Vice-Mayor's vote shall decide the matter." }
+        ]
+      },
+      {
+        "letter": "C",
+        "title": "Temporary Presiding Officer",
+        "summary": "Succession procedures, temporary authority, deliberation rights, and continuity of legislative operations.",
+        "sections": [
+          { "id": "2C.01", "title": "Temporary Presiding Officer", "content": "In the absence of the Presiding Officer, the members present shall elect a Temporary Presiding Officer from among themselves who shall exercise the powers of the Presiding Officer during such absence." }
+        ]
+      },
+      {
+        "letter": "D",
+        "title": "The Sangguniang Bayan Members",
+        "summary": "Duties, obligations, disciplinary standards, voting responsibilities, and member conduct.",
+        "sections": [
+          { "id": "2D.01", "title": "Duties of Members", "content": "Every member of the Sangguniang Bayan shall: (a) Attend all regular and special sessions; (b) Participate in committee hearings and deliberations; (c) Vote on all matters before the body; (d) Serve in committees as may be designated; (e) Perform such other duties as may be required by law." }
+        ]
+      },
+      {
+        "letter": "E",
+        "title": "The Secretary",
+        "summary": "Administrative duties, ordinance processing, records management, certification, and documentation systems.",
+        "sections": [
+          { "id": "2E.01", "title": "The Secretary", "content": "The Secretary to the Sangguniang Bayan shall: (a) Keep the journal of proceedings; (b) Record all ordinances and resolutions; (c) Certify the authenticity of official documents; (d) Maintain custody of legislative records; (e) Prepare the agenda for sessions; (f) Perform such other duties as may be assigned." }
+        ]
+      },
+      {
+        "letter": "F",
+        "title": "Sessions",
+        "summary": "Regular sessions, special sessions, attendance rules, public access, and procedural order.",
+        "sections": [
+          { "id": "2F.01", "title": "Regular Sessions", "content": "The Sangguniang Bayan shall hold regular sessions at least once a week on a day and hour to be fixed by the body. The regular sessions shall be held in the Session Hall of the Sangguniang Bayan." },
+          { "id": "2F.02", "title": "Special Sessions", "content": "Special sessions may be called by the Presiding Officer or upon written request of at least a majority of the members. The notice shall specify the purpose of the special session." },
+          { "id": "2F.03", "title": "Open to Public", "content": "All sessions of the Sangguniang Bayan shall be open to the public unless otherwise ordered by the body for reasons of security, privacy, or confidentiality." }
+        ]
+      },
+      {
+        "letter": "G",
+        "title": "Roll Call and Quorum",
+        "summary": "Quorum requirements, legislative attendance, adjournment procedures, and session validity.",
+        "sections": [
+          { "id": "2G.01", "title": "Quorum Requirement", "content": "A majority of all members of the Sangguniang Bayan shall constitute a quorum for the transaction of business. If no quorum exists, the Presiding Officer shall declare the session adjourned." }
+        ]
+      },
+      {
+        "letter": "H",
+        "title": "Committees",
+        "summary": "Standing committees, legislative jurisdictions, committee authority, hearings, and governance structure.",
+        "sections": [
+          { "id": "2H.01", "title": "Standing Committees", "content": "The Sangguniang Bayan shall establish standing committees to facilitate legislative work. Each committee shall have jurisdiction over specific subject areas." }
+        ]
+      },
+      {
+        "letter": "I",
+        "title": "Order and Calendar of Business",
+        "summary": "Legislative agenda flow, privilege hour, committee reporting, and session business order.",
+        "sections": [
+          { "id": "2I.01", "title": "Order of Business", "content": "The order of business for regular sessions shall include: (a) Call to Order; (b) Roll Call; (c) Reading and Approval of Minutes; (d) Privilege Hour; (e) Committee Reports; (f) First Reading of Ordinances; (g) Second Reading of Ordinances; (h) Third Reading of Ordinances; (i) Resolutions; (j) Other Matters; (k) Adjournment." }
+        ]
+      },
+      {
+        "letter": "J",
+        "title": "Ordinances and Resolutions",
+        "summary": "Legislative enactment, readings, ordinance approval, committee referrals, and procedural voting.",
+        "sections": [
+          { "id": "2J.01", "title": "Ordinance Enactment", "content": "Ordinances shall undergo three readings on separate days. The first reading involves the reading of the title and referral to committee. The second reading involves committee report, interpellation, and amendments. The third reading involves final approval by the body." }
+        ]
+      },
+      {
+        "letter": "K",
+        "title": "Veto Power",
+        "summary": "Mayoral veto powers, override procedures, urgent matters, and legislative reconsideration.",
+        "sections": [
+          { "id": "2K.01", "title": "Mayoral Veto", "content": "Ordinances passed by the Sangguniang Bayan shall be submitted to the Municipal Mayor for approval. The Mayor may veto the same within the period prescribed by law." }
+        ]
+      },
+      {
+        "letter": "L",
+        "title": "Effectivity and Posting",
+        "summary": "Ordinance posting, publication, legal effectivity, and enforcement procedures.",
+        "sections": [
+          { "id": "2L.01", "title": "Effectivity and Posting", "content": "Ordinances shall take effect after the required posting and publication as provided by law." }
+        ]
+      },
+      {
+        "letter": "M",
+        "title": "Suspension of Rules",
+        "summary": "Suspension authority, procedural exceptions, and voting requirements within legislative sessions.",
+        "sections": [
+          { "id": "2M.01", "title": "Suspension of Rules", "content": "These Rules may be suspended by a vote of at least two-thirds (2/3) of the members present." }
+        ]
+      },
+      {
+        "letter": "N",
+        "title": "Amendments",
+        "summary": "Procedures governing amendment of internal legislative rules and procedural revisions.",
+        "sections": [
+          { "id": "2N.01", "title": "Amendments", "content": "These Rules may be amended by a majority vote of all members of the Sangguniang Bayan." }
+        ]
+      },
+      {
+        "letter": "O",
+        "title": "Supplementary Rules",
+        "summary": "Supplementary parliamentary authorities, procedural references, and legislative guidance.",
+        "sections": [
+          { "id": "2O.01", "title": "Supplementary Rules", "content": "Robert's Rules of Order (Latest Edition) shall serve as supplementary parliamentary authority on matters not covered by these Rules." }
+        ]
+      },
+      {
+        "letter": "P",
+        "title": "Applicability Clause",
+        "summary": "Integration of national issuances, Local Government Code provisions, and related regulations.",
+        "sections": [
+          { "id": "2P.01", "title": "Applicability", "content": "These Rules shall be implemented in accordance with Republic Act 7160 (Local Government Code of 1991) and other applicable laws." }
+        ]
+      },
+      {
+        "letter": "R",
+        "title": "Final Effectivity",
+        "summary": "Final adoption clause governing the official implementation and enforceability of the Internal Rules of Procedures.",
+        "sections": [
+          { "id": "2R.01", "title": "Effectivity", "content": "These Internal Rules of Procedure shall take effect upon approval by the Sangguniang Bayan and posting in three (3) conspicuous public places in the Municipality." }
+        ]
+      }
+    ]
+  },
+  {
+    "chapter": 3,
+    "title": "Public Officials / Governance and Administrative Framework",
+    "description": "Municipal governance and administrative framework, covering departmental functions, ethical standards, penalties, transparency and accountability systems, PESO and PLEB operations, official municipal ordinances and symbols.",
+    "articles": [
+      {
+        "letter": "A",
+        "title": "Declaration of Policy",
+        "summary": "Public accountability, professionalism, transparency, ethics, and public trust.",
+        "sections": [
+          { "id": "3A.01", "title": "Declaration of Policy", "content": "Public office is a public trust. Officials shall serve with integrity, accountability, loyalty, efficiency, and professionalism." }
+        ]
+      },
+      {
+        "letter": "B",
+        "title": "Norms of Conduct",
+        "summary": "Commitment to public interest, professionalism, political neutrality, and responsiveness.",
+        "sections": [
+          { "id": "3B.01", "title": "Commitment to Public Interest", "content": "Officials shall prioritize public welfare over personal interest." },
+          { "id": "3B.02", "title": "Professionalism", "content": "Public officials shall demonstrate competence, dedication, and fairness." }
+        ]
+      },
+      {
+        "letter": "C",
+        "title": "Duties and Responsibilities",
+        "summary": "Functions, responsibilities, service standards, and accountability systems.",
+        "sections": [
+          { "id": "3C.01", "title": "Functions and Responsibilities", "content": "Municipal officials shall perform their duties with accountability, efficiency, and dedication to public service." }
+        ]
+      },
+      {
+        "letter": "D",
+        "title": "Ethical Standards",
+        "summary": "Conflict of interest, gifts, confidentiality, and prohibited acts.",
+        "sections": [
+          { "id": "3D.01", "title": "Conflict of Interest", "content": "Public officials shall avoid financial and personal interests that conflict with public duties." },
+          { "id": "3D.02", "title": "Gifts and Benefits", "content": "Acceptance of gifts, favors, or benefits that may influence official acts is prohibited." },
+          { "id": "3D.03", "title": "Confidential Information", "content": "Confidential government information shall not be used for private advantage or unauthorized disclosure." }
+        ]
+      },
+      {
+        "letter": "E",
+        "title": "Transparency",
+        "summary": "SALN, financial disclosure, public records, and accountability.",
+        "sections": [
+          { "id": "3E.01", "title": "Statement of Assets", "content": "Officials shall file declarations of assets, liabilities, and financial interests in accordance with law." },
+          { "id": "3E.02", "title": "Public Access to Records", "content": "Records and official transactions shall remain accessible subject to lawful confidentiality." },
+          { "id": "3E.03", "title": "Transparency Measures", "content": "Municipal offices shall promote open, transparent, and accountable governance." }
+        ]
+      },
+      {
+        "letter": "F",
+        "title": "Conflict of Interest",
+        "summary": "Divestment, private interests, business restrictions, and ethical compliance.",
+        "sections": [
+          { "id": "3F.01", "title": "Conflict of Interest", "content": "Officials shall divest from private interests that conflict with public duties and shall comply with business restriction requirements." }
+        ]
+      },
+      {
+        "letter": "G",
+        "title": "Penalties",
+        "summary": "Administrative, civil, and criminal liabilities.",
+        "sections": [
+          { "id": "3G.01", "title": "Penalties", "content": "Violations of ethical standards and conduct rules may result in administrative, civil, and criminal liabilities as provided by law." }
+        ]
+      },
+      {
+        "letter": "H",
+        "title": "Department Heads",
+        "summary": "Municipal Treasurer, Assessor, MPDC, Engineer, Health Officer, MSWDO and others.",
+        "sections": [
+          { "id": "3H.01", "title": "Department Heads", "content": "The municipality shall have department heads including the Municipal Treasurer, Municipal Assessor, Municipal Planning and Development Coordinator, Municipal Engineer, Municipal Health Officer, Municipal Social Welfare and Development Officer, and other department heads as may be provided by law." }
+        ]
+      },
+      {
+        "letter": "I",
+        "title": "Travel Orders",
+        "summary": "Official travel authorization, procedures, and accountability.",
+        "sections": [
+          { "id": "3I.01", "title": "Travel Orders", "content": "Official travel of municipal officials and employees shall be covered by travel orders duly approved by the competent authority." }
+        ]
+      },
+      {
+        "letter": "J",
+        "title": "Drug Testing",
+        "summary": "Mandatory testing, rehabilitation, penalties, and confidentiality.",
+        "sections": [
+          { "id": "3J.01", "title": "Drug Testing", "content": "Mandatory drug testing shall be conducted for municipal officials and employees. Rehabilitation programs and penalties shall be provided for those found positive." }
+        ]
+      },
+      {
+        "letter": "K",
+        "title": "Legal Assistance Fund",
+        "summary": "Funding, coverage, legal support, and implementation.",
+        "sections": [
+          { "id": "3K.01", "title": "Legal Assistance Fund", "content": "A legal assistance fund shall be established to provide legal support to municipal officials and employees in connection with the performance of their official duties." }
+        ]
+      },
+      {
+        "letter": "L",
+        "title": "PESO",
+        "summary": "Employment facilitation, labor market information, and youth employment.",
+        "sections": [
+          { "id": "3L.01", "title": "PESO", "content": "The Public Employment Service Office (PESO) shall facilitate employment, provide labor market information, and implement youth employment programs." }
+        ]
+      },
+      {
+        "letter": "M",
+        "title": "PLEB",
+        "summary": "People's Law Enforcement Board, citizen complaints, jurisdiction and funding.",
+        "sections": [
+          { "id": "3M.01", "title": "PLEB", "content": "The People's Law Enforcement Board (PLEB) shall hear citizen complaints against law enforcement officers within its jurisdiction." }
+        ]
+      },
+      {
+        "letter": "N",
+        "title": "Official Seal",
+        "summary": "Seal usage, custody, prohibited acts, and penalties.",
+        "sections": [
+          { "id": "3N.01", "title": "Official Seal", "content": "The official seal of the Municipality of Santa, Ilocos Sur shall be used only for official purposes. Unauthorized use or reproduction is prohibited and subject to penalties." }
+        ]
+      }
+    ]
+  }
+]

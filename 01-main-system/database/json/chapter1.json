@@ -1,0 +1,77 @@
+{
+  "chapter": 1,
+  "title": "General Provisions / Administrative Matters",
+  "description": "LGU administration, governance systems, offices, committees, permits administration, and organizational structures.",
+  "articles": [
+    {
+      "letter": "A",
+      "title": "Short Title and Scope",
+      "summary": "Establishes the official title, coverage, and legal applicability of the Code of General Ordinances of Santa, Ilocos Sur.",
+      "sections": [
+        {
+          "id": "1A.01",
+          "title": "Title",
+          "content": "This Ordinance shall be known as the CODE OF GENERAL ORDINANCES OF SANTA, ILOCOS SUR."
+        },
+        {
+          "id": "1A.02",
+          "title": "Scope",
+          "content": "This Code covers all general and special ordinances enacted over the years by the Municipality of Santa, Ilocos Sur."
+        }
+      ]
+    },
+    {
+      "letter": "B",
+      "title": "Rules of Construction",
+      "summary": "Defines the legal construction, interpretation, time computation, references, and codal application rules governing municipal ordinances.",
+      "sections": [
+        {
+          "id": "1B.01",
+          "title": "Words and Phrases",
+          "content": "Words and phrases embodied in this Code but not specifically defined shall have the same meaning as found in legal dictionaries as well as in existing laws."
+        },
+        {
+          "id": "1B.02",
+          "title": "Construction of Codal Provisions",
+          "content": "In construing the provisions of this Code, the following rules of construction and words in this Code, which may have acquired a peculiar or appropriate meaning, shall be observed unless otherwise inconsistent with the manifest intent of the provisions or when applied would lead to absurd or highly improbable result. (a) General Rule. All words and phrases shall be construed and understood according to the common and approved usage of language; but technical words and phrases shall be construed and understood according to such technical, peculiar or appropriate meaning. (b) Gender and Number. Every word in this Code importing the masculine gender shall extend to both male and female. Every word importing the singular number shall extend and apply to several persons or things as well. (c) Computation of Time. The time within which an act is to be done shall be computed by excluding the first day and including the last day. (d) Tenses. The use of any verb in the present tense shall include the future whenever applicable. The words 'shall have been' shall include past and future cases. The use of the word 'shall' in this Code means mandatory whereas the word 'may' is permissive. (e) References. All references to Chapters, Articles or Sections are to Chapters, Articles or Sections in this Code unless otherwise specified. (f) Conflicting Provisions of Chapters. If the provisions of different chapters are in conflict with or contravene each other, the provisions of each chapter shall prevail as to all specific matter and questions involved therein. (g) Conflicting Provisions of Sections. If the provisions of different sections in the same chapter conflict with each other, the provisions of the section which is last in point of sequence shall prevail. (h) Existing Rights. No rights accrued, action or proceeding commenced before the effectivity of this Code shall be adversely affected by any provisions hereof. (i) Effect of Heading. The chapter, article and section headings do not in any manner affect the scope, meaning or intent of the provisions contained in this Code. (j) Relation to Prior Ordinance. The provisions of this Code which are substantially the same as that of previous or existing ordinances particularly when dealing with the same subject matter shall be construed as 'restatements' and not as 'new enactments' except for the amended, corrected and deleted words, phrases and paragraphs."
+        }
+      ]
+    },
+    {
+      "letter": "C",
+      "title": "Definitions",
+      "summary": "Contains official legal definitions, technical terminology, and municipal codal meanings used throughout the ordinance system.",
+      "sections": [
+        {
+          "id": "1C.01",
+          "title": "Municipal Legal Definitions",
+          "content": "Definitions of terms used throughout the Code of General Ordinances.",
+          "definitions": {
+            "Amusement": "a pleasurable diversion and entertainment.",
+            "Amusement Places": "include theaters, cinemas, concert halls, circuses and other places of amusement.",
+            "Agricultural Product": "includes the yield of the soil, corn, rice, vegetables, fruits, flowers, fish, livestock and their by-products.",
+            "Assessment": "means the act or process of determining the value of property, business or privileges for taxation purposes.",
+            "Barangay": "means the basic political unit which serves as the primary planning and implementing unit of government policies, plans, programs, projects and activities.",
+            "Business": "means a trade or commercial activity regularly engaged in as means of livelihood.",
+            "Capital Investment": "means capital consisting of money or property invested in business operations.",
+            "Commercial Establishment": "means any establishment engaged in trade, services or commercial activity.",
+            "Fee": "means a charge fixed by law or ordinance for regulation or inspection of business activity.",
+            "Franchise": "is a right or privilege conferred upon persons or corporations.",
+            "License or Permit": "is a right or permission granted by competent authority.",
+            "Municipal Waters": "include streams, tidal waters and marine waters within municipal jurisdiction.",
+            "Operator": "includes the owner, manager, administrator or any person responsible for operation of a business establishment.",
+            "Police Power": "means the authority of the Municipality to enact measures to promote public welfare, health, safety, peace and order.",
+            "Public Place": "includes streets, parks, plazas, markets, sidewalks and public buildings.",
+            "Public Utility": "means private business entities engaged in public service operations.",
+            "Revenue": "includes taxes, fees, charges and all municipal income.",
+            "Tax": "means an enforced monetary contribution levied by lawmaking authority for governmental purposes.",
+            "Tax Ordinance": "means a local law enacted by the Sangguniang Bayan imposing taxes, fees or charges.",
+            "Taxpayer": "means any person liable for payment of taxes, fees or charges.",
+            "Violation": "means any act or omission contrary to municipal ordinances, rules or regulations.",
+            "Zoning": "means the regulation of land use within territorial jurisdiction through zoning ordinances."
+          }
+        }
+      ]
+    }
+  ]
+}

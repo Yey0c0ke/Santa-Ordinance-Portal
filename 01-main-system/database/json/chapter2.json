@@ -1,0 +1,241 @@
+{
+  "chapter": 2,
+  "title": "Legislative Rules and Procedures",
+  "description": "Internal legislative structure, parliamentary procedures, committee systems, ordinance enactment process, quorum requirements, session protocols, and governance mechanisms of the Sangguniang Bayan of Santa, Ilocos Sur.",
+  "articles": [
+    {
+      "letter": "A",
+      "title": "The Legislative Body",
+      "summary": "Composition, legislative authority, oath of office, and organizational foundations of the Sangguniang Bayan.",
+      "sections": [
+        {
+          "id": "2A.01",
+          "title": "The Legislative Body",
+          "content": "The local legislative power shall be exercised by the Sangguniang Bayan of this municipality."
+        },
+        {
+          "id": "2A.02",
+          "title": "Composition",
+          "content": "The Sangguniang Bayan shall be composed of: Municipal Vice-Mayor serving as the Presiding Officer, Regular Members duly elected Sangguniang Bayan Members exercising legislative authority, Liga President serving as member of the body, SK Federation President of the Pambayang Pederasyon ng Sangguniang Kabataan."
+        },
+        {
+          "id": "2A.03",
+          "title": "Term of Office",
+          "content": "The term of office of the Members of the Sangguniang Bayan of Santa, Ilocos Sur shall be three (3) years which shall commence on such date as may be provided by law."
+        },
+        {
+          "id": "2A.04",
+          "title": "Oath or Affirmation",
+          "content": "All members of the Sangguniang Bayan of Santa, Ilocos Sur shall, upon assumption to office, take an oath of office or affirmation in the prescribed form, duly subscribed before a person authorized to administer oath. Copies of the oath or affirmation shall be filed and preserved in the Office of the Municipal Mayor and the Office of the Sangguniang Bayan of Santa, Ilocos Sur."
+        }
+      ]
+    },
+    {
+      "letter": "B",
+      "title": "Presiding Officer",
+      "summary": "Powers, authority, procedural duties, tie-breaking powers, and session leadership responsibilities.",
+      "sections": [
+        {
+          "id": "2B.01",
+          "title": "Powers and Duties",
+          "content": "The Municipal Vice-Mayor as Presiding Officer of the Sangguniang Bayan shall: (a) Preside over all sessions of the Sangguniang Bayan; (b) Sign all ordinances and resolutions enacted or adopted by the body; (c) Maintain order and decorum during sessions; (d) Decide all questions of order; (e) Appoint committee chairs and members; (f) Perform such other duties as may be prescribed by law or these Rules."
+        },
+        {
+          "id": "2B.02",
+          "title": "Tie-Breaking Vote",
+          "content": "The Presiding Officer shall vote only to break a tie. In such case, the Vice-Mayor's vote shall decide the matter."
+        }
+      ]
+    },
+    {
+      "letter": "C",
+      "title": "Temporary Presiding Officer",
+      "summary": "Succession procedures, temporary authority, deliberation rights, and continuity of legislative operations.",
+      "sections": [
+        {
+          "id": "2C.01",
+          "title": "Temporary Presiding Officer",
+          "content": "In the absence of the Presiding Officer, the members present shall elect a Temporary Presiding Officer from among themselves who shall exercise the powers of the Presiding Officer during such absence."
+        }
+      ]
+    },
+    {
+      "letter": "D",
+      "title": "The Sangguniang Bayan Members",
+      "summary": "Duties, obligations, disciplinary standards, voting responsibilities, and member conduct.",
+      "sections": [
+        {
+          "id": "2D.01",
+          "title": "Duties of Members",
+          "content": "Every member of the Sangguniang Bayan shall: (a) Attend all regular and special sessions; (b) Participate in committee hearings and deliberations; (c) Vote on all matters before the body; (d) Serve in committees as may be designated; (e) Perform such other duties as may be required by law."
+        }
+      ]
+    },
+    {
+      "letter": "E",
+      "title": "The Secretary",
+      "summary": "Administrative duties, ordinance processing, records management, certification, and documentation systems.",
+      "sections": [
+        {
+          "id": "2E.01",
+          "title": "The Secretary",
+          "content": "The Secretary to the Sangguniang Bayan shall: (a) Keep the journal of proceedings; (b) Record all ordinances and resolutions; (c) Certify the authenticity of official documents; (d) Maintain custody of legislative records; (e) Prepare the agenda for sessions; (f) Perform such other duties as may be assigned."
+        }
+      ]
+    },
+    {
+      "letter": "F",
+      "title": "Sessions",
+      "summary": "Regular sessions, special sessions, attendance rules, public access, and procedural order.",
+      "sections": [
+        {
+          "id": "2F.01",
+          "title": "Regular Sessions",
+          "content": "The Sangguniang Bayan shall hold regular sessions at least once a week on a day and hour to be fixed by the body. The regular sessions shall be held in the Session Hall of the Sangguniang Bayan."
+        },
+        {
+          "id": "2F.02",
+          "title": "Special Sessions",
+          "content": "Special sessions may be called by the Presiding Officer or upon written request of at least a majority of the members. The notice shall specify the purpose of the special session."
+        },
+        {
+          "id": "2F.03",
+          "title": "Open to Public",
+          "content": "All sessions of the Sangguniang Bayan shall be open to the public unless otherwise ordered by the body for reasons of security, privacy, or confidentiality."
+        }
+      ]
+    },
+    {
+      "letter": "G",
+      "title": "Roll Call and Quorum",
+      "summary": "Quorum requirements, legislative attendance, adjournment procedures, and session validity.",
+      "sections": [
+        {
+          "id": "2G.01",
+          "title": "Quorum Requirement",
+          "content": "A majority of all members of the Sangguniang Bayan shall constitute a quorum for the transaction of business. If no quorum exists, the Presiding Officer shall declare the session adjourned."
+        }
+      ]
+    },
+    {
+      "letter": "H",
+      "title": "Committees",
+      "summary": "Standing committees, legislative jurisdictions, committee authority, hearings, and governance structure.",
+      "sections": [
+        {
+          "id": "2H.01",
+          "title": "Standing Committees",
+          "content": "The Sangguniang Bayan shall establish standing committees to facilitate legislative work. Each committee shall have jurisdiction over specific subject areas."
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "title": "Order and Calendar of Business",
+      "summary": "Legislative agenda flow, privilege hour, committee reporting, and session business order.",
+      "sections": [
+        {
+          "id": "2I.01",
+          "title": "Order of Business",
+          "content": "The order of business for regular sessions shall include: (a) Call to Order; (b) Roll Call; (c) Reading and Approval of Minutes; (d) Privilege Hour; (e) Committee Reports; (f) First Reading of Ordinances; (g) Second Reading of Ordinances; (h) Third Reading of Ordinances; (i) Resolutions; (j) Other Matters; (k) Adjournment."
+        }
+      ]
+    },
+    {
+      "letter": "J",
+      "title": "Ordinances and Resolutions",
+      "summary": "Legislative enactment, readings, ordinance approval, committee referrals, and procedural voting.",
+      "sections": [
+        {
+          "id": "2J.01",
+          "title": "Ordinance Enactment",
+          "content": "Ordinances shall undergo three readings on separate days. The first reading involves the reading of the title and referral to committee. The second reading involves committee report, interpellation, and amendments. The third reading involves final approval by the body."
+        }
+      ]
+    },
+    {
+      "letter": "K",
+      "title": "Veto Power",
+      "summary": "Mayoral veto powers, override procedures, urgent matters, and legislative reconsideration.",
+      "sections": [
+        {
+          "id": "2K.01",
+          "title": "Mayoral Veto",
+          "content": "Ordinances passed by the Sangguniang Bayan shall be submitted to the Municipal Mayor for approval. The Mayor may veto the same within the period prescribed by law."
+        }
+      ]
+    },
+    {
+      "letter": "L",
+      "title": "Effectivity and Posting",
+      "summary": "Ordinance posting, publication, legal effectivity, and enforcement procedures.",
+      "sections": [
+        {
+          "id": "2L.01",
+          "title": "Effectivity and Posting",
+          "content": "Ordinances shall take effect after the required posting and publication as provided by law."
+        }
+      ]
+    },
+    {
+      "letter": "M",
+      "title": "Suspension of Rules",
+      "summary": "Suspension authority, procedural exceptions, and voting requirements within legislative sessions.",
+      "sections": [
+        {
+          "id": "2M.01",
+          "title": "Suspension of Rules",
+          "content": "These Rules may be suspended by a vote of at least two-thirds (2/3) of the members present."
+        }
+      ]
+    },
+    {
+      "letter": "N",
+      "title": "Amendments",
+      "summary": "Procedures governing amendment of internal legislative rules and procedural revisions.",
+      "sections": [
+        {
+          "id": "2N.01",
+          "title": "Amendments",
+          "content": "These Rules may be amended by a majority vote of all members of the Sangguniang Bayan."
+        }
+      ]
+    },
+    {
+      "letter": "O",
+      "title": "Supplementary Rules",
+      "summary": "Supplementary parliamentary authorities, procedural references, and legislative guidance.",
+      "sections": [
+        {
+          "id": "2O.01",
+          "title": "Supplementary Rules",
+          "content": "Robert's Rules of Order (Latest Edition) shall serve as supplementary parliamentary authority on matters not covered by these Rules."
+        }
+      ]
+    },
+    {
+      "letter": "P",
+      "title": "Applicability Clause",
+      "summary": "Integration of national issuances, Local Government Code provisions, and related regulations.",
+      "sections": [
+        {
+          "id": "2P.01",
+          "title": "Applicability",
+          "content": "These Rules shall be implemented in accordance with Republic Act 7160 (Local Government Code of 1991) and other applicable laws."
+        }
+      ]
+    },
+    {
+      "letter": "R",
+      "title": "Final Effectivity",
+      "summary": "Final adoption clause governing the official implementation and enforceability of the Internal Rules of Procedures.",
+      "sections": [
+        {
+          "id": "2R.01",
+          "title": "Effectivity",
+          "content": "These Internal Rules of Procedure shall take effect upon approval by the Sangguniang Bayan and posting in three (3) conspicuous public places in the Municipality."
+        }
+      ]
+    }
+  ]
+}
